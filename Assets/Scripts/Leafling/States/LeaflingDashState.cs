@@ -34,44 +34,8 @@ namespace Leafling
         }
         private void PrepareToDash()
         {
-            SetSquatAnimation();
-            if (Leafling.IsTouchingAnything())
-            {
-                Leafling.ResetSpriteRotation();
-            }
-            else
-            {
-                LeaflingDashTools.SetRotation(Leafling, _aim);
-            }
+            LeaflingDashTools.ShowDashPerch(Leafling, _aim);
             Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
-        }
-        private void SetSquatAnimation()
-        {
-            if (Leafling.IsTouching(CardinalDirection.Down))
-            {
-                Leafling.SetAnimation(Leafling.Squat);
-                Leafling.FaceTowards(_aim.x);
-            }
-            else if (Leafling.IsTouching(CardinalDirection.Up))
-            {
-                Leafling.SetAnimation(Leafling.CeilingPerch);
-                Leafling.FaceTowards(_aim.x);
-            }
-            else if (Leafling.IsTouching(CardinalDirection.Right))
-            {
-                Leafling.SetAnimation(Leafling.WallPerch);
-                Leafling.FaceTowards(-1);
-            }
-            else if (Leafling.IsTouching(CardinalDirection.Left))
-            {
-                Leafling.SetAnimation(Leafling.WallPerch);
-                Leafling.FaceTowards(1);
-            }
-            else
-            {
-                Leafling.SetAnimation(Leafling.MidairDashAim);
-                Leafling.FaceTowards(_aim.x);
-            }
         }
 
         public override void Update(float dt)
@@ -80,7 +44,7 @@ namespace Leafling
             if (Leafling.IsCurrentFrameActionFrame)
             {
                 _hasReachedActionFrame = true;
-                LeaflingDashTools.SetRotation(Leafling, _aim);
+                LeaflingDashTools.SetMidairRotation(Leafling, _aim);
             }
             Vector2 velocity = GetDashVelocity();
             Leafling.SetVelocity(velocity);

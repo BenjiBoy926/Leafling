@@ -64,11 +64,19 @@ namespace Leafling
         }
         public IEnumerable<Vector2> GetContactNormals()
         {
+            return GetResultForEachTouchingContact(NormalOf);
+        }
+        private Vector2 NormalOf(int index)
+        {
+            return _contacts[index].Normal;
+        }
+        private IEnumerable<TResult> GetResultForEachTouchingContact<TResult>(Func<int, TResult> fetchResultForIndex)
+        {
             for (int i = 0; i < _contacts.Length; i++)
             {
                 if (_contacts[i].IsTouching)
                 {
-                    yield return _contacts[i].Normal;
+                    yield return fetchResultForIndex(i);
                 }
             }
         }
