@@ -19,6 +19,7 @@ namespace Leafling
             Leafling.HorizontalDirectionChanged += OnLeaflingDirectionChanged;
             Leafling.StartedJumping += OnLeaflingStartedJumping;
             Leafling.StartedAimingDash += OnLeaflingStartedAimingDash;
+            Leafling.SetAnimation(Leafling.Squat);
             ReflectCurrentDirection();
         }
         public override void Exit()

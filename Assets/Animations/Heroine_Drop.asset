@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
+  m_Name: Heroine_Drop
+  m_EditorClassIdentifier: 
+  _frames:
+  - _sprite: {fileID: 1500029570, guid: 724bc057bc242d345bf463bed2e0c495, type: 3}
+    _duration: 0.2
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 448446599, guid: 724bc057bc242d345bf463bed2e0c495, type: 3}
+    _duration: 100
+    _isTransitionFrame: 1
+    _isActionFrame: 1

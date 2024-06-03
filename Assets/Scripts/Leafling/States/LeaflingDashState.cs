@@ -25,6 +25,7 @@ namespace Leafling
         {
             base.Exit();
             Leafling.AnimationFinished -= OnAnimationFinished;
+            Leafling.ResetSpriteRotation();
         }
         private void OnAnimationFinished()
         {

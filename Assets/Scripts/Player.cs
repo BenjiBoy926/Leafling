@@ -8,14 +8,14 @@ namespace Leafling
     public class Player : MonoBehaviour, DefaultActions.IDefaultMapActions
     {
         [SerializeField]
-        private Leafling _leafling;
+        private LeaflingInputs _inputs;
         [SerializeField]
         private Camera _mouseConversionCamera;
         private DefaultActions _actions;
 
         private void Reset()
         {
-            _leafling = GetComponent<Leafling>();
+            _inputs = GetComponent<LeaflingInputs>();
         }
         private void Awake()
         {
@@ -44,21 +44,25 @@ namespace Leafling
             {
                 direction = 1;
             }
-            _leafling.SetHorizontalDirection(direction);
+            _inputs.SetHorizontalDirection(direction);
         }
         public void OnJump(InputAction.CallbackContext context)
         {
-            _leafling.SetIsJumping(context.ReadValueAsButton());
+            _inputs.SetIsJumping(context.ReadValueAsButton());
         }
         public void OnDashTarget(InputAction.CallbackContext context)
         {
             Vector2 screenPoint = context.ReadValue<Vector2>();
             Vector2 worldPoint = GetWorldPointFromScreenPoint(screenPoint);
-            _leafling.SetDashTarget(worldPoint);
+            _inputs.SetDashTarget(worldPoint);
         }
         public void OnDash(InputAction.CallbackContext context)
         {
-            _leafling.SetIsAimingDash(context.ReadValueAsButton());
+            _inputs.SetIsAimingDash(context.ReadValueAsButton());
+        }
+        public void OnCrouch(InputAction.CallbackContext context)
+        {
+            _inputs.SetIsCrouching(context.ReadValueAsButton());
         }
 
         private Vector2 GetWorldPointFromScreenPoint(Vector2 screenPoint)

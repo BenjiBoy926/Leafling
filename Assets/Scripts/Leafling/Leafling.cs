@@ -14,10 +14,19 @@ namespace Leafling
         public event Action StoppedJumping = delegate { };
         public event Action StartedAimingDash = delegate { };
         public event Action StoppedAimingDash = delegate { };
+        public event Action StartedCrouching = delegate { };
+        public event Action StoppedCrouching = delegate { };
         public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
+        public bool IsJumping => _inputs.IsJumping;
+        public bool IsAimingDash => _inputs.IsAimingDash;
+        public Vector2 DashAim => _inputs.DashAim;
+        public float DashAimX => _inputs.DashAimX;
+        public float DashAimY => _inputs.DashAimY;
+        public bool IsCrouching => _inputs.IsCrouching;
+
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
         public bool CurrentFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
@@ -41,17 +50,13 @@ namespace Leafling
         public SpriteAnimation WallPerch => _wallPerch;
         public SpriteAnimation CeilingPerch => _ceilingPerch;
         public SpriteAnimation Dash => _dash;
+        public SpriteAnimation Drop => _drop;
 
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
-        public bool IsJumping => _inputs.IsJumping;
-        public bool IsAimingDash => _inputs.IsAimingDash;
-        public Vector2 DashAim => _inputs.DashAim;
-        public float DashAimX => _inputs.DashAimX;
-        public float DashAimY => _inputs.DashAimY;
         public float MaxDashSpeed => _maxDashSpeed;
         public float AimingDashGravityScale => _aimingDashGravityScale;
 
@@ -84,6 +89,8 @@ namespace Leafling
         private SpriteAnimation _freeFallStraight;
         [SerializeField]
         private SpriteAnimation _flutter;
+        [SerializeField]
+        private SpriteAnimation _drop;
         [SerializeField]
         private SpriteAnimation _squat;
         [SerializeField]
@@ -140,6 +147,8 @@ namespace Leafling
             _inputs.StoppedJumping += OnStoppedJumping;
             _inputs.StartedAimingDash += OnStartedAimingDash;
             _inputs.StoppedAimingDash += OnStoppedAimingDash;
+            _inputs.StartedCrouching += OnStartedCrouching;
+            _inputs.StoppedCrouching += OnStoppedCrouching;
             _animator.StartedAnimation += OnAnimationStarted;
             _animator.FinishedAnimation += OnAnimationFinished;
         }
@@ -150,6 +159,8 @@ namespace Leafling
             _inputs.StoppedJumping -= OnStoppedJumping;
             _inputs.StartedAimingDash -= OnStartedAimingDash;
             _inputs.StoppedAimingDash -= OnStoppedAimingDash;
+            _inputs.StartedCrouching -= OnStartedCrouching;
+            _inputs.StoppedCrouching -= OnStoppedCrouching;
             _animator.StartedAnimation -= OnAnimationStarted;
             _animator.FinishedAnimation -= OnAnimationFinished;
         }
@@ -173,6 +184,14 @@ namespace Leafling
         {
             StoppedAimingDash();
         }
+        private void OnStartedCrouching()
+        {
+            StartedCrouching();
+        }
+        private void OnStoppedCrouching()
+        {
+            StoppedCrouching();
+        }
         private void OnAnimationStarted()
         {
             AnimationStarted();
@@ -185,23 +204,6 @@ namespace Leafling
         public void SetState(LeaflingState state)
         {
             _stateMachine.SetState(state);
-        }
-
-        public void SetHorizontalDirection(int horizontalDirection)
-        {
-            _inputs.SetHorizontalDirection(horizontalDirection);
-        }
-        public void SetIsJumping(bool isJumping)
-        {
-            _inputs.SetIsJumping(isJumping);
-        }
-        public void SetDashTarget(Vector2 target)
-        {
-            _inputs.SetDashTarget(target);
-        }
-        public void SetIsAimingDash(bool isAimingDash)
-        {
-            _inputs.SetIsAimingDash(isAimingDash);
         }
 
         public void SetHorizontalVelocity(float velocity)
