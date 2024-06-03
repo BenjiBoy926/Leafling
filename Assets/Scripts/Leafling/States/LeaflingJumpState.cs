@@ -40,7 +40,7 @@ namespace Leafling
         }
         private bool ShouldTransitionOutOfJump()
         {
-            return IsLeaflingAnimatingJumpActionFrame() && ((!Leafling.IsJumping && TimeSinceJumpActionFrameStart >= Leafling.MinJumpTime) || (TimeSinceJumpActionFrameStart >= Leafling.MaxJumpTime));
+            return IsLeaflingAnimatingJumpActionFrame() && (!Leafling.IsJumping || (TimeSinceJumpActionFrameStart >= Leafling.MaxJumpTime));
         }
         private float GetJumpSpeed()
         {

@@ -571,6 +571,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1537550775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7242278586598237789, guid: d8bd9b564a085e649b77406fc3ccbe58, type: 3}
+  m_PrefabInstance: {fileID: 1097729794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742598639
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +847,7 @@ GameObject:
   - component: {fileID: 2093473745}
   - component: {fileID: 2093473744}
   - component: {fileID: 2093473743}
+  - component: {fileID: 2093473746}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -923,6 +929,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2093473746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093473742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb0f8fa1857d8c45a90ca5ae98d9737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1537550775}
+  _yOffset: 1
+  _zOffset: -10
 --- !u!1 &2094395689
 GameObject:
   m_ObjectHideFlags: 0

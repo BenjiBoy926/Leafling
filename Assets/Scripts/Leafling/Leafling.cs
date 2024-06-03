@@ -44,7 +44,6 @@ namespace Leafling
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float MaxJumpSpeed => _maxJumpSpeed;
-        public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
         public bool IsAimingDash => _inputs.IsAimingDash;
@@ -107,8 +106,6 @@ namespace Leafling
         private float _maxJumpSpeed = 5;
         [SerializeField]
         private AnimationCurve _jumpSpeedCurve;
-        [SerializeField]
-        private float _minJumpTime = 0.1f;
         [SerializeField]
         private float _maxJumpTime = 1;
         [SerializeField]

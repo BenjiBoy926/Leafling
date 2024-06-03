@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public static class VectorExtensions
+    public static class Vector2Extensions
     {
         public static float Get(this Vector2 vector, Dimension dimension)
         {

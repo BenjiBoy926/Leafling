@@ -2,10 +2,8 @@ using UnityEngine;
 
 namespace Core
 {
-    public static class RigidbodyExtensions
+    public static class Rigidbody2DExtensions
     {
-        // 2D 
-
         public static float GetVelocity(this Rigidbody2D rigidbody, Dimension dimension)
         {
             return rigidbody.velocity.Get(dimension);
