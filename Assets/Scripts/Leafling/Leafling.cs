@@ -53,6 +53,7 @@ namespace Leafling
         public float DashAimX => _inputs.DashAimX;
         public float DashAimY => _inputs.DashAimY;
         public float MaxDashSpeed => _maxDashSpeed;
+        public float AimingDashGravityScale => _aimingDashGravityScale;
 
         [Header("Parts")]
         [SerializeField]
@@ -221,9 +222,9 @@ namespace Leafling
         {
             _flutterAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
-        public void SetAimingDashGravityScale()
+        public void SetGravityScale(float scale)
         {
-            _physicsBody.gravityScale = _aimingDashGravityScale;
+            _physicsBody.gravityScale = scale;
         }
         public void ResetGravityScale()
         {

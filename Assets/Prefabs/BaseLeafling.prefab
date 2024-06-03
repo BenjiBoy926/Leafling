@@ -360,7 +360,7 @@ MonoBehaviour:
     _backwards:
       _acceleration: 15
       _topSpeed: 15
-  _aimingDashGravityScale: 0.1
+  _aimingDashGravityScale: 0.25
   _maxDashSpeed: 30
   _dashSpeedCurve:
     serializedVersion: 2

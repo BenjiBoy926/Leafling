@@ -15,11 +15,13 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
+            Leafling.SetGravityScale(Leafling.AimingDashGravityScale);
             Leafling.SetVerticalVelocity(0);
         }
         public override void Exit()
         {
             base.Exit();
+            Leafling.ResetGravityScale();
             Leafling.ResetSpriteRotation();
         }
         public override void Update(float dt)
