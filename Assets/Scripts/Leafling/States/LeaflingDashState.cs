@@ -18,7 +18,8 @@ namespace Leafling
         {
             base.Enter();
             Leafling.AnimationFinished += OnAnimationFinished;
-            PrepareToDash();
+            LeaflingDashTools.ShowDashPerch(Leafling, _aim);
+            Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
         }
         public override void Exit()
         {
@@ -31,11 +32,6 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
-        }
-        private void PrepareToDash()
-        {
-            LeaflingDashTools.ShowDashPerch(Leafling, _aim);
-            Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
         }
 
         public override void Update(float dt)
