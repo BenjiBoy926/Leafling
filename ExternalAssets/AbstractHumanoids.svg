@@ -183,7 +183,10 @@
        y="1587.4999"
        width="396.87498"
        height="132.29166"
-       id="page9" />
+       id="page9"
+       inkscape:export-filename="..\Assets\Leafling\Sprites\Heroine_Flutter.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -200,7 +203,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="FreedrawLayer"
-     style="display:inline">
+     style="display:none">
     <path
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
        d="m 197.40396,323.08105 c 34.10644,0.20669 1.86035,69.03971 0.41341,71.93359"
