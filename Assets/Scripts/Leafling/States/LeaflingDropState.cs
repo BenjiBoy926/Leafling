@@ -27,6 +27,7 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
+            Leafling.ApplyAirControl(Leafling.DropAirControl);
             if (Leafling.IsCurrentFrameActionFrame)
             {
                 _hasEnteredActionFrame = true;

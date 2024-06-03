@@ -360,6 +360,13 @@ MonoBehaviour:
     _backwards:
       _acceleration: 15
       _topSpeed: 15
+  _dropAirControl:
+    _forwards:
+      _acceleration: 5
+      _topSpeed: 5
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
   _aimingDashGravityScale: 0.25
   _maxDashSpeed: 30
   _dashSpeedCurve:

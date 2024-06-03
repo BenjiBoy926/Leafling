@@ -51,11 +51,11 @@ namespace Leafling
         {
             if (Leafling.IsCurrentFrameActionFrame)
             {
-                Leafling.ApplyFlutterAirControl();
+                Leafling.ApplyAirControl(Leafling.FlutterAirControl);
             }
             else
             {
-                Leafling.ApplyFreeFallAirControl();
+                Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
             }
         }
     }

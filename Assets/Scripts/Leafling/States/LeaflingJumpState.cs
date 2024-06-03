@@ -36,7 +36,7 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
-            Leafling.ApplyJumpAirControl();
+            Leafling.ApplyAirControl(Leafling.JumpAirControl);
         }
         private bool ShouldTransitionOutOfJump()
         {

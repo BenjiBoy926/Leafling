@@ -55,7 +55,7 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
-            Leafling.ApplyFreeFallAirControl();
+            Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
                 Leafling.SetState(new LeaflingStandingState(Leafling));

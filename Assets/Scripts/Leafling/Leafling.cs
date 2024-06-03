@@ -58,6 +58,10 @@ namespace Leafling
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
         public float MaxDashSpeed => _maxDashSpeed;
+        public DirectionalAirControl JumpAirControl => _jumpAirControl;
+        public DirectionalAirControl FreeFallAirControl => _freeFallAirControl;
+        public DirectionalAirControl FlutterAirControl => _flutterAirControl;
+        public DirectionalAirControl DropAirControl => _dropAirControl;
         public float AimingDashGravityScale => _aimingDashGravityScale;
 
         [Header("Parts")]
@@ -123,6 +127,8 @@ namespace Leafling
         private DirectionalAirControl _freeFallAirControl;
         [SerializeField]
         private DirectionalAirControl _flutterAirControl;
+        [SerializeField]
+        private DirectionalAirControl _dropAirControl;
 
         [Header("Dashing")]
         [SerializeField]
@@ -227,17 +233,9 @@ namespace Leafling
         {
             return _dashSpeedCurve.Evaluate(t);
         }
-        public void ApplyJumpAirControl()
+        public void ApplyAirControl(DirectionalAirControl control)
         {
-            _jumpAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
-        }
-        public void ApplyFreeFallAirControl()
-        {
-            _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
-        }
-        public void ApplyFlutterAirControl()
-        {
-            _flutterAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
+            control.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
         public void SetGravityScale(float scale)
         {
