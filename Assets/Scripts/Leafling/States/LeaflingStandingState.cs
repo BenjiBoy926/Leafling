@@ -18,6 +18,7 @@ namespace Leafling
             base.Enter();
             Leafling.HorizontalDirectionChanged += OnLeaflingDirectionChanged;
             Leafling.StartedJumping += OnLeaflingStartedJumping;
+            Leafling.StartedAimingDash += OnLeaflingStartedAimingDash;
             ReflectCurrentDirection();
         }
         public override void Exit()
@@ -25,6 +26,7 @@ namespace Leafling
             base.Exit();
             Leafling.StartedJumping -= OnLeaflingStartedJumping;
             Leafling.HorizontalDirectionChanged -= OnLeaflingDirectionChanged;
+            Leafling.StartedAimingDash -= OnLeaflingStartedAimingDash;
         }
 
         private void OnLeaflingDirectionChanged()
@@ -35,6 +37,10 @@ namespace Leafling
         {
             Leafling.SetState(new LeaflingJumpState(Leafling));
         }
+        private void OnLeaflingStartedAimingDash()
+        {
+            Leafling.SetState(new LeaflingAimingDashState(Leafling));
+        }
 
         public override void Update(float dt)
         {
@@ -44,10 +50,6 @@ namespace Leafling
             if (!Leafling.IsTouching(CardinalDirection.Down))
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
-            }
-            if (Leafling.IsAimingDash)
-            {
-                Leafling.SetState(new LeaflingAimingDashState(Leafling));
             }
         }
         private float CalculateHorizontalSpeed()

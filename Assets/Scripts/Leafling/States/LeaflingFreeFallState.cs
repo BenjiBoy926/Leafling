@@ -14,6 +14,7 @@ namespace Leafling
             base.Enter();
             Leafling.HorizontalDirectionChanged += OnLeaflingHorizontalDirectionChanged;
             Leafling.StartedJumping += OnLeaflingStartedJumping;
+            Leafling.StartedAimingDash += OnLeaflingStartedAimingDash;
             Leafling.ResetSpriteRotation();
             if (_entry == FreeFallEntry.Backflip)
             {
@@ -25,13 +26,12 @@ namespace Leafling
                 Leafling.SetAnimation(Leafling.FreeFallStraight);
             }
         }
-
-
         public override void Exit()
         {
             base.Exit();
             Leafling.HorizontalDirectionChanged -= OnLeaflingHorizontalDirectionChanged;
             Leafling.StartedJumping -= OnLeaflingStartedJumping;
+            Leafling.StartedAimingDash -= OnLeaflingStartedAimingDash;
         }
 
         private void OnLeaflingHorizontalDirectionChanged()
@@ -42,6 +42,10 @@ namespace Leafling
         {
             Leafling.SetState(new LeaflingFlutterState(Leafling));
         }
+        private void OnLeaflingStartedAimingDash()
+        {
+            Leafling.SetState(new LeaflingAimingDashState(Leafling));
+        }
 
         public override void Update(float dt)
         {
@@ -51,10 +55,6 @@ namespace Leafling
             {
                 Leafling.SetAnimation(Leafling.Squat);
                 Leafling.SetState(new LeaflingStandingState(Leafling));
-            }
-            if (Leafling.IsAimingDash)
-            {
-                Leafling.SetState(new LeaflingAimingDashState(Leafling));
             }
         }
 

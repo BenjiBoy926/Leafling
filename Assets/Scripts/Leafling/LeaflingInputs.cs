@@ -8,6 +8,8 @@ namespace Leafling
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
+        public event Action StartedAimingDash = delegate { };
+        public event Action StoppedAimingDash = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
@@ -70,6 +72,14 @@ namespace Leafling
                 return;
             }
             _isAimingDash = isAimingDash;
+            if (isAimingDash)
+            {
+                StartedAimingDash();
+            }
+            else
+            {
+                StoppedAimingDash();
+            }
         }
         private Vector2 MakeVectorIntoDashDirection(Vector2 vector)
         {

@@ -12,6 +12,8 @@ namespace Leafling
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
+        public event Action StartedAimingDash = delegate { };
+        public event Action StoppedAimingDash = delegate { };
         public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
 
@@ -136,6 +138,8 @@ namespace Leafling
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
             _inputs.StartedJumping += OnStartedJumping;
             _inputs.StoppedJumping += OnStoppedJumping;
+            _inputs.StartedAimingDash += OnStartedAimingDash;
+            _inputs.StoppedAimingDash += OnStoppedAimingDash;
             _animator.StartedAnimation += OnAnimationStarted;
             _animator.FinishedAnimation += OnAnimationFinished;
         }
@@ -144,6 +148,8 @@ namespace Leafling
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
             _inputs.StartedJumping -= OnStartedJumping;
             _inputs.StoppedJumping -= OnStoppedJumping;
+            _inputs.StartedAimingDash -= OnStartedAimingDash;
+            _inputs.StoppedAimingDash -= OnStoppedAimingDash;
             _animator.StartedAnimation -= OnAnimationStarted;
             _animator.FinishedAnimation -= OnAnimationFinished;
         }
@@ -158,6 +164,14 @@ namespace Leafling
         private void OnStoppedJumping()
         {
             StoppedJumping();
+        }
+        private void OnStartedAimingDash()
+        {
+            StartedAimingDash();
+        }
+        private void OnStoppedAimingDash()
+        {
+            StoppedAimingDash();
         }
         private void OnAnimationStarted()
         {
