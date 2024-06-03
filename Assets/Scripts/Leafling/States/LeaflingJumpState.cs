@@ -20,7 +20,7 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
-            if (!Leafling.IsAnimatingJump)
+            if (!Leafling.IsAnimating(Leafling.Jump))
             {
                 return;
             }
@@ -52,7 +52,7 @@ namespace Leafling
         }
         private bool IsLeaflingAnimatingJumpActionFrame()
         {
-            return Leafling.IsAnimatingJump && Leafling.IsCurrentFrameActionFrame;
+            return Leafling.IsAnimating(Leafling.Jump) && Leafling.IsCurrentFrameActionFrame;
         }
         private bool IsTimeOfJumpActionStartSet()
         {

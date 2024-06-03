@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingOnGroundState : LeaflingState
+    public class LeaflingStandingState : LeaflingState
     {
         private readonly FromToCurve _toRun;
         private readonly FromToCurve _toLeap;
 
-        public LeaflingOnGroundState(Leafling leafling) : base(leafling) 
+        public LeaflingStandingState(Leafling leafling) : base(leafling) 
         {
             _toRun = new FromToCurve(0, leafling.BaseRunSpeed, leafling.RunAccelerationCurve);
             _toLeap = new FromToCurve(leafling.BaseRunSpeed, leafling.LeapMaxSpeed, leafling.RunAccelerationCurve);
@@ -17,17 +17,23 @@ namespace Leafling
         {
             base.Enter();
             Leafling.HorizontalDirectionChanged += OnLeaflingDirectionChanged;
+            Leafling.StartedJumping += OnLeaflingStartedJumping;
             ReflectCurrentDirection();
         }
         public override void Exit()
         {
             base.Exit();
+            Leafling.StartedJumping -= OnLeaflingStartedJumping;
             Leafling.HorizontalDirectionChanged -= OnLeaflingDirectionChanged;
         }
 
         private void OnLeaflingDirectionChanged()
         {
             ReflectCurrentDirection();
+        }
+        private void OnLeaflingStartedJumping()
+        {
+            Leafling.SetState(new LeaflingJumpState(Leafling));
         }
 
         public override void Update(float dt)
@@ -39,10 +45,6 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
-            if (Leafling.IsJumping)
-            {
-                Leafling.SetState(new LeaflingJumpState(Leafling));
-            }
             if (Leafling.IsAimingDash)
             {
                 Leafling.SetState(new LeaflingAimingDashState(Leafling));
@@ -50,7 +52,7 @@ namespace Leafling
         }
         private float CalculateHorizontalSpeed()
         {
-            if (Leafling.IsAnimatingIdle)
+            if (Leafling.IsAnimating(Leafling.Idle))
             {
                 return 0;
             }
@@ -86,14 +88,14 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.SetTransition(new(Leafling.Idle, 0.3f, Leafling.CurrentFlipX));
+                Leafling.SetTransition(new(Leafling.Idle, 0.5f, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.SetTransition(new(Leafling.Run, 0.3f, IntendedFlipX()));
+                Leafling.SetTransition(new(Leafling.Run, 0.5f, FlipXFromHorizontalDirection()));
             }
         }
-        private bool IntendedFlipX()
+        private bool FlipXFromHorizontalDirection()
         {
             return Leafling.DirectionToFlipX(Leafling.HorizontalDirection);
         }

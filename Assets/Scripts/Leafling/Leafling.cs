@@ -10,8 +10,9 @@ namespace Leafling
     public class Leafling : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
-        public event Action DashAnimationStarted = delegate { };
-        public event Action DashAnimationFinished = delegate { };
+        public event Action StartedJumping = delegate { };
+        public event Action StoppedJumping = delegate { };
+        public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
@@ -19,8 +20,6 @@ namespace Leafling
         public bool CurrentFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
-        public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
-        public bool IsAnimatingJump => _animator.IsAnimating(_jump);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
         public bool IsTransitioningOnCurrentFrame => _animator.IsTransitioningOnCurrentFrame();
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
@@ -138,12 +137,16 @@ namespace Leafling
         private void OnEnable()
         {
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
+            _inputs.StartedJumping += OnStartedJumping;
+            _inputs.StoppedJumping += OnStoppedJumping;
             _animator.StartedAnimation += OnAnimationStarted;
             _animator.FinishedAnimation += OnAnimationFinished;
         }
         private void OnDisable()
         {
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
+            _inputs.StartedJumping -= OnStartedJumping;
+            _inputs.StoppedJumping -= OnStoppedJumping;
             _animator.StartedAnimation -= OnAnimationStarted;
             _animator.FinishedAnimation -= OnAnimationFinished;
         }
@@ -151,19 +154,20 @@ namespace Leafling
         {
             HorizontalDirectionChanged();
         }
+        private void OnStartedJumping()
+        {
+            StartedJumping();
+        }
+        private void OnStoppedJumping()
+        {
+            StoppedJumping();
+        }
         private void OnAnimationStarted()
         {
-            if (_animator.IsAnimating(_dash))
-            {
-                DashAnimationStarted();
-            }
+            AnimationStarted();
         }
         private void OnAnimationFinished()
         {
-            if (_animator.IsAnimating(_dash))
-            {
-                DashAnimationFinished();
-            }
             AnimationFinished();
         }
 

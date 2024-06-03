@@ -6,9 +6,8 @@ namespace Leafling
     public class LeaflingInputs : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
-        public event Action IsJumpingChanged = delegate { };
-        public event Action DashDirectionChanged = delegate { };
-        public event Action IsAimingDashChanged = delegate { };
+        public event Action StartedJumping = delegate { };
+        public event Action StoppedJumping = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
@@ -42,7 +41,14 @@ namespace Leafling
                 return;
             }
             _isJumping = isJumping;
-            IsJumpingChanged();
+            if (isJumping)
+            {
+                StartedJumping();
+            }
+            else
+            {
+                StoppedJumping();
+            }
         }
         public void SetDashTarget(Vector2 target)
         {
@@ -56,7 +62,6 @@ namespace Leafling
                 return;
             }
             _dashAim = direction;
-            DashDirectionChanged();
         }
         public void SetIsAimingDash(bool isAimingDash)
         {
@@ -65,7 +70,6 @@ namespace Leafling
                 return;
             }
             _isAimingDash = isAimingDash;
-            IsAimingDashChanged();
         }
         private Vector2 MakeVectorIntoDashDirection(Vector2 vector)
         {

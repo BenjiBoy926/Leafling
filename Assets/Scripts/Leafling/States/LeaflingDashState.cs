@@ -17,17 +17,20 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.DashAnimationFinished += OnDashAnimationFinished;
+            Leafling.AnimationFinished += OnAnimationFinished;
             PrepareToDash();
         }
         public override void Exit()
         {
             base.Exit();
-            Leafling.DashAnimationFinished -= OnDashAnimationFinished;
+            Leafling.AnimationFinished -= OnAnimationFinished;
         }
-        private void OnDashAnimationFinished()
+        private void OnAnimationFinished()
         {
-            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+            if (Leafling.IsAnimating(Leafling.Dash))
+            {
+                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+            }
         }
         private void PrepareToDash()
         {
