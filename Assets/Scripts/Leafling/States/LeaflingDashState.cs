@@ -104,9 +104,7 @@ namespace Leafling
             }
             else
             {
-                Leafling.SetVelocity(ricochetDirection * Leafling.MaxDashSpeed);
-                Leafling.FaceTowards(ricochetDirection.x);
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+                Leafling.SetState(new LeaflingDashCancelState(Leafling, ricochetDirection));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)

@@ -21,7 +21,7 @@ namespace Leafling
             SetRotation(leafling, aim);
         }
 
-        public static void SetRotation(Leafling leafling, Vector2 aim)
+        private static void SetRotation(Leafling leafling, Vector2 aim)
         {
             if (leafling.IsTouchingAnything())
             {
@@ -41,7 +41,7 @@ namespace Leafling
             }
             leafling.SetSpriteRight(spriteRight);
         }
-        public static SpriteAnimation GetPerchAnimation(Leafling leafling)
+        private static SpriteAnimation GetPerchAnimation(Leafling leafling)
         {
             if (leafling.IsTouching(CardinalDirection.Down))
             {
@@ -57,11 +57,11 @@ namespace Leafling
             }
             return leafling.MidairDashAim;
         }
-        public static bool GetPerchFlipX(Leafling leafling, float aimX)
+        private static bool GetPerchFlipX(Leafling leafling, float aimX)
         {
             return Leafling.DirectionToFlipX(GetPerchDirection(leafling, aimX));
         }
-        public static int GetPerchDirection(Leafling leafling, float aimX)
+        private static int GetPerchDirection(Leafling leafling, float aimX)
         {
             if (leafling.IsTouching(CardinalDirection.Right))
             {
