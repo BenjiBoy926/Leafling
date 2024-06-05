@@ -84,11 +84,11 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.SetTransition(new(Leafling.Idle, 0.3f, Leafling.CurrentFlipX));
+                Leafling.SetTransition(new(Leafling.Idle, Leafling.RunningTransitionScale, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.SetTransition(new(Leafling.Run, 0.3f, FlipXFromHorizontalDirection()));
+                Leafling.SetTransition(new(Leafling.Run, Leafling.RunningTransitionScale, FlipXFromHorizontalDirection()));
             }
         }
         private bool FlipXFromHorizontalDirection()

@@ -55,14 +55,22 @@ namespace Leafling
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
+        public float RunningTransitionScale => _runningTransitionScale;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
         public float MaxDashSpeed => _maxDashSpeed;
+        public float JumpTransitionScale => _jumpTransitionScale;
+        public float FlutterTransitionScale => _flutterTransitionScale;
+        public float DropTransitionScale => _dropTransitionScale;
+        public float DropSpeed => _dropSpeed;
+        public float DropCancelSpeed => _dropCancelSpeed;
         public DirectionalAirControl JumpAirControl => _jumpAirControl;
         public DirectionalAirControl FreeFallAirControl => _freeFallAirControl;
         public DirectionalAirControl FlutterAirControl => _flutterAirControl;
         public DirectionalAirControl DropAirControl => _dropAirControl;
         public float AimingDashGravityScale => _aimingDashGravityScale;
+        public float AimingDashTransitionScale => _aimingDashTransitionScale;
+        public float DashCancelSpeed => _dashCancelSpeed;
 
         [Header("Parts")]
         [SerializeField]
@@ -113,6 +121,8 @@ namespace Leafling
         private float _leapAdditionalSpeed = 1;
         [SerializeField, FormerlySerializedAs("_accelerationCurve")]
         private AnimationCurve _runAccelerationCurve;
+        [SerializeField]
+        private float _runningTransitionScale = 0.3f;
 
         [Header("Jumping")]
         [SerializeField]
@@ -121,6 +131,16 @@ namespace Leafling
         private AnimationCurve _jumpSpeedCurve;
         [SerializeField]
         private float _maxJumpTime = 1;
+        [SerializeField]
+        private float _jumpTransitionScale = 0.1f;
+        [SerializeField]
+        private float _flutterTransitionScale = 0.5f;
+        [SerializeField]
+        private float _dropTransitionScale = 0.3f;
+        [SerializeField]
+        private float _dropSpeed = 50;
+        [SerializeField]
+        private float _dropCancelSpeed = 5;
         [SerializeField]
         private DirectionalAirControl _jumpAirControl;
         [SerializeField]
@@ -134,9 +154,13 @@ namespace Leafling
         [SerializeField]
         private float _aimingDashGravityScale = 0.1f;
         [SerializeField]
+        private float _aimingDashTransitionScale = 0.3f;
+        [SerializeField]
         private float _maxDashSpeed = 40;
         [SerializeField]
         private AnimationCurve _dashSpeedCurve;
+        [SerializeField]
+        private float _dashCancelSpeed = 40;
         private float _defaultGravityScale;
         private Quaternion _defaultSpriteRotation;
 

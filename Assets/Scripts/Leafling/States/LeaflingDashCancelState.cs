@@ -19,7 +19,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetVelocity(_direction.normalized * Leafling.MaxDashSpeed);
+            Leafling.SetVelocity(_direction.normalized * Leafling.DashCancelSpeed);
             Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }
 

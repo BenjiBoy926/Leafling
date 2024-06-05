@@ -9,12 +9,12 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.SetTransition(new(Leafling.Drop, 0.3f, Leafling.CurrentFlipX));
+            Leafling.SetTransition(new(Leafling.Drop, Leafling.DropTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetVerticalVelocity(5);
+            Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
             Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }
 
@@ -32,7 +32,7 @@ namespace Leafling
             }
             else
             {
-                Leafling.SetVerticalVelocity(-Leafling.MaxJumpSpeed);
+                Leafling.SetVerticalVelocity(-Leafling.DropSpeed);
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {

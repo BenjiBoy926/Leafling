@@ -14,7 +14,7 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.SetTransition(new(Leafling.Jump, 0.1f, Leafling.CurrentFlipX));
+            Leafling.SetTransition(new(Leafling.Jump, Leafling.JumpTransitionScale, Leafling.CurrentFlipX));
         }
 
         public override void Update(float dt)
