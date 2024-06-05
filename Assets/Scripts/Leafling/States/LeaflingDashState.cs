@@ -17,18 +17,17 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.AnimationFinished += OnAnimationFinished;
             LeaflingDashTools.ShowDashPerch(Leafling, _aim);
             Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
         }
         public override void Exit()
         {
             base.Exit();
-            Leafling.AnimationFinished -= OnAnimationFinished;
             Leafling.ResetSpriteRotation();
         }
-        private void OnAnimationFinished()
+        protected override void OnAnimationFinished()
         {
+            base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Dash))
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));

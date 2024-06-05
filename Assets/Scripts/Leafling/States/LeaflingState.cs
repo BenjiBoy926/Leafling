@@ -19,12 +19,65 @@ namespace Leafling
         public virtual void Enter()
         {
             _timeOfStateStart = Time.time;
+            Leafling.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
+            Leafling.StartedJumping += OnStartedJumping;
+            Leafling.StoppedJumping += OnStoppedJumping;
+            Leafling.StartedAimingDash += OnStartedAimingDash;
+            Leafling.StoppedAimingDash += OnStoppedAimingDash;
+            Leafling.StartedCrouching += OnStartedCrouching;
+            Leafling.StoppedCrouching += OnStoppedCrouching;
+            Leafling.AnimationStarted += OnAnimationStarted;
+            Leafling.AnimationFinished += OnAnimationFinished;
+        }
+        public virtual void Exit()
+        {
+            Leafling.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
+            Leafling.StartedJumping -= OnStartedJumping;
+            Leafling.StoppedJumping -= OnStoppedJumping;
+            Leafling.StartedAimingDash -= OnStartedAimingDash;
+            Leafling.StoppedAimingDash -= OnStoppedAimingDash;
+            Leafling.StartedCrouching -= OnStartedCrouching;
+            Leafling.StoppedCrouching -= OnStoppedCrouching;
+            Leafling.AnimationStarted -= OnAnimationStarted;
+            Leafling.AnimationFinished -= OnAnimationFinished;
         }
         public virtual void Update(float dt)
         {
 
         }
-        public virtual void Exit()
+        protected virtual void OnHorizontalDirectionChanged()
+        {
+
+        }
+        protected virtual void OnStartedJumping()
+        {
+
+        }
+        protected virtual void OnStoppedJumping()
+        {
+
+        }
+        protected virtual void OnStartedAimingDash()
+        {
+
+        }
+        protected virtual void OnStoppedAimingDash()
+        {
+
+        }
+        protected virtual void OnStartedCrouching()
+        {
+
+        }
+        protected virtual void OnStoppedCrouching()
+        {
+
+        }
+        protected virtual void OnAnimationStarted()
+        {
+
+        }
+        protected virtual void OnAnimationFinished()
         {
 
         }

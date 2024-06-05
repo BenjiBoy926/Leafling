@@ -10,15 +10,10 @@ namespace Leafling
         {
             base.Enter();
             Leafling.SetTransition(new SpriteAnimationTransition(Leafling.Flutter, 0.5f, Leafling.CurrentFlipX));
-            Leafling.AnimationFinished += OnAnimationFinished;
         }
-        public override void Exit()
+        protected override void OnAnimationFinished()
         {
-            base.Exit();
-            Leafling.AnimationFinished -= OnAnimationFinished;
-        }
-        private void OnAnimationFinished()
-        {
+            base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Flutter))
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));

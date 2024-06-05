@@ -10,16 +10,10 @@ namespace Leafling
         {
             base.Enter();
             Leafling.SetTransition(new(Leafling.Drop, 0.3f, Leafling.CurrentFlipX));
-            Leafling.StartedJumping += OnStartedJumping;
         }
-        public override void Exit()
+        protected override void OnStartedJumping()
         {
-            base.Exit();
-            Leafling.StartedJumping -= OnStartedJumping;
-        }
-
-        private void OnStartedJumping()
-        {
+            base.OnStartedJumping();
             Leafling.SetVerticalVelocity(5);
             Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }

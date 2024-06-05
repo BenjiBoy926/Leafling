@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Leafling
 {
     public class LeaflingFreeFallState : LeaflingState
@@ -12,10 +14,6 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.HorizontalDirectionChanged += OnLeaflingHorizontalDirectionChanged;
-            Leafling.StartedJumping += OnLeaflingStartedJumping;
-            Leafling.StartedAimingDash += OnLeaflingStartedAimingDash;
-            Leafling.StartedCrouching += OnLeaflingStartedCrouching;
             if (_entry == FreeFallEntry.Backflip)
             {
                 Leafling.SetAnimation(Leafling.Backflip);
@@ -26,29 +24,25 @@ namespace Leafling
                 Leafling.SetAnimation(Leafling.FreeFallStraight);
             }
         }
-        public override void Exit()
-        {
-            base.Exit();
-            Leafling.HorizontalDirectionChanged -= OnLeaflingHorizontalDirectionChanged;
-            Leafling.StartedJumping -= OnLeaflingStartedJumping;
-            Leafling.StartedAimingDash -= OnLeaflingStartedAimingDash;
-            Leafling.StartedCrouching -= OnLeaflingStartedCrouching;
-        }
 
-        private void OnLeaflingHorizontalDirectionChanged()
+        protected override void OnHorizontalDirectionChanged()
         {
+            base.OnHorizontalDirectionChanged();
             TransitionFreeFallAnimation();
         }
-        private void OnLeaflingStartedJumping()
+        protected override void OnStartedJumping()
         {
+            base.OnStartedJumping();
             Leafling.SetState(new LeaflingFlutterState(Leafling));
         }
-        private void OnLeaflingStartedAimingDash()
+        protected override void OnStartedAimingDash()
         {
+            base.OnStartedAimingDash();
             Leafling.SetState(new LeaflingAimingDashState(Leafling));
         }
-        private void OnLeaflingStartedCrouching()
+        protected override void OnStartedCrouching()
         {
+            base.OnStartedCrouching();
             Leafling.SetState(new LeaflingDropState(Leafling));
         }
 

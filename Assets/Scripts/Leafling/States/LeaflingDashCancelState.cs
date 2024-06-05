@@ -15,15 +15,10 @@ namespace Leafling
         {
             base.Enter();
             LeaflingDashTools.ShowDashPerch(Leafling, _direction);
-            Leafling.AnimationFinished += OnAnimationFinished;
         }
-        public override void Exit()
+        protected override void OnAnimationFinished()
         {
-            base.Exit();
-            Leafling.AnimationFinished -= OnAnimationFinished;
-        }
-        private void OnAnimationFinished()
-        {
+            base.OnAnimationFinished();
             Leafling.SetVelocity(_direction.normalized * Leafling.MaxDashSpeed);
             Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }

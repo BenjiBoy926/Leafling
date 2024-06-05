@@ -16,30 +16,23 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.HorizontalDirectionChanged += OnLeaflingDirectionChanged;
-            Leafling.StartedJumping += OnLeaflingStartedJumping;
-            Leafling.StartedAimingDash += OnLeaflingStartedAimingDash;
             Leafling.SetAnimation(Leafling.Squat);
             ReflectCurrentDirection();
         }
-        public override void Exit()
-        {
-            base.Exit();
-            Leafling.StartedJumping -= OnLeaflingStartedJumping;
-            Leafling.HorizontalDirectionChanged -= OnLeaflingDirectionChanged;
-            Leafling.StartedAimingDash -= OnLeaflingStartedAimingDash;
-        }
 
-        private void OnLeaflingDirectionChanged()
+        protected override void OnHorizontalDirectionChanged()
         {
+            base.OnHorizontalDirectionChanged();
             ReflectCurrentDirection();
         }
-        private void OnLeaflingStartedJumping()
+        protected override void OnStartedJumping()
         {
+            base.OnStartedJumping();
             Leafling.SetState(new LeaflingJumpState(Leafling));
         }
-        private void OnLeaflingStartedAimingDash()
+        protected override void OnStartedAimingDash()
         {
+            base.OnStartedAimingDash();
             Leafling.SetState(new LeaflingAimingDashState(Leafling));
         }
 
