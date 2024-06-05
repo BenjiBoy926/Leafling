@@ -313,7 +313,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _runningTransitionScale: 0.3
+  _runningTransitionScale: 0.25
   _maxJumpSpeed: 20
   _jumpSpeedCurve:
     serializedVersion: 2
@@ -342,7 +342,7 @@ MonoBehaviour:
   _maxJumpTime: 0.5
   _jumpTransitionScale: 0.1
   _flutterTransitionScale: 0.5
-  _dropTransitionScale: 0.3
+  _dropTransitionScale: 0.25
   _dropSpeed: 30
   _dropCancelSpeed: 5
   _jumpAirControl:
@@ -374,7 +374,7 @@ MonoBehaviour:
       _acceleration: 5
       _topSpeed: 5
   _aimingDashGravityScale: 0.25
-  _aimingDashTransitionScale: 0.3
+  _aimingDashTransitionScale: 0.25
   _maxDashSpeed: 30
   _dashSpeedCurve:
     serializedVersion: 2

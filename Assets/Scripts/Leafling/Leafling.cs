@@ -114,6 +114,18 @@ namespace Leafling
         [SerializeField, FormerlySerializedAs("_sideDashAnimation")]
         private SpriteAnimation _dash;
 
+        [Space]
+        [SerializeField]
+        private float _runningTransitionScale = 0.25f;
+        [SerializeField]
+        private float _jumpTransitionScale = 0.1f;
+        [SerializeField]
+        private float _flutterTransitionScale = 0.5f;
+        [SerializeField]
+        private float _dropTransitionScale = 0.25f;
+        [SerializeField]
+        private float _aimingDashTransitionScale = 0.25f;
+
         [Header("Running")]
         [SerializeField]
         private float _baseRunSpeed = 1;
@@ -121,8 +133,6 @@ namespace Leafling
         private float _leapAdditionalSpeed = 1;
         [SerializeField, FormerlySerializedAs("_accelerationCurve")]
         private AnimationCurve _runAccelerationCurve;
-        [SerializeField]
-        private float _runningTransitionScale = 0.3f;
 
         [Header("Jumping")]
         [SerializeField]
@@ -131,12 +141,6 @@ namespace Leafling
         private AnimationCurve _jumpSpeedCurve;
         [SerializeField]
         private float _maxJumpTime = 1;
-        [SerializeField]
-        private float _jumpTransitionScale = 0.1f;
-        [SerializeField]
-        private float _flutterTransitionScale = 0.5f;
-        [SerializeField]
-        private float _dropTransitionScale = 0.3f;
         [SerializeField]
         private float _dropSpeed = 50;
         [SerializeField]
@@ -153,8 +157,6 @@ namespace Leafling
         [Header("Dashing")]
         [SerializeField]
         private float _aimingDashGravityScale = 0.1f;
-        [SerializeField]
-        private float _aimingDashTransitionScale = 0.3f;
         [SerializeField]
         private float _maxDashSpeed = 40;
         [SerializeField]
