@@ -9,7 +9,7 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.SetTransition(new SpriteAnimationTransition(Leafling.Flutter, Leafling.FlutterTransitionScale, Leafling.CurrentFlipX));
+            Leafling.SetTransition(new(Leafling.Flutter, Leafling.FlutterTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnAnimationFinished()
         {

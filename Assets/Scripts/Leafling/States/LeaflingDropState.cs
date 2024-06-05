@@ -14,7 +14,10 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
+            if (_hasEnteredActionFrame)
+            {
+                Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
+            }
             Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }
 
