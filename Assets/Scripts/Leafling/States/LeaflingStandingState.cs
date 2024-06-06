@@ -87,6 +87,7 @@ namespace Leafling
             else
             {
                 Leafling.SetAnimation(Leafling.Run);
+                Leafling.FaceTowards(Leafling.HorizontalDirection);
             }
         }
         private void TransitionAnimation()
