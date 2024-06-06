@@ -14,7 +14,7 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingJumpState(Leafling));
+            Leafling.SetState(new LeaflingJumpSquatState(Leafling));
         }
         protected override void OnStartedAimingDash()
         {

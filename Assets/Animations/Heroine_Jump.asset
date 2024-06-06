@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Heroine_Jump
   m_EditorClassIdentifier: 
   _frames:
-  - _sprite: {fileID: 1952333326, guid: 0f58777f54a2c6b4fb6efe6c7d0dbb84, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
   - _sprite: {fileID: 1941089592, guid: 0f58777f54a2c6b4fb6efe6c7d0dbb84, type: 3}
-    _duration: 100
+    _duration: 1
     _isTransitionFrame: 1
     _isActionFrame: 1
