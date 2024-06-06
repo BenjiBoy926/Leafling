@@ -28,11 +28,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="648.41692"
-     inkscape:cy="6797.4175"
+     inkscape:zoom="1"
+     inkscape:cx="528.5"
+     inkscape:cy="7297.5"
      inkscape:document-units="px"
-     inkscape:current-layer="layer19"
+     inkscape:current-layer="layer2"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
@@ -196,6 +196,12 @@
        inkscape:export-filename="..\Assets\Sprites\Heroine_Drop.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="0"
+       y="1852.0833"
+       width="264.58332"
+       height="132.29166"
+       id="page11" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -438,12 +444,25 @@
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 193.5427,1809.353 c -6.21771,-9.7895 -11.77396,-10.1864 -11.77396,-10.1864 0,0 -2.64583,20.1083 5.82083,22.7541"
        id="path241" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 66.229386,1914.2912 c 7.670633,10.1028 -7.483548,36.6693 -36.48229,41.1595 -4.864304,8.419 6.361016,27.8762 6.361016,27.8762"
+       id="path214" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 45.649633,1949.6509 c 1.122531,-9.9157 -9.541523,-15.1542 -9.541523,-15.1542 0,0 -20.205575,4.8643 -20.95393,15.1542"
+       id="path231" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer19"
      inkscape:label="MainLayer"
      style="display:inline">
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 56.500776,1882.4861 c -14.218739,4.1159 -24.508617,65.8552 -12.722031,68.1003 11.786587,2.245 19.644311,-7.8577 20.392664,-15.7155 0.74836,-7.8577 -7.670633,-52.3848 -7.670633,-52.3848 z"
+       id="path233"
+       sodipodi:nodetypes="cssc" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 185.73749,1743.6041 c 4.49792,4.2333 25.4,37.3062 22.225,44.45 -3.175,7.1437 -11.99743,24.2741 -20.10833,16.1395 -10.93214,-10.9641 -4.7625,-53.9749 -2.11667,-60.5895 z"
@@ -1787,5 +1806,34 @@
        d="m 209.15297,1840.4554 c 4.61422,-1.0686 6.56301,-1.9577 8.82412,-6.1474 2.44838,-4.5366 -17.75914,-24.1718 -20.84709,-19.5253 -1.93784,2.9159 7.67368,26.6799 12.02297,25.6727 z"
        id="path213"
        sodipodi:nodetypes="sscs" />
+    <ellipse
+       cy="-1911.4039"
+       cx="57.355011"
+       id="ellipse12"
+       style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="8.9769344"
+       ry="8.9769201"
+       transform="scale(1,-1)" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="M 74.648375,1983.3269 H 29.372919 c 0,0 -8.980255,-28.0633 -0.374177,-28.4375 8.606079,-0.3741 4.864303,23.3861 45.649633,28.4375 z"
+       id="path244" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 27.314942,1956.5732 c -4.303037,-10.1028 21.32811,-15.5283 21.32811,-8.0448 0,7.4835 -19.270133,20.5798 -21.32811,8.0448 z"
+       id="path249" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 34.611402,1933.1871 c 4.677216,-5.4255 21.702285,5.9869 14.592915,14.4059 -7.109369,8.4189 -21.889375,-7.6707 -14.592915,-14.4059 z"
+       id="path250" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 106.64054,1931.3162 c -1.6838,-7.2964 -36.669383,-15.5284 -46.210903,-12.3478 -9.05185,3.0174 -19.831397,17.7734 -15.902536,30.4954 3.928861,12.7221 62.113439,-18.1476 62.113439,-18.1476 z"
+       id="path232"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="M 42.094948,1966.1147 8.4189894,1945.3479 c 0,0 26.5665886,-18.5218 28.0632996,-11.5995 1.496708,6.9223 -11.038231,8.0448 5.612659,32.3663 z"
+       id="path248" />
   </g>
 </svg>
