@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="528.5"
-     inkscape:cy="7297.5"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="636.04255"
+     inkscape:cy="7430.6316"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="true"
@@ -201,7 +201,10 @@
        y="1852.0833"
        width="264.58332"
        height="132.29166"
-       id="page11" />
+       id="page11"
+       inkscape:export-filename="..\Assets\Sprites\Heroine_Slide.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -452,12 +455,24 @@
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 45.649633,1949.6509 c 1.122531,-9.9157 -9.541523,-15.1542 -9.541523,-15.1542 0,0 -20.205575,4.8643 -20.95393,15.1542"
        id="path231" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 179.51978,1950.5309 c -0.52916,22.7542 7.14375,33.6021 61.78021,32.6761"
+       id="path258" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer19"
      inkscape:label="MainLayer"
      style="display:inline">
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 133.02004,1982.3914 c 5.61266,-9.9157 40.78532,-38.1661 46.39798,-32.7405 5.61267,5.4256 25.06988,24.1344 18.1476,28.6246 -6.92228,4.4901 -64.54558,4.1159 -64.54558,4.1159 z"
+       id="path260" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 216.36803,1977.4336 c -0.18708,-3.9289 -20.4862,-4.3966 -20.57975,-1.4032 -0.0935,2.9934 -1.49671,6.2675 1.02899,6.5481 2.5257,0.2806 18.89596,3.7418 19.55076,-5.1449 z"
+       id="path262" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 56.500776,1882.4861 c -14.218739,4.1159 -24.508617,65.8552 -12.722031,68.1003 11.786587,2.245 19.644311,-7.8577 20.392664,-15.7155 0.74836,-7.8577 -7.670633,-52.3848 -7.670633,-52.3848 z"
@@ -1835,5 +1850,30 @@
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="M 42.094948,1966.1147 8.4189894,1945.3479 c 0,0 26.5665886,-18.5218 28.0632996,-11.5995 1.496708,6.9223 -11.038231,8.0448 5.612659,32.3663 z"
        id="path248" />
+    <ellipse
+       cy="-1950.3486"
+       cx="170.36971"
+       id="ellipse2"
+       style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="8.9769344"
+       ry="8.9769201"
+       transform="scale(1,-1)" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 241.34437,1983.7946 c 3.08696,-2.058 2.80633,-15.0606 -1.30962,-15.1542 -4.11595,-0.093 -31.89862,10.2899 -31.52444,12.8156 0.37418,2.5257 32.83406,2.3386 32.83406,2.3386 z"
+       id="path261" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 175.7698,1981.6431 c -0.37418,-4.8643 18.80241,-13.0027 20.4862,-8.1384 1.6838,4.8643 -12.44139,8.8867 -14.68646,8.6061 -2.24506,-0.2806 -5.79974,-0.4677 -5.79974,-0.4677 z"
+       id="path264" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 211.78436,1916.5362 c -11.41241,-2.6192 -32.74051,28.6246 -32.9276,35.1727 -0.18709,6.5481 -2.43216,27.1278 17.58633,28.0633 20.01849,0.9354 15.34127,-63.236 15.34127,-63.236 z"
+       id="path259" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 206.1717,1983.3269 c 2.80633,-1.8709 4.02241,-12.6285 0.93545,-13.2833 -3.08697,-0.6548 -31.4309,9.4479 -31.15026,11.7865 0.28063,2.3386 30.21481,1.4968 30.21481,1.4968 z"
+       id="path263"
+       sodipodi:nodetypes="cssc" />
   </g>
 </svg>
