@@ -16,14 +16,13 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.SetAnimation(Leafling.Squat);
-            ReflectCurrentDirection();
+            SetAnimation();
         }
 
         protected override void OnHorizontalDirectionChanged()
         {
             base.OnHorizontalDirectionChanged();
-            ReflectCurrentDirection();
+            TransitionAnimation();
         }
         protected override void OnStartedJumping()
         {
@@ -44,6 +43,10 @@ namespace Leafling
             if (!Leafling.IsTouching(CardinalDirection.Down))
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+            }
+            if (Leafling.IsCrouching && Leafling.IsAnimating(Leafling.Idle))
+            {
+                Leafling.SetState(new LeaflingCrouchState(Leafling));
             }
         }
         private float CalculateHorizontalSpeed()
@@ -75,11 +78,17 @@ namespace Leafling
             return Leafling.FacingDirection * Leafling.BaseRunSpeed;
         }
 
-        private void ReflectCurrentDirection()
+        private void SetAnimation()
         {
-            TransitionAnimation();
+            if (Leafling.HorizontalDirection == 0)
+            {
+                Leafling.SetAnimation(Leafling.Idle);
+            }
+            else
+            {
+                Leafling.SetAnimation(Leafling.Run);
+            }
         }
-
         private void TransitionAnimation()
         {
             if (Leafling.HorizontalDirection == 0)
