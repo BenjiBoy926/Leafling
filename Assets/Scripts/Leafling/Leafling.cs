@@ -68,6 +68,7 @@ namespace Leafling
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float MaxSlideSpeed => _maxSlideSpeed;
         public DirectionalAirControl LongJumpAirControl => _longJumpAirControl;
+        public float LongJumpGravityScale => _longJumpGravityScale;
         public float LongJumpTopSpeed => _longJumpAirControl.ForwardTopSpeed;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
@@ -154,6 +155,8 @@ namespace Leafling
         private AnimationCurve _slideSpeedCurve;
         [SerializeField]
         private DirectionalAirControl _longJumpAirControl;
+        [SerializeField]
+        private float _longJumpGravityScale = 0.1f;
 
         [Header("Jumping")]
         [SerializeField]

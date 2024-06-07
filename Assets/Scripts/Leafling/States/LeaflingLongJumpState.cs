@@ -11,6 +11,12 @@ namespace Leafling
             base.Enter();
             Leafling.SetHorizontalVelocity(0);
             Leafling.SetAnimation(Leafling.LongJump);
+            Leafling.SetGravityScale(Leafling.LongJumpGravityScale);
+        }
+        public override void Exit()
+        {
+            base.Exit();
+            Leafling.ResetGravityScale();
         }
         protected override void OnAnimationFinished()
         {

@@ -18,15 +18,15 @@ MonoBehaviour:
     _isTransitionFrame: 1
     _isActionFrame: 0
   - _sprite: {fileID: -665680805, guid: e1bb1b9c1fa625649893b6b26ff213be, type: 3}
-    _duration: 0.2
+    _duration: 0.3
     _isTransitionFrame: 0
     _isActionFrame: 1
   - _sprite: {fileID: 885076584, guid: e1bb1b9c1fa625649893b6b26ff213be, type: 3}
-    _duration: 0.1
+    _duration: 0.15
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: -1611756835, guid: e1bb1b9c1fa625649893b6b26ff213be, type: 3}
-    _duration: 0.1
+    _duration: 0.15
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: 761661644, guid: e1bb1b9c1fa625649893b6b26ff213be, type: 3}
