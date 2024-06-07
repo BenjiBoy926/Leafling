@@ -16,13 +16,13 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            SetAnimation();
+            TransitionAnimation(0);
         }
 
         protected override void OnHorizontalDirectionChanged()
         {
             base.OnHorizontalDirectionChanged();
-            TransitionAnimation();
+            TransitionAnimation(Leafling.RunningTransitionScale);
         }
         protected override void OnStartedJumping()
         {
@@ -78,27 +78,15 @@ namespace Leafling
             return Leafling.FacingDirection * Leafling.BaseRunSpeed;
         }
 
-        private void SetAnimation()
+        private void TransitionAnimation(float scale)
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.SetAnimation(Leafling.Idle);
+                Leafling.SetTransition(new(Leafling.Idle, scale, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.SetAnimation(Leafling.Run);
-                Leafling.FaceTowards(Leafling.HorizontalDirection);
-            }
-        }
-        private void TransitionAnimation()
-        {
-            if (Leafling.HorizontalDirection == 0)
-            {
-                Leafling.SetTransition(new(Leafling.Idle, Leafling.RunningTransitionScale, Leafling.CurrentFlipX));
-            }
-            else
-            {
-                Leafling.SetTransition(new(Leafling.Run, Leafling.RunningTransitionScale, FlipXFromHorizontalDirection()));
+                Leafling.SetTransition(new(Leafling.Run, scale, FlipXFromHorizontalDirection()));
             }
         }
         private bool FlipXFromHorizontalDirection()

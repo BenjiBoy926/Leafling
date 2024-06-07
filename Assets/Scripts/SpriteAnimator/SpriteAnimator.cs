@@ -54,9 +54,9 @@ namespace Leafling
         }
         private void Update()
         {
-            if (ReadyToTransitionToNextAnimation())
+            if (ReadyToTransition())
             {
-                SetNextAnimation();
+                ApplyTransition();
             }
             if (ReadyToAdvanceOneFrame())
             {
@@ -64,7 +64,15 @@ namespace Leafling
             }
         }
 
-        private void SetNextAnimation()
+        public void SetTransition(SpriteAnimationTransition transition)
+        {
+            _activeTransition = transition;
+            if (Mathf.Approximately(transition.Scale, 0))
+            {
+                ApplyTransition();
+            }
+        }
+        private void ApplyTransition()
         {
             _activeTransition.ApplyFlip(_body);
             SetAnimation(_activeTransition.Animation);
@@ -78,10 +86,6 @@ namespace Leafling
             UpdateSpriteBody();
             StartedAnimation();
         }
-        public void SetTransition(SpriteAnimationTransition transition)
-        {
-            _activeTransition = transition;
-        }
         public bool IsAnimating(SpriteAnimation animation)
         {
             return _currentAnimation == animation;
@@ -91,7 +95,7 @@ namespace Leafling
             _body.SetFlipX(flipX);
         }
 
-        private bool ReadyToTransitionToNextAnimation()
+        private bool ReadyToTransition()
         {
             return IsTransitioningOnCurrentFrame() && IsCurrentFrameFinished;
         }

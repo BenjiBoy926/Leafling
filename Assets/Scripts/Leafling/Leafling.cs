@@ -52,16 +52,19 @@ namespace Leafling
         public SpriteAnimation Dash => _dash;
         public SpriteAnimation Drop => _drop;
 
-        public float BaseRunSpeed => _baseRunSpeed;
-        public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
-        public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float RunningTransitionScale => _runningTransitionScale;
-        public float MaxJumpSpeed => _maxJumpSpeed;
-        public float MaxJumpTime => _maxJumpTime;
-        public float MaxDashSpeed => _maxDashSpeed;
         public float JumpTransitionScale => _jumpTransitionScale;
         public float FlutterTransitionScale => _flutterTransitionScale;
         public float DropTransitionScale => _dropTransitionScale;
+        public float AimingDashTransitionScale => _aimingDashTransitionScale;
+
+        public float BaseRunSpeed => _baseRunSpeed;
+        public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
+        public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
+        public float SlideMaxSpeed => _slideMaxSpeed;
+        public float MaxJumpSpeed => _maxJumpSpeed;
+        public float MaxJumpTime => _maxJumpTime;
+        public float MaxDashSpeed => _maxDashSpeed;
         public float DropSpeed => _dropSpeed;
         public float DropCancelSpeed => _dropCancelSpeed;
         public DirectionalAirControl JumpAirControl => _jumpAirControl;
@@ -69,7 +72,6 @@ namespace Leafling
         public DirectionalAirControl FlutterAirControl => _flutterAirControl;
         public DirectionalAirControl DropAirControl => _dropAirControl;
         public float AimingDashGravityScale => _aimingDashGravityScale;
-        public float AimingDashTransitionScale => _aimingDashTransitionScale;
         public float DashCancelSpeed => _dashCancelSpeed;
 
         [Header("Parts")]
@@ -89,6 +91,8 @@ namespace Leafling
         private SpriteAnimation _idle;
         [SerializeField]
         private SpriteAnimation _run;
+        [SerializeField]
+        private SpriteAnimation _slide;
         [SerializeField]
         private SpriteAnimation _jump;
         [SerializeField]
@@ -133,6 +137,10 @@ namespace Leafling
         private float _leapAdditionalSpeed = 1;
         [SerializeField, FormerlySerializedAs("_accelerationCurve")]
         private AnimationCurve _runAccelerationCurve;
+        [SerializeField]
+        private float _slideMaxSpeed = 30;
+        [SerializeField]
+        private AnimationCurve _slideSpeedCurve;
 
         [Header("Jumping")]
         [SerializeField]
@@ -258,6 +266,10 @@ namespace Leafling
         public float EvaluateDashSpeedCurve(float t)
         {
             return _dashSpeedCurve.Evaluate(t);
+        }
+        public float EvaluateSlideSpeedCurve(float t)
+        {
+            return _slideSpeedCurve.Evaluate(t);
         }
         public void ApplyAirControl(DirectionalAirControl control)
         {

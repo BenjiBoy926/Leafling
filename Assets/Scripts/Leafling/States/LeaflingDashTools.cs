@@ -7,11 +7,7 @@ namespace Leafling
     {
         public static void ShowDashPerch(Leafling leafling, Vector2 aim)
         {
-            SpriteAnimation animation = GetPerchAnimation(leafling);
-            float direction = GetPerchDirection(leafling, aim.x);
-            leafling.SetAnimation(animation);
-            leafling.FaceTowards(direction);
-            SetRotation(leafling, aim);
+            TransitionDashPerch(leafling, 0, aim);
         }
         public static void TransitionDashPerch(Leafling leafling, float scale, Vector2 aim)
         {

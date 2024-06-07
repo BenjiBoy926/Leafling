@@ -275,6 +275,7 @@ MonoBehaviour:
   _inputs: {fileID: 7827341310666358948}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _slide: {fileID: 11400000, guid: e50c7ac5dbd919f4089df68a55f356fd, type: 2}
   _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
   _backflip: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
   _freeFallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
@@ -292,8 +293,8 @@ MonoBehaviour:
   _flutterTransitionScale: 0.5
   _dropTransitionScale: 0.5
   _aimingDashTransitionScale: 0.5
-  _baseRunSpeed: 10
-  _leapAdditionalSpeed: 10
+  _baseRunSpeed: 5
+  _leapAdditionalSpeed: 15
   _runAccelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -315,6 +316,31 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.07063711
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _slideMaxSpeed: 30
+  _slideSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.3
+      inSlope: -2.1204793
+      outSlope: -2.1204793
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0360111
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
