@@ -278,6 +278,7 @@ MonoBehaviour:
   _slide: {fileID: 11400000, guid: e50c7ac5dbd919f4089df68a55f356fd, type: 2}
   _longJump: {fileID: 11400000, guid: 04d1a2019a3419d4d940f68ddd609d0e, type: 2}
   _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
+  _crouchJump: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
   _backflip: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
   _freeFallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
   _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
@@ -353,6 +354,7 @@ MonoBehaviour:
     _backwards:
       _acceleration: 5
       _topSpeed: 5
+  _longJumpGravityScale: 0.1
   _maxJumpSpeed: 20
   _jumpSpeedCurve:
     serializedVersion: 2
@@ -409,6 +411,14 @@ MonoBehaviour:
     _backwards:
       _acceleration: 5
       _topSpeed: 5
+  _crouchJumpSpeed: 35
+  _crouchJumpAirControl:
+    _forwards:
+      _acceleration: 10
+      _topSpeed: 10
+    _backwards:
+      _acceleration: 20
+      _topSpeed: 20
   _aimingDashGravityScale: 0.25
   _maxDashSpeed: 30
   _dashSpeedCurve:

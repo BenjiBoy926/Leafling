@@ -10,6 +10,11 @@ namespace Leafling
             base.Enter();
             Leafling.SetAnimation(Leafling.Squat);
         }
+        protected override void OnStartedJumping()
+        {
+            base.OnStartedJumping();
+            Leafling.SetState(new LeaflingCrouchJumpState(Leafling));
+        }
         protected override void OnStoppedCrouching()
         {
             base.OnStoppedCrouching();

@@ -44,6 +44,7 @@ namespace Leafling
         public SpriteAnimation Slide => _slide;
         public SpriteAnimation LongJump => _longJump;
         public SpriteAnimation Jump => _jump;
+        public SpriteAnimation CrouchJump => _crouchJump;
         public SpriteAnimation Backflip => _backflip;
         public SpriteAnimation FreeFallForward => _freeFallForward;
         public SpriteAnimation FreeFallBack => _freeFallBack;
@@ -79,6 +80,8 @@ namespace Leafling
         public DirectionalAirControl FreeFallAirControl => _freeFallAirControl;
         public DirectionalAirControl FlutterAirControl => _flutterAirControl;
         public DirectionalAirControl DropAirControl => _dropAirControl;
+        public float CrouchJumpSpeed => _crouchJumpSpeed;
+        public DirectionalAirControl CrouchJumpAirControl => _crouchJumpAirControl;
         public float AimingDashGravityScale => _aimingDashGravityScale;
         public float DashCancelSpeed => _dashCancelSpeed;
 
@@ -105,6 +108,8 @@ namespace Leafling
         private SpriteAnimation _longJump;
         [SerializeField]
         private SpriteAnimation _jump;
+        [SerializeField]
+        private SpriteAnimation _crouchJump;
         [SerializeField]
         private SpriteAnimation _backflip;
         [SerializeField]
@@ -177,6 +182,10 @@ namespace Leafling
         private DirectionalAirControl _flutterAirControl;
         [SerializeField]
         private DirectionalAirControl _dropAirControl;
+        [SerializeField]
+        private float _crouchJumpSpeed = 50;
+        [SerializeField]
+        private DirectionalAirControl _crouchJumpAirControl;
 
         [Header("Dashing")]
         [SerializeField]
