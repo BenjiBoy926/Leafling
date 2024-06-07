@@ -28,6 +28,7 @@ namespace Leafling
             Leafling.StoppedCrouching += OnStoppedCrouching;
             Leafling.AnimationStarted += OnAnimationStarted;
             Leafling.AnimationFinished += OnAnimationFinished;
+            Leafling.AnimationEnteredActionFrame += OnAnimationEnteredActionFrame;
         }
         public virtual void Exit()
         {
@@ -40,6 +41,7 @@ namespace Leafling
             Leafling.StoppedCrouching -= OnStoppedCrouching;
             Leafling.AnimationStarted -= OnAnimationStarted;
             Leafling.AnimationFinished -= OnAnimationFinished;
+            Leafling.AnimationEnteredActionFrame -= OnAnimationEnteredActionFrame;
         }
         public virtual void Update(float dt)
         {
@@ -78,6 +80,10 @@ namespace Leafling
 
         }
         protected virtual void OnAnimationFinished()
+        {
+
+        }
+        protected virtual void OnAnimationEnteredActionFrame()
         {
 
         }

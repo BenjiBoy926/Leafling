@@ -25,7 +25,8 @@ namespace Leafling
         public bool IsCurrentFrameFirstFrame => _isFirstFrame;
         public float CurrentTime => _currentAnimation.TimeBefore(_currentFrameIndex) + TimeSinceCurrentFrameStart;
         public float ProgressAfterFirstActionFrame => (CurrentTime - _currentAnimation.TimeUpToAndIncludingFirstActionFrame) / _currentAnimation.TimeAfterFirstActionFrame;
-        
+        public float ProgressOfFirstActionFrame => (CurrentTime - _currentAnimation.TimeBeforeFirstActionFrame) / _currentAnimation.DurationOfFirstActionFrame;
+
         [SerializeField]
         private SpriteBody _body;
         [SerializeField]

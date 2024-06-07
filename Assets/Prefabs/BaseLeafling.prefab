@@ -289,6 +289,7 @@ MonoBehaviour:
   _ceilingPerch: {fileID: 11400000, guid: d9863774b03732345a00d4b102ee7a5d, type: 2}
   _dash: {fileID: 11400000, guid: 82bd7418f7354f041af1a4bd3be4e02a, type: 2}
   _runningTransitionScale: 0.5
+  _slideTransitionScale: 0.25
   _jumpTransitionScale: 0.1
   _flutterTransitionScale: 0.5
   _dropTransitionScale: 0.5
@@ -319,7 +320,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _slideMaxSpeed: 30
+  _maxSlideSpeed: 25
   _slideSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -334,7 +335,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.3
+      value: 0.1
       inSlope: -2.1204793
       outSlope: -2.1204793
       tangentMode: 0

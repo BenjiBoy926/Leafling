@@ -34,6 +34,14 @@ namespace Leafling
             base.OnStartedAimingDash();
             Leafling.SetState(new LeaflingDashAimState(Leafling));
         }
+        protected override void OnStartedCrouching()
+        {
+            base.OnStartedCrouching();
+            if (Leafling.HorizontalDirection != 0)
+            {
+                Leafling.SetState(new LeaflingSlideState(Leafling));
+            }
+        }
 
         public override void Update(float dt)
         {
@@ -44,7 +52,7 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
-            if (Leafling.IsCrouching && Leafling.IsAnimating(Leafling.Idle))
+            if (Leafling.IsCrouching && Leafling.HorizontalDirection == 0)
             {
                 Leafling.SetState(new LeaflingCrouchState(Leafling));
             }

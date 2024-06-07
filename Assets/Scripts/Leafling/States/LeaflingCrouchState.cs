@@ -13,7 +13,6 @@ namespace Leafling
         protected override void OnStoppedCrouching()
         {
             base.OnStoppedCrouching();
-            Leafling.SetAnimation(Leafling.Idle);
             Leafling.SetState(new LeaflingStandingState(Leafling));
         }
     }

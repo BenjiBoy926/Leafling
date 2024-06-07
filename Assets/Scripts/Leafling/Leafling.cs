@@ -18,6 +18,7 @@ namespace Leafling
         public event Action StoppedCrouching = delegate { };
         public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
+        public event Action AnimationEnteredActionFrame = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public bool IsJumping => _inputs.IsJumping;
@@ -31,6 +32,7 @@ namespace Leafling
         public bool CurrentFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
+        public float ProgressOfFirstActionFrame => _animator.ProgressOfFirstActionFrame;
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
         public bool IsTransitioningOnCurrentFrame => _animator.IsTransitioningOnCurrentFrame();
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
@@ -39,6 +41,7 @@ namespace Leafling
 
         public SpriteAnimation Idle => _idle;
         public SpriteAnimation Run => _run;
+        public SpriteAnimation Slide => _slide;
         public SpriteAnimation Jump => _jump;
         public SpriteAnimation Backflip => _backflip;
         public SpriteAnimation FreeFallForward => _freeFallForward;
@@ -53,6 +56,7 @@ namespace Leafling
         public SpriteAnimation Drop => _drop;
 
         public float RunningTransitionScale => _runningTransitionScale;
+        public float SlideTransitionScale => _slideTransitionScale;
         public float JumpTransitionScale => _jumpTransitionScale;
         public float FlutterTransitionScale => _flutterTransitionScale;
         public float DropTransitionScale => _dropTransitionScale;
@@ -61,7 +65,7 @@ namespace Leafling
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
-        public float SlideMaxSpeed => _slideMaxSpeed;
+        public float MaxSlideSpeed => _maxSlideSpeed;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
         public float MaxDashSpeed => _maxDashSpeed;
@@ -122,6 +126,8 @@ namespace Leafling
         [SerializeField]
         private float _runningTransitionScale = 0.25f;
         [SerializeField]
+        private float _slideTransitionScale = 0.25f;
+        [SerializeField]
         private float _jumpTransitionScale = 0.1f;
         [SerializeField]
         private float _flutterTransitionScale = 0.5f;
@@ -137,8 +143,8 @@ namespace Leafling
         private float _leapAdditionalSpeed = 1;
         [SerializeField, FormerlySerializedAs("_accelerationCurve")]
         private AnimationCurve _runAccelerationCurve;
-        [SerializeField]
-        private float _slideMaxSpeed = 30;
+        [SerializeField, FormerlySerializedAs("_slideMaxSpeed")]
+        private float _maxSlideSpeed = 30;
         [SerializeField]
         private AnimationCurve _slideSpeedCurve;
 
@@ -191,6 +197,7 @@ namespace Leafling
             _inputs.StoppedCrouching += OnStoppedCrouching;
             _animator.StartedAnimation += OnAnimationStarted;
             _animator.FinishedAnimation += OnAnimationFinished;
+            _animator.ActionFrameEntered += OnAnimationEnteredActionFrame;
         }
         private void OnDisable()
         {
@@ -203,6 +210,7 @@ namespace Leafling
             _inputs.StoppedCrouching -= OnStoppedCrouching;
             _animator.StartedAnimation -= OnAnimationStarted;
             _animator.FinishedAnimation -= OnAnimationFinished;
+            _animator.ActionFrameEntered -= OnAnimationEnteredActionFrame;
         }
         private void OnHorizontalDirectionChanged()
         {
@@ -239,6 +247,10 @@ namespace Leafling
         private void OnAnimationFinished()
         {
             AnimationFinished();
+        }
+        private void OnAnimationEnteredActionFrame()
+        {
+            AnimationEnteredActionFrame();
         }
 
         public void SetState(LeaflingState state)
