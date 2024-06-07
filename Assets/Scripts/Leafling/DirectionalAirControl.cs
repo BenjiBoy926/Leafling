@@ -6,6 +6,8 @@ namespace Leafling
     [Serializable]
     public struct DirectionalAirControl
     {
+        public float ForwardTopSpeed => _forwards.TopSpeed;
+
         [SerializeField]
         private AirControl _forwards;
         [SerializeField]

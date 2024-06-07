@@ -42,6 +42,7 @@ namespace Leafling
         public SpriteAnimation Idle => _idle;
         public SpriteAnimation Run => _run;
         public SpriteAnimation Slide => _slide;
+        public SpriteAnimation LongJump => _longJump;
         public SpriteAnimation Jump => _jump;
         public SpriteAnimation Backflip => _backflip;
         public SpriteAnimation FreeFallForward => _freeFallForward;
@@ -66,6 +67,8 @@ namespace Leafling
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float MaxSlideSpeed => _maxSlideSpeed;
+        public DirectionalAirControl LongJumpAirControl => _longJumpAirControl;
+        public float LongJumpTopSpeed => _longJumpAirControl.ForwardTopSpeed;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MaxJumpTime => _maxJumpTime;
         public float MaxDashSpeed => _maxDashSpeed;
@@ -97,6 +100,8 @@ namespace Leafling
         private SpriteAnimation _run;
         [SerializeField]
         private SpriteAnimation _slide;
+        [SerializeField]
+        private SpriteAnimation _longJump;
         [SerializeField]
         private SpriteAnimation _jump;
         [SerializeField]
@@ -147,6 +152,8 @@ namespace Leafling
         private float _maxSlideSpeed = 30;
         [SerializeField]
         private AnimationCurve _slideSpeedCurve;
+        [SerializeField]
+        private DirectionalAirControl _longJumpAirControl;
 
         [Header("Jumping")]
         [SerializeField]
