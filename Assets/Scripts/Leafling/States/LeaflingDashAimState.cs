@@ -3,11 +3,11 @@ using UnityEngine.UIElements;
 
 namespace Leafling
 {
-    public class LeaflingAimingDashState : LeaflingState
+    public class LeaflingDashAimState : LeaflingState
     {
         private Vector2 _aim;
 
-        public LeaflingAimingDashState(Leafling leafling) : base(leafling) 
+        public LeaflingDashAimState(Leafling leafling) : base(leafling) 
         { 
             _aim = leafling.DashAim;
         }

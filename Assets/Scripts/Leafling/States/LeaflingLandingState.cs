@@ -19,7 +19,7 @@ namespace Leafling
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            Leafling.SetState(new LeaflingAimingDashState(Leafling));
+            Leafling.SetState(new LeaflingDashAimState(Leafling));
         }
         protected override void OnAnimationFinished()
         {

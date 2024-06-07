@@ -5,7 +5,6 @@ namespace Leafling
     public class LeaflingDashState : LeaflingState
     {
         private Vector2 _aim;
-        private bool _hasReachedActionFrame;
         private bool _dashOnRicochet;
 
         public LeaflingDashState(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
@@ -17,8 +16,9 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            LeaflingDashTools.ShowDashPerch(Leafling, _aim);
-            Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
+            Leafling.SetAnimation(Leafling.Dash);
+            Leafling.FaceTowards(_aim.x);
+            LeaflingDashTools.SetMidairRotation(Leafling, _aim);
         }
         public override void Exit()
         {
@@ -37,22 +37,13 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
-            if (Leafling.IsCurrentFrameActionFrame)
-            {
-                _hasReachedActionFrame = true;
-                LeaflingDashTools.SetMidairRotation(Leafling, _aim);
-            }
             Vector2 velocity = GetDashVelocity();
             Leafling.SetVelocity(velocity);
             CheckForRicochet();
         }
         private Vector2 GetDashVelocity()
         {
-            if (!_hasReachedActionFrame)
-            {
-                return Vector2.zero;
-            }
-            else if (Leafling.IsCurrentFrameActionFrame)
+            if (Leafling.IsCurrentFrameActionFrame)
             {
                 return Leafling.MaxDashSpeed * _aim;
             }
@@ -72,7 +63,7 @@ namespace Leafling
         }
         private bool CanRicochet()
         {
-            return _hasReachedActionFrame && Leafling.IsTouchingAnything();
+            return Leafling.IsTouchingAnything();
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {
@@ -96,7 +87,7 @@ namespace Leafling
             Vector2 ricochetDirection = GetRicochetAim(normal);
             if (_dashOnRicochet)
             {
-                Leafling.SetState(new LeaflingDashState(Leafling, ricochetDirection, false));
+                Leafling.SetState(new LeaflingDashSquatState(Leafling, ricochetDirection, false));
             }
             else
             {
