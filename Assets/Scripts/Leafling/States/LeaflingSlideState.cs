@@ -14,6 +14,14 @@ namespace Leafling
             Leafling.SetTransition(new(Leafling.Slide, Leafling.SlideTransitionScale, Leafling.CurrentFlipX));
         }
 
+        protected override void OnStartedJumping()
+        {
+            base.OnStartedJumping();
+            if (_hasEnteredActionFrame)
+            {
+                Leafling.SetState(new LeaflingLongJumpState(Leafling));
+            }
+        }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
