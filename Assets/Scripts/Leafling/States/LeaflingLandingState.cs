@@ -2,8 +2,11 @@ namespace Leafling
 {
     public class LeaflingLandingState : LeaflingState
     {
-        public LeaflingLandingState(Leafling leafling) : base(leafling)
+        private JumpFromLanding _jumpType;
+
+        public LeaflingLandingState(Leafling leafling, JumpFromLanding jumpType) : base(leafling)
         {
+            _jumpType = jumpType;
         }
 
         public override void Enter()
@@ -14,7 +17,14 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingJumpState(Leafling));
+            if (_jumpType == JumpFromLanding.Normal)
+            {
+                Leafling.SetState(new LeaflingJumpState(Leafling));
+            }
+            if (_jumpType == JumpFromLanding.CrouchJump)
+            {
+                Leafling.SetState(new LeaflingCrouchJumpState(Leafling));
+            }
         }
         protected override void OnStartedAimingDash()
         {

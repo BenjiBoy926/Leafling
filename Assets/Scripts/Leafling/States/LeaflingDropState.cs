@@ -33,7 +33,7 @@ namespace Leafling
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingLandingState(Leafling));
+                Leafling.SetState(new LeaflingLandingState(Leafling, JumpFromLanding.CrouchJump));
             }
         }
     }

@@ -29,7 +29,7 @@ namespace Leafling
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingLandingState(Leafling));
+                Leafling.SetState(new LeaflingLandingState(Leafling, JumpFromLanding.Normal));
             }
         }
         private void ApplyAirControl()
