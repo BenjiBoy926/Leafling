@@ -8,9 +8,11 @@ namespace Leafling
     {
         protected Leafling Leafling => _leafling;
         protected float TimeSinceStateStart => Time.time - _timeOfStateStart;
+        protected bool HasEnteredActionFrame => _hasEnteredActionFrame;
 
         private Leafling _leafling;
         private float _timeOfStateStart;
+        private bool _hasEnteredActionFrame;
 
         public LeaflingState(Leafling leafling)
         {
@@ -85,7 +87,7 @@ namespace Leafling
         }
         protected virtual void OnAnimationEnteredActionFrame()
         {
-
+            _hasEnteredActionFrame = true;
         }
     }
 }

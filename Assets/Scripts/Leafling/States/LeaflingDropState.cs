@@ -2,8 +2,6 @@ namespace Leafling
 {
     public class LeaflingDropState : LeaflingState
     {
-        private bool _hasEnteredActionFrame = false;
-
         public LeaflingDropState(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
@@ -14,7 +12,7 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            if (_hasEnteredActionFrame)
+            if (HasEnteredActionFrame)
             {
                 Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
             }
@@ -25,17 +23,13 @@ namespace Leafling
         {
             base.Update(dt);
             Leafling.ApplyAirControl(Leafling.DropAirControl);
-            if (Leafling.IsCurrentFrameActionFrame)
+            if (HasEnteredActionFrame)
             {
-                _hasEnteredActionFrame = true;
-            }
-            if (!_hasEnteredActionFrame)
-            {
-                Leafling.SetVerticalVelocity(0);
+                Leafling.SetVerticalVelocity(-Leafling.DropSpeed);
             }
             else
             {
-                Leafling.SetVerticalVelocity(-Leafling.DropSpeed);
+                Leafling.SetVerticalVelocity(0);
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {

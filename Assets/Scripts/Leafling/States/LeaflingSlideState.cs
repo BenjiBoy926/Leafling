@@ -2,8 +2,6 @@ namespace Leafling
 {
     public class LeaflingSlideState : LeaflingState
     {
-        private bool _hasEnteredActionFrame;
-
         public LeaflingSlideState(Leafling leafling) : base(leafling)
         {
         }
@@ -17,10 +15,15 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            if (_hasEnteredActionFrame)
+            if (HasEnteredActionFrame)
             {
                 Leafling.SetState(new LeaflingLongJumpState(Leafling));
             }
+        }
+        protected override void OnAnimationStarted()
+        {
+            base.OnAnimationStarted();
+            Leafling.SetHorizontalVelocity(0);
         }
         protected override void OnAnimationFinished()
         {
@@ -30,16 +33,11 @@ namespace Leafling
                 Leafling.SetState(new LeaflingStandingState(Leafling));
             }
         }
-        protected override void OnAnimationEnteredActionFrame()
-        {
-            base.OnAnimationEnteredActionFrame();
-            _hasEnteredActionFrame = true;
-        }
 
         public override void Update(float dt)
         {
             base.Update(dt);
-            if (_hasEnteredActionFrame)
+            if (HasEnteredActionFrame)
             {
                 float t = Leafling.ProgressOfFirstActionFrame;
                 float speed = Leafling.EvaluateSlideSpeedCurve(t) * Leafling.MaxSlideSpeed;

@@ -2,8 +2,6 @@ namespace Leafling
 {
     public class LeaflingFlutterState : LeaflingState
     {
-        private bool _hasEnteredActionFrame = false;
-
         public LeaflingFlutterState(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
@@ -19,28 +17,20 @@ namespace Leafling
                 Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
             }
         }
+        protected override void OnAnimationEnteredActionFrame()
+        {
+            base.OnAnimationEnteredActionFrame();
+            Leafling.SetVerticalVelocity(5);
+        }
 
         public override void Update(float dt)
         {
             base.Update(dt);
-            HandleActionFrameEntry();
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
                 Leafling.SetState(new LeaflingLandingState(Leafling));
             }
-        }
-        private void HandleActionFrameEntry()
-        {
-            if (!Leafling.IsCurrentFrameActionFrame)
-            {
-                return;
-            }
-            if (!_hasEnteredActionFrame)
-            {
-                Leafling.SetVerticalVelocity(5);
-            }
-            _hasEnteredActionFrame = true;
         }
         private void ApplyAirControl()
         {

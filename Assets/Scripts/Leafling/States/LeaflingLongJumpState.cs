@@ -9,6 +9,7 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
+            Leafling.SetHorizontalVelocity(0);
             Leafling.SetAnimation(Leafling.LongJump);
         }
         protected override void OnAnimationFinished()
@@ -31,7 +32,10 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
-            Leafling.ApplyAirControl(Leafling.LongJumpAirControl);
+            if (HasEnteredActionFrame)
+            {
+                Leafling.ApplyAirControl(Leafling.LongJumpAirControl);
+            }
         }
     }
 }

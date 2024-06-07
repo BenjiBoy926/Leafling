@@ -348,8 +348,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _longJumpAirControl:
     _forwards:
-      _acceleration: 30
-      _topSpeed: 30
+      _acceleration: 15
+      _topSpeed: 25
     _backwards:
       _acceleration: 5
       _topSpeed: 5
