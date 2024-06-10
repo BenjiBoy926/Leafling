@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingDashSquatState : LeaflingState
+    public class LeaflingState_DashSquat : LeaflingState
     {
         private Vector2 _aim;
         private bool _dashOnRicochet;
 
-        public LeaflingDashSquatState(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
+        public LeaflingState_DashSquat(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
         { 
             _aim = aim;
             _dashOnRicochet = dashOnRicochet;
@@ -21,7 +21,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingDashState(Leafling, _aim, _dashOnRicochet));
+            Leafling.SetState(new LeaflingState_Dash(Leafling, _aim, _dashOnRicochet));
         }
     }
 }

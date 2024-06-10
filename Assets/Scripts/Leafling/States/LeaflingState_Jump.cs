@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingJumpState : LeaflingState
+    public class LeaflingState_Jump : LeaflingState
     {
         private float JumpProgress => TimeSinceStateStart / Leafling.MaxJumpTime;
 
-        public LeaflingJumpState(Leafling leafling) : base(leafling) { }
+        public LeaflingState_Jump(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
         {
@@ -21,7 +21,7 @@ namespace Leafling
             Leafling.SetVerticalVelocity(GetJumpSpeed());
             if (ShouldTransitionOutOfJump())
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
             }
         }
         private bool ShouldTransitionOutOfJump()

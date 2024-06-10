@@ -1,8 +1,8 @@
 namespace Leafling
 {
-    public class LeaflingFlutterState : LeaflingState
+    public class LeaflingState_Flutter : LeaflingState
     {
-        public LeaflingFlutterState(Leafling leafling) : base(leafling) { }
+        public LeaflingState_Flutter(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
         {
@@ -14,7 +14,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Flutter))
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
             }
         }
         protected override void OnAnimationEnteredActionFrame()
@@ -29,7 +29,7 @@ namespace Leafling
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingLandingState(Leafling, JumpFromLanding.Normal));
+                Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
             }
         }
         private void ApplyAirControl()

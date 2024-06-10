@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingDashCancelState : LeaflingState
+    public class LeaflingState_DashCancel : LeaflingState
     {
         private Vector2 _direction;
 
-        public LeaflingDashCancelState(Leafling leafling, Vector2 direction) : base(leafling) 
+        public LeaflingState_DashCancel(Leafling leafling, Vector2 direction) : base(leafling) 
         { 
             _direction = direction;
         }
@@ -20,7 +20,7 @@ namespace Leafling
         {
             base.OnAnimationFinished();
             Leafling.SetVelocity(_direction.normalized * Leafling.DashCancelSpeed);
-            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
         }
 
         public override void Update(float dt)

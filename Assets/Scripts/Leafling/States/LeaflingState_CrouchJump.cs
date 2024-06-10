@@ -1,8 +1,8 @@
 namespace Leafling
 {
-    public class LeaflingCrouchJumpState : LeaflingState
+    public class LeaflingState_CrouchJump : LeaflingState
     {
-        public LeaflingCrouchJumpState(Leafling leafling) : base(leafling)
+        public LeaflingState_CrouchJump(Leafling leafling) : base(leafling)
         {
         }
 
@@ -15,7 +15,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
         }
         public override void Update(float dt)
         {

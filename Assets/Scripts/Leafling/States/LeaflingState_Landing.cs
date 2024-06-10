@@ -1,10 +1,10 @@
 namespace Leafling
 {
-    public class LeaflingLandingState : LeaflingState
+    public class LeaflingState_Landing : LeaflingState
     {
         private JumpFromLanding _jumpType;
 
-        public LeaflingLandingState(Leafling leafling, JumpFromLanding jumpType) : base(leafling)
+        public LeaflingState_Landing(Leafling leafling, JumpFromLanding jumpType) : base(leafling)
         {
             _jumpType = jumpType;
         }
@@ -19,22 +19,22 @@ namespace Leafling
             base.OnStartedJumping();
             if (_jumpType == JumpFromLanding.Normal)
             {
-                Leafling.SetState(new LeaflingJumpState(Leafling));
+                Leafling.SetState(new LeaflingState_Jump(Leafling));
             }
             if (_jumpType == JumpFromLanding.CrouchJump)
             {
-                Leafling.SetState(new LeaflingCrouchJumpState(Leafling));
+                Leafling.SetState(new LeaflingState_CrouchJump(Leafling));
             }
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            Leafling.SetState(new LeaflingDashAimState(Leafling));
+            Leafling.SetState(new LeaflingState_DashAim(Leafling));
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingStandingState(Leafling));
+            Leafling.SetState(new LeaflingState_Standing(Leafling));
         }
     }
 }

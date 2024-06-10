@@ -1,8 +1,8 @@
 namespace Leafling
 {
-    public class LeaflingDropState : LeaflingState
+    public class LeaflingState_Drop : LeaflingState
     {
-        public LeaflingDropState(Leafling leafling) : base(leafling) { }
+        public LeaflingState_Drop(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
         {
@@ -16,7 +16,7 @@ namespace Leafling
             {
                 Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
             }
-            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
         }
 
         public override void Update(float dt)
@@ -33,7 +33,7 @@ namespace Leafling
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingLandingState(Leafling, JumpFromLanding.CrouchJump));
+                Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.CrouchJump));
             }
         }
     }

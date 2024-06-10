@@ -3,11 +3,11 @@ using UnityEngine.UIElements;
 
 namespace Leafling
 {
-    public class LeaflingDashAimState : LeaflingState
+    public class LeaflingState_DashAim : LeaflingState
     {
         private Vector2 _aim;
 
-        public LeaflingDashAimState(Leafling leafling) : base(leafling) 
+        public LeaflingState_DashAim(Leafling leafling) : base(leafling) 
         { 
             _aim = leafling.DashAim;
         }
@@ -31,7 +31,7 @@ namespace Leafling
             LeaflingDashTools.TransitionDashPerch(Leafling, Leafling.AimingDashTransitionScale, _aim);
             if (!Leafling.IsAimingDash)
             {
-                Leafling.SetState(new LeaflingDashState(Leafling, _aim, true));
+                Leafling.SetState(new LeaflingState_Dash(Leafling, _aim, true));
             }
         }
 

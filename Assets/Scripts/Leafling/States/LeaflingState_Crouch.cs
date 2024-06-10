@@ -1,9 +1,9 @@
 
 namespace Leafling
 {
-    public class LeaflingCrouchState : LeaflingState
+    public class LeaflingState_Crouch : LeaflingState
     {
-        public LeaflingCrouchState(Leafling leafling) : base(leafling) { }
+        public LeaflingState_Crouch(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
         {
@@ -13,12 +13,12 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingCrouchJumpState(Leafling));
+            Leafling.SetState(new LeaflingState_CrouchJump(Leafling));
         }
         protected override void OnStoppedCrouching()
         {
             base.OnStoppedCrouching();
-            Leafling.SetState(new LeaflingStandingState(Leafling));
+            Leafling.SetState(new LeaflingState_Standing(Leafling));
         }
     }
 }

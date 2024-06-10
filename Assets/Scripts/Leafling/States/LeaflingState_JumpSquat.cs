@@ -1,8 +1,8 @@
 namespace Leafling
 {
-    public class LeaflingJumpSquatState : LeaflingState
+    public class LeaflingState_JumpSquat : LeaflingState
     {
-        public LeaflingJumpSquatState(Leafling leafling) : base(leafling)
+        public LeaflingState_JumpSquat(Leafling leafling) : base(leafling)
         {
         }
 
@@ -16,7 +16,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Squat))
             {
-                Leafling.SetState(new LeaflingJumpState(Leafling));
+                Leafling.SetState(new LeaflingState_Jump(Leafling));
             }
         }
     }

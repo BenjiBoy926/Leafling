@@ -1,8 +1,8 @@
 namespace Leafling
 {
-    public class LeaflingLongJumpState : LeaflingState
+    public class LeaflingState_LongJump : LeaflingState
     {
-        public LeaflingLongJumpState(Leafling leafling) : base(leafling)
+        public LeaflingState_LongJump(Leafling leafling) : base(leafling)
         {
         }
 
@@ -23,11 +23,11 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsCrouching)
             {
-                Leafling.SetState(new LeaflingSlideState(Leafling));
+                Leafling.SetState(new LeaflingState_Slide(Leafling));
             }
             else
             {
-                Leafling.SetState(new LeaflingLandingState(Leafling, JumpFromLanding.Normal));
+                Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
             }
         }
         protected override void OnAnimationEnteredActionFrame()

@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingStandingState : LeaflingState
+    public class LeaflingState_Standing : LeaflingState
     {
         private readonly FromToCurve _toRun;
         private readonly FromToCurve _toLeap;
 
-        public LeaflingStandingState(Leafling leafling) : base(leafling) 
+        public LeaflingState_Standing(Leafling leafling) : base(leafling) 
         {
             _toRun = new FromToCurve(0, leafling.BaseRunSpeed, leafling.RunAccelerationCurve);
             _toLeap = new FromToCurve(leafling.BaseRunSpeed, leafling.LeapMaxSpeed, leafling.RunAccelerationCurve);
@@ -27,19 +27,19 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingJumpSquatState(Leafling));
+            Leafling.SetState(new LeaflingState_JumpSquat(Leafling));
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            Leafling.SetState(new LeaflingDashAimState(Leafling));
+            Leafling.SetState(new LeaflingState_DashAim(Leafling));
         }
         protected override void OnStartedCrouching()
         {
             base.OnStartedCrouching();
             if (Leafling.HorizontalDirection != 0)
             {
-                Leafling.SetState(new LeaflingSlideState(Leafling));
+                Leafling.SetState(new LeaflingState_Slide(Leafling));
             }
         }
 
@@ -50,11 +50,11 @@ namespace Leafling
             Leafling.SetHorizontalVelocity(speed);
             if (!Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
             }
             if (Leafling.IsCrouching && Leafling.HorizontalDirection == 0)
             {
-                Leafling.SetState(new LeaflingCrouchState(Leafling));
+                Leafling.SetState(new LeaflingState_Crouch(Leafling));
             }
         }
         private float CalculateHorizontalSpeed()

@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingDashState : LeaflingState
+    public class LeaflingState_Dash : LeaflingState
     {
         private Vector2 _aim;
         private bool _dashOnRicochet;
 
-        public LeaflingDashState(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
+        public LeaflingState_Dash(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
         {
             _aim = aim;
             _dashOnRicochet = dashOnRicochet;
@@ -30,7 +30,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Dash))
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
             }
         }
 
@@ -87,11 +87,11 @@ namespace Leafling
             Vector2 ricochetDirection = GetRicochetAim(normal);
             if (_dashOnRicochet)
             {
-                Leafling.SetState(new LeaflingDashSquatState(Leafling, ricochetDirection, false));
+                Leafling.SetState(new LeaflingState_DashSquat(Leafling, ricochetDirection, false));
             }
             else
             {
-                Leafling.SetState(new LeaflingDashCancelState(Leafling, ricochetDirection));
+                Leafling.SetState(new LeaflingState_DashCancel(Leafling, ricochetDirection));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)
