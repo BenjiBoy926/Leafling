@@ -56,6 +56,8 @@ namespace Leafling
         public SpriteAnimation CeilingPerch => _ceilingPerch;
         public SpriteAnimation Dash => _dash;
         public SpriteAnimation Drop => _drop;
+        [field: SerializeField]
+        public SpriteAnimation WallJump { get; private set; }
 
         public float RunningTransitionScale => _runningTransitionScale;
         public float SlideTransitionScale => _slideTransitionScale;
