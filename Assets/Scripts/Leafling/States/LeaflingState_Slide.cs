@@ -43,6 +43,10 @@ namespace Leafling
                 float speed = Leafling.EvaluateSlideSpeedCurve(t) * Leafling.MaxSlideSpeed;
                 Leafling.SetHorizontalVelocity(speed * Leafling.FacingDirection);
             }
+            if (!Leafling.IsTouching(CardinalDirection.Down))
+            {
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+            }
         }
     }
 }

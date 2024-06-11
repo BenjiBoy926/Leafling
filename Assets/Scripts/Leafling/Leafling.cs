@@ -63,6 +63,7 @@ namespace Leafling
         public float FlutterTransitionScale => _flutterTransitionScale;
         public float DropTransitionScale => _dropTransitionScale;
         public float AimingDashTransitionScale => _aimingDashTransitionScale;
+        public float WallSlideTransitionScale => _wallSlideTransitionScale;
 
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
@@ -82,6 +83,9 @@ namespace Leafling
         public DirectionalAirControl DropAirControl => _dropAirControl;
         public float CrouchJumpSpeed => _crouchJumpSpeed;
         public DirectionalAirControl CrouchJumpAirControl => _crouchJumpAirControl;
+        public float WallSlideGravityScale => _wallSlideGravityScale;
+        [field: SerializeField]
+        public float WallSlidePushOffSpeed { get; private set; } = 5;
         public float AimingDashGravityScale => _aimingDashGravityScale;
         public float DashCancelSpeed => _dashCancelSpeed;
 
@@ -146,6 +150,8 @@ namespace Leafling
         private float _dropTransitionScale = 0.25f;
         [SerializeField]
         private float _aimingDashTransitionScale = 0.25f;
+        [SerializeField]
+        private float _wallSlideTransitionScale = 0.25f;
 
         [Header("Running")]
         [SerializeField]
@@ -186,6 +192,8 @@ namespace Leafling
         private float _crouchJumpSpeed = 50;
         [SerializeField]
         private DirectionalAirControl _crouchJumpAirControl;
+        [SerializeField]
+        private float _wallSlideGravityScale = 0.25f;
 
         [Header("Dashing")]
         [SerializeField]
@@ -196,6 +204,7 @@ namespace Leafling
         private AnimationCurve _dashSpeedCurve;
         [SerializeField]
         private float _dashCancelSpeed = 40;
+
         private float _defaultGravityScale;
         private Quaternion _defaultSpriteRotation;
 
