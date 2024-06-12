@@ -26,7 +26,7 @@ namespace Leafling
         {
             base.Update(dt);
             float direction = LeaflingWallJumpTools.WallDirectionToFacingDirection(_wallDirection);
-            Vector2 velocity = new Vector2(direction, 1) * Leafling.WallJumpSpeed;
+            Vector2 velocity = new Vector2(direction, 1).normalized * Leafling.WallJumpSpeed;
             Leafling.SetVelocity(velocity);
         }
     }
