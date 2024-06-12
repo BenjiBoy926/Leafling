@@ -46,6 +46,8 @@ namespace Leafling
         public SpriteAnimation Jump => _jump;
         public SpriteAnimation CrouchJump => _crouchJump;
         public SpriteAnimation Backflip => _backflip;
+        [field: SerializeField]
+        public SpriteAnimation Frontflip { get; private set; }
         public SpriteAnimation FreeFallForward => _freeFallForward;
         public SpriteAnimation FreeFallBack => _freeFallBack;
         public SpriteAnimation FreeFallStraight => _freeFallStraight; 
@@ -87,7 +89,8 @@ namespace Leafling
         public DirectionalAirControl CrouchJumpAirControl => _crouchJumpAirControl;
         public float WallSlideGravityScale => _wallSlideGravityScale;
         [field: SerializeField]
-        public float WallSlidePushOffSpeed { get; private set; } = 5;
+        public float WallJumpSpeed { get; private set; }
+        
         public float AimingDashGravityScale => _aimingDashGravityScale;
         public float DashCancelSpeed => _dashCancelSpeed;
 

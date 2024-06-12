@@ -268,6 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68eedef41ed7c65478cd68c5d6193a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Frontflip>k__BackingField: {fileID: 11400000, guid: f9f0f4598f0e6604781c180ef95ccc4b, type: 2}
+  <WallJump>k__BackingField: {fileID: 11400000, guid: e17713187f2505c448dafe4fbfb6dfc0, type: 2}
+  <WallJumpSpeed>k__BackingField: 20
   _stateMachine: {fileID: 9130010180061938019}
   _physicsBody: {fileID: 3488960483544655785}
   _animator: {fileID: 8908563907554770964}
@@ -296,6 +299,7 @@ MonoBehaviour:
   _flutterTransitionScale: 0.5
   _dropTransitionScale: 0.5
   _aimingDashTransitionScale: 0.5
+  _wallSlideTransitionScale: 0.25
   _baseRunSpeed: 5
   _leapAdditionalSpeed: 15
   _runAccelerationCurve:
@@ -419,6 +423,7 @@ MonoBehaviour:
     _backwards:
       _acceleration: 20
       _topSpeed: 20
+  _wallSlideGravityScale: 0.25
   _aimingDashGravityScale: 0.25
   _maxDashSpeed: 30
   _dashSpeedCurve:

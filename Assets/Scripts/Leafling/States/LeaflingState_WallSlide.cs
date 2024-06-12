@@ -12,7 +12,8 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            Leafling.SetTransition(new(Leafling.WallPerch, Leafling.WallSlideTransitionScale, FlipX()));
+            bool flip = LeaflingWallJumpTools.WallDirectionToFlipX(_wallDirection);
+            Leafling.SetTransition(new(Leafling.WallPerch, Leafling.WallSlideTransitionScale, flip));
             Leafling.SetGravityScale(Leafling.WallSlideGravityScale);
             Leafling.SetVerticalVelocity(0);
         }
@@ -20,6 +21,11 @@ namespace Leafling
         {
             base.Exit();
             Leafling.ResetGravityScale();
+        }
+        protected override void OnStartedJumping()
+        {
+            base.OnStartedJumping();
+            Leafling.SetState(new LeaflingState_WallJump(Leafling, _wallDirection));
         }
 
         public override void Update(float dt)
@@ -36,19 +42,8 @@ namespace Leafling
         }
         private bool ShouldFreeFall()
         {
-            return Leafling.HorizontalDirection != WallDirectionAsInt() || !Leafling.IsTouching(_wallDirection) || Leafling.IsTouching(CardinalDirection.Down);
-        }
-        private bool FlipX()
-        {
-            return Leafling.DirectionToFlipX(FacingDirection());
-        }
-        private float FacingDirection()
-        {
-            return -WallDirectionAsInt();
-        }
-        private float WallDirectionAsInt()
-        {
-            return (int)_wallDirection.ToVector().x;
+            int direction = LeaflingWallJumpTools.WallDirectionToInt(_wallDirection);
+            return Leafling.HorizontalDirection != direction || !Leafling.IsTouching(_wallDirection) || Leafling.IsTouching(CardinalDirection.Down);
         }
     }
 }
