@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3535534"
-     inkscape:cx="186.67618"
-     inkscape:cy="657.60928"
+     inkscape:zoom="4.0000002"
+     inkscape:cx="474.24998"
+     inkscape:cy="5324.8748"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -69,7 +69,7 @@
        id="page3"
        margin="0"
        bleed="0"
-       inkscape:export-filename="LeaflingColorReference.png"
+       inkscape:export-filename="..\Assets\Sprites\ShaderTest.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <inkscape:page
@@ -235,6 +235,15 @@
        margin="0"
        bleed="0"
        inkscape:export-filename="..\Assets\Sprites\Heroine_Frontflip.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="132.29166"
+       y="0"
+       width="926.04162"
+       height="132.29166"
+       id="page333"
+       inkscape:export-filename="..\Assets\Sprites\IdleSplitPartTest.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </sodipodi:namedview>
@@ -2157,7 +2166,7 @@
        cy="1393.4796"
        cx="99.038773"
        id="ellipse4"
-       style="display:inline;opacity:0.99;fill:#e6e673;fill-opacity:0.97647059;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        rx="8.9769344"
        ry="8.9769201" />
     <path
@@ -2291,5 +2300,40 @@
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 714.30448,2370.9745 28.25038,-15.3413 c 0,0 -11.03821,-21.7022 -15.90251,-18.7088 -4.86431,2.9934 5.23845,17.025 -12.34787,34.0501 z"
        id="path322" />
+    <ellipse
+       style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:0.998879;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="ellipse336"
+       cx="198.86871"
+       cy="60.994843"
+       rx="8.9769344"
+       ry="8.9769201" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 299.56427,121.03306 c -2.43215,-17.9605 8.57075,-52.713603 27.69368,-52.184436 15.14839,0.419184 14.47783,21.019153 6.17393,31.992166 -5.23848,6.92228 -16.88566,17.61292 -33.86761,20.19227 z"
+       id="path343"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 482.74861,117.86585 c 2.61924,-14.03164 3.74177,-52.010644 -19.27013,-48.268869 -15.40695,2.505196 -8.79317,26.005321 -4.49013,28.624566 4.30304,2.619243 10.13489,10.951333 23.76026,19.644303 z"
+       id="path348"
+       sodipodi:nodetypes="cssc" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 593.92334,115.35832 c 3.30729,-0.0661 8.73125,-11.90624 3.77031,-13.36145 -4.96094,-1.45521 -13.95677,16.66875 -3.77031,13.36145 z"
+       id="path353" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 736.26916,115.55676 c 4.82865,-3.04271 -3.175,-16.801038 -6.94531,-13.82448 -3.77031,2.97657 2.84427,18.45469 6.94531,13.82448 z"
+       id="path358" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 827.70648,131.71041 h 27.22141 c 0,0 8.24299,-17.07931 2.05797,-17.02506 -10.66405,0.0935 -8.90518,11.69578 -29.27938,17.02506 z"
+       id="path368"
+       sodipodi:nodetypes="ccsc" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.998879;stroke:#000000;stroke-width:0.79375"
+       d="m 991.0081,131.75581 h 21.0942 c 0,0 -8.2586,-18.60242 -12.35961,-17.54409 -4.10104,1.05833 2.26531,8.64956 -8.73459,17.54409 z"
+       id="path369"
+       sodipodi:nodetypes="ccsc" />
   </g>
 </svg>
