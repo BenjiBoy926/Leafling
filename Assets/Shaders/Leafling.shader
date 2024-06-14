@@ -73,6 +73,18 @@ Shader "Leafling"
             static const fixed3 _HeadKey = fixed3(1, 1, 1);
             static const fixed3 _LeftArmKey = fixed3(1, 0, 0);
 
+            static const fixed3 Keys[2] = 
+            {
+                fixed3(1, 1, 1), 
+                fixed3(1, 0, 0)
+            };
+            fixed4 GetValue(int index) 
+            {
+                if (index == 0) return _HeadColor;
+                if (index == 1) return _LeftArmColor;
+                return fixed4(0, 0, 0, 1);
+            }
+
             struct appdata_t
             {
                 float4 vertex   : POSITION;
@@ -145,10 +157,6 @@ Shader "Leafling"
                 }
 
                 return OUT;
-            }
-            fixed ColorsEqual(fixed4 a, fixed4 b) 
-            {
-                return length(a - b) < .75;
             }
             fixed4 RemapColor(fixed4 IN) 
             {
