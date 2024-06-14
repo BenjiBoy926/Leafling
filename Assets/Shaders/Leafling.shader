@@ -86,10 +86,10 @@ Shader "Leafling"
                 fixed3(1, 1, 1), 
                 fixed3(1, 0, 0),
                 fixed3(0, 1, 1),
-                fixed3(0, 0, 1),
-                fixed3(1, 1, 0),
                 fixed3(0, 1, 0),
                 fixed3(1, 0, 1),
+                fixed3(0, 0, 1),
+                fixed3(1, 1, 0),
             };
             fixed4 GetValue(int index) 
             {
