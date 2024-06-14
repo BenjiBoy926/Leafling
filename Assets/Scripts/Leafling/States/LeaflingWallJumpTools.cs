@@ -12,7 +12,7 @@ namespace Leafling
         }
         public static int WallDirectionToInt(CardinalDirection wallDirection)
         {
-            return (int)wallDirection.ToVector().x;
+            return (int)wallDirection.X;
         }
     }
 }

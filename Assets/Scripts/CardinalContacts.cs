@@ -18,44 +18,33 @@ namespace Leafling
         [SerializeField]
         private Collider2D _collider;
         [SerializeField]
+        private float _raycastLength = 0.01f;
+        [SerializeField]
         private float _overlapAreaExtents = 0.01f;
         [SerializeField]
         private float _overlapAreaMargin = 0.001f;
-        private Contact[] _contacts = new Contact[4];
+        private Dictionary<CardinalDirection, Contact> _contacts = new()
+        {
+            [CardinalDirection.Up] = new Contact(),
+            [CardinalDirection.Down] = new Contact(),
+            [CardinalDirection.Left] = new Contact(),
+            [CardinalDirection.Right] = new Contact(),
+        };
 
         private void Reset()
         {
             _collider = GetComponentInChildren<Collider2D>();
         }
-        private void OnDrawGizmosSelected()
-        {
-            foreach (CardinalDirection direction in GetCardinalDirections())
-            {
-                DrawOverlapAreaGizmo(direction);
-            }
-        }
-        private void DrawOverlapAreaGizmo(CardinalDirection direction)
-        {
-            if (_contacts[(int)direction].IsTouching)
-            {
-                Gizmos.color = Color.red;
-            }
-            else
-            {
-                Gizmos.color = Color.yellow;
-            }
-            Gizmos.DrawWireCube(GetAreaCenter(direction), GetAreaSize(direction));
-        }
 
         public bool IsTouching(CardinalDirection direction)
         {
-            return _contacts[(int)direction].IsTouching;
+            return _contacts[direction].IsTouching;
         }
         public bool IsTouchingAnything()
         {
-            for (int i = 0; i < _contacts.Length; i++)
+            for (int i = 0; i < CardinalDirection.Count; i++)
             {
-                if (_contacts[i].IsTouching)
+                if (_contacts[CardinalDirection.Get(i)].IsTouching)
                 {
                     return true;
                 }
@@ -64,33 +53,26 @@ namespace Leafling
         }
         public IEnumerable<Vector2> GetContactNormals()
         {
-            return GetResultForEachTouchingContact(NormalOf);
-        }
-        private Vector2 NormalOf(int index)
-        {
-            return _contacts[index].Normal;
-        }
-        private IEnumerable<TResult> GetResultForEachTouchingContact<TResult>(Func<int, TResult> fetchResultForIndex)
-        {
-            for (int i = 0; i < _contacts.Length; i++)
+            for (int i = 0; i < CardinalDirection.Count; i++)
             {
-                if (_contacts[i].IsTouching)
+                Contact contact = _contacts[CardinalDirection.Get(i)];
+                if (contact.IsTouching)
                 {
-                    yield return fetchResultForIndex(i);
+                    yield return contact.Normal;
                 }
             }
         }
 
         private void FixedUpdate()
         {
-            for (int i = 0; i < _contacts.Length; i++)
+            for (int i = 0; i < CardinalDirection.Count; i++)
             {
-                UpdateContact(i);
+                UpdateContact(CardinalDirection.Get(i));
             }
         }
-        private void UpdateContact(int direction)
+        private void UpdateContact(CardinalDirection direction)
         {
-            _contacts[direction] = BuildContact((CardinalDirection)direction);
+            _contacts[direction] = BuildContact(direction);
         }
         private Contact BuildContact(CardinalDirection direction)
         {
@@ -98,14 +80,10 @@ namespace Leafling
             return new Contact
             {
                 IsTouching = overlap,
-                Normal = direction.ToVector() * -1
+                Normal = direction.Vector * -1
             };
         }
 
-        private CardinalDirection[] GetCardinalDirections()
-        {
-            return (CardinalDirection[])Enum.GetValues(typeof(CardinalDirection));
-        }
         private Vector2 GetAreaMax(CardinalDirection direction)
         {
             return GetAreaCenter(direction) + GetAreaExtents(direction);
@@ -116,15 +94,15 @@ namespace Leafling
         }
         private Vector2 GetAreaCenter(CardinalDirection direction)
         {
-            return GetAreaCenter(direction.ToVector());
+            return GetAreaCenter(direction.Vector);
         }
         private Vector2 GetAreaExtents(CardinalDirection direction)
         {
-            return GetAreaExtents(direction.ToVector());
+            return GetAreaExtents(direction.Vector);
         }
         private Vector2 GetAreaSize(CardinalDirection direction)
         {
-            return GetAreaSize(direction.ToVector());
+            return GetAreaSize(direction.Vector);
         }
 
         private Vector2 GetAreaCenter(Vector2 direction)
@@ -142,6 +120,26 @@ namespace Leafling
             Vector2 parallelSize = OverlapAreaSizeVector;
             Vector2 perpendicularSize = ColliderSize - 2 * _overlapAreaMargin * Vector2.one;
             return parallelSize * direction + perpendicularSize * direction.SwizzleYX();
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            for (int i = 0; i < CardinalDirection.Count; i++)
+            {
+                DrawOverlapAreaGizmo(CardinalDirection.Get(i));
+            }
+        }
+        private void DrawOverlapAreaGizmo(CardinalDirection direction)
+        {
+            if (_contacts[direction].IsTouching)
+            {
+                Gizmos.color = Color.red;
+            }
+            else
+            {
+                Gizmos.color = Color.yellow;
+            }
+            Gizmos.DrawWireCube(GetAreaCenter(direction), GetAreaSize(direction));
         }
     }
 }

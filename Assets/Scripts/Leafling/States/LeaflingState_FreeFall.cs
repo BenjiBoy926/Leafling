@@ -66,7 +66,7 @@ namespace Leafling
         }
         private bool ShouldSlideOnWallInDirection(CardinalDirection direction)
         {
-            int directionAsInt = (int)direction.ToVector().x;
+            int directionAsInt = (int)direction.X;
             return Leafling.IsTouching(direction) && Leafling.HorizontalDirection == directionAsInt;
         }
 
