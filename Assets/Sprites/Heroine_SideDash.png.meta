@@ -269,27 +269,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Heroine_SideDash_7
-      rect:
-        serializedVersion: 2
-        x: 3500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c73582126313db34a9a1ddcc7ea4e4fc
-      internalID: -2104169617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -308,7 +287,6 @@ TextureImporter:
       Heroine_SideDash_4: -596430093
       Heroine_SideDash_5: 1307469175
       Heroine_SideDash_6: -2132503721
-      Heroine_SideDash_7: -2104169617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

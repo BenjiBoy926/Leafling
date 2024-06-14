@@ -180,7 +180,6 @@ Shader "Leafling"
             }
             fixed4 RemapColor(fixed4 IN) 
             {
-                // Don't remap transparent colors in the sprite
                 if (IN.a < 0.1) 
                 {
                     return IN;
