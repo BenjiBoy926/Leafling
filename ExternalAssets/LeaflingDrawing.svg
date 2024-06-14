@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.12500001"
-     inkscape:cx="1551.9999"
-     inkscape:cy="1739.9999"
+     inkscape:zoom="0.3535534"
+     inkscape:cx="186.67618"
+     inkscape:cy="657.60928"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -69,7 +69,7 @@
        id="page3"
        margin="0"
        bleed="0"
-       inkscape:export-filename="..\Assets\Abstract\Sprites\Heroine_Idle.png"
+       inkscape:export-filename="LeaflingColorReference.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <inkscape:page
@@ -726,20 +726,20 @@
        id="path206"
        sodipodi:nodetypes="cssc" />
     <path
-       style="fill:#4d361f;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 64.966536,131.75581 h 21.094246 c 0,0 -8.258614,-18.60242 -12.359655,-17.54409 -4.101042,1.05833 2.265306,8.64956 -8.734591,17.54409 z"
        id="path207"
        sodipodi:nodetypes="ccsc" />
     <path
-       style="fill:#99723d;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 74.810931,115.55676 c 4.828646,-3.04271 -3.175,-16.801038 -6.945312,-13.82448 -3.770312,2.97657 2.844271,18.45469 6.945312,13.82448 z"
        id="path208" />
     <path
-       style="fill:#99723d;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 64.756765,115.35832 c 3.307291,-0.0661 8.731249,-11.90624 3.770312,-13.36145 -4.960937,-1.45521 -13.956767,16.66875 -3.770312,13.36145 z"
        id="path205" />
     <path
-       style="fill:#5c995c;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 85.873694,117.86585 c 2.61924,-14.03164 3.741773,-52.010644 -19.270132,-48.268869 -15.406949,2.505196 -8.793168,26.005321 -4.490127,28.624566 4.303037,2.619243 10.134887,10.951333 23.760259,19.644303 z"
        id="path136"
        sodipodi:nodetypes="cssc" />
@@ -1042,7 +1042,7 @@
        style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:0.9974981;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        sodipodi:nodetypes="ssss" />
     <ellipse
-       style="display:inline;opacity:0.99;fill:#e5e573;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:0.99887949;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4528"
        cx="66.577133"
        cy="60.994843"
@@ -1875,12 +1875,12 @@
        id="path195"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#73bf73;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 34.981015,121.03306 c -2.432151,-17.9605 8.570753,-52.713603 27.693685,-52.184436 15.148383,0.419184 14.477829,21.019153 6.173925,31.992166 -5.238482,6.92228 -16.885656,17.61292 -33.86761,20.19227 z"
        id="path79"
        sodipodi:nodetypes="cssc" />
     <path
-       style="fill:#4d361f;stroke:#000000;stroke-width:0.79375;fill-opacity:1"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375;fill-opacity:0.99887949"
        d="m 33.956591,131.71041 h 27.221401 c 0,0 8.242991,-17.07931 2.057975,-17.02506 -10.664054,0.0935 -8.905183,11.69578 -29.279376,17.02506 z"
        id="path137"
        sodipodi:nodetypes="ccsc" />
