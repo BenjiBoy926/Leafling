@@ -11,6 +11,11 @@ Shader "Leafling"
         [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
         _HeadColor ("Head", Color) = (1, 1, 1, 1)
         _LeftArmColor ("Left Arm", Color) = (1, 1, 1, 1)
+        _RightArmColor ("Right Arm", Color) = (1, 1, 1, 1)
+        _LeftThighColor ("Left Thigh", Color) = (1, 1, 1, 1)
+        _RightThighColor ("Right Thigh", Color) = (1, 1, 1, 1)
+        _LeftFootColor ("Left Foot", Color) = (1, 1, 1, 1)
+        _RightFootColor ("Right Foot", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -69,19 +74,32 @@ Shader "Leafling"
             fixed4 _Color;
             fixed4 _HeadColor;
             fixed4 _LeftArmColor;
+            fixed4 _RightArmColor;
+            fixed4 _LeftThighColor;
+            fixed4 _RightThighColor;
+            fixed4 _LeftFootColor;
+            fixed4 _RightFootColor;
 
-            static const fixed3 _HeadKey = fixed3(1, 1, 1);
-            static const fixed3 _LeftArmKey = fixed3(1, 0, 0);
-
-            static const fixed3 Keys[2] = 
+            static const int KeysLength = 7;
+            static const fixed3 _Keys[KeysLength] = 
             {
                 fixed3(1, 1, 1), 
-                fixed3(1, 0, 0)
+                fixed3(1, 0, 0),
+                fixed3(0, 1, 1),
+                fixed3(0, 0, 1),
+                fixed3(1, 1, 0),
+                fixed3(0, 1, 0),
+                fixed3(1, 0, 1),
             };
             fixed4 GetValue(int index) 
             {
                 if (index == 0) return _HeadColor;
                 if (index == 1) return _LeftArmColor;
+                if (index == 2) return _RightArmColor;
+                if (index == 3) return _LeftThighColor;
+                if (index == 4) return _RightThighColor;
+                if (index == 5) return _LeftFootColor;
+                if (index == 6) return _RightFootColor;
                 return fixed4(0, 0, 0, 1);
             }
 
@@ -146,16 +164,18 @@ Shader "Leafling"
             }
             fixed4 ClosestColor(fixed3 IN) 
             {
-                fixed shortestDistance = ColorDistance(_HeadKey, IN);
-                fixed4 OUT = _HeadColor;
+                fixed shortestDistance = ColorDistance(_Keys[0], IN);
+                fixed4 OUT = GetValue(0);
 
-                fixed distance = ColorDistance(_LeftArmKey, IN);
-                if (distance < shortestDistance) 
+                for (int i = 1; i < KeysLength; i++) 
                 {
-                    shortestDistance = distance;
-                    OUT = _LeftArmColor;
+                    fixed distance = ColorDistance(_Keys[i], IN);
+                    if (distance < shortestDistance) 
+                    {
+                        shortestDistance = distance;
+                        OUT = GetValue(i);
+                    }
                 }
-
                 return OUT;
             }
             fixed4 RemapColor(fixed4 IN) 
