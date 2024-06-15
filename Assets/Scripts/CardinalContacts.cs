@@ -170,8 +170,13 @@ namespace Leafling
         {
             for (int i = 0; i < CardinalDirection.Count; i++)
             {
-                DrawOverlapAreaGizmo(CardinalDirection.Get(i));
+                DrawRays(CardinalDirection.Get(i));
             }
+        }
+        private void DrawRays(CardinalDirection direction)
+        {
+            Gizmos.DrawRay(GetMinOrigin(direction), direction.Vector * _raycastLength);
+            //Gizmos.DrawRay(new(GetMaxOrigin(direction), direction.Vector * _raycastLength));
         }
         private void DrawOverlapAreaGizmo(CardinalDirection direction)
         {

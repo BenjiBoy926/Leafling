@@ -476,7 +476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 4379201103701369815}
-  _raycastLength: 0.01
+  _raycastLength: 0.1
+  _raycastSideMargin: 0.01
   _overlapAreaExtents: 0.1
   _overlapAreaMargin: 0.1
 --- !u!114 &7827341310666358948
