@@ -83,7 +83,7 @@ Shader "Leafling"
             static const int KeysLength = 7;
             static const fixed3 _Keys[KeysLength] = 
             {
-                fixed3(1, 0.5, 0), 
+                fixed3(1, 0.2, 0), 
                 fixed3(1, 0, 0),
                 fixed3(0, 1, 1),
                 fixed3(0, 1, 0),
