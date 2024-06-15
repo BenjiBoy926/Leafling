@@ -273,7 +273,7 @@ Shader "Leafling"
             }
             fixed4 RemapHue(fixed4 input) 
             {
-                if (HasHue(input)) 
+                if (HasHue(input) && input.a > 0.1) 
                 {
                     fixed4 output = ClosestColor(input);
                     fixed3 hsvOutput = RgbToHsv(output);
