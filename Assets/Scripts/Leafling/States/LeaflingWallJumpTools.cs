@@ -6,13 +6,9 @@ namespace Leafling
         {
             return Leafling.DirectionToFlipX(WallDirectionToFacingDirection(wallDirection));
         }
-        public static float WallDirectionToFacingDirection(CardinalDirection direction)
+        public static int WallDirectionToFacingDirection(CardinalDirection direction)
         {
-            return -WallDirectionToInt(direction);
-        }
-        public static int WallDirectionToInt(CardinalDirection wallDirection)
-        {
-            return (int)wallDirection.X;
+            return -direction.X;
         }
     }
 }

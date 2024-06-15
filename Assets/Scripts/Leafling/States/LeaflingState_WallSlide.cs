@@ -42,8 +42,7 @@ namespace Leafling
         }
         private bool ShouldFreeFall()
         {
-            int direction = LeaflingWallJumpTools.WallDirectionToInt(_wallDirection);
-            return Leafling.HorizontalDirection != direction || !Leafling.IsTouching(_wallDirection) || Leafling.IsTouching(CardinalDirection.Down);
+            return Leafling.HorizontalDirection != _wallDirection.X || !Leafling.IsTouching(_wallDirection) || Leafling.IsTouching(CardinalDirection.Down);
         }
     }
 }
