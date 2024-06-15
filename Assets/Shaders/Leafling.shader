@@ -170,7 +170,33 @@ Shader "Leafling"
             {
                 fixed min = MinComponent(rgb);
                 fixed max = MaxComponent(rgb);
-                return rgb;
+                fixed diff = max - min;
+                
+                fixed redAmount = (max - rgb.r) / diff;
+                fixed greenAmount = (max - rgb.g) / diff;
+                fixed blueAmount = (max - rgb.b) / diff;
+                
+                fixed h;
+                if (diff == 0) 
+                {
+                    h = 0;
+                }
+                else if (rgb.r == max) 
+                {
+                    h = blueAmount - greenAmount;
+                }
+                else if (rgb.g == max) 
+                {
+                    h = 2 + redAmount - blueAmount;
+                }
+                else 
+                {
+                    h = 4 + greenAmount - redAmount;
+                }
+
+                fixed s = diff / max;
+                fixed v = max;
+                return fixed3(h, s, v);
             }
             fixed ColorDistance(fixed3 a, fixed3 b) 
             {
