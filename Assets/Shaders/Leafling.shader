@@ -158,6 +158,20 @@ Shader "Leafling"
                 return color;
             }
 
+            fixed MinComponent(fixed3 color) 
+            {
+                return min(min(color.r, color.g), color.b);
+            }
+            fixed MaxComponent(fixed3 color) 
+            {
+                return max(max(color.r, color.g), color.b);
+            }
+            fixed3 RgbToHsv(fixed3 rgb) 
+            {
+                fixed min = MinComponent(rgb);
+                fixed max = MaxComponent(rgb);
+                return rgb;
+            }
             fixed ColorDistance(fixed3 a, fixed3 b) 
             {
                 return length(a - b);
@@ -178,7 +192,7 @@ Shader "Leafling"
                 }
                 return OUT;
             }
-            fixed4 RemapColor(fixed4 IN) 
+            fixed4 RemapHue(fixed4 IN) 
             {
                 if (IN.a < 0.1) 
                 {
@@ -194,7 +208,7 @@ Shader "Leafling"
             fixed4 SpriteFrag(v2f IN) : SV_Target
             {
                 fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
-                c = RemapColor(c);
+                c = RemapHue(c);
                 c.rgb *= c.a;
                 return c;
             }
