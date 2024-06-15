@@ -8,9 +8,14 @@ namespace Leafling
 {
     public class CardinalContacts : MonoBehaviour
     {
+        private Vector2 RaycastMargin => new(_raycastSideMargin, RaycastVerticalMargin);
+        private float RaycastVerticalMargin => _raycastLength * 0.1f;
         private Vector2 ColliderCenter => _collider.bounds.center;
         private Vector2 ColliderExtents => _collider.bounds.extents;
         private Vector2 ColliderSize => _collider.bounds.size;
+        private Vector2 ColliderMin => _collider.bounds.min;
+        private Vector2 ColliderMax => _collider.bounds.max;
+
         private Vector2 OverlapAreaExtentsVector => Vector2.one * _overlapAreaExtents;
         private Vector2 OverlapAreaMarginVector => Vector2.one * _overlapAreaMargin;
         private Vector2 OverlapAreaSizeVector => OverlapAreaExtentsVector * 2;
@@ -19,6 +24,8 @@ namespace Leafling
         private Collider2D _collider;
         [SerializeField]
         private float _raycastLength = 0.01f;
+        [SerializeField]
+        private float _raycastSideMargin = 0.01f;
         [SerializeField]
         private float _overlapAreaExtents = 0.01f;
         [SerializeField]
@@ -82,6 +89,43 @@ namespace Leafling
                 IsTouching = overlap,
                 Normal = direction.Vector * -1
             };
+        }
+
+        private Vector2 GetMinOrigin(CardinalDirection direction)
+        {
+            return new(GetMinOriginX(direction), GetMinOriginY(direction));
+        }
+        private float GetMinOriginX(CardinalDirection direction)
+        {
+            return GetMinOriginDimension(direction, Dimension.X);
+        }
+        private float GetMinOriginY(CardinalDirection direction)
+        {
+            return GetMinOriginDimension(direction, Dimension.Y);
+        }
+        private float GetMinOriginDimension(CardinalDirection direction, Dimension dimension)
+        {
+            float sign = direction.Dimension(dimension) == 1 ? -1 : 1;
+            float center = ColliderCenter.Get(dimension);
+            float extent = ColliderExtents.Get(dimension) * sign;
+            float margin = RaycastMargin.Get(dimension) * sign;
+            return center - extent + margin;
+        }
+        private Vector2 GetMaxOrigin(CardinalDirection direction)
+        {
+            return ColliderCenter + ColliderExtents - Vector2.right * _raycastSideMargin - Vector2.up * RaycastVerticalMargin;
+        }
+        private float GetMaxOriginX(CardinalDirection direction)
+        {
+            return GetMinOriginDimension(direction, Dimension.X);
+        }
+        private float GetMaxOriginDimension(CardinalDirection direction, Dimension dimension)
+        {
+            float sign = direction.Dimension(dimension) == -1 ? -1 : 1;
+            float center = ColliderCenter.Get(dimension);
+            float extent = ColliderExtents.Get(dimension) * sign;
+            float margin = RaycastMargin.Get(dimension) * sign;
+            return center + extent - margin;
         }
 
         private Vector2 GetAreaMax(CardinalDirection direction)

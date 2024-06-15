@@ -1,3 +1,4 @@
+using Core;
 using System;
 using UnityEngine;
 
@@ -22,27 +23,32 @@ namespace Leafling
         public float Y => Vector.y;
         public abstract Vector2 Vector { get; }
         public abstract CardinalDirection Opposite { get; }
+
+        public float Dimension(Dimension dimension)
+        {
+            return Vector.Get(dimension);
+        }
     }
 
     public class CardinalDirection_Left : CardinalDirection
     {
         public override Vector2 Vector => Vector2.left;
-        public override CardinalDirection Opposite => new CardinalDirection_Right();
+        public override CardinalDirection Opposite => Right;
     }
     public class CardinalDirection_Right : CardinalDirection
     {
         public override Vector2 Vector => Vector2.right;
-        public override CardinalDirection Opposite => new CardinalDirection_Left();
+        public override CardinalDirection Opposite => Left;
     }
 
     public class CardinalDirection_Up : CardinalDirection
     {
         public override Vector2 Vector => Vector2.up;
-        public override CardinalDirection Opposite => new CardinalDirection_Down();
+        public override CardinalDirection Opposite => Down;
     }
     public class CardinalDirection_Down : CardinalDirection
     {
         public override Vector2 Vector => Vector2.down;
-        public override CardinalDirection Opposite => new CardinalDirection_Up();
+        public override CardinalDirection Opposite => Up;
     }
 }

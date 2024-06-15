@@ -83,7 +83,7 @@ Shader "Leafling"
             static const int KeysLength = 7;
             static const fixed3 _Keys[KeysLength] = 
             {
-                fixed3(1, 1, 1), 
+                fixed3(1, 0.5, 0), 
                 fixed3(1, 0, 0),
                 fixed3(0, 1, 1),
                 fixed3(0, 1, 0),
@@ -190,6 +190,12 @@ Shader "Leafling"
                     return 4 + greenAmount - redAmount;
                 }
             }
+            bool HasHue(fixed3 rgb) 
+            {
+                fixed min = MinComponent(rgb);
+                fixed max = MaxComponent(rgb);
+                return (max - min) > 0.001;
+            }
             fixed3 RgbToHsv(fixed3 rgb) 
             {
                 fixed min = MinComponent(rgb);
@@ -229,15 +235,11 @@ Shader "Leafling"
             }
             fixed4 RemapHue(fixed4 IN) 
             {
-                if (IN.a < 0.1) 
+                if (HasHue(IN)) 
                 {
-                    return IN;
+                    return ClosestColor(IN);
                 }
-                if (ColorDistance(IN, fixed3(0, 0, 0)) < 0.1) 
-                {
-                    return IN;
-                }
-                return ClosestColor(IN);
+                return IN;
             }
 
             fixed4 SpriteFrag(v2f IN) : SV_Target
