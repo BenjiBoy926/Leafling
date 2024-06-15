@@ -423,7 +423,8 @@ MonoBehaviour:
       _acceleration: 10
       _topSpeed: 20
   <WallSlideGravityScale>k__BackingField: 0.25
-  <WallJumpSpeed>k__BackingField: 20
+  <WallJumpSpeed>k__BackingField: 30
+  <WallJumpExitHop>k__BackingField: 20
   <AimingDashGravityScale>k__BackingField: 0.25
   <MaxDashSpeed>k__BackingField: 30
   <DashSpeedCurve>k__BackingField:
@@ -478,8 +479,6 @@ MonoBehaviour:
   _collider: {fileID: 4379201103701369815}
   _raycastLength: 0.1
   _raycastSideMargin: 0.01
-  _overlapAreaExtents: 0.1
-  _overlapAreaMargin: 0.1
 --- !u!114 &7827341310666358948
 MonoBehaviour:
   m_ObjectHideFlags: 0

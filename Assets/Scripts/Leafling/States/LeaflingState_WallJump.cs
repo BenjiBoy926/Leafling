@@ -20,6 +20,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
+            Leafling.SetVerticalVelocity(Leafling.WallJumpExitHop);
             Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
         }
         public override void Update(float dt)
