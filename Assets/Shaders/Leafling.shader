@@ -173,22 +173,24 @@ Shader "Leafling"
                     return 0;
                 }
 
-                fixed redAmount = (max - rgb.r) / minMaxDiff;
+                fixed redAmount = (max - rgb.r) / minMaxDiff; 
                 fixed greenAmount = (max - rgb.g) / minMaxDiff;
                 fixed blueAmount = (max - rgb.b) / minMaxDiff;
-                
+                fixed h;
+
                 if (rgb.r == max) 
                 {
-                    return blueAmount - greenAmount;
+                    h = blueAmount - greenAmount;
                 }
                 else if (rgb.g == max) 
                 {
-                    return 2 + redAmount - blueAmount;
+                    h = 2 + redAmount - blueAmount;
                 }
                 else 
                 {
-                    return 4 + greenAmount - redAmount;
+                    h = 4 + greenAmount - redAmount;
                 }
+                return (h / 6.0) % 1.0;
             }
             bool HasHue(fixed3 rgb) 
             {
@@ -211,20 +213,56 @@ Shader "Leafling"
                 fixed v = max;
                 return fixed3(h, s, v);
             }
+            fixed3 HsvColorAmount(fixed hueRange, fixed chroma, fixed chi)
+            {
+                if (hueRange < 1) 
+                {
+                    return fixed3(chroma, chi, 0);
+                }
+                else if (hueRange < 2)
+                {
+                    return fixed3(chi, chroma, 0);
+                }
+                else if (hueRange < 3)
+                {
+                    return fixed3(0, chroma, chi);
+                }
+                else if (hueRange < 4)
+                {
+                    return fixed3(0, chi, chroma);
+                }
+                else if (hueRange < 5)
+                {
+                    return fixed3(chi, 0, chroma);
+                }
+                else
+                {
+                    return fixed3(chroma, 0, chi);
+                }
+            }
+            fixed3 HsvToRgb(fixed3 hsv) 
+            {
+                fixed hueRange = hsv.x * 6;
+                fixed chroma = hsv.y * hsv.z;
+                fixed chi = chroma * (1 - abs(hueRange % 2 - 1));
+                fixed3 colorAmount = HsvColorAmount(hueRange, chroma, chi);
+                fixed chromaDiff = hsv.z - chroma;
+                return fixed3(colorAmount.r + chromaDiff, colorAmount.g + chromaDiff, colorAmount.b + chromaDiff);
+            }
             fixed ColorDistance(fixed3 a, fixed3 b) 
             {
                 fixed3 hsvA = RgbToHsv(a);
                 fixed3 hsvB = RgbToHsv(b);
                 return abs(hsvA.x - hsvB.x);
             }
-            fixed4 ClosestColor(fixed3 IN) 
+            fixed4 ClosestColor(fixed3 color) 
             {
-                fixed shortestDistance = ColorDistance(_Keys[0], IN);
+                fixed shortestDistance = ColorDistance(_Keys[0], color);
                 fixed4 OUT = GetValue(0);
 
                 for (int i = 1; i < KeysLength; i++) 
                 {
-                    fixed distance = ColorDistance(_Keys[i], IN);
+                    fixed distance = ColorDistance(_Keys[i], color);
                     if (distance < shortestDistance) 
                     {
                         shortestDistance = distance;
@@ -233,13 +271,17 @@ Shader "Leafling"
                 }
                 return OUT;
             }
-            fixed4 RemapHue(fixed4 IN) 
+            fixed4 RemapHue(fixed4 input) 
             {
-                if (HasHue(IN)) 
+                if (HasHue(input)) 
                 {
-                    return ClosestColor(IN);
+                    fixed4 output = ClosestColor(input);
+                    fixed3 hsvOutput = RgbToHsv(output);
+                    fixed3 hsvInput = RgbToHsv(input);
+                   
+                    return fixed4(HsvToRgb(hsvOutput), output.a);
                 }
-                return IN;
+                return input;
             }
 
             fixed4 SpriteFrag(v2f IN) : SV_Target
