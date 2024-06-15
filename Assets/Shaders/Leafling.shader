@@ -278,8 +278,8 @@ Shader "Leafling"
                     fixed4 output = ClosestColor(input);
                     fixed3 hsvOutput = RgbToHsv(output);
                     fixed3 hsvInput = RgbToHsv(input);
-                    hsvOutput.y = hsvInput.y;
-                    hsvOutput.z = hsvInput.z;
+                    hsvOutput.y *= hsvInput.y;
+                    hsvOutput.z *= hsvInput.z;
                     return fixed4(HsvToRgb(hsvOutput), output.a);
                 }
                 return input;
