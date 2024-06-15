@@ -166,41 +166,50 @@ Shader "Leafling"
             {
                 return max(max(color.r, color.g), color.b);
             }
+            fixed CalculateHue(fixed3 rgb, fixed max, fixed minMaxDiff) 
+            {
+                if (minMaxDiff < 0.001) 
+                {
+                    return 0;
+                }
+
+                fixed redAmount = (max - rgb.r) / minMaxDiff;
+                fixed greenAmount = (max - rgb.g) / minMaxDiff;
+                fixed blueAmount = (max - rgb.b) / minMaxDiff;
+                
+                if (rgb.r == max) 
+                {
+                    return blueAmount - greenAmount;
+                }
+                else if (rgb.g == max) 
+                {
+                    return 2 + redAmount - blueAmount;
+                }
+                else 
+                {
+                    return 4 + greenAmount - redAmount;
+                }
+            }
             fixed3 RgbToHsv(fixed3 rgb) 
             {
                 fixed min = MinComponent(rgb);
                 fixed max = MaxComponent(rgb);
                 fixed diff = max - min;
                 
-                fixed redAmount = (max - rgb.r) / diff;
-                fixed greenAmount = (max - rgb.g) / diff;
-                fixed blueAmount = (max - rgb.b) / diff;
-                
-                fixed h;
-                if (diff == 0) 
+                fixed h = CalculateHue(rgb, max, diff);
+                fixed s = 0;
+                if (max > 0.001) 
                 {
-                    h = 0;
+                    s = diff / max;
                 }
-                else if (rgb.r == max) 
-                {
-                    h = blueAmount - greenAmount;
-                }
-                else if (rgb.g == max) 
-                {
-                    h = 2 + redAmount - blueAmount;
-                }
-                else 
-                {
-                    h = 4 + greenAmount - redAmount;
-                }
-
-                fixed s = diff / max;
                 fixed v = max;
                 return fixed3(h, s, v);
             }
             fixed ColorDistance(fixed3 a, fixed3 b) 
             {
-                return length(a - b);
+                fixed3 hsvA = RgbToHsv(a);
+                fixed3 hsvB = RgbToHsv(b);
+                return abs(hsvA.x - hsvB.x);
             }
             fixed4 ClosestColor(fixed3 IN) 
             {
