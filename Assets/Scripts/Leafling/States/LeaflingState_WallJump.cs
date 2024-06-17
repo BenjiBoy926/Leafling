@@ -17,18 +17,25 @@ namespace Leafling
             Leafling.SetAnimation(Leafling.WallJump);
             Leafling.FaceTowards(LeaflingWallJumpTools.WallDirectionToFacingDirection(_wallDirection));
         }
-        protected override void OnAnimationFinished()
-        {
-            base.OnAnimationFinished();
-            Leafling.SetVerticalVelocity(Leafling.WallJumpExitHop);
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
-        }
         public override void Update(float dt)
         {
             base.Update(dt);
             float direction = LeaflingWallJumpTools.WallDirectionToFacingDirection(_wallDirection);
             Vector2 velocity = new Vector2(direction, 1).normalized * Leafling.WallJumpSpeed;
             Leafling.SetVelocity(velocity);
+            if (ShouldFinishWallJump())
+            {
+                FinishWallJump();
+            }
+        }
+        private bool ShouldFinishWallJump()
+        {
+            return !Leafling.IsTouching(_wallDirection) && (!Leafling.IsJumping || TimeSinceStateStart > Leafling.MaxWallJumpTime);
+        }
+        private void FinishWallJump()
+        {
+            Leafling.SetVerticalVelocity(Leafling.WallJumpExitHop);
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
         }
     }
 }

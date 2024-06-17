@@ -150,6 +150,8 @@ namespace Leafling
         [field: SerializeField]
         public float WallSlideGravityScale { get; private set; } = 0.25f;
         [field: SerializeField]
+        public float MaxWallJumpTime { get; private set; } = 0.5f;
+        [field: SerializeField]
         public float WallJumpSpeed { get; private set; } = 30;
         [field: SerializeField]
         public float WallJumpExitHop { get; private set; } = 10;
