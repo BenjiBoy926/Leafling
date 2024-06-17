@@ -2,11 +2,19 @@ namespace Leafling
 {
     public class LeaflingState_WallSlide : LeaflingState
     {
-        private CardinalDirection _wallDirection;
+        private bool ShouldForceSlide => TimeSinceStateStart < _forceSlideWindow;
 
-        public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection) : base(leafling)
+        private CardinalDirection _wallDirection;
+        private float _forceSlideWindow;
+
+        public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection) : this(leafling, wallDirection, 0)
+        {
+
+        }
+        public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection, float forceSlideWindow) : base(leafling)
         {
             _wallDirection = wallDirection;
+            _forceSlideWindow = forceSlideWindow;
         }
 
         public override void Enter()
@@ -31,18 +39,23 @@ namespace Leafling
         public override void Update(float dt)
         {
             base.Update(dt);
-            if (ShouldFreeFall())
+            if (ShouldDisengage())
             {
-                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal)); 
+                Disengage();
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
+                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
             }
         }
-        private bool ShouldFreeFall()
+        private void Disengage()
         {
-            return Leafling.HorizontalDirection != _wallDirection.X || !Leafling.IsTouching(_wallDirection) || Leafling.IsTouching(CardinalDirection.Down);
+            Leafling.SetHorizontalVelocity(-_wallDirection.X * 5);
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+        }
+        private bool ShouldDisengage()
+        {
+            return Leafling.IsCrouching || (!ShouldForceSlide && Leafling.HorizontalDirection != _wallDirection.X);
         }
     }
 }

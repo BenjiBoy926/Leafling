@@ -27,6 +27,10 @@ namespace Leafling
             {
                 FinishWallJump();
             }
+            if (Leafling.IsTouching(_wallDirection.Opposite))
+            {
+                Leafling.SetState(new LeaflingState_WallSlide(Leafling, _wallDirection.Opposite, 0.5f));
+            }
         }
         private bool ShouldFinishWallJump()
         {
