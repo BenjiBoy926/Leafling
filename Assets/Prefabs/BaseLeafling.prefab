@@ -289,6 +289,7 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 8908563907554770964}
   <Contacts>k__BackingField: {fileID: 1035319642480623658}
   <Inputs>k__BackingField: {fileID: 7827341310666358948}
+  <Sprite>k__BackingField: {fileID: 2711572145439259236}
   <Idle>k__BackingField: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   <Run>k__BackingField: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   <Slide>k__BackingField: {fileID: 11400000, guid: e50c7ac5dbd919f4089df68a55f356fd, type: 2}
@@ -469,6 +470,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <DashCancelSpeed>k__BackingField: 30
+  <IsAbleToDash>k__BackingField: 1
 --- !u!114 &9130010180061938019
 MonoBehaviour:
   m_ObjectHideFlags: 0

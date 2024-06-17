@@ -13,6 +13,7 @@ namespace Leafling
         {
             base.Enter();
             Leafling.SetAnimation(Leafling.Squat);
+            Leafling.RestoreAbilityToDash();
         }
         protected override void OnStartedJumping()
         {
@@ -29,7 +30,10 @@ namespace Leafling
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            Leafling.SetState(new LeaflingState_DashAim(Leafling));
+            if (Leafling.IsAbleToDash)
+            {
+                Leafling.SetState(new LeaflingState_DashAim(Leafling));
+            }
         }
         protected override void OnAnimationFinished()
         {

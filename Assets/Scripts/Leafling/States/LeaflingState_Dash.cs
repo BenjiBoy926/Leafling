@@ -19,6 +19,7 @@ namespace Leafling
             Leafling.SetAnimation(Leafling.Dash);
             Leafling.FaceTowards(_aim.x);
             LeaflingStateTool_Dash.SetMidairRotation(Leafling, _aim);
+            Leafling.MakeUnableToDash();
         }
         public override void Exit()
         {

@@ -167,6 +167,8 @@ namespace Leafling
         private AnimationCurve DashSpeedCurve { get; set; }
         [field: SerializeField]
         public float DashCancelSpeed { get; private set; } = 30;
+        [field: SerializeField]
+        public bool IsAbleToDash { get; private set; } = true;
 
         private float _defaultGravityScale;
         private Quaternion _defaultSpriteRotation;
@@ -330,6 +332,16 @@ namespace Leafling
             return Animator.IsAnimating(animation);
         }
 
+        public void MakeUnableToDash()
+        {
+            IsAbleToDash = false;
+            DesaturateArmColor();
+        }
+        public void RestoreAbilityToDash()
+        {
+            IsAbleToDash = true;
+            ResetArmColor();
+        }
         public void DesaturateArmColor()
         {
             Sprite.DesaturateArmColor();
