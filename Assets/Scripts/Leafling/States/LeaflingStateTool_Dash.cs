@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingDashTools
+    public class LeaflingStateTool_Dash
     {
         public static void ShowDashPerch(Leafling leafling, Vector2 aim)
         {

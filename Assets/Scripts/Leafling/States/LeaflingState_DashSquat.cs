@@ -16,7 +16,7 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            LeaflingDashTools.ShowDashPerch(Leafling, _aim);
+            LeaflingStateTool_Dash.ShowDashPerch(Leafling, _aim);
         }
         protected override void OnAnimationFinished()
         {

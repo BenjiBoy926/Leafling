@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace Leafling
 {
     public class LeaflingState_FreeFall : LeaflingState
@@ -54,20 +52,7 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
             }
-            CheckWallSlideTransition(CardinalDirection.Left);
-            CheckWallSlideTransition(CardinalDirection.Right);
-        }
-        private void CheckWallSlideTransition(CardinalDirection direction)
-        {
-            if (ShouldSlideOnWallInDirection(direction))
-            {
-                Leafling.SetState(new LeaflingState_WallSlide(Leafling, direction)); 
-            }
-        }
-        private bool ShouldSlideOnWallInDirection(CardinalDirection direction)
-        {
-            int directionAsInt = (int)direction.X;
-            return Leafling.IsTouching(direction) && Leafling.HorizontalDirection == directionAsInt;
+            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
         }
 
         private void TransitionFreeFallAnimation()

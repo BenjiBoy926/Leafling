@@ -28,7 +28,7 @@ namespace Leafling
         {
             base.Update(dt);
             _aim = CalculateDashAim();
-            LeaflingDashTools.TransitionDashPerch(Leafling, Leafling.AimingDashTransitionScale, _aim);
+            LeaflingStateTool_Dash.TransitionDashPerch(Leafling, Leafling.AimingDashTransitionScale, _aim);
             if (!Leafling.IsAimingDash)
             {
                 Leafling.SetState(new LeaflingState_Dash(Leafling, _aim, true));

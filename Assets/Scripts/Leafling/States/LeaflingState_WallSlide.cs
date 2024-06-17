@@ -20,7 +20,7 @@ namespace Leafling
         public override void Enter()
         {
             base.Enter();
-            bool flip = LeaflingWallJumpTools.WallDirectionToFlipX(_wallDirection);
+            bool flip = LeaflingStateTool_WallJump.WallDirectionToFlipX(_wallDirection);
             Leafling.SetTransition(new(Leafling.WallPerch, Leafling.WallSlideTransitionScale, flip));
             Leafling.SetGravityScale(Leafling.WallSlideGravityScale);
             Leafling.SetVerticalVelocity(0);

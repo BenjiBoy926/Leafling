@@ -31,6 +31,7 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
             }
+            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
         }
         private void ApplyAirControl()
         {
