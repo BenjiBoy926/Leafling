@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1453050486134114383}
   - component: {fileID: 8908563907554770964}
   - component: {fileID: 7625393306548818467}
+  - component: {fileID: 2711572145439259236}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -191,6 +192,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2711572145439259236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645607760272642507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2112cb8aa1cf3894c931dabd99f08b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 7625393306548818467}
+  _leftArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  _rightArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7925818720938264243
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +439,7 @@ MonoBehaviour:
       _acceleration: 10
       _topSpeed: 20
   <WallSlideGravityScale>k__BackingField: 0.25
+  <MaxWallJumpTime>k__BackingField: 0.5
   <WallJumpSpeed>k__BackingField: 30
   <WallJumpExitHop>k__BackingField: 20
   <AimingDashGravityScale>k__BackingField: 0.25
