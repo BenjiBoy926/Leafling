@@ -51,6 +51,8 @@ namespace Leafling
         private CardinalContacts Contacts { get; set; }
         [field: SerializeField]
         private LeaflingInputs Inputs { get; set; }
+        [field: SerializeField]
+        private LeaflingSprite Sprite { get; set; }
 
         [field: Header("Animation")]
         [field: SerializeField]
@@ -326,6 +328,15 @@ namespace Leafling
         public bool IsAnimating(SpriteAnimation animation)
         {
             return Animator.IsAnimating(animation);
+        }
+
+        public void DesaturateArmColor()
+        {
+            Sprite.DesaturateArmColor();
+        }
+        public void ResetArmColor()
+        {
+            Sprite.ResetArmColor();
         }
 
         public static bool DirectionToFlipX(float direction)
