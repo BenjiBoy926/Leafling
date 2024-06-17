@@ -47,7 +47,7 @@ Shader "Leafling"
 
             // NOTE: this is the exact content of "UnitySprites.cginc"
             // with only a slight modification to the fragment shader
-            // to introduce color mapping
+            // to introduce hue remapping
             #ifdef UNITY_INSTANCING_ENABLED
 
                 UNITY_INSTANCING_BUFFER_START(PerDrawSprite)
@@ -70,7 +70,6 @@ Shader "Leafling"
                 float _EnableExternalAlpha;
             CBUFFER_END
 
-            // Material Color.
             fixed4 _Color;
             fixed4 _HeadColor;
             fixed4 _LeftArmColor;
@@ -134,7 +133,7 @@ Shader "Leafling"
                 OUT.vertex = UnityFlipSprite(IN.vertex, _Flip);
                 OUT.vertex = UnityObjectToClipPos(OUT.vertex);
                 OUT.texcoord = IN.texcoord;
-                OUT.color = IN.color;
+                OUT.color = IN.color * _RendererColor * _Color;
 
                 #ifdef PIXELSNAP_ON
                 OUT.vertex = UnityPixelSnap (OUT.vertex);
@@ -287,8 +286,9 @@ Shader "Leafling"
 
             fixed4 SpriteFrag(v2f IN) : SV_Target
             {
-                fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
+                fixed4 c = SampleSpriteTexture (IN.texcoord);
                 c = RemapHue(c);
+                c *= IN.color;
                 c.rgb *= c.a;
                 return c;
             }
