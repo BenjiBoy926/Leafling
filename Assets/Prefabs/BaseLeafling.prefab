@@ -431,7 +431,7 @@ MonoBehaviour:
     _backwards:
       _acceleration: 5
       _topSpeed: 5
-  <CrouchJumpSpeed>k__BackingField: 35
+  <CrouchJumpSpeed>k__BackingField: 40
   <CrouchJumpAirControl>k__BackingField:
     _forwards:
       _acceleration: 10

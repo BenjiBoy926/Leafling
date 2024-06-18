@@ -13,43 +13,59 @@ MonoBehaviour:
   m_Name: Heroine_CrouchJump
   m_EditorClassIdentifier: 
   _frames:
-  - _sprite: {fileID: -1433315000, guid: 149babd0092125d4aa30846167ca5866, type: 3}
+  - _sprite: {fileID: -458155168, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
-  - _sprite: {fileID: 1602225286, guid: 149babd0092125d4aa30846167ca5866, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -1960828448, guid: 149babd0092125d4aa30846167ca5866, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 1182420367, guid: 149babd0092125d4aa30846167ca5866, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 640047455, guid: 149babd0092125d4aa30846167ca5866, type: 3}
+  - _sprite: {fileID: -1399682307, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.15
     _isTransitionFrame: 0
     _isActionFrame: 0
-  - _sprite: {fileID: -1433315000, guid: 149babd0092125d4aa30846167ca5866, type: 3}
+  - _sprite: {fileID: 87087789, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -678089548, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -50899603, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -150134432, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -1277690663, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 527321811, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -2065143473, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 1500152668, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.08
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -639506932, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
+    _duration: 0.15
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -120071745, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
-  - _sprite: {fileID: 1602225286, guid: 149babd0092125d4aa30846167ca5866, type: 3}
+  - _sprite: {fileID: 793685188, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
-  - _sprite: {fileID: -1960828448, guid: 149babd0092125d4aa30846167ca5866, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 1182420367, guid: 149babd0092125d4aa30846167ca5866, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 640047455, guid: 149babd0092125d4aa30846167ca5866, type: 3}
+  - _sprite: {fileID: -1253300187, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.25
-    _isTransitionFrame: 0
+    _isTransitionFrame: 1
     _isActionFrame: 0

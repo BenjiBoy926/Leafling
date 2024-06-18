@@ -30,7 +30,7 @@ namespace Leafling.Editor
         {
             string spritesheetPath = AssetDatabase.GetAssetPath(_spritesheet);
             Object[] subspriteAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(spritesheetPath);
-            Sprite[] subsprites = subspriteAssets.Select(ObjectAsSprite).Where(SpriteIsNotNull).OrderBy(SpriteName).ToArray();
+            Sprite[] subsprites = subspriteAssets.Select(ObjectAsSprite).Where(SpriteIsNotNull).OrderBy(SpriteNameIndex).ToArray();
 
             _frames.arraySize = Mathf.Max(_frames.arraySize, subsprites.Length);
             for (int i = 0; i < subsprites.Length; i++)
@@ -60,9 +60,10 @@ namespace Leafling.Editor
         {
             return sprite != null;
         }
-        private string SpriteName(Sprite sprite)
+        private int SpriteNameIndex(Sprite sprite)
         {
-            return sprite.name;
+            string[] words = sprite.name.Split('_');
+            return int.Parse(words[^1]);
         }
     }
 }
