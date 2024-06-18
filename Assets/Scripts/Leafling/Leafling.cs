@@ -92,6 +92,8 @@ namespace Leafling
         [field: SerializeField]
         public SpriteAnimation Drop { get; private set; }
         [field: SerializeField]
+        public SpriteAnimation DropJump { get; private set; }
+        [field: SerializeField]
         public SpriteAnimation WallJump { get; private set; }
 
         [field: Space]
@@ -134,17 +136,21 @@ namespace Leafling
         [field: SerializeField]
         public float MaxJumpTime { get; private set; } = 0.5f;
         [field: SerializeField]
+        public DirectionalAirControl JumpAirControl { get; private set; }
+        [field: SerializeField]
         public float DropSpeed { get; private set; } = 30;
+        [field: SerializeField]
+        public DirectionalAirControl DropAirControl { get; private set; }
         [field: SerializeField]
         public float DropCancelSpeed { get; private set; } = 10;
         [field: SerializeField]
-        public DirectionalAirControl JumpAirControl { get; private set; }
+        public float DropJumpSpeed { get; private set; } = 40;
+        [field: SerializeField]
+        public DirectionalAirControl DropJumpAirControl { get; private set; }
         [field: SerializeField]
         public DirectionalAirControl FreeFallAirControl { get; private set; }
         [field: SerializeField]
         public DirectionalAirControl FlutterAirControl { get; private set; }
-        [field: SerializeField]
-        public DirectionalAirControl DropAirControl { get; private set; }
         [field: SerializeField]
         public float CrouchJumpSpeed { get; private set; } = 35;
         [field: SerializeField]

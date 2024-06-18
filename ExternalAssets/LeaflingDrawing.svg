@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.13138978"
-     inkscape:cx="3029.155"
-     inkscape:cy="8695.5016"
+     inkscape:zoom="0.5255591"
+     inkscape:cx="462.36475"
+     inkscape:cy="9674.4591"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -248,6 +248,15 @@
        inkscape:export-filename="..\Assets\Sprites\Heroine_CrouchJump.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="0"
+       y="2513.5417"
+       width="132.29166"
+       height="132.29166"
+       id="page386"
+       inkscape:export-filename="..\Assets\Sprites\Heroine_DropJump.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -264,7 +273,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="FreedrawLayer"
-     style="display:none">
+     style="display:inline">
     <path
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
        d="m 197.40396,323.08105 c 34.10644,0.20669 1.86035,69.03971 0.41341,71.93359"
@@ -567,12 +576,25 @@
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
        d="m 719.04133,2333.6106 c 13.20742,1.9837 19.43115,25.5141 19.43115,25.5141"
        id="path319" />
+    <path
+       style="fill:none;fill-opacity:0.999161;stroke:#000000;stroke-width:0.79375"
+       d="m 73.153941,2577.653 c 18.332984,-0.178 9.967446,33.6401 -10.145437,63.8984"
+       id="path387" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer19"
      inkscape:label="MainLayer"
      style="display:inline">
+    <path
+       style="fill:#ff00ff;fill-opacity:0.99916101;stroke:#000000;stroke-width:0.79375"
+       d="m 76.144106,2617.721 c -6.41876,-2.643 -6.796334,-13.5926 -3.272309,-13.9702 3.524023,-0.3776 9.187635,-1.6362 9.942782,0.3776 0.75515,2.0137 -1.006864,15.3547 -6.670473,13.5926 z"
+       id="path391" />
+    <path
+       style="fill:#00ffff;fill-opacity:0.99916101;stroke:#000000;stroke-width:0.79375"
+       d="m 28.30043,2591.7142 c 8.543526,-9.6114 43.785571,-21.5368 51.973117,-13.1713 8.187544,8.3656 2.461323,26.7328 -0.38652,27.2668 -2.84784,0.534 -45.712924,-3.5941 -51.586597,-14.0955 z"
+       id="path389"
+       sodipodi:nodetypes="cssc" />
     <path
        style="fill:#0000ff;stroke:#000000;stroke-width:0.79375"
        d="m 692.04093,2313.5383 -14.77999,31.9922 c 0,0 30.49545,-0.7484 29.93419,-7.6707 -0.56129,-6.9222 -23.01193,4.116 -15.1542,-24.3215 z"
@@ -2659,5 +2681,29 @@
        style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.79375"
        d="m 1283.1355,2431.2942 c -7.2749,-7.5324 -52.5462,-0.1151 -52.0282,12.7768 0.518,12.892 11.2804,36.9492 21.4253,35.2276 10.1448,-1.7217 30.6029,-48.0044 30.6029,-48.0044 z"
        id="path386" />
+    <ellipse
+       cy="2568.2029"
+       cx="72.849411"
+       id="ellipse386"
+       style="display:inline;opacity:0.99;fill:#ff8000;fill-opacity:0.999161;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="8.9769344"
+       ry="8.9769201" />
+    <path
+       style="fill:#00ff00;fill-opacity:0.99916101;stroke:#000000;stroke-width:0.79375"
+       d="m 95.148668,2615.078 c 5.789462,-3.7757 -10.194501,-13.3409 -11.956513,-12.2082 -1.762013,1.1327 -5.663612,6.1671 -4.279174,8.4325 1.38444,2.2654 5.789469,8.0549 16.235687,3.7757 z"
+       id="path393" />
+    <path
+       style="fill:#ffff00;fill-opacity:0.99916101;stroke:#000000;stroke-width:0.79375"
+       d="m 46.693328,2614.9522 17.368406,27.9404 c 0,0 18.249415,-24.5422 12.83752,-26.4301 -5.411895,-1.8879 -6.292901,12.0824 -30.205926,-1.5103 z"
+       id="path390" />
+    <path
+       style="fill:#0000ff;fill-opacity:0.99916101;stroke:#000000;stroke-width:0.79375"
+       d="m 81.430142,2609.4144 -10.572075,22.151 c 0,0 26.178469,-11.9565 25.297465,-16.6132 -0.881007,-4.6568 -15.480538,6.6704 -14.72539,-5.5378 z"
+       id="path392" />
+    <path
+       style="fill:#ff0000;fill-opacity:0.999161;stroke:#000000;stroke-width:0.79375"
+       d="m 102.7003,2545.7928 c -9.433473,2.1358 -35.429267,31.198 -34.174101,44.1415 1.200115,12.3758 9.942914,17.9145 16.1971,15.4851 17.593811,-6.8341 25.452591,-49.6592 17.977001,-59.6266 z"
+       id="path388"
+       sodipodi:nodetypes="cssc" />
   </g>
 </svg>

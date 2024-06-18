@@ -27,7 +27,7 @@ namespace Leafling
             }
             else
             {
-                Leafling.SetState(new LeaflingState_Landing(Leafling, JumpFromLanding.Normal));
+                Leafling.SetState(new LeaflingState_Landing(Leafling));
             }
         }
         protected override void OnAnimationEnteredActionFrame()

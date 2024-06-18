@@ -308,6 +308,7 @@ MonoBehaviour:
   <CeilingPerch>k__BackingField: {fileID: 11400000, guid: d9863774b03732345a00d4b102ee7a5d, type: 2}
   <Dash>k__BackingField: {fileID: 11400000, guid: 82bd7418f7354f041af1a4bd3be4e02a, type: 2}
   <Drop>k__BackingField: {fileID: 11400000, guid: f0b58c92e1aab444ba08cdff1623851c, type: 2}
+  <DropJump>k__BackingField: {fileID: 11400000, guid: d3444745f49e7f04c9b414b5685d6b2f, type: 2}
   <WallJump>k__BackingField: {fileID: 11400000, guid: e17713187f2505c448dafe4fbfb6dfc0, type: 2}
   <RunningTransitionScale>k__BackingField: 0.5
   <SlideTransitionScale>k__BackingField: 0.25
@@ -401,8 +402,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   <MaxJumpTime>k__BackingField: 0.5
-  <DropSpeed>k__BackingField: 30
-  <DropCancelSpeed>k__BackingField: 10
   <JumpAirControl>k__BackingField:
     _forwards:
       _acceleration: 10
@@ -410,6 +409,23 @@ MonoBehaviour:
     _backwards:
       _acceleration: 10
       _topSpeed: 15
+  <DropSpeed>k__BackingField: 30
+  <DropAirControl>k__BackingField:
+    _forwards:
+      _acceleration: 5
+      _topSpeed: 5
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
+  <DropCancelSpeed>k__BackingField: 10
+  <DropJumpSpeed>k__BackingField: 40
+  <DropJumpAirControl>k__BackingField:
+    _forwards:
+      _acceleration: 20
+      _topSpeed: 20
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
   <FreeFallAirControl>k__BackingField:
     _forwards:
       _acceleration: 15
@@ -424,13 +440,6 @@ MonoBehaviour:
     _backwards:
       _acceleration: 10
       _topSpeed: 15
-  <DropAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 5
-      _topSpeed: 5
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
   <CrouchJumpSpeed>k__BackingField: 40
   <CrouchJumpAirControl>k__BackingField:
     _forwards:
