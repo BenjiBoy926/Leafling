@@ -43,7 +43,7 @@ namespace Leafling
             {
                 Disengage();
             }
-            if (Leafling.IsTouching(CardinalDirection.Down))
+            if (Leafling.IsTouching(CardinalDirection.Down) || !Leafling.IsTouching(_wallDirection))
             {
                 Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
             }
