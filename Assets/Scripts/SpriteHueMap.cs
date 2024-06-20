@@ -6,20 +6,10 @@ namespace Leafling
 {
     public class SpriteHueMap : MonoBehaviour
     {
-        private int MapSize => Mathf.Min(_keys.Length, _values.Length);
-
         [SerializeField]
         private SpriteRenderer _renderer;
         [SerializeField]
-        private Color[] _keys;
-        [SerializeField]
-        private Color[] _values;
-
-        [Space]
-        [SerializeField, ReadOnly]
-        private List<Vector4> _keysAsVectors = new();
-        [SerializeField, ReadOnly]
-        private List<Vector4> _valuesAsVectors = new();
+        private HueMap _map;
 
         private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
         private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
@@ -43,7 +33,10 @@ namespace Leafling
         [Button]
         private void RefreshShader()
         {
-            LoadColorsAsVectors();
+            if (_map.Count == 0)
+            {
+                return;
+            }
             if (Application.isPlaying)
             {
                 _renderer.GetPropertyBlock(_propertyBlock);
@@ -56,44 +49,24 @@ namespace Leafling
                 _renderer.SetPropertyBlock(_propertyBlock);
             }
         }
-        private void LoadColorsAsVectors()
-        {
-            LoadColorsAsVectors(_keys, _keysAsVectors);
-            LoadColorsAsVectors(_values, _valuesAsVectors);
-        }
-        private void LoadColorsAsVectors(Color[] source, List<Vector4> destination)
-        {
-            while (destination.Count > source.Length)
-            {
-                destination.RemoveAt(destination.Count - 1);
-            }
-            while (destination.Count < source.Length)
-            {
-                destination.Add(new());
-            }
-            for (int i = 0; i < source.Length; i++)
-            {
-                destination[i] = source[i];
-            }
-        }
         private void SetMapSize()
         {
             if (Application.isPlaying)
             {
-                _propertyBlock.SetInt(_mapSizeID, MapSize);
+                _propertyBlock.SetInt(_mapSizeID, _map.Count);
             }
             else
             {
-                _renderer.sharedMaterial.SetInt(_mapSizeID, MapSize);
+                _renderer.sharedMaterial.SetInt(_mapSizeID, _map.Count);
             }
         }
         private void SetMapKeys()
         {
-            SetVectorArray(_mapKeysID, _keysAsVectors);
+            SetVectorArray(_mapKeysID, _map.Keys);
         }
         private void SetMapValues()
         {
-            SetVectorArray(_mapValuesID, _valuesAsVectors);
+            SetVectorArray(_mapValuesID, _map.Values);
         }
         private void SetVectorArray(int id, List<Vector4> array)
         {
