@@ -17,6 +17,6 @@ public class SetColorPropertyTest : MonoBehaviour
     [Button]
     private void OnValidate()
     {
-        _renderer.sharedMaterial.color = _colorSetInCode;
+        _renderer.sharedMaterial.SetColor("_Color", _colorSetInCode);
     }
 }
