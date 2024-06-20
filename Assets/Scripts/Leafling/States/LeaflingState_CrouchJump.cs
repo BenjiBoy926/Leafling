@@ -15,7 +15,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
+            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
         }
         public override void Update(float dt)
         {

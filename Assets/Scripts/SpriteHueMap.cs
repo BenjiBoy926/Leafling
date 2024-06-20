@@ -26,7 +26,6 @@ namespace Leafling
         }
         private void Awake()
         {
-            _propertyBlock = new MaterialPropertyBlock();
             RefreshShader();
         }
 
@@ -39,6 +38,7 @@ namespace Leafling
             }
             if (Application.isPlaying)
             {
+                LazyLoadPropertyBlock();
                 _renderer.GetPropertyBlock(_propertyBlock);
             }
             SetMapSize();
@@ -47,6 +47,13 @@ namespace Leafling
             if (Application.isPlaying)
             {
                 _renderer.SetPropertyBlock(_propertyBlock);
+            }
+        }
+        private void LazyLoadPropertyBlock()
+        {
+            if (_propertyBlock == null)
+            {
+                _propertyBlock = new();
             }
         }
         private void SetMapSize()

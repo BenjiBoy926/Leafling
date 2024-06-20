@@ -51,21 +51,5 @@ MonoBehaviour:
     _isActionFrame: 0
   - _sprite: {fileID: 1500152668, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
     _duration: 0.08
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -639506932, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
-    _duration: 0.15
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -120071745, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 793685188, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -1253300187, guid: 0bfa1dcb0c8b87849be778f739e1fc89, type: 3}
-    _duration: 0.25
     _isTransitionFrame: 1
     _isActionFrame: 0
