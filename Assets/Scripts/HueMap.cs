@@ -15,6 +15,14 @@ namespace Leafling
         [SerializeField]
         private ColorPair[] _keyValuePairs;
 
+        public Color GetValue(int i)
+        {
+            return _keyValuePairs[i].Value;
+        }
+        public void SetValue(int i, Color value)
+        {
+            _keyValuePairs[i].Value = value;
+        }
         private Vector4 Key(ColorPair pair)
         {
             return pair.Key;

@@ -13,6 +13,6 @@ namespace Leafling
         [field: SerializeField]
         public Color Key { get; private set; } = Color.white;
         [field: SerializeField]
-        public Color Value { get; private set; } = Color.white;
+        public Color Value { get; set; } = Color.white;
     }
 }

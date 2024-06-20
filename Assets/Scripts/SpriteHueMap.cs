@@ -29,6 +29,16 @@ namespace Leafling
             RefreshShader();
         }
 
+        public Color GetValue(int i)
+        {
+            return _map.GetValue(i);
+        }
+        public void SetValues(HueMapOperation_SetMultipleValues operation)
+        {
+            operation.Perform(_map);
+            RefreshShader();
+        }
+
         [Button]
         private void RefreshShader()
         {

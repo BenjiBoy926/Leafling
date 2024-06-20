@@ -6,56 +6,47 @@ namespace Leafling
     public class LeaflingSprite : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer _renderer;
+        private SpriteHueMap _map;
+        [SerializeField]
+        private int _leftArmColorIndex = 1;
+        [SerializeField]
+        private int _rightArmColorIndex = 2;
+
+        [Space]
         [SerializeField, ReadOnly]
         private Color _leftArmDefaultColor;
         [SerializeField, ReadOnly]
         private Color _rightArmDefaultColor;
 
-        private readonly int LeftArmColorID = Shader.PropertyToID("_LeftArmColor");
-        private readonly int RightArmColorID = Shader.PropertyToID("_RightArmColor");
-        private MaterialPropertyBlock _propertyBlock;
-
         private void Reset()
         {
-            _renderer = GetComponent<SpriteRenderer>();
+            _map = GetComponent<SpriteHueMap>();
         }
         private void Awake()
         {
-            _propertyBlock = new MaterialPropertyBlock();
-            _leftArmDefaultColor = _renderer.sharedMaterial.GetColor(LeftArmColorID);
-            _rightArmDefaultColor = _renderer.sharedMaterial.GetColor(RightArmColorID);
-            ResetArmColor();
+            _leftArmDefaultColor = _map.GetValue(_leftArmColorIndex);
+            _rightArmDefaultColor = _map.GetValue(_rightArmColorIndex);
         }
 
         public void DesaturateArmColor()
         {
-            _renderer.GetPropertyBlock(_propertyBlock);
-            DesaturateColor(LeftArmColorID);
-            DesaturateColor(RightArmColorID);
-            _renderer.SetPropertyBlock(_propertyBlock);
+            HueMapOperation_SetMultipleValues setValues = new(
+                new HueMapOperation_SetValue(_leftArmColorIndex, DesaturateColor(_leftArmDefaultColor)),
+                new HueMapOperation_SetValue(_rightArmColorIndex, DesaturateColor(_rightArmDefaultColor)));
+            _map.SetValues(setValues);
         }
         public void ResetArmColor()
         {
-            _renderer.GetPropertyBlock(_propertyBlock);
-            SetColor(LeftArmColorID, _leftArmDefaultColor);
-            SetColor(RightArmColorID, _rightArmDefaultColor);
-            _renderer.SetPropertyBlock(_propertyBlock);
+            HueMapOperation_SetMultipleValues setValues = new(
+                new HueMapOperation_SetValue(_leftArmColorIndex, _leftArmDefaultColor),
+                new HueMapOperation_SetValue(_rightArmColorIndex, _rightArmDefaultColor));
+            _map.SetValues(setValues);
         }
 
-        private void DesaturateColor(int id)
+        private Color DesaturateColor(Color color)
         {
-            Color color = GetColor(id);
             Color.RGBToHSV(color, out float h, out float s, out float v);
-            SetColor(id, Color.HSVToRGB(h, 0, v));
-        }
-        private Color GetColor(int id)
-        {
-            return _propertyBlock.GetColor(id);
-        }
-        private void SetColor(int id, Color color)
-        {
-            _propertyBlock.SetColor(id, color);
+            return Color.HSVToRGB(h, 0, v);
         }
     }
 }
