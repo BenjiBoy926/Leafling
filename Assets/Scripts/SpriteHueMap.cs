@@ -28,7 +28,6 @@ namespace Leafling
 
         private void OnValidate()
         {
-            if (!Application.isPlaying || _propertyBlock == null) return;
             RefreshShader();
         }
         private void Reset()
@@ -41,14 +40,21 @@ namespace Leafling
             RefreshShader();
         }
 
+        [Button]
         private void RefreshShader()
         {
             LoadColorsAsVectors();
-            _renderer.GetPropertyBlock(_propertyBlock);
-            _propertyBlock.SetInt(_mapSizeID, MapSize);
-            _propertyBlock.SetVectorArray(_mapKeysID, _keysAsVectors);
-            _propertyBlock.SetVectorArray(_mapValuesID, _valuesAsVectors);
-            _renderer.SetPropertyBlock(_propertyBlock);
+            if (Application.isPlaying)
+            {
+                _renderer.GetPropertyBlock(_propertyBlock);
+            }
+            SetMapSize();
+            SetMapKeys();
+            SetMapValues();
+            if (Application.isPlaying)
+            {
+                _renderer.SetPropertyBlock(_propertyBlock);
+            }
         }
         private void LoadColorsAsVectors()
         {
@@ -68,6 +74,36 @@ namespace Leafling
             for (int i = 0; i < source.Length; i++)
             {
                 destination[i] = source[i];
+            }
+        }
+        private void SetMapSize()
+        {
+            if (Application.isPlaying)
+            {
+                _propertyBlock.SetInt(_mapSizeID, MapSize);
+            }
+            else
+            {
+                _renderer.sharedMaterial.SetInt(_mapSizeID, MapSize);
+            }
+        }
+        private void SetMapKeys()
+        {
+            SetVectorArray(_mapKeysID, _keysAsVectors);
+        }
+        private void SetMapValues()
+        {
+            SetVectorArray(_mapValuesID, _valuesAsVectors);
+        }
+        private void SetVectorArray(int id, List<Vector4> array)
+        {
+            if (Application.isPlaying)
+            {
+                _propertyBlock.SetVectorArray(id, array);
+            }
+            else
+            {
+                _renderer.sharedMaterial.SetVectorArray(id, array);
             }
         }
     }
