@@ -1,6 +1,5 @@
-using System;
+using NaughtyAttributes;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Leafling
@@ -16,12 +15,16 @@ namespace Leafling
         [SerializeField]
         private Color[] _values;
 
+        [Space]
+        [SerializeField, ReadOnly]
+        private List<Vector4> _keysAsVectors = new();
+        [SerializeField, ReadOnly]
+        private List<Vector4> _valuesAsVectors = new();
+
         private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
         private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
         private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
         private MaterialPropertyBlock _propertyBlock;
-        private List<Vector4> _keysAsVectors = new();
-        private List<Vector4> _valuesAsVectors = new();
 
         private void OnValidate()
         {
