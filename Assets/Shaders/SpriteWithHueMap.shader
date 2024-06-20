@@ -1,4 +1,4 @@
-Shader "Leafling"
+Shader "Sprite with Hue Map"
 {
     Properties
     {
@@ -9,13 +9,9 @@ Shader "Leafling"
         [HideInInspector] _Flip ("Flip", Vector) = (1,1,1,1)
         [PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
         [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
-        _HeadColor ("Head", Color) = (1, 1, 1, 1)
+        // LEGACY: script tries to set these properties so we keep them for now
         _LeftArmColor ("Left Arm", Color) = (1, 1, 1, 1)
         _RightArmColor ("Right Arm", Color) = (1, 1, 1, 1)
-        _LeftThighColor ("Left Thigh", Color) = (1, 1, 1, 1)
-        _RightThighColor ("Right Thigh", Color) = (1, 1, 1, 1)
-        _LeftFootColor ("Left Foot", Color) = (1, 1, 1, 1)
-        _RightFootColor ("Right Foot", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -71,37 +67,8 @@ Shader "Leafling"
             CBUFFER_END
 
             fixed4 _Color;
-            fixed4 _HeadColor;
-            fixed4 _LeftArmColor;
-            fixed4 _RightArmColor;
-            fixed4 _LeftThighColor;
-            fixed4 _RightThighColor;
-            fixed4 _LeftFootColor;
-            fixed4 _RightFootColor;
-
-            static const int KeysLength = 7;
-            static const fixed3 _Keys[KeysLength] = 
-            {
-                fixed3(1, 0.2, 0), 
-                fixed3(1, 0, 0),
-                fixed3(0, 1, 1),
-                fixed3(0, 1, 0),
-                fixed3(1, 0, 1),
-                fixed3(0, 0, 1),
-                fixed3(1, 1, 0),
-            };
-            fixed4 GetValue(int index) 
-            {
-                if (index == 0) return _HeadColor;
-                if (index == 1) return _LeftArmColor;
-                if (index == 2) return _RightArmColor;
-                if (index == 3) return _LeftThighColor;
-                if (index == 4) return _RightThighColor;
-                if (index == 5) return _LeftFootColor;
-                if (index == 6) return _RightFootColor;
-                return fixed4(0, 0, 0, 1);
-            }
-
+            
+            // Typedefs
             struct appdata_t
             {
                 float4 vertex   : POSITION;
@@ -123,6 +90,7 @@ Shader "Leafling"
                 return float4(pos.xy * flip, pos.z, 1.0);
             }
 
+            // Vertex shader
             v2f SpriteVert(appdata_t IN)
             {
                 v2f OUT;
@@ -156,6 +124,14 @@ Shader "Leafling"
 
                 return color;
             }
+
+            // Fragment shader & hue mapping
+
+            // NOTE: these properties MUST be set from C# code to enable the hue mapping functionality
+            int _MapSize = 0;
+            static const int _MapCapacity = 16;
+            fixed3 _MapKeys[_MapCapacity];
+            fixed4 _MapValues[_MapCapacity];
 
             fixed MinComponent(fixed3 color) 
             {
@@ -256,16 +232,20 @@ Shader "Leafling"
             }
             fixed4 ClosestColor(fixed3 color) 
             {
-                fixed shortestDistance = ColorDistance(_Keys[0], color);
-                fixed4 OUT = GetValue(0);
-
-                for (int i = 1; i < KeysLength; i++) 
+                if (_MapSize == 0) 
                 {
-                    fixed distance = ColorDistance(_Keys[i], color);
+                    return fixed4(color, 1);
+                }
+                fixed shortestDistance = ColorDistance(_MapKeys[0], color);
+                fixed4 OUT = _MapValues[0];
+
+                for (int i = 1; i < _MapSize; i++) 
+                {
+                    fixed distance = ColorDistance(_MapKeys[i], color);
                     if (distance < shortestDistance) 
                     {
                         shortestDistance = distance;
-                        OUT = GetValue(i);
+                        OUT = _MapValues[i];
                     }
                 }
                 return OUT;
@@ -283,7 +263,6 @@ Shader "Leafling"
                 }
                 return input;
             }
-
             fixed4 SpriteFrag(v2f IN) : SV_Target
             {
                 fixed4 c = SampleSpriteTexture (IN.texcoord);

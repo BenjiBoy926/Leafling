@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8908563907554770964}
   - component: {fileID: 7625393306548818467}
   - component: {fileID: 2711572145439259236}
+  - component: {fileID: 2596328174938792995}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -207,6 +208,35 @@ MonoBehaviour:
   _renderer: {fileID: 7625393306548818467}
   _leftArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
   _rightArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &2596328174938792995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645607760272642507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf45884439046c748bf8f2d8f3d23aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 7625393306548818467}
+  _keys:
+  - {r: 0.9960785, g: 0.5019608, b: 0.003921569, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  _values:
+  - {r: 0.8862746, g: 0.8862746, b: 0.4431373, a: 1}
+  - {r: 0.45098042, g: 0.7490196, b: 0.45098042, a: 1}
+  - {r: 0.36078432, g: 0.6, b: 0.36078432, a: 1}
+  - {r: 0.6, g: 0.44705886, b: 0.2392157, a: 1}
+  - {r: 0.6, g: 0.44705886, b: 0.2392157, a: 1}
+  - {r: 0.3019608, g: 0.21176472, b: 0.121568635, a: 1}
+  - {r: 0.3019608, g: 0.21176472, b: 0.121568635, a: 1}
 --- !u!1 &7925818720938264243
 GameObject:
   m_ObjectHideFlags: 0
