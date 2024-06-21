@@ -9,6 +9,14 @@ namespace Leafling
             base.Enter();
             Leafling.SetTransition(new(Leafling.Flutter, Leafling.FlutterTransitionScale, Leafling.CurrentFlipX));
         }
+        protected override void OnStartedAimingDash()
+        {
+            base.OnStartedAimingDash();
+            if (Leafling.IsAbleToDash)
+            {
+                Leafling.SetState(new LeaflingState_DashAim(Leafling));
+            }
+        }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
