@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
   m_Name: Heroine_DashSpin
   m_EditorClassIdentifier: 
-  _frames: []
+  _frames:
+  - _sprite: {fileID: -1023053356, guid: 0152dab2521bf0f4b87d0763adc10850, type: 3}
+    _duration: 0.15
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2101355641, guid: 0152dab2521bf0f4b87d0763adc10850, type: 3}
+    _duration: 0.15
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -898157300, guid: 0152dab2521bf0f4b87d0763adc10850, type: 3}
+    _duration: 0.15
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2044548017, guid: 0152dab2521bf0f4b87d0763adc10850, type: 3}
+    _duration: 0.15
+    _isTransitionFrame: 0
+    _isActionFrame: 0
