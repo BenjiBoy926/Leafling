@@ -52,17 +52,15 @@ namespace Leafling
             return result;
         }
 
-        public void SetState<TState>() where TState : LeaflingState
+        public void SendSignal(LeaflingSignal signal)
         {
-            SetState(typeof(TState));
+            signal.PrepareNextState(this);
+            SetState(signal.StateType);
         }
-        public void SetState(Type stateType)
+        private void SetState(Type stateType)
         {
-            LeaflingState state = _stateIndex[stateType];
-            SetState(state);
+            SetState(GetState(stateType));
         }
-        // TODO: refactor so that the caller sets the type of state, not the instance
-        // need to figure out how to handle setting info on the start before it enters though
         public void SetState(LeaflingState state)
         {
             if (_currentState != null)
@@ -76,10 +74,6 @@ namespace Leafling
             }
         }
 
-        public TState GetState<TState>() where TState: LeaflingState
-        {
-            return GetState(typeof(TState)) as TState;
-        }
         public LeaflingState GetState(Type stateType)
         {
             return _stateIndex[stateType];
