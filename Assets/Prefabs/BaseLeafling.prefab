@@ -208,8 +208,6 @@ MonoBehaviour:
   _map: {fileID: 2596328174938792995}
   _leftArmColorIndex: 1
   _rightArmColorIndex: 2
-  _leftArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
-  _rightArmDefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2596328174938792995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039ba5005c8765d43ba195a84c4d5ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leafling: {fileID: 7646446932064873026}
 --- !u!114 &1035319642480623658
 MonoBehaviour:
   m_ObjectHideFlags: 0
