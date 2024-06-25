@@ -9,7 +9,6 @@ namespace Leafling
             _jumpSignal = jumpSignal;
         }
 
-        public LeaflingState_Landing(Leafling leafling) : this(leafling, new LeaflingSignal_Generic<LeaflingState_Jump>()) { }
         public LeaflingState_Landing(Leafling leafling, LeaflingSignal jumpSignal) : base(leafling)
         {
             _jumpSignal = jumpSignal;
