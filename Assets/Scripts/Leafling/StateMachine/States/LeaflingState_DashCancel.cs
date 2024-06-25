@@ -6,6 +6,11 @@ namespace Leafling
     {
         private Vector2 _direction;
 
+        public void SetDirection(Vector2 direction)
+        {
+            _direction = direction; 
+        }
+
         public LeaflingState_DashCancel(Leafling leafling, Vector2 direction) : base(leafling) 
         { 
             _direction = direction;

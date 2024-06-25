@@ -7,6 +7,15 @@ namespace Leafling
         private Vector2 _aim;
         private bool _dashOnRicochet;
 
+        public void SetAim(Vector2 aim)
+        {
+            _aim = aim;
+        }
+        public void SetDashOnRicochet(bool dashOnRicochet)
+        {
+            _dashOnRicochet = dashOnRicochet;
+        }
+
         public LeaflingState_Dash(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
         {
             _aim = aim;

@@ -7,6 +7,15 @@ namespace Leafling
         private CardinalDirection _wallDirection;
         private float _forceSlideWindow;
 
+        public void SetWallDirection(CardinalDirection wallDirection)
+        {
+            _wallDirection = wallDirection;
+        }
+        public void SetForceSlideWindow(float forceSlideWindow)
+        {
+            _forceSlideWindow = forceSlideWindow;
+        }
+
         public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection) : this(leafling, wallDirection, 0)
         {
 

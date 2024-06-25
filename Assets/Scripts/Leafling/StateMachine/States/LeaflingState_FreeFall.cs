@@ -4,6 +4,11 @@ namespace Leafling
     {
         private FreeFallEntry _entry;
 
+        public void SetEntry(FreeFallEntry entry)
+        {
+            _entry = entry;
+        }
+
         public LeaflingState_FreeFall(Leafling leafling, FreeFallEntry entry) : base(leafling)
         {
             _entry = entry;

@@ -4,6 +4,11 @@ namespace Leafling
     {
         private LeaflingState _jumpState;
 
+        public void SetJumpState(LeaflingState jumpState)
+        {
+            _jumpState = jumpState;
+        }
+
         public LeaflingState_Landing(Leafling leafling) : this(leafling, new LeaflingState_Jump(leafling)) { }
         public LeaflingState_Landing(Leafling leafling, LeaflingState jumpState) : base(leafling)
         {

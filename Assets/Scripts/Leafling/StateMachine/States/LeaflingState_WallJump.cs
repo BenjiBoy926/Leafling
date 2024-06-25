@@ -6,6 +6,11 @@ namespace Leafling
     {
         private CardinalDirection _wallDirection;
 
+        public void SetWallDirection(CardinalDirection wallDirection)
+        {
+            _wallDirection = wallDirection;
+        }
+
         public LeaflingState_WallJump(Leafling leafling, CardinalDirection wallDirection) : base(leafling)
         {
             _wallDirection = wallDirection;
