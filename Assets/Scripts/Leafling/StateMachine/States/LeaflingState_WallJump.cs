@@ -34,7 +34,7 @@ namespace Leafling
             }
             if (Leafling.IsTouching(_wallDirection.Opposite))
             {
-                Leafling.SetState(new LeaflingState_WallSlide(Leafling, _wallDirection.Opposite, 0.5f));
+                Leafling.SendSignal(new LeaflingSignal_WallSlide(_wallDirection.Opposite, 0.5f));
             }
         }
         private bool ShouldFinishWallJump()
@@ -44,7 +44,7 @@ namespace Leafling
         private void FinishWallJump()
         {
             Leafling.SetVerticalVelocity(Leafling.WallJumpExitHop);
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
     }
 }

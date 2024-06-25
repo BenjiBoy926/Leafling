@@ -40,7 +40,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Dash))
             {
-                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
 
@@ -97,11 +97,11 @@ namespace Leafling
             Vector2 ricochetDirection = GetRicochetAim(normal);
             if (_dashOnRicochet)
             {
-                Leafling.SetState(new LeaflingState_DashSquat(Leafling, ricochetDirection, false));
+                Leafling.SendSignal(new LeaflingSignal_DashSquat(ricochetDirection, false));
             }
             else
             {
-                Leafling.SetState(new LeaflingState_DashCancel(Leafling, ricochetDirection));
+                Leafling.SendSignal(new LeaflingSignal_DashCancel(ricochetDirection));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)

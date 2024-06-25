@@ -42,7 +42,7 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingState_WallJump(Leafling, _wallDirection));
+            Leafling.SendSignal(new LeaflingSignal_WallJump(_wallDirection));
         }
 
         public override void Update(float dt)
@@ -54,13 +54,13 @@ namespace Leafling
             }
             if (Leafling.IsTouching(CardinalDirection.Down) || !Leafling.IsTouching(_wallDirection))
             {
-                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Normal));
+                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
             }
         }
         private void Disengage()
         {
             Leafling.SetHorizontalVelocity(-_wallDirection.X * 5);
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
         private bool ShouldDisengage()
         {

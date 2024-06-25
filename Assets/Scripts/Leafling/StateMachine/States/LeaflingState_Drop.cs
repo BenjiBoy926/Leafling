@@ -16,7 +16,7 @@ namespace Leafling
             {
                 Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
             }
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
         public override void Update(float dt)
@@ -33,7 +33,7 @@ namespace Leafling
             }
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingState_Landing(Leafling, new LeaflingState_DropJump(Leafling)));
+                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal_Generic<LeaflingState_DropJump>()));
             }
         }
     }

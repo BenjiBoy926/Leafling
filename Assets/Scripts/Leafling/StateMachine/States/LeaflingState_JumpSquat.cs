@@ -16,7 +16,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Squat))
             {
-                Leafling.SetState(new LeaflingState_Jump(Leafling));
+                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Jump>());
             }
         }
     }

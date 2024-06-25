@@ -183,7 +183,7 @@ namespace Leafling
         {
             _defaultGravityScale = PhysicsBody.gravityScale;
             _defaultSpriteRotation = Animator.transform.localRotation;
-            SetState(new LeaflingState_FreeFall(this, FreeFallEntry.Normal));
+            SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
         }
         private void OnEnable()
         {
@@ -252,9 +252,9 @@ namespace Leafling
             AnimationEnteredActionFrame();
         }
 
-        public void SetState(LeaflingState state)
+        public void SendSignal(LeaflingSignal signal)
         {
-            StateMachine.SetState(state);
+            StateMachine.SendSignal(signal);
         }
 
         public void SetHorizontalVelocity(float velocity)

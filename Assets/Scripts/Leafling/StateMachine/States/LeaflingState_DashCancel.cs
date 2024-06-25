@@ -25,7 +25,7 @@ namespace Leafling
         {
             base.OnAnimationFinished();
             Leafling.SetVelocity(_direction.normalized * Leafling.DashCancelSpeed);
-            Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
         public override void Update(float dt)

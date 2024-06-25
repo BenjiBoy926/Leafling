@@ -30,7 +30,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingState_Dash(Leafling, _aim, _dashOnRicochet));
+            Leafling.SendSignal(new LeaflingSignal_Dash(_aim, _dashOnRicochet));
         }
     }
 }

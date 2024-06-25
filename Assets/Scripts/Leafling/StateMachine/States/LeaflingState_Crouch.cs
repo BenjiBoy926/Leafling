@@ -13,12 +13,12 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(new LeaflingState_CrouchJump(Leafling));
+            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_CrouchJump>());
         }
         protected override void OnStoppedCrouching()
         {
             base.OnStoppedCrouching();
-            Leafling.SetState(new LeaflingState_Standing(Leafling));
+            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Standing>());
         }
     }
 }

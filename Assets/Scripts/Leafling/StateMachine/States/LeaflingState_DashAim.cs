@@ -31,7 +31,7 @@ namespace Leafling
             LeaflingStateTool_Dash.TransitionDashPerch(Leafling, Leafling.AimingDashTransitionScale, _aim);
             if (!Leafling.IsAimingDash)
             {
-                Leafling.SetState(new LeaflingState_Dash(Leafling, _aim, true));
+                Leafling.SendSignal(new LeaflingSignal_Dash(_aim, true));
             }
         }
 

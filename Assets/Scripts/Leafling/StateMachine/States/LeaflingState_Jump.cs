@@ -21,7 +21,7 @@ namespace Leafling
             Leafling.SetVerticalVelocity(GetJumpSpeed());
             if (ShouldTransitionOutOfJump())
             {
-                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
         private bool ShouldTransitionOutOfJump()

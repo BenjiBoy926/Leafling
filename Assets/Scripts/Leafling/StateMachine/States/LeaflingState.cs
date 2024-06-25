@@ -21,6 +21,7 @@ namespace Leafling
         public virtual void Enter()
         {
             _timeOfStateStart = Time.time;
+            _hasEnteredActionFrame = false;
             Leafling.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
             Leafling.StartedJumping += OnStartedJumping;
             Leafling.StoppedJumping += OnStoppedJumping;

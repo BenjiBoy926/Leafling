@@ -11,7 +11,7 @@ namespace Leafling
         {
             if (ShouldSlideOnWallInDirection(leafling, wallDirection))
             {
-                leafling.SetState(new LeaflingState_WallSlide(leafling, wallDirection));
+                leafling.SendSignal(new LeaflingSignal_WallSlide(wallDirection, 0));
             }
         }
         private static bool ShouldSlideOnWallInDirection(Leafling leafling, CardinalDirection direction)

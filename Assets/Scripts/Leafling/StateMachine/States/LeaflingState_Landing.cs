@@ -2,17 +2,17 @@ namespace Leafling
 {
     public class LeaflingState_Landing : LeaflingState
     {
-        private LeaflingState _jumpState;
+        private LeaflingSignal _jumpSignal;
 
-        public void SetJumpState(LeaflingState jumpState)
+        public void SetJumpSignal(LeaflingSignal jumpSignal)
         {
-            _jumpState = jumpState;
+            _jumpSignal = jumpSignal;
         }
 
-        public LeaflingState_Landing(Leafling leafling) : this(leafling, new LeaflingState_Jump(leafling)) { }
-        public LeaflingState_Landing(Leafling leafling, LeaflingState jumpState) : base(leafling)
+        public LeaflingState_Landing(Leafling leafling) : this(leafling, new LeaflingSignal_Generic<LeaflingState_Jump>()) { }
+        public LeaflingState_Landing(Leafling leafling, LeaflingSignal jumpSignal) : base(leafling)
         {
-            _jumpState = jumpState;
+            _jumpSignal = jumpSignal;
         }
 
         public override void Enter()
@@ -24,20 +24,20 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SetState(_jumpState);
+            Leafling.SendSignal(_jumpSignal);
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
             if (Leafling.IsAbleToDash)
             {
-                Leafling.SetState(new LeaflingState_DashAim(Leafling));
+                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_DashAim>());
             }
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SetState(new LeaflingState_Standing(Leafling));
+            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Standing>());
         }
     }
 }

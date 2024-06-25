@@ -61,7 +61,7 @@ namespace Leafling
         {
             SetState(GetState(stateType));
         }
-        public void SetState(LeaflingState state)
+        private void SetState(LeaflingState state)
         {
             if (_currentState != null)
             {

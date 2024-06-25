@@ -17,7 +17,7 @@ namespace Leafling
             base.OnStartedJumping();
             if (HasEnteredActionFrame)
             {
-                Leafling.SetState(new LeaflingState_LongJump(Leafling));
+                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_LongJump>());
             }
         }
         protected override void OnAnimationStarted()
@@ -30,7 +30,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Slide))
             {
-                Leafling.SetState(new LeaflingState_Standing(Leafling));
+                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Standing>());
             }
         }
 
@@ -45,7 +45,7 @@ namespace Leafling
             }
             if (!Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingState_FreeFall(Leafling, FreeFallEntry.Backflip));
+                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
     }
