@@ -13,7 +13,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_WallSlide state = machine.GetState(StateType) as LeaflingState_WallSlide;
+            LeaflingState_WallSlide state = GetState(machine);
             state.SetWallDirection(_wallDirection);
             state.SetForceSlideWindow(_forceSlideWindow);
         }

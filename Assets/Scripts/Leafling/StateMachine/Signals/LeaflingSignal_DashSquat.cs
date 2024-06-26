@@ -15,7 +15,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_DashSquat next = machine.GetState(StateType) as LeaflingState_DashSquat;
+            LeaflingState_DashSquat next = GetState(machine);
             next.SetAim(_aim);
             next.SetDashOnRicochet(_dashOnRicochet);
         }

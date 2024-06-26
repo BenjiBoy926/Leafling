@@ -11,7 +11,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_Landing state = machine.GetState(StateType) as LeaflingState_Landing;
+            LeaflingState_Landing state = GetState(machine);
             state.SetJumpSignal(_jumpSignal);
         }
     }

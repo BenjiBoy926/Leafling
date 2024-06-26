@@ -13,7 +13,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_DashCancel next = machine.GetState(StateType) as LeaflingState_DashCancel;
+            LeaflingState_DashCancel next = GetState(machine);
             next.SetDirection(_aim);
         }
     }

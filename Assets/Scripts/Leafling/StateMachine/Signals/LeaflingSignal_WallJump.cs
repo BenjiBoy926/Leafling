@@ -11,7 +11,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_WallJump state = machine.GetState(StateType) as LeaflingState_WallJump; ;
+            LeaflingState_WallJump state = GetState(machine);
             state.SetWallDirection(_wallDirection);
         }
     }

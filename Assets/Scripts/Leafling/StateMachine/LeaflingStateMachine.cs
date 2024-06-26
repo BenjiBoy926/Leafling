@@ -74,6 +74,10 @@ namespace Leafling
             }
         }
 
+        public TState GetState<TState>() where TState : LeaflingState
+        {
+            return GetState(typeof(TState)) as TState;
+        }
         public LeaflingState GetState(Type stateType)
         {
             return _stateIndex[stateType];

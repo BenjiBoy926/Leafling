@@ -11,7 +11,7 @@ namespace Leafling
         public override void PrepareNextState(LeaflingStateMachine machine)
         {
             base.PrepareNextState(machine);
-            LeaflingState_FreeFall state = machine.GetState(StateType) as LeaflingState_FreeFall;
+            LeaflingState_FreeFall state = GetState(machine);
             state.SetEntry(_entry);
         }
     }
