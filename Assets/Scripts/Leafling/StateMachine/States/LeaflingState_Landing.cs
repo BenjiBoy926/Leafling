@@ -2,14 +2,14 @@ namespace Leafling
 {
     public class LeaflingState_Landing : LeaflingState
     {
-        private LeaflingSignal _jumpSignal;
+        private ILeaflingSignal _jumpSignal;
 
-        public void SetJumpSignal(LeaflingSignal jumpSignal)
+        public void SetJumpSignal(ILeaflingSignal jumpSignal)
         {
             _jumpSignal = jumpSignal;
         }
 
-        public LeaflingState_Landing(Leafling leafling, LeaflingSignal jumpSignal) : base(leafling)
+        public LeaflingState_Landing(Leafling leafling, ILeaflingSignal jumpSignal) : base(leafling)
         {
             _jumpSignal = jumpSignal;
         }
@@ -30,13 +30,13 @@ namespace Leafling
             base.OnStartedAimingDash();
             if (Leafling.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_DashAim>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Standing>());
+            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
         }
     }
 }

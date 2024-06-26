@@ -14,7 +14,7 @@ namespace Leafling
             base.OnStartedAimingDash();
             if (Leafling.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_DashAim>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnAnimationFinished()
@@ -37,7 +37,7 @@ namespace Leafling
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal_Generic<LeaflingState_Jump>()));
+                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
             LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
         }

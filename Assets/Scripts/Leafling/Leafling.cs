@@ -252,7 +252,7 @@ namespace Leafling
             AnimationEnteredActionFrame();
         }
 
-        public void SendSignal(LeaflingSignal signal)
+        public void SendSignal(ILeaflingSignal signal)
         {
             StateMachine.SendSignal(signal);
         }

@@ -2,9 +2,21 @@ using System;
 
 namespace Leafling
 {
-    public abstract class LeaflingSignal
+    public class LeaflingSignal<TState> : ILeaflingSignal where TState : LeaflingState
     {
-        public abstract Type StateType { get; }
-        public virtual void PrepareNextState(LeaflingStateMachine machine) { }
+        public Type StateType => typeof(TState);
+
+        public void PrepareNextState(LeaflingStateMachine machine)
+        {
+            PrepareNextState(GetState(machine));
+        }
+        protected TState GetState(LeaflingStateMachine machine)
+        {
+            return machine.GetState<TState>();
+        }
+        protected virtual void PrepareNextState(TState state)
+        {
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 namespace Leafling
 {
-    public class LeaflingSignal_WallSlide : LeaflingSignal_Generic<LeaflingState_WallSlide>
+    public class LeaflingSignal_WallSlide : LeaflingSignal<LeaflingState_WallSlide>
     {
         private CardinalDirection _wallDirection;
         private float _forceSlideWindow;
@@ -10,10 +10,9 @@ namespace Leafling
             _wallDirection = wallDirection;
             _forceSlideWindow = forceSlideWindow;
         }
-        public override void PrepareNextState(LeaflingStateMachine machine)
+        protected override void PrepareNextState(LeaflingState_WallSlide state)
         {
-            base.PrepareNextState(machine);
-            LeaflingState_WallSlide state = GetState(machine);
+            base.PrepareNextState(state);
             state.SetWallDirection(_wallDirection);
             state.SetForceSlideWindow(_forceSlideWindow);
         }

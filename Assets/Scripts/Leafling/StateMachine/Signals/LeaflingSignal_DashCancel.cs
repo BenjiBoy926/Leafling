@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingSignal_DashCancel : LeaflingSignal_Generic<LeaflingState_DashCancel>
+    public class LeaflingSignal_DashCancel : LeaflingSignal<LeaflingState_DashCancel>
     {
         private Vector2 _aim;
 
@@ -10,11 +10,10 @@ namespace Leafling
         {
             _aim = aim;
         }
-        public override void PrepareNextState(LeaflingStateMachine machine)
+        protected override void PrepareNextState(LeaflingState_DashCancel state)
         {
-            base.PrepareNextState(machine);
-            LeaflingState_DashCancel next = GetState(machine);
-            next.SetDirection(_aim);
+            base.PrepareNextState(state);
+            state.SetDirection(_aim);
         }
     }
 }

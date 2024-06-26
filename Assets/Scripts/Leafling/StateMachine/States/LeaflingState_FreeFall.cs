@@ -36,20 +36,20 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Flutter>());
+            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
             if (Leafling.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_DashAim>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnStartedCrouching()
         {
             base.OnStartedCrouching();
-            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Drop>());
+            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
         }
 
         public override void Update(float dt)
@@ -58,7 +58,7 @@ namespace Leafling
             Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal_Generic<LeaflingState_Jump>()));
+                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
             LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
         }

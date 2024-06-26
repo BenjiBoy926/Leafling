@@ -17,7 +17,7 @@ namespace Leafling
             base.OnStartedJumping();
             if (HasEnteredActionFrame)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_LongJump>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_LongJump>());
             }
         }
         protected override void OnAnimationStarted()
@@ -30,7 +30,7 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsAnimating(Leafling.Slide))
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Standing>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
             }
         }
 

@@ -1,6 +1,6 @@
 namespace Leafling
 {
-    public class LeaflingSignal_WallJump : LeaflingSignal_Generic<LeaflingState_WallJump>
+    public class LeaflingSignal_WallJump : LeaflingSignal<LeaflingState_WallJump>
     {
         private CardinalDirection _wallDirection;
 
@@ -8,10 +8,9 @@ namespace Leafling
         {
             _wallDirection = wallDirection;
         }
-        public override void PrepareNextState(LeaflingStateMachine machine)
+        protected override void PrepareNextState(LeaflingState_WallJump state)
         {
-            base.PrepareNextState(machine);
-            LeaflingState_WallJump state = GetState(machine);
+            base.PrepareNextState(state);
             state.SetWallDirection(_wallDirection);
         }
     }

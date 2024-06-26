@@ -1,6 +1,6 @@
 namespace Leafling
 {
-    public class LeaflingSignal_FreeFall : LeaflingSignal_Generic<LeaflingState_FreeFall>
+    public class LeaflingSignal_FreeFall : LeaflingSignal<LeaflingState_FreeFall>
     {
         private FreeFallEntry _entry;
 
@@ -8,10 +8,9 @@ namespace Leafling
         {
             _entry = entry;
         }
-        public override void PrepareNextState(LeaflingStateMachine machine)
+        protected override void PrepareNextState(LeaflingState_FreeFall state)
         {
-            base.PrepareNextState(machine);
-            LeaflingState_FreeFall state = GetState(machine);
+            base.PrepareNextState(state);
             state.SetEntry(_entry);
         }
     }

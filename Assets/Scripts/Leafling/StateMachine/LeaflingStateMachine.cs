@@ -34,7 +34,7 @@ namespace Leafling
                 new LeaflingState_FreeFall(_leafling, FreeFallEntry.Normal),
                 new LeaflingState_Jump(_leafling),
                 new LeaflingState_JumpSquat(_leafling),
-                new LeaflingState_Landing(_leafling, new LeaflingSignal_Generic<LeaflingState_Jump>()),
+                new LeaflingState_Landing(_leafling, new LeaflingSignal<LeaflingState_Jump>()),
                 new LeaflingState_LongJump(_leafling),
                 new LeaflingState_Slide(_leafling),
                 new LeaflingState_Standing(_leafling),
@@ -52,7 +52,7 @@ namespace Leafling
             return result;
         }
 
-        public void SendSignal(LeaflingSignal signal)
+        public void SendSignal(ILeaflingSignal signal)
         {
             signal.PrepareNextState(this);
             SetState(signal.StateType);

@@ -1,17 +1,16 @@
 namespace Leafling
 {
-    public class LeaflingSignal_Landing : LeaflingSignal_Generic<LeaflingState_Landing>
+    public class LeaflingSignal_Landing : LeaflingSignal<LeaflingState_Landing>
     {
-        private LeaflingSignal _jumpSignal;
+        private ILeaflingSignal _jumpSignal;
 
-        public LeaflingSignal_Landing(LeaflingSignal jumpSignal)
+        public LeaflingSignal_Landing(ILeaflingSignal jumpSignal)
         {
             _jumpSignal = jumpSignal;
         }
-        public override void PrepareNextState(LeaflingStateMachine machine)
+        protected override void PrepareNextState(LeaflingState_Landing state)
         {
-            base.PrepareNextState(machine);
-            LeaflingState_Landing state = GetState(machine);
+            base.PrepareNextState(state);
             state.SetJumpSignal(_jumpSignal);
         }
     }

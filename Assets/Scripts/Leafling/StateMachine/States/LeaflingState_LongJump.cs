@@ -23,11 +23,11 @@ namespace Leafling
             base.OnAnimationFinished();
             if (Leafling.IsCrouching)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Slide>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
             }
             else
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal_Generic<LeaflingState_Jump>()));
+                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
         }
         protected override void OnAnimationEnteredActionFrame()

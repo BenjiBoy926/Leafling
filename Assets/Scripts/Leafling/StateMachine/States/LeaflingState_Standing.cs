@@ -27,14 +27,14 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_JumpSquat>());
+            Leafling.SendSignal(new LeaflingSignal<LeaflingState_JumpSquat>());
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
             if (Leafling.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_DashAim>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnStartedCrouching()
@@ -42,7 +42,7 @@ namespace Leafling
             base.OnStartedCrouching();
             if (Leafling.HorizontalDirection != 0)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Slide>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
             }
         }
 
@@ -57,7 +57,7 @@ namespace Leafling
             }
             if (Leafling.IsCrouching && Leafling.HorizontalDirection == 0)
             {
-                Leafling.SendSignal(new LeaflingSignal_Generic<LeaflingState_Crouch>());
+                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Crouch>());
             }
         }
         private float CalculateHorizontalSpeed()
