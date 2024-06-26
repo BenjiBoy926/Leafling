@@ -9,9 +9,9 @@ namespace Leafling
             _jumpSignal = jumpSignal;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetAnimation(Leafling.Squat);
             Leafling.RestoreAbilityToDash();
         }

@@ -16,17 +16,17 @@ namespace Leafling
             _dashOnRicochet = dashOnRicochet;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetAnimation(Leafling.Dash);
             Leafling.FaceTowards(_aim.x);
             LeaflingStateTool_Dash.SetMidairRotation(Leafling, _aim);
             Leafling.MakeUnableToDash();
         }
-        public override void Exit()
+        protected override void OnDisable()
         {
-            base.Exit();
+            base.OnDisable();
             Leafling.ResetSpriteRotation();
         }
         protected override void OnAnimationFinished()
@@ -38,9 +38,9 @@ namespace Leafling
             }
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             Vector2 velocity = GetDashVelocity();
             Leafling.SetVelocity(velocity);
             CheckForRicochet();

@@ -2,9 +2,9 @@ namespace Leafling
 {
     public class LeaflingState_Flutter : LeaflingState
     {
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetTransition(new(Leafling.Flutter, Leafling.FlutterTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnStartedAimingDash()
@@ -29,9 +29,9 @@ namespace Leafling
             Leafling.SetVerticalVelocity(5);
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {

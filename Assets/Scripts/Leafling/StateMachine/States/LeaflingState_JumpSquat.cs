@@ -2,9 +2,9 @@ namespace Leafling
 {
     public class LeaflingState_JumpSquat : LeaflingState
     {
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetTransition(new(Leafling.Squat, Leafling.JumpTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnAnimationFinished()

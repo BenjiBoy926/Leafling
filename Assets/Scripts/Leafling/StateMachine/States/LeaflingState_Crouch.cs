@@ -3,9 +3,9 @@ namespace Leafling
 {
     public class LeaflingState_Crouch : LeaflingState
     {
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetAnimation(Leafling.Squat);
         }
         protected override void OnStartedJumping()

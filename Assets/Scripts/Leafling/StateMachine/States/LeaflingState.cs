@@ -32,7 +32,7 @@ namespace Leafling
             return GetComponentInParent<Leafling>();
         }
 
-        public virtual void Enter()
+        protected virtual void OnEnable()
         {
             _timeOfStateStart = Time.time;
             _hasEnteredActionFrame = false;
@@ -47,7 +47,7 @@ namespace Leafling
             Leafling.AnimationFinished += OnAnimationFinished;
             Leafling.AnimationEnteredActionFrame += OnAnimationEnteredActionFrame;
         }
-        public virtual void Exit()
+        protected virtual void OnDisable()
         {
             Leafling.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
             Leafling.StartedJumping -= OnStartedJumping;
@@ -60,10 +60,11 @@ namespace Leafling
             Leafling.AnimationFinished -= OnAnimationFinished;
             Leafling.AnimationEnteredActionFrame -= OnAnimationEnteredActionFrame;
         }
-        public virtual void Update_Obsolete(float dt)
+        protected virtual void Update()
         {
 
         }
+
         protected virtual void OnHorizontalDirectionChanged()
         {
 

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,14 +10,76 @@ namespace Leafling
     {
         [SerializeField]
         private Leafling _leafling;
-        private LeaflingState _currentState;
+        [SerializeField]
         private List<LeaflingState> _stateList;
+        private LeaflingState _currentState;
         private Dictionary<Type, LeaflingState> _stateIndex;
 
         private void Awake()
         {
-            _stateList = LoadAllStates();
             _stateIndex = BuildStateIndex(_stateList);
+            RefreshEnabledStates();
+        }
+        private static Dictionary<Type, LeaflingState> BuildStateIndex(List<LeaflingState> allStates)
+        {
+            Dictionary<Type, LeaflingState> result = new();
+            foreach (LeaflingState state in allStates)
+            {
+                result[state.GetType()] = state;
+            }
+            return result;
+        }
+
+        public void SendSignal(ILeaflingSignal signal)
+        {
+            signal.PrepareNextState(this);
+            SetState(signal.StateType);
+        }
+        private void SetState(Type stateType)
+        {
+            SetState(GetState(stateType));
+        }
+        private void SetState(LeaflingState state)
+        {
+            _currentState = state;
+            RefreshEnabledStates();
+        }
+        private void RefreshEnabledStates()
+        {
+            for (int i = 0; i < _stateList.Count; i++)
+            {
+                RefreshStateEnabled(_stateList[i]);
+            }
+        }
+        private void RefreshStateEnabled(LeaflingState state)
+        {
+            state.enabled = state == _currentState;
+        }
+
+        public TState GetState<TState>() where TState : LeaflingState
+        {
+            return GetState(typeof(TState)) as TState;
+        }
+        public LeaflingState GetState(Type stateType)
+        {
+            return _stateIndex[stateType];
+        }
+
+#if UNITY_EDITOR
+        [Button]
+        private void AddAllStates()
+        {
+            _stateList = LoadAllStates();
+            RefreshEnabledStates();
+        }
+        [Button]
+        private void RemoveAllStates()
+        {
+            for (int i = 0; i < _stateList.Count; i++)
+            {
+                DestroyImmediate(_stateList[i]);
+            }
+            _stateList.Clear();
         }
         private List<LeaflingState> LoadAllStates()
         {
@@ -42,54 +105,6 @@ namespace Leafling
                 gameObject.AddComponent<LeaflingState_WallSlide>()
             };
         }
-        private static Dictionary<Type, LeaflingState> BuildStateIndex(List<LeaflingState> allStates)
-        {
-            Dictionary<Type, LeaflingState> result = new();
-            foreach (LeaflingState state in allStates)
-            {
-                result[state.GetType()] = state;
-            }
-            return result;
-        }
-
-        public void SendSignal(ILeaflingSignal signal)
-        {
-            signal.PrepareNextState(this);
-            SetState(signal.StateType);
-        }
-        private void SetState(Type stateType)
-        {
-            SetState(GetState(stateType));
-        }
-        private void SetState(LeaflingState state)
-        {
-            if (_currentState != null)
-            {
-                _currentState.Exit();
-            }
-            _currentState = state;
-            if (_currentState != null)
-            {
-                _currentState.Enter();
-            }
-        }
-
-        public TState GetState<TState>() where TState : LeaflingState
-        {
-            return GetState(typeof(TState)) as TState;
-        }
-        public LeaflingState GetState(Type stateType)
-        {
-            return _stateIndex[stateType];
-        }
-
-        private void Update()
-        {
-            if (_currentState == null)
-            {
-                return;
-            }
-            _currentState.Update_Obsolete(Time.deltaTime);
-        }
+#endif
     }
 }

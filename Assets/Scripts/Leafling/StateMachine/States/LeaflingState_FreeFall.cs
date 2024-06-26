@@ -9,9 +9,9 @@ namespace Leafling
             _entry = entry;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             if (_entry == FreeFallEntry.Backflip)
             {
                 Leafling.SetAnimation(Leafling.Backflip);
@@ -47,9 +47,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
             if (Leafling.IsTouching(CardinalDirection.Down))
             {

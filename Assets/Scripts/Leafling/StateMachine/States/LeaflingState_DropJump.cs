@@ -2,9 +2,9 @@ namespace Leafling
 {
     public class LeaflingState_DropJump : LeaflingState
     {
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetVerticalVelocity(Leafling.DropJumpSpeed);
             Leafling.SetAnimation(Leafling.DropJump);
         }
@@ -13,9 +13,9 @@ namespace Leafling
             base.OnAnimationFinished();
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             Leafling.ApplyAirControl(Leafling.DropJumpAirControl);
         }
     }

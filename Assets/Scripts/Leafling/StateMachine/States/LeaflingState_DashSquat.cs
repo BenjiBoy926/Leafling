@@ -16,9 +16,9 @@ namespace Leafling
             _dashOnRicochet = dashOnRicochet;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             LeaflingStateTool_Dash.ShowDashPerch(Leafling, _aim);
         }
         protected override void OnAnimationFinished()

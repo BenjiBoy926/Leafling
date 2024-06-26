@@ -11,15 +11,15 @@ namespace Leafling
             _wallDirection = wallDirection;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetAnimation(Leafling.WallJump);
             Leafling.FaceTowards(LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection));
         }
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             float direction = LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection);
             Vector2 velocity = new Vector2(direction, 1).normalized * Leafling.WallJumpSpeed;
             Leafling.SetVelocity(velocity);

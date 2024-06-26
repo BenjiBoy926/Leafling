@@ -16,17 +16,17 @@ namespace Leafling
             _forceSlideWindow = forceSlideWindow;
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             bool flip = LeaflingStateTool_WallJump.WallDirectionToFlipX(_wallDirection);
             Leafling.SetTransition(new(Leafling.WallPerch, Leafling.WallSlideTransitionScale, flip));
             Leafling.SetGravityScale(Leafling.WallSlideGravityScale);
             Leafling.SetVerticalVelocity(0);
         }
-        public override void Exit()
+        protected override void OnDisable()
         {
-            base.Exit();
+            base.OnDisable();
             Leafling.ResetGravityScale();
         }
         protected override void OnStartedJumping()
@@ -35,9 +35,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal_WallJump(_wallDirection));
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             if (ShouldDisengage())
             {
                 Disengage();

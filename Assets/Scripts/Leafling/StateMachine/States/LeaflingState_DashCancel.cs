@@ -11,9 +11,9 @@ namespace Leafling
             _direction = direction; 
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             LeaflingStateTool_Dash.ShowDashPerch(Leafling, _direction);
         }
         protected override void OnAnimationFinished()
@@ -23,9 +23,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             Leafling.SetVelocity(Vector2.zero);
         }
     }

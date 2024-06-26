@@ -14,9 +14,9 @@ namespace Leafling
             _toLeap = new FromToCurve(Leafling.BaseRunSpeed, Leafling.LeapMaxSpeed, Leafling.RunAccelerationCurve);
         }
 
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             TransitionAnimation(0);
         }
 
@@ -47,9 +47,9 @@ namespace Leafling
             }
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             float speed = CalculateHorizontalSpeed();
             Leafling.SetHorizontalVelocity(speed);
             if (!Leafling.IsTouching(CardinalDirection.Down))

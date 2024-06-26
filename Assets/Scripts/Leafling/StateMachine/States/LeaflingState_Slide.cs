@@ -2,9 +2,9 @@ namespace Leafling
 {
     public class LeaflingState_Slide : LeaflingState
     {
-        public override void Enter()
+        protected override void OnEnable()
         {
-            base.Enter();
+            base.OnEnable();
             Leafling.SetTransition(new(Leafling.Slide, Leafling.SlideTransitionScale, Leafling.CurrentFlipX));
         }
 
@@ -30,9 +30,9 @@ namespace Leafling
             }
         }
 
-        public override void Update_Obsolete(float dt)
+        protected override void Update()
         {
-            base.Update_Obsolete(dt);
+            base.Update();
             if (HasEnteredActionFrame)
             {
                 float t = Leafling.ProgressOfFirstActionFrame;
