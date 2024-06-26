@@ -37,10 +37,6 @@ namespace Leafling
         public bool IsPreviousFrameActionFrame => Animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => Animator.IsCurrentFrameActionFrame;
 
-        public float LeapMaxSpeed => BaseRunSpeed + LeapAdditionalSpeed;
-        public float LongJumpTopSpeed => JumpAirControl.ForwardTopSpeed;
-
-        [field: Header("Parts")]
         [field: SerializeField]
         private LeaflingStateMachine StateMachine { get; set; }
         [field: SerializeField]
@@ -54,31 +50,7 @@ namespace Leafling
         [field: SerializeField]
         private LeaflingSprite Sprite { get; set; }
 
-        [field: Header("Animation")]
-        [field: SerializeField]
-        public SpriteAnimation Idle { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Run { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Slide { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation LongJump { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Jump { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation CrouchJump { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Backflip { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Frontflip { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation FreeFallForward { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation FreeFallBack { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation FreeFallStraight { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Flutter { get; private set; }
+        [field: Space]
         [field: SerializeField]
         public SpriteAnimation Squat { get; private set; }
         [field: SerializeField]
@@ -87,92 +59,6 @@ namespace Leafling
         public SpriteAnimation WallPerch { get; private set; }
         [field: SerializeField]
         public SpriteAnimation CeilingPerch { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Dash { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation Drop { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation DropJump { get; private set; }
-        [field: SerializeField]
-        public SpriteAnimation WallJump { get; private set; }
-
-        [field: Space]
-        [field: SerializeField]
-        public float RunningTransitionScale { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public float SlideTransitionScale { get; private set; } = 0.25f;
-        [field: SerializeField]
-        public float JumpTransitionScale { get; private set; } = 0.1f;
-        [field: SerializeField]
-        public float FlutterTransitionScale { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public float DropTransitionScale { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public float AimingDashTransitionScale { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public float WallSlideTransitionScale { get; private set; } = 0.5f;
-
-        [field: Header("Running")]
-        [field: SerializeField]
-        public float BaseRunSpeed { get; private set; } = 5;
-        [field: SerializeField]
-        private float LeapAdditionalSpeed { get; set; } = 15;
-        [field: SerializeField]
-        public AnimationCurve RunAccelerationCurve { get; private set; }
-        [field: SerializeField]
-        public float MaxSlideSpeed { get; private set; } = 25;
-        [field: SerializeField]
-        private AnimationCurve SlideSpeedCurve { get; set; }
-        [field: SerializeField]
-        public DirectionalAirControl LongJumpAirControl { get; private set; }
-        [field: SerializeField]
-        public float LongJumpGravityScale { get; private set; } = 0.1f;
-
-        [field: Header("Jumping")]
-        [field: SerializeField]
-        public float MaxJumpSpeed { get; private set; } = 20;
-        [field: SerializeField]
-        private AnimationCurve JumpSpeedCurve { get; set; }
-        [field: SerializeField]
-        public float MaxJumpTime { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public DirectionalAirControl JumpAirControl { get; private set; }
-        [field: SerializeField]
-        public float DropSpeed { get; private set; } = 30;
-        [field: SerializeField]
-        public DirectionalAirControl DropAirControl { get; private set; }
-        [field: SerializeField]
-        public float DropCancelSpeed { get; private set; } = 10;
-        [field: SerializeField]
-        public float DropJumpSpeed { get; private set; } = 40;
-        [field: SerializeField]
-        public DirectionalAirControl DropJumpAirControl { get; private set; }
-        [field: SerializeField]
-        public DirectionalAirControl FreeFallAirControl { get; private set; }
-        [field: SerializeField]
-        public DirectionalAirControl FlutterAirControl { get; private set; }
-        [field: SerializeField]
-        public float CrouchJumpSpeed { get; private set; } = 35;
-        [field: SerializeField]
-        public DirectionalAirControl CrouchJumpAirControl { get; private set; }
-        [field: SerializeField]
-        public float WallSlideGravityScale { get; private set; } = 0.25f;
-        [field: SerializeField]
-        public float MaxWallJumpTime { get; private set; } = 0.5f;
-        [field: SerializeField]
-        public float WallJumpSpeed { get; private set; } = 30;
-        [field: SerializeField]
-        public float WallJumpExitHop { get; private set; } = 10;
-
-        [field: Header("Dashing")]
-        [field: SerializeField]
-        public float AimingDashGravityScale { get; private set; } = 0.25f;
-        [field: SerializeField]
-        public float MaxDashSpeed { get; private set; } = 30;
-        [field: SerializeField]
-        private AnimationCurve DashSpeedCurve { get; set; }
-        [field: SerializeField]
-        public float DashCancelSpeed { get; private set; } = 30;
         [field: SerializeField]
         public bool IsAbleToDash { get; private set; } = true;
 
@@ -270,18 +156,6 @@ namespace Leafling
             PhysicsBody.velocity = velocity;
         }
 
-        public float EvaluateJumpSpeedCurve(float t)
-        {
-            return JumpSpeedCurve.Evaluate(t);
-        }
-        public float EvaluateDashSpeedCurve(float t)
-        {
-            return DashSpeedCurve.Evaluate(t);
-        }
-        public float EvaluateSlideSpeedCurve(float t)
-        {
-            return SlideSpeedCurve.Evaluate(t);
-        }
         public void ApplyAirControl(DirectionalAirControl control)
         {
             control.ApplyTo(PhysicsBody, HorizontalDirection, FacingDirection);
@@ -293,10 +167,6 @@ namespace Leafling
         public void ResetGravityScale()
         {
             PhysicsBody.gravityScale = _defaultGravityScale;
-        }
-        public void SetSpriteUp(Vector2 up)
-        {
-            Animator.transform.up = up;
         }
         public void SetSpriteRight(Vector2 right)
         {

@@ -4,7 +4,7 @@ namespace Leafling
 {
     public class LeaflingState_Jump : LeaflingState
     {
-        private float JumpProgress => TimeSinceStateStart / Leafling.MaxJumpTime;
+        private float JumpProgress => TimeSinceStateStart / _maxDuration;
 
         [SerializeField]
         private SpriteAnimation _animation;

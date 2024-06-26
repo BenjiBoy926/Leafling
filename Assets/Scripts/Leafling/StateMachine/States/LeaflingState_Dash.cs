@@ -56,9 +56,9 @@ namespace Leafling
         {
             if (Leafling.IsCurrentFrameActionFrame)
             {
-                return Leafling.MaxDashSpeed * _aim;
+                return _maxSpeed * _aim;
             }
-            return Leafling.MaxDashSpeed * _speedCurve.Evaluate(Leafling.ProgressAfterFirstActionFrame) * _aim;
+            return _maxSpeed * _speedCurve.Evaluate(Leafling.ProgressAfterFirstActionFrame) * _aim;
         }
 
         private void CheckForRicochet()
