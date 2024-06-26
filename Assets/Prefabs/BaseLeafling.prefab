@@ -257,18 +257,18 @@ MonoBehaviour:
   _speed: 5
   _restingAirControl:
     _forwards:
+      _acceleration: 15
+      _topSpeed: 15
+    _backwards:
+      _acceleration: 10
+      _topSpeed: 10
+  _actionAirControl:
+    _forwards:
       _acceleration: 20
       _topSpeed: 20
     _backwards:
       _acceleration: 15
       _topSpeed: 15
-  _actionAirControl:
-    _forwards:
-      _acceleration: 25
-      _topSpeed: 25
-    _backwards:
-      _acceleration: 20
-      _topSpeed: 20
 --- !u!1 &1169853418819118921
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,11 +518,11 @@ MonoBehaviour:
   _fallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
   _airControl:
     _forwards:
-      _acceleration: 20
-      _topSpeed: 20
-    _backwards:
       _acceleration: 15
       _topSpeed: 15
+    _backwards:
+      _acceleration: 10
+      _topSpeed: 10
 --- !u!1 &1936557308464642741
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,12 +705,12 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.5966191
-      outSlope: -2.5966191
+      value: 0.5
+      inSlope: -1.3375262
+      outSlope: -1.3375262
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.02216065
+      inWeight: 0.047091424
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
