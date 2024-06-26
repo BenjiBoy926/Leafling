@@ -9,11 +9,6 @@ namespace Leafling
             _entry = entry;
         }
 
-        public LeaflingState_FreeFall(Leafling leafling, FreeFallEntry entry) : base(leafling)
-        {
-            _entry = entry;
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -52,9 +47,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
             if (Leafling.IsTouching(CardinalDirection.Down))
             {

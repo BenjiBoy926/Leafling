@@ -1,23 +1,37 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingState
+    public class LeaflingState : MonoBehaviour
     {
         protected Leafling Leafling => _leafling;
         protected float TimeSinceStateStart => Time.time - _timeOfStateStart;
         protected bool HasEnteredActionFrame => _hasEnteredActionFrame;
 
+        [SerializeField]
         private Leafling _leafling;
         private float _timeOfStateStart;
         private bool _hasEnteredActionFrame;
 
-        public LeaflingState(Leafling leafling)
+        private void Reset()
         {
-            _leafling = leafling;
+            _leafling = GetLeafling();
         }
+        protected virtual void Awake()
+        {
+            if (_leafling == null)
+            {
+                _leafling = GetLeafling();
+            }
+        }
+        private Leafling GetLeafling()
+        {
+            return GetComponentInParent<Leafling>();
+        }
+
         public virtual void Enter()
         {
             _timeOfStateStart = Time.time;
@@ -46,7 +60,7 @@ namespace Leafling
             Leafling.AnimationFinished -= OnAnimationFinished;
             Leafling.AnimationEnteredActionFrame -= OnAnimationEnteredActionFrame;
         }
-        public virtual void Update(float dt)
+        public virtual void Update_Obsolete(float dt)
         {
 
         }

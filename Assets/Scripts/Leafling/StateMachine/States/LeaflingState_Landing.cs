@@ -9,11 +9,6 @@ namespace Leafling
             _jumpSignal = jumpSignal;
         }
 
-        public LeaflingState_Landing(Leafling leafling, ILeaflingSignal jumpSignal) : base(leafling)
-        {
-            _jumpSignal = jumpSignal;
-        }
-
         public override void Enter()
         {
             base.Enter();

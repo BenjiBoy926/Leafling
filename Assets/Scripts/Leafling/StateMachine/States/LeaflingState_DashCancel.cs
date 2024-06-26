@@ -11,11 +11,6 @@ namespace Leafling
             _direction = direction; 
         }
 
-        public LeaflingState_DashCancel(Leafling leafling, Vector2 direction) : base(leafling) 
-        { 
-            _direction = direction;
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -28,9 +23,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Leafling.SetVelocity(Vector2.zero);
         }
     }

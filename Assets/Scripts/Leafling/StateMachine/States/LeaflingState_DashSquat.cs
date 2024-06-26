@@ -16,12 +16,6 @@ namespace Leafling
             _dashOnRicochet = dashOnRicochet;
         }
 
-        public LeaflingState_DashSquat(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
-        { 
-            _aim = aim;
-            _dashOnRicochet = dashOnRicochet;
-        }
-
         public override void Enter()
         {
             base.Enter();

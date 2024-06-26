@@ -16,16 +16,6 @@ namespace Leafling
             _forceSlideWindow = forceSlideWindow;
         }
 
-        public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection) : this(leafling, wallDirection, 0)
-        {
-
-        }
-        public LeaflingState_WallSlide(Leafling leafling, CardinalDirection wallDirection, float forceSlideWindow) : base(leafling)
-        {
-            _wallDirection = wallDirection;
-            _forceSlideWindow = forceSlideWindow;
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -45,9 +35,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal_WallJump(_wallDirection));
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             if (ShouldDisengage())
             {
                 Disengage();

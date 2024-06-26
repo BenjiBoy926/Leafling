@@ -2,10 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_JumpSquat : LeaflingState
     {
-        public LeaflingState_JumpSquat(Leafling leafling) : base(leafling)
-        {
-        }
-
         public override void Enter()
         {
             base.Enter();

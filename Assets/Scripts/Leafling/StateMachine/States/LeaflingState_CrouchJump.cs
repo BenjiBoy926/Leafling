@@ -2,10 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_CrouchJump : LeaflingState
     {
-        public LeaflingState_CrouchJump(Leafling leafling) : base(leafling)
-        {
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -17,9 +13,9 @@ namespace Leafling
             base.OnAnimationFinished();
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Leafling.ApplyAirControl(Leafling.CrouchJumpAirControl);
         }
     }

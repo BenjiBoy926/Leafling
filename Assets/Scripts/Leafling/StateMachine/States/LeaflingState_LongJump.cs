@@ -2,10 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_LongJump : LeaflingState
     {
-        public LeaflingState_LongJump(Leafling leafling) : base(leafling)
-        {
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -35,9 +31,9 @@ namespace Leafling
             base.OnAnimationEnteredActionFrame();
             Leafling.SetHorizontalVelocity(Leafling.LongJumpTopSpeed * Leafling.FacingDirection);
         }
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             if (HasEnteredActionFrame)
             {
                 Leafling.ApplyAirControl(Leafling.LongJumpAirControl);

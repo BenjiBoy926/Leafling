@@ -22,24 +22,24 @@ namespace Leafling
         {
             return new()
             {
-                new LeaflingState_Crouch(_leafling),
-                new LeaflingState_CrouchJump(_leafling),
-                new LeaflingState_Dash(_leafling, Vector2.zero, true),
-                new LeaflingState_DashAim(_leafling),
-                new LeaflingState_DashCancel(_leafling, Vector2.zero),
-                new LeaflingState_DashSquat(_leafling, Vector2.zero, true),
-                new LeaflingState_Drop(_leafling),
-                new LeaflingState_DropJump(_leafling),
-                new LeaflingState_Flutter(_leafling),
-                new LeaflingState_FreeFall(_leafling, FreeFallEntry.Normal),
-                new LeaflingState_Jump(_leafling),
-                new LeaflingState_JumpSquat(_leafling),
-                new LeaflingState_Landing(_leafling, new LeaflingSignal<LeaflingState_Jump>()),
-                new LeaflingState_LongJump(_leafling),
-                new LeaflingState_Slide(_leafling),
-                new LeaflingState_Standing(_leafling),
-                new LeaflingState_WallJump(_leafling, CardinalDirection.Up),
-                new LeaflingState_WallSlide(_leafling, CardinalDirection.Up)
+                gameObject.AddComponent<LeaflingState_Crouch>(),
+                gameObject.AddComponent<LeaflingState_CrouchJump>(),
+                gameObject.AddComponent<LeaflingState_Dash>(),
+                gameObject.AddComponent<LeaflingState_DashAim>(),
+                gameObject.AddComponent<LeaflingState_DashCancel>(),
+                gameObject.AddComponent<LeaflingState_DashSquat>(),
+                gameObject.AddComponent<LeaflingState_Drop>(),
+                gameObject.AddComponent<LeaflingState_DropJump>(),
+                gameObject.AddComponent<LeaflingState_Flutter>(),
+                gameObject.AddComponent<LeaflingState_FreeFall>(),
+                gameObject.AddComponent<LeaflingState_Jump>(),
+                gameObject.AddComponent<LeaflingState_JumpSquat>(),
+                gameObject.AddComponent<LeaflingState_Landing>(),
+                gameObject.AddComponent<LeaflingState_LongJump>(),
+                gameObject.AddComponent<LeaflingState_Slide>(),
+                gameObject.AddComponent<LeaflingState_Standing>(),
+                gameObject.AddComponent<LeaflingState_WallJump>(),
+                gameObject.AddComponent<LeaflingState_WallSlide>()
             };
         }
         private static Dictionary<Type, LeaflingState> BuildStateIndex(List<LeaflingState> allStates)
@@ -89,7 +89,7 @@ namespace Leafling
             {
                 return;
             }
-            _currentState.Update(Time.deltaTime);
+            _currentState.Update_Obsolete(Time.deltaTime);
         }
     }
 }

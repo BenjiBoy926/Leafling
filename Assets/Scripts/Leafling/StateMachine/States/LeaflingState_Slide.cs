@@ -2,10 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_Slide : LeaflingState
     {
-        public LeaflingState_Slide(Leafling leafling) : base(leafling)
-        {
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -34,9 +30,9 @@ namespace Leafling
             }
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             if (HasEnteredActionFrame)
             {
                 float t = Leafling.ProgressOfFirstActionFrame;

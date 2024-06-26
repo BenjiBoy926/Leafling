@@ -16,12 +16,6 @@ namespace Leafling
             _dashOnRicochet = dashOnRicochet;
         }
 
-        public LeaflingState_Dash(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
-        {
-            _aim = aim;
-            _dashOnRicochet = dashOnRicochet;
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -44,9 +38,9 @@ namespace Leafling
             }
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Vector2 velocity = GetDashVelocity();
             Leafling.SetVelocity(velocity);
             CheckForRicochet();

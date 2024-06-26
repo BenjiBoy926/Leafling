@@ -4,13 +4,14 @@ namespace Leafling
 {
     public class LeaflingState_Standing : LeaflingState
     {
-        private readonly FromToCurve _toRun;
-        private readonly FromToCurve _toLeap;
+        private FromToCurve _toRun;
+        private FromToCurve _toLeap;
 
-        public LeaflingState_Standing(Leafling leafling) : base(leafling) 
+        protected override void Awake()
         {
-            _toRun = new FromToCurve(0, leafling.BaseRunSpeed, leafling.RunAccelerationCurve);
-            _toLeap = new FromToCurve(leafling.BaseRunSpeed, leafling.LeapMaxSpeed, leafling.RunAccelerationCurve);
+            base.Awake();
+            _toRun = new FromToCurve(0, Leafling.BaseRunSpeed, Leafling.RunAccelerationCurve);
+            _toLeap = new FromToCurve(Leafling.BaseRunSpeed, Leafling.LeapMaxSpeed, Leafling.RunAccelerationCurve);
         }
 
         public override void Enter()
@@ -46,9 +47,9 @@ namespace Leafling
             }
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             float speed = CalculateHorizontalSpeed();
             Leafling.SetHorizontalVelocity(speed);
             if (!Leafling.IsTouching(CardinalDirection.Down))

@@ -6,17 +6,15 @@ namespace Leafling
     {
         private float JumpProgress => TimeSinceStateStart / Leafling.MaxJumpTime;
 
-        public LeaflingState_Jump(Leafling leafling) : base(leafling) { }
-
         public override void Enter()
         {
             base.Enter();
             Leafling.SetAnimation(Leafling.Jump);
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Leafling.ApplyAirControl(Leafling.JumpAirControl);
             Leafling.SetVerticalVelocity(GetJumpSpeed());
             if (ShouldTransitionOutOfJump())

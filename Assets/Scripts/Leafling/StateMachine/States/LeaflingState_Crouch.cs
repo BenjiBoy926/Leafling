@@ -3,8 +3,6 @@ namespace Leafling
 {
     public class LeaflingState_Crouch : LeaflingState
     {
-        public LeaflingState_Crouch(Leafling leafling) : base(leafling) { }
-
         public override void Enter()
         {
             base.Enter();

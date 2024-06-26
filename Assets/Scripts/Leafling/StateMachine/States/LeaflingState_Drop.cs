@@ -2,8 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_Drop : LeaflingState
     {
-        public LeaflingState_Drop(Leafling leafling) : base(leafling) { }
-
         public override void Enter()
         {
             base.Enter();
@@ -19,9 +17,9 @@ namespace Leafling
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             Leafling.ApplyAirControl(Leafling.DropAirControl);
             if (HasEnteredActionFrame)
             {

@@ -7,11 +7,6 @@ namespace Leafling
     {
         private Vector2 _aim;
 
-        public LeaflingState_DashAim(Leafling leafling) : base(leafling) 
-        { 
-            _aim = leafling.DashAim;
-        }
-
         public override void Enter()
         {
             base.Enter();
@@ -24,9 +19,9 @@ namespace Leafling
             Leafling.ResetGravityScale();
             Leafling.ResetSpriteRotation();
         }
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             _aim = CalculateDashAim();
             LeaflingStateTool_Dash.TransitionDashPerch(Leafling, Leafling.AimingDashTransitionScale, _aim);
             if (!Leafling.IsAimingDash)

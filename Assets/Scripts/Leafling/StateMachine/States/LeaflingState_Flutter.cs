@@ -2,8 +2,6 @@ namespace Leafling
 {
     public class LeaflingState_Flutter : LeaflingState
     {
-        public LeaflingState_Flutter(Leafling leafling) : base(leafling) { }
-
         public override void Enter()
         {
             base.Enter();
@@ -31,9 +29,9 @@ namespace Leafling
             Leafling.SetVerticalVelocity(5);
         }
 
-        public override void Update(float dt)
+        public override void Update_Obsolete(float dt)
         {
-            base.Update(dt);
+            base.Update_Obsolete(dt);
             ApplyAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
