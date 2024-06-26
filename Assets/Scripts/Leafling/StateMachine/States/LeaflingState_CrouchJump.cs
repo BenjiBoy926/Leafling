@@ -1,12 +1,21 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_CrouchJump : LeaflingState
     {
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _speed;
+        [SerializeField]
+        private DirectionalAirControl _airControl;
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetVerticalVelocity(Leafling.CrouchJumpSpeed);
-            Leafling.SetAnimation(Leafling.CrouchJump);
+            Leafling.SetVerticalVelocity(_speed);
+            Leafling.SetAnimation(_animation);
         }
         protected override void OnAnimationFinished()
         {
@@ -16,7 +25,7 @@ namespace Leafling
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(Leafling.CrouchJumpAirControl);
+            Leafling.ApplyAirControl(_airControl);
         }
     }
 }

@@ -1,13 +1,24 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_LongJump : LeaflingState
     {
+        private float TopSpeed => _airControl.ForwardTopSpeed;
+
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _gravityScale = 0.1f;
+        [SerializeField]
+        private DirectionalAirControl _airControl;
+
         protected override void OnEnable()
         {
             base.OnEnable();
             Leafling.SetHorizontalVelocity(0);
-            Leafling.SetAnimation(Leafling.LongJump);
-            Leafling.SetGravityScale(Leafling.LongJumpGravityScale);
+            Leafling.SetAnimation(_animation);
+            Leafling.SetGravityScale(_gravityScale);
         }
         protected override void OnDisable()
         {
@@ -29,14 +40,14 @@ namespace Leafling
         protected override void OnAnimationEnteredActionFrame()
         {
             base.OnAnimationEnteredActionFrame();
-            Leafling.SetHorizontalVelocity(Leafling.LongJumpTopSpeed * Leafling.FacingDirection);
+            Leafling.SetHorizontalVelocity(TopSpeed * Leafling.FacingDirection);
         }
         protected override void Update()
         {
             base.Update();
             if (HasEnteredActionFrame)
             {
-                Leafling.ApplyAirControl(Leafling.LongJumpAirControl);
+                Leafling.ApplyAirControl(_airControl);
             }
         }
     }

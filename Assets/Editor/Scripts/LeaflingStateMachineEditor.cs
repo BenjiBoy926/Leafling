@@ -56,7 +56,7 @@ namespace Leafling.Editor
         {
             string title = "Hard State Refresh";
             string message = "This will delete and re-attach every child state in this object and " +
-                "erase any custom inspector values set on any state";
+                "reset any custom inspector values set on any state";
             string ok = "Hard Refresh";
             string cancel = "Cancel";
             return EditorUtility.DisplayDialog(title, message, ok, cancel);

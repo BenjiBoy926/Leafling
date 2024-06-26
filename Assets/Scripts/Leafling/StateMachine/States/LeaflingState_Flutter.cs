@@ -1,11 +1,24 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_Flutter : LeaflingState
     {
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _animationTransitionScale = 0.5f;
+        [SerializeField]
+        private float _speed = 5;
+        [SerializeField]
+        private DirectionalAirControl _restingAirControl;
+        [SerializeField]
+        private DirectionalAirControl _actionAirControl;
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(Leafling.Flutter, Leafling.FlutterTransitionScale, Leafling.CurrentFlipX));
+            Leafling.SetTransition(new(_animation, _animationTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnStartedAimingDash()
         {
@@ -18,7 +31,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(Leafling.Flutter))
+            if (Leafling.IsAnimating(_animation))
             {
                 Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
             }
@@ -26,7 +39,7 @@ namespace Leafling
         protected override void OnAnimationEnteredActionFrame()
         {
             base.OnAnimationEnteredActionFrame();
-            Leafling.SetVerticalVelocity(5);
+            Leafling.SetVerticalVelocity(_speed);
         }
 
         protected override void Update()
@@ -43,11 +56,11 @@ namespace Leafling
         {
             if (Leafling.IsCurrentFrameActionFrame)
             {
-                Leafling.ApplyAirControl(Leafling.FlutterAirControl);
+                Leafling.ApplyAirControl(_actionAirControl);
             }
             else
             {
-                Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
+                Leafling.ApplyAirControl(_restingAirControl);
             }
         }
     }

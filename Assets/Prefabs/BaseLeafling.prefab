@@ -127,6 +127,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
+  _maxSpeed: 20
+  _maxDuration: 0.5
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: -1.3515922
+      outSlope: -1.3515922
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.037396133
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _airControl:
+    _forwards:
+      _acceleration: 25
+      _topSpeed: 25
+    _backwards:
+      _acceleration: 15
+      _topSpeed: 15
 --- !u!1 &322545417252944779
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _speed: 30
 --- !u!1 &648582296080653540
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +252,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: bcb0ea4d597a313489a367e1863398b4, type: 2}
+  _animationTransitionScale: 0.5
+  _speed: 5
+  _restingAirControl:
+    _forwards:
+      _acceleration: 20
+      _topSpeed: 20
+    _backwards:
+      _acceleration: 15
+      _topSpeed: 15
+  _actionAirControl:
+    _forwards:
+      _acceleration: 25
+      _topSpeed: 25
+    _backwards:
+      _acceleration: 20
+      _topSpeed: 20
 --- !u!1 &1169853418819118921
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _gravityScale: 0.25
+  _animationTransitionScale: 0.5
 --- !u!1 &1634857613549958746
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +438,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
+  _running: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _animationTransitionScale: 0.5
+  _baseSpeed: 5
+  _leapAdditionalSpeed: 15
+  _accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1889723467272425302
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +512,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _backflip: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
+  _fallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
+  _fallDown: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
+  _fallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
+  _airControl:
+    _forwards:
+      _acceleration: 20
+      _topSpeed: 20
+    _backwards:
+      _acceleration: 15
+      _topSpeed: 15
 --- !u!1 &1936557308464642741
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +568,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: e50c7ac5dbd919f4089df68a55f356fd, type: 2}
+  _animationTransitionScale: 0.25
+  _maxSpeed: 25
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: -1.4236275
+      outSlope: -1.4236275
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.038781166
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2621108235727806242
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +640,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: e17713187f2505c448dafe4fbfb6dfc0, type: 2}
+  _speed: 30
+  _exitHopSpeed: 20
+  _maxDuration: 0.5
 --- !u!1 &2908908446715005133
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +689,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: 82bd7418f7354f041af1a4bd3be4e02a, type: 2}
+  _maxSpeed: 30
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.5966191
+      outSlope: -2.5966191
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.02216065
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3040839283739475829
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animationTransitionScale: 0.1
 --- !u!1 &3203590377629203612
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animationTransitionScale: 0.5
+  _gravityScale: 0.25
 --- !u!1 &3700162624775708444
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +898,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: f0b58c92e1aab444ba08cdff1623851c, type: 2}
+  _animationTransitionScale: 0.25
+  _dropSpeed: 30
+  _cancelSpeed: 10
+  _airControl:
+    _forwards:
+      _acceleration: 5
+      _topSpeed: 5
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
 --- !u!1 &4060073737904618157
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: d3444745f49e7f04c9b414b5685d6b2f, type: 2}
+  _speed: 40
+  _airControl:
+    _forwards:
+      _acceleration: 20
+      _topSpeed: 20
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
 --- !u!1 &7029134148164099795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1213,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: 04d1a2019a3419d4d940f68ddd609d0e, type: 2}
+  _gravityScale: 0.25
+  _airControl:
+    _forwards:
+      _acceleration: 30
+      _topSpeed: 30
+    _backwards:
+      _acceleration: 5
+      _topSpeed: 5
 --- !u!1 &7879352367548083249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,3 +1617,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _animation: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
+  _speed: 35
+  _airControl:
+    _forwards:
+      _acceleration: 10
+      _topSpeed: 10
+    _backwards:
+      _acceleration: 10
+      _topSpeed: 10

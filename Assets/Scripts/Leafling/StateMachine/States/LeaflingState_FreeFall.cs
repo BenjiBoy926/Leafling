@@ -1,7 +1,19 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_FreeFall : LeaflingState
     {
+        [SerializeField]
+        private SpriteAnimation _backflip;
+        [SerializeField]
+        private SpriteAnimation _fallBack;
+        [SerializeField]
+        private SpriteAnimation _fallDown;
+        [SerializeField]
+        private SpriteAnimation _fallForward;
+        [SerializeField]
+        private DirectionalAirControl _airControl;
         private FreeFallEntry _entry;
 
         public void SetEntry(FreeFallEntry entry)
@@ -14,12 +26,12 @@ namespace Leafling
             base.OnEnable();
             if (_entry == FreeFallEntry.Backflip)
             {
-                Leafling.SetAnimation(Leafling.Backflip);
+                Leafling.SetAnimation(_backflip);
                 TransitionFreeFallAnimation();
             }
             else
             {
-                Leafling.SetAnimation(Leafling.FreeFallStraight);
+                Leafling.SetAnimation(_fallDown);
             }
         }
 
@@ -50,7 +62,7 @@ namespace Leafling
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(Leafling.FreeFallAirControl);
+            Leafling.ApplyAirControl(_airControl);
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
                 Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
@@ -62,15 +74,15 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.SetTransition(new(Leafling.FreeFallStraight, 1, Leafling.CurrentFlipX));
+                Leafling.SetTransition(new(_fallDown, 1, Leafling.CurrentFlipX));
             }
             else if (Leafling.HorizontalDirection != Leafling.FacingDirection)
             {
-                Leafling.SetTransition(new(Leafling.FreeFallBack, 1, Leafling.CurrentFlipX));
+                Leafling.SetTransition(new(_fallBack, 1, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.SetTransition(new(Leafling.FreeFallForward, 1, Leafling.CurrentFlipX));
+                Leafling.SetTransition(new(_fallForward, 1, Leafling.CurrentFlipX));
             }
         }
     }

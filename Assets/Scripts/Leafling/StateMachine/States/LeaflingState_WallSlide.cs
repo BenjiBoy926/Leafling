@@ -1,9 +1,15 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_WallSlide : LeaflingState
     {
         private bool ShouldForceSlide => TimeSinceStateStart < _forceSlideWindow;
 
+        [SerializeField]
+        private float _animationTransitionScale = 0.25f;
+        [SerializeField]
+        private float _gravityScale = 0.1f;
         private CardinalDirection _wallDirection;
         private float _forceSlideWindow;
 
@@ -20,8 +26,8 @@ namespace Leafling
         {
             base.OnEnable();
             bool flip = LeaflingStateTool_WallJump.WallDirectionToFlipX(_wallDirection);
-            Leafling.SetTransition(new(Leafling.WallPerch, Leafling.WallSlideTransitionScale, flip));
-            Leafling.SetGravityScale(Leafling.WallSlideGravityScale);
+            Leafling.SetTransition(new(Leafling.WallPerch, _animationTransitionScale, flip));
+            Leafling.SetGravityScale(_gravityScale);
             Leafling.SetVerticalVelocity(0);
         }
         protected override void OnDisable()

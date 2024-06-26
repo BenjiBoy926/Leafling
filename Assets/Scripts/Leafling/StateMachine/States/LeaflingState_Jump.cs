@@ -6,16 +6,27 @@ namespace Leafling
     {
         private float JumpProgress => TimeSinceStateStart / Leafling.MaxJumpTime;
 
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _maxSpeed;
+        [SerializeField]
+        private float _maxDuration;
+        [SerializeField]
+        private AnimationCurve _speedCurve;
+        [SerializeField]
+        private DirectionalAirControl _airControl;
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(Leafling.Jump);
+            Leafling.SetAnimation(_animation);
         }
 
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(Leafling.JumpAirControl);
+            Leafling.ApplyAirControl(_airControl);
             Leafling.SetVerticalVelocity(GetJumpSpeed());
             if (ShouldTransitionOutOfJump())
             {
@@ -36,11 +47,11 @@ namespace Leafling
         }
         private bool IsJumpingTimeExhausted()
         {
-            return TimeSinceStateStart >= Leafling.MaxJumpTime;
+            return TimeSinceStateStart >= _maxDuration;
         }
         private float GetJumpSpeed()
         {
-            return Leafling.EvaluateJumpSpeedCurve(JumpProgress) * Leafling.MaxJumpSpeed;
+            return _speedCurve.Evaluate(JumpProgress) * _maxSpeed;
         }
     }
 }

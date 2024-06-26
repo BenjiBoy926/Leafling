@@ -4,6 +4,13 @@ namespace Leafling
 {
     public class LeaflingState_Dash : LeaflingState
     {
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _maxSpeed;
+        [SerializeField]
+        private AnimationCurve _speedCurve;
+
         private Vector2 _aim;
         private bool _dashOnRicochet;
 
@@ -19,7 +26,7 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(Leafling.Dash);
+            Leafling.SetAnimation(_animation);
             Leafling.FaceTowards(_aim.x);
             LeaflingStateTool_Dash.SetMidairRotation(Leafling, _aim);
             Leafling.MakeUnableToDash();
@@ -32,7 +39,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(Leafling.Dash))
+            if (Leafling.IsAnimating(_animation))
             {
                 Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
@@ -51,7 +58,7 @@ namespace Leafling
             {
                 return Leafling.MaxDashSpeed * _aim;
             }
-            return Leafling.MaxDashSpeed * Leafling.EvaluateDashSpeedCurve(Leafling.ProgressAfterFirstActionFrame) * _aim;
+            return Leafling.MaxDashSpeed * _speedCurve.Evaluate(Leafling.ProgressAfterFirstActionFrame) * _aim;
         }
 
         private void CheckForRicochet()

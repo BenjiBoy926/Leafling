@@ -1,18 +1,31 @@
+using UnityEngine;
+
 namespace Leafling
 {
     public class LeaflingState_Drop : LeaflingState
     {
+        [SerializeField]
+        private SpriteAnimation _animation;
+        [SerializeField]
+        private float _animationTransitionScale = 0.1f;
+        [SerializeField]
+        private float _dropSpeed = 30;
+        [SerializeField]
+        private float _cancelSpeed = 10;
+        [SerializeField]
+        private DirectionalAirControl _airControl;
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(Leafling.Drop, Leafling.DropTransitionScale, Leafling.CurrentFlipX));
+            Leafling.SetTransition(new(_animation, _animationTransitionScale, Leafling.CurrentFlipX));
         }
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
             if (HasEnteredActionFrame)
             {
-                Leafling.SetVerticalVelocity(Leafling.DropCancelSpeed);
+                Leafling.SetVerticalVelocity(_cancelSpeed);
             }
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
@@ -20,10 +33,10 @@ namespace Leafling
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(Leafling.DropAirControl);
+            Leafling.ApplyAirControl(_airControl);
             if (HasEnteredActionFrame)
             {
-                Leafling.SetVerticalVelocity(-Leafling.DropSpeed);
+                Leafling.SetVerticalVelocity(-_dropSpeed);
             }
             else
             {
