@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +7,8 @@ namespace Leafling
 {
     public class LeaflingStateMachine : MonoBehaviour
     {
+        public const string StateListPropertyPath = nameof(_stateList);
+
         [SerializeField]
         private Leafling _leafling;
         [SerializeField]
@@ -44,7 +45,7 @@ namespace Leafling
             _currentState = state;
             RefreshEnabledStates();
         }
-        private void RefreshEnabledStates()
+        public void RefreshEnabledStates()
         {
             for (int i = 0; i < _stateList.Count; i++)
             {
@@ -64,47 +65,5 @@ namespace Leafling
         {
             return _stateIndex[stateType];
         }
-
-#if UNITY_EDITOR
-        [Button]
-        private void AddAllStates()
-        {
-            _stateList = LoadAllStates();
-            RefreshEnabledStates();
-        }
-        [Button]
-        private void RemoveAllStates()
-        {
-            for (int i = 0; i < _stateList.Count; i++)
-            {
-                DestroyImmediate(_stateList[i]);
-            }
-            _stateList.Clear();
-        }
-        private List<LeaflingState> LoadAllStates()
-        {
-            return new()
-            {
-                gameObject.AddComponent<LeaflingState_Crouch>(),
-                gameObject.AddComponent<LeaflingState_CrouchJump>(),
-                gameObject.AddComponent<LeaflingState_Dash>(),
-                gameObject.AddComponent<LeaflingState_DashAim>(),
-                gameObject.AddComponent<LeaflingState_DashCancel>(),
-                gameObject.AddComponent<LeaflingState_DashSquat>(),
-                gameObject.AddComponent<LeaflingState_Drop>(),
-                gameObject.AddComponent<LeaflingState_DropJump>(),
-                gameObject.AddComponent<LeaflingState_Flutter>(),
-                gameObject.AddComponent<LeaflingState_FreeFall>(),
-                gameObject.AddComponent<LeaflingState_Jump>(),
-                gameObject.AddComponent<LeaflingState_JumpSquat>(),
-                gameObject.AddComponent<LeaflingState_Landing>(),
-                gameObject.AddComponent<LeaflingState_LongJump>(),
-                gameObject.AddComponent<LeaflingState_Slide>(),
-                gameObject.AddComponent<LeaflingState_Standing>(),
-                gameObject.AddComponent<LeaflingState_WallJump>(),
-                gameObject.AddComponent<LeaflingState_WallSlide>()
-            };
-        }
-#endif
     }
 }

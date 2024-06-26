@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Leafling
+namespace Leafling.Editor
 {
     [CustomPropertyDrawer(typeof(ColorPair))]
     public class ColorPairDrawer : PropertyDrawer
