@@ -1,10 +1,13 @@
-using UnityEngine; 
+using UnityEngine;
+using NaughtyAttributes;
 
 namespace Leafling
 {
     public class LeaflingState_DashSquat : LeaflingState
     {
+        [SerializeField, ReadOnly]
         private Vector2 _aim;
+        [SerializeField, ReadOnly]
         private bool _dashOnRicochet;
 
         public void SetAim(Vector2 aim)

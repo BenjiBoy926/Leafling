@@ -159,8 +159,8 @@ MonoBehaviour:
       _acceleration: 25
       _topSpeed: 25
     _backwards:
-      _acceleration: 15
-      _topSpeed: 15
+      _acceleration: 20
+      _topSpeed: 20
 --- !u!1 &322545417252944779
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,18 +257,18 @@ MonoBehaviour:
   _speed: 5
   _restingAirControl:
     _forwards:
-      _acceleration: 15
-      _topSpeed: 15
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 10
-  _actionAirControl:
-    _forwards:
       _acceleration: 20
       _topSpeed: 20
     _backwards:
       _acceleration: 15
       _topSpeed: 15
+  _actionAirControl:
+    _forwards:
+      _acceleration: 25
+      _topSpeed: 25
+    _backwards:
+      _acceleration: 20
+      _topSpeed: 20
 --- !u!1 &1169853418819118921
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,11 +518,11 @@ MonoBehaviour:
   _fallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
   _airControl:
     _forwards:
+      _acceleration: 20
+      _topSpeed: 20
+    _backwards:
       _acceleration: 15
       _topSpeed: 15
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 10
 --- !u!1 &1936557308464642741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,195 +1350,10 @@ MonoBehaviour:
   <Contacts>k__BackingField: {fileID: 1035319642480623658}
   <Inputs>k__BackingField: {fileID: 7827341310666358948}
   <Sprite>k__BackingField: {fileID: 2711572145439259236}
-  <Idle>k__BackingField: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
-  <Run>k__BackingField: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
-  <Slide>k__BackingField: {fileID: 11400000, guid: e50c7ac5dbd919f4089df68a55f356fd, type: 2}
-  <LongJump>k__BackingField: {fileID: 11400000, guid: 04d1a2019a3419d4d940f68ddd609d0e, type: 2}
-  <Jump>k__BackingField: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
-  <CrouchJump>k__BackingField: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
-  <Backflip>k__BackingField: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
-  <Frontflip>k__BackingField: {fileID: 11400000, guid: f9f0f4598f0e6604781c180ef95ccc4b, type: 2}
-  <FreeFallForward>k__BackingField: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
-  <FreeFallBack>k__BackingField: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
-  <FreeFallStraight>k__BackingField: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
-  <Flutter>k__BackingField: {fileID: 11400000, guid: bcb0ea4d597a313489a367e1863398b4, type: 2}
   <Squat>k__BackingField: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
   <MidairDashAim>k__BackingField: {fileID: 11400000, guid: 9897c165df13f5f44a393957c5f20a2d, type: 2}
   <WallPerch>k__BackingField: {fileID: 11400000, guid: c017b4aa571df6c47b534ea1f0c6f5d5, type: 2}
   <CeilingPerch>k__BackingField: {fileID: 11400000, guid: d9863774b03732345a00d4b102ee7a5d, type: 2}
-  <Dash>k__BackingField: {fileID: 11400000, guid: 82bd7418f7354f041af1a4bd3be4e02a, type: 2}
-  <Drop>k__BackingField: {fileID: 11400000, guid: f0b58c92e1aab444ba08cdff1623851c, type: 2}
-  <DropJump>k__BackingField: {fileID: 11400000, guid: d3444745f49e7f04c9b414b5685d6b2f, type: 2}
-  <WallJump>k__BackingField: {fileID: 11400000, guid: e17713187f2505c448dafe4fbfb6dfc0, type: 2}
-  <RunningTransitionScale>k__BackingField: 0.5
-  <SlideTransitionScale>k__BackingField: 0.25
-  <JumpTransitionScale>k__BackingField: 0.1
-  <FlutterTransitionScale>k__BackingField: 0.5
-  <DropTransitionScale>k__BackingField: 0.5
-  <AimingDashTransitionScale>k__BackingField: 0.5
-  <WallSlideTransitionScale>k__BackingField: 0.5
-  <BaseRunSpeed>k__BackingField: 5
-  <LeapAdditionalSpeed>k__BackingField: 15
-  <RunAccelerationCurve>k__BackingField:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <MaxSlideSpeed>k__BackingField: 25
-  <SlideSpeedCurve>k__BackingField:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -3.208176
-      outSlope: -3.208176
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.019390583
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <LongJumpAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 15
-      _topSpeed: 25
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
-  <LongJumpGravityScale>k__BackingField: 0.1
-  <MaxJumpSpeed>k__BackingField: 20
-  <JumpSpeedCurve>k__BackingField:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.5
-      inSlope: -1.1053163
-      outSlope: -1.1053163
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.04432136
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <MaxJumpTime>k__BackingField: 0.5
-  <JumpAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 10
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 15
-  <DropSpeed>k__BackingField: 30
-  <DropAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 5
-      _topSpeed: 5
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
-  <DropCancelSpeed>k__BackingField: 10
-  <DropJumpSpeed>k__BackingField: 40
-  <DropJumpAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 20
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
-  <FreeFallAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 15
-      _topSpeed: 15
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 10
-  <FlutterAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 10
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 15
-  <CrouchJumpSpeed>k__BackingField: 40
-  <CrouchJumpAirControl>k__BackingField:
-    _forwards:
-      _acceleration: 10
-      _topSpeed: 15
-    _backwards:
-      _acceleration: 10
-      _topSpeed: 20
-  <WallSlideGravityScale>k__BackingField: 0.25
-  <MaxWallJumpTime>k__BackingField: 0.5
-  <WallJumpSpeed>k__BackingField: 30
-  <WallJumpExitHop>k__BackingField: 20
-  <AimingDashGravityScale>k__BackingField: 0.25
-  <MaxDashSpeed>k__BackingField: 30
-  <DashSpeedCurve>k__BackingField:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.3
-      inSlope: -2.0829072
-      outSlope: -2.0829072
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.027700841
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <DashCancelSpeed>k__BackingField: 30
   <IsAbleToDash>k__BackingField: 1
 --- !u!114 &1035319642480623658
 MonoBehaviour:
@@ -1621,8 +1436,8 @@ MonoBehaviour:
   _speed: 35
   _airControl:
     _forwards:
-      _acceleration: 10
-      _topSpeed: 10
+      _acceleration: 15
+      _topSpeed: 15
     _backwards:
-      _acceleration: 10
-      _topSpeed: 10
+      _acceleration: 25
+      _topSpeed: 25

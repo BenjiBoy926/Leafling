@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using NaughtyAttributes;
 
 namespace Leafling
 {
@@ -9,6 +9,7 @@ namespace Leafling
         private float _gravityScale = 0.1f;
         [SerializeField]
         private float _animationTransitionScale = 0.25f;
+        [SerializeField, ReadOnly]
         private Vector2 _aim;
 
         protected override void OnEnable()

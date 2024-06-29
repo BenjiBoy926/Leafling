@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Leafling
 {
@@ -6,6 +7,7 @@ namespace Leafling
     {
         [SerializeField]
         private float _speed;
+        [SerializeField, ReadOnly]
         private Vector2 _direction;
 
         public void SetDirection(Vector2 direction)

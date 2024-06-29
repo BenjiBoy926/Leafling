@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Leafling
 {
@@ -11,7 +12,9 @@ namespace Leafling
         [SerializeField]
         private AnimationCurve _speedCurve;
 
+        [SerializeField, ReadOnly]
         private Vector2 _aim;
+        [SerializeField, ReadOnly]
         private bool _dashOnRicochet;
 
         public void SetAim(Vector2 aim)

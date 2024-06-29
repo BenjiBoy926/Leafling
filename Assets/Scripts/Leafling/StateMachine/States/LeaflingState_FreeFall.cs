@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Leafling
 {
@@ -14,6 +15,7 @@ namespace Leafling
         private SpriteAnimation _fallForward;
         [SerializeField]
         private DirectionalAirControl _airControl;
+        [SerializeField, ReadOnly]
         private FreeFallEntry _entry;
 
         public void SetEntry(FreeFallEntry entry)
