@@ -19,6 +19,7 @@ namespace Leafling
         public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
         public event Action AnimationEnteredActionFrame = delegate { };
+        public event DashTargeter.TargetStrikeHandler DashTargetStruck = delegate { };
 
         public int HorizontalDirection => Inputs.HorizontalDirection;
         public bool IsJumping => Inputs.IsJumping;
@@ -49,6 +50,8 @@ namespace Leafling
         private LeaflingInputs Inputs { get; set; }
         [field: SerializeField]
         private LeaflingSprite Sprite { get; set; }
+        [field: SerializeField]
+        private DashTargeter DashTargeter { get; set; }
 
         [field: Space]
         [field: SerializeField]
@@ -83,6 +86,7 @@ namespace Leafling
             Animator.StartedAnimation += OnAnimationStarted;
             Animator.FinishedAnimation += OnAnimationFinished;
             Animator.ActionFrameEntered += OnAnimationEnteredActionFrame;
+            DashTargeter.StruckTarget += OnStruckDashTarget;
         }
         private void OnDisable()
         {
@@ -96,6 +100,7 @@ namespace Leafling
             Animator.StartedAnimation -= OnAnimationStarted;
             Animator.FinishedAnimation -= OnAnimationFinished;
             Animator.ActionFrameEntered -= OnAnimationEnteredActionFrame;
+            DashTargeter.StruckTarget -= OnStruckDashTarget;
         }
         private void OnHorizontalDirectionChanged()
         {
@@ -137,12 +142,20 @@ namespace Leafling
         {
             AnimationEnteredActionFrame();
         }
+        private void OnStruckDashTarget(DashTarget target)
+        {
+            DashTargetStruck(target);
+        }
 
         public void SendSignal(ILeaflingSignal signal)
         {
             StateMachine.SendSignal(signal);
         }
 
+        public void SetPosition(Vector2 position)
+        {
+            PhysicsBody.position = position;
+        }
         public void SetHorizontalVelocity(float velocity)
         {
             PhysicsBody.SetVelocity(velocity, Dimension.X);
