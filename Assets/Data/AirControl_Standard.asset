@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AirControl_Standard
   m_EditorClassIdentifier: 
   _forwards:
-    _acceleration: 20
-    _topSpeed: 20
-  _backwards:
-    _acceleration: 20
+    _acceleration: 100
     _topSpeed: 15
+  _backwards:
+    _acceleration: 100
+    _topSpeed: 10

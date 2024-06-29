@@ -19,7 +19,7 @@ namespace Leafling
         private void Awake()
         {
             _stateIndex = BuildStateIndex(_stateList);
-            RefreshEnabledStates();
+            DisableAllStates();
         }
         private static Dictionary<Type, LeaflingState> BuildStateIndex(List<LeaflingState> allStates)
         {
@@ -29,6 +29,13 @@ namespace Leafling
                 result[state.GetType()] = state;
             }
             return result;
+        }
+        private void DisableAllStates()
+        {
+            for (int i = 0; i < _stateList.Count; i++)
+            {
+                _stateList[i].enabled = false;
+            }
         }
 
         public void SendSignal(ILeaflingSignal signal)
@@ -42,26 +49,22 @@ namespace Leafling
         }
         private void SetState(LeaflingState state)
         {
-            _currentState = state;
-            RefreshEnabledStates();
-        }
-        public void RefreshEnabledStates()
-        {
-            for (int i = 0; i < _stateList.Count; i++)
+            if (_currentState != null)
             {
-                RefreshStateEnabled(_stateList[i]);
+                _currentState.enabled = false;
             }
-        }
-        private void RefreshStateEnabled(LeaflingState state)
-        {
-            state.enabled = state == _currentState;
+            _currentState = state;
+            if (_currentState != null)
+            {
+                _currentState.enabled = true;
+            }
         }
 
         public TState GetState<TState>() where TState : LeaflingState
         {
             return GetState(typeof(TState)) as TState;
         }
-        public LeaflingState GetState(Type stateType)
+        private LeaflingState GetState(Type stateType)
         {
             return _stateIndex[stateType];
         }

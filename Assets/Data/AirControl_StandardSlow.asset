@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49032891543bb7c4cb8103953061552b, type: 3}
-  m_Name: AirControl_Drop
+  m_Name: AirControl_StandardSlow
   m_EditorClassIdentifier: 
   _forwards:
-    _acceleration: 15
-    _topSpeed: 15
-  _backwards:
-    _acceleration: 15
+    _acceleration: 100
     _topSpeed: 10
+  _backwards:
+    _acceleration: 100
+    _topSpeed: 5
