@@ -27,6 +27,7 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
+            _aim = LeaflingStateTool_Dash.ClampDashAim(Leafling, _aim);
             Leafling.SendSignal(new LeaflingSignal_Dash(_aim, _dashOnRicochet));
         }
     }

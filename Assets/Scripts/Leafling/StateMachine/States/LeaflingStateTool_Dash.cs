@@ -73,5 +73,22 @@ namespace Leafling
             }
             return 1;
         }
+
+        public static Vector2 ClampDashAim(Leafling leafling, Vector2 aim)
+        {
+            foreach (Vector2 normal in leafling.GetContactNormals())
+            {
+                aim = ClampAbovePlane(aim, normal);
+            }
+            return aim;
+        }
+        private static Vector2 ClampAbovePlane(Vector2 vector, Vector2 normal)
+        {
+            if (Vector2.Dot(vector, normal) < 0)
+            {
+                return Vector3.ProjectOnPlane(vector, normal).normalized;
+            }
+            return vector;
+        }
     }
 }

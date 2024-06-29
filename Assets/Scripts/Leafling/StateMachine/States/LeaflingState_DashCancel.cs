@@ -23,14 +23,9 @@ namespace Leafling
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
+            _direction = LeaflingStateTool_Dash.ClampDashAim(Leafling, _direction);
             Leafling.SetVelocity(_direction.normalized * _speed);
             Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-            Leafling.SetVelocity(Vector2.zero);
         }
     }
 }
