@@ -154,13 +154,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _airControl:
-    _forwards:
-      _acceleration: 25
-      _topSpeed: 25
-    _backwards:
-      _acceleration: 20
-      _topSpeed: 20
+  _airControl: {fileID: 11400000, guid: f2aff4c65e6ad3145a28c133ca5b889c, type: 2}
 --- !u!1 &322545417252944779
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
   _speed: 30
+  _direction: {x: 0, y: 0}
 --- !u!1 &648582296080653540
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,20 +250,8 @@ MonoBehaviour:
   _animation: {fileID: 11400000, guid: bcb0ea4d597a313489a367e1863398b4, type: 2}
   _animationTransitionScale: 0.5
   _speed: 5
-  _restingAirControl:
-    _forwards:
-      _acceleration: 20
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 15
-      _topSpeed: 15
-  _actionAirControl:
-    _forwards:
-      _acceleration: 25
-      _topSpeed: 25
-    _backwards:
-      _acceleration: 20
-      _topSpeed: 20
+  _restingAirControl: {fileID: 11400000, guid: cb378fab90da7e04fb85c066e9e00cae, type: 2}
+  _actionAirControl: {fileID: 11400000, guid: f2aff4c65e6ad3145a28c133ca5b889c, type: 2}
 --- !u!1 &1169853418819118921
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +299,7 @@ MonoBehaviour:
   _leafling: {fileID: 7646446932064873026}
   _gravityScale: 0.25
   _animationTransitionScale: 0.5
+  _aim: {x: 0, y: 0}
 --- !u!1 &1634857613549958746
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,13 +500,8 @@ MonoBehaviour:
   _fallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _fallDown: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
   _fallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
-  _airControl:
-    _forwards:
-      _acceleration: 20
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 15
-      _topSpeed: 15
+  _airControl: {fileID: 11400000, guid: cb378fab90da7e04fb85c066e9e00cae, type: 2}
+  _entry: 0
 --- !u!1 &1936557308464642741
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +694,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _aim: {x: 0, y: 0}
+  _dashOnRicochet: 0
 --- !u!1 &3040839283739475829
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,13 +883,7 @@ MonoBehaviour:
   _animationTransitionScale: 0.25
   _dropSpeed: 30
   _cancelSpeed: 10
-  _airControl:
-    _forwards:
-      _acceleration: 5
-      _topSpeed: 5
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
+  _airControl: {fileID: 11400000, guid: 3512e5ff58297ac498668c9ad87d04d2, type: 2}
 --- !u!1 &4060073737904618157
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leafling: {fileID: 7646446932064873026}
+  _aim: {x: 0, y: 0}
+  _dashOnRicochet: 0
 --- !u!1 &5645607760272642507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,13 +1138,7 @@ MonoBehaviour:
   _leafling: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: d3444745f49e7f04c9b414b5685d6b2f, type: 2}
   _speed: 40
-  _airControl:
-    _forwards:
-      _acceleration: 20
-      _topSpeed: 20
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
+  _airControl: {fileID: 11400000, guid: f2aff4c65e6ad3145a28c133ca5b889c, type: 2}
 --- !u!1 &7029134148164099795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,13 +1186,7 @@ MonoBehaviour:
   _leafling: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: 04d1a2019a3419d4d940f68ddd609d0e, type: 2}
   _gravityScale: 0.25
-  _airControl:
-    _forwards:
-      _acceleration: 30
-      _topSpeed: 30
-    _backwards:
-      _acceleration: 5
-      _topSpeed: 5
+  _airControl: {fileID: 11400000, guid: 65bea7688f741d042a84dff2e929e052, type: 2}
 --- !u!1 &7879352367548083249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,10 +1399,4 @@ MonoBehaviour:
   _leafling: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
   _speed: 35
-  _airControl:
-    _forwards:
-      _acceleration: 15
-      _topSpeed: 15
-    _backwards:
-      _acceleration: 25
-      _topSpeed: 25
+  _airControl: {fileID: 11400000, guid: cb44110906ab8044b8845e4ac54c2f2a, type: 2}

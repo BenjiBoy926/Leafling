@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Leafling
 {
-    [Serializable]
-    public struct DirectionalAirControl
+    [CreateAssetMenu(menuName = nameof(Leafling) + "/" + nameof(DirectionalAirControl))]
+    public class DirectionalAirControl : ScriptableObject
     {
         public float ForwardTopSpeed => _forwards.TopSpeed;
 
