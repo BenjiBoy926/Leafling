@@ -14,7 +14,9 @@ namespace Leafling
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
         private float CurrentFrameDuration => IsTransitioning() ? CurrentFrame.Duration * _activeTransition.Scale : CurrentFrame.Duration;
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
+        private float TimeSinceCurrentAnimationStart => Time.time - _currentAnimationStartTime;
         public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
+        public float CurrentAnimationProgress => TimeSinceCurrentAnimationStart / _currentAnimation.Duration;
         public bool FlipX => _body.FlipX;
         private SpriteAnimationFrame CurrentFrame => _currentAnimation.GetFrame(_currentFrameIndex);
         private SpriteAnimationFrame PreviousFrame => _currentAnimation.GetFrame(_currentFrameIndex + 1);
@@ -34,6 +36,7 @@ namespace Leafling
         [SerializeField]
         private int _currentFrameIndex;
         private float _currentFrameStartTime;
+        private float _currentAnimationStartTime;
         private SpriteAnimationTransition _activeTransition;
         private bool _isFirstFrame = true;
 
@@ -84,6 +87,7 @@ namespace Leafling
             _currentFrameIndex = 0;
             _activeTransition = SpriteAnimationTransition.Empty;
             _isFirstFrame = true;
+            _currentAnimationStartTime = Time.time;
             UpdateSpriteBody();
             StartedAnimation();
         }

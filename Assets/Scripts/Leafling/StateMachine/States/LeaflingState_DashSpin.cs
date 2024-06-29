@@ -6,11 +6,16 @@ namespace Leafling
 {
     public class LeaflingState_DashSpin : LeaflingState
     {
+        private Vector2 EndPosition => _target.Position;
+
         [SerializeField]
         private SpriteAnimation _animation;
         [SerializeField]
+        private AnimationCurve _moveToTargetCurve;
+        [SerializeField]
         private float _exitHop = 30;
         private DashTarget _target;
+        private Vector2 _startPosition;
 
         public void SetTarget(DashTarget target)
         {
@@ -20,9 +25,9 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetPosition(_target.Position);
             Leafling.SetAnimation(_animation);
             Leafling.RestoreAbilityToDash();
+            _startPosition = Leafling.GetPosition();
         }
         protected override void OnDisable()
         {
@@ -33,7 +38,9 @@ namespace Leafling
         protected override void Update()
         {
             base.Update();
-            Leafling.SetVelocity(Vector2.zero);
+            float t = _moveToTargetCurve.Evaluate(Leafling.CurrentAnimationProgress);
+            Vector2 position = Vector2.Lerp(_startPosition, EndPosition, t);
+            Leafling.SetPosition(position);
         }
         protected override void OnAnimationFinished()
         {

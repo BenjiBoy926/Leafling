@@ -30,6 +30,7 @@ namespace Leafling
         public int FacingDirection => FlipXToDirection(Animator.FlipX);
         public bool CurrentFlipX => Animator.FlipX;
         public float CurrentFrameProgress => Animator.CurrentFrameProgress;
+        public float CurrentAnimationProgress => Animator.CurrentAnimationProgress;
         public float ProgressAfterFirstActionFrame => Animator.ProgressAfterFirstActionFrame;
         public float ProgressOfFirstActionFrame => Animator.ProgressOfFirstActionFrame;
         public bool IsCurrentFrameFirstFrame => Animator.IsCurrentFrameFirstFrame;
@@ -155,6 +156,10 @@ namespace Leafling
         public void SetPosition(Vector2 position)
         {
             PhysicsBody.position = position;
+        }
+        public Vector2 GetPosition()
+        {
+            return PhysicsBody.position;
         }
         public void SetHorizontalVelocity(float velocity)
         {
