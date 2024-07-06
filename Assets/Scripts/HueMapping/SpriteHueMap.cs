@@ -77,11 +77,11 @@ public class SpriteHueMap : MonoBehaviour
     }
     private void SetMapKeys()
     {
-        SetVectorArray(_mapKeysID, _map.Keys);
+        SetVectorArray(_mapKeysID, _map.HsvKeys);
     }
     private void SetMapValues()
     {
-        SetVectorArray(_mapValuesID, _map.Values);
+        SetVectorArray(_mapValuesID, _map.HsvValues);
     }
     private void SetVectorArray(int id, List<Vector4> array)
     {

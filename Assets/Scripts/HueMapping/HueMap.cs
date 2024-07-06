@@ -7,8 +7,8 @@ using UnityEngine;
 public class HueMap
 {
     public int Count => _keyValuePairs.Length;
-    public List<Vector4> Keys => _keyValuePairs.Select(Key).ToList();
-    public List<Vector4> Values => _keyValuePairs.Select(Value).ToList();
+    public List<Vector4> HsvKeys => _keyValuePairs.Select(HsvKey).ToList();
+    public List<Vector4> HsvValues => _keyValuePairs.Select(HsvValue).ToList();
 
     [SerializeField]
     private ColorPair[] _keyValuePairs;
@@ -21,12 +21,12 @@ public class HueMap
     {
         _keyValuePairs[i].Value = value;
     }
-    private Vector4 Key(ColorPair pair)
+    private Vector4 HsvKey(ColorPair pair)
     {
-        return pair.Key;
+        return pair.HsvKey;
     }
-    private Vector4 Value(ColorPair pair)
+    private Vector4 HsvValue(ColorPair pair)
     {
-        return pair.Value;
+        return pair.HsvValue;
     }
 }

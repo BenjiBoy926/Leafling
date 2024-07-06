@@ -9,9 +9,6 @@ Shader "Sprite with Hue Map"
         [HideInInspector] _Flip ("Flip", Vector) = (1,1,1,1)
         [PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
         [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
-        // LEGACY: script tries to set these properties so we keep them for now
-        _LeftArmColor ("Left Arm", Color) = (1, 1, 1, 1)
-        _RightArmColor ("Right Arm", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -167,26 +164,26 @@ Shader "Sprite with Hue Map"
                 }
                 return (h / 6.0) % 1.0;
             }
-            bool HasHue(fixed3 rgb) 
-            {
-                fixed min = MinComponent(rgb);
-                fixed max = MaxComponent(rgb);
-                return (max - min) > 0.001;
-            }
-            fixed3 RgbToHsv(fixed3 rgb) 
+            fixed3 RgbToHsv(fixed3 rgb)
             {
                 fixed min = MinComponent(rgb);
                 fixed max = MaxComponent(rgb);
                 fixed diff = max - min;
-                
+
                 fixed h = CalculateHue(rgb, max, diff);
                 fixed s = 0;
-                if (max > 0.001) 
+                if (max > 0.001)
                 {
                     s = diff / max;
                 }
                 fixed v = max;
                 return fixed3(h, s, v);
+            }
+            bool HasHue(fixed3 rgb) 
+            {
+                fixed min = MinComponent(rgb);
+                fixed max = MaxComponent(rgb);
+                return (max - min) > 0.001;
             }
             fixed3 HsvColorAmount(fixed hueRange, fixed chroma, fixed chi)
             {
@@ -224,42 +221,39 @@ Shader "Sprite with Hue Map"
                 fixed chromaDiff = hsv.z - chroma;
                 return fixed3(colorAmount.r + chromaDiff, colorAmount.g + chromaDiff, colorAmount.b + chromaDiff);
             }
-            fixed ColorDistance(fixed3 a, fixed3 b) 
+            fixed ColorDistance(fixed3 hsvA, fixed3 hsvB)
             {
-                fixed3 hsvA = RgbToHsv(a);
-                fixed3 hsvB = RgbToHsv(b);
                 return abs(hsvA.x - hsvB.x);
             }
-            fixed4 ClosestColor(fixed3 color) 
+            fixed4 ClosestColor(fixed3 hsvColor) 
             {
                 if (_MapSize == 0) 
                 {
-                    return fixed4(color, 1);
+                    return fixed4(hsvColor, 1);
                 }
-                fixed shortestDistance = ColorDistance(_MapKeys[0], color);
-                fixed4 OUT = _MapValues[0];
 
+                float shortestDistance = ColorDistance(_MapKeys[0], hsvColor);
+                fixed4 result = _MapValues[0];
                 for (int i = 1; i < _MapSize; i++) 
                 {
-                    fixed distance = ColorDistance(_MapKeys[i], color);
+                    float distance = ColorDistance(_MapKeys[i], hsvColor);
                     if (distance < shortestDistance) 
                     {
                         shortestDistance = distance;
-                        OUT = _MapValues[i];
+                        result = _MapValues[i];
                     }
                 }
-                return OUT;
+                return result;
             }
             fixed4 RemapHue(fixed4 input) 
             {
                 if (HasHue(input) && input.a > 0.1) 
                 {
-                    fixed4 output = ClosestColor(input);
-                    fixed3 hsvOutput = RgbToHsv(output);
                     fixed3 hsvInput = RgbToHsv(input);
+                    fixed4 hsvOutput = ClosestColor(hsvInput);
                     hsvOutput.y *= hsvInput.y;
                     hsvOutput.z *= hsvInput.z;
-                    return fixed4(HsvToRgb(hsvOutput), output.a);
+                    return fixed4(HsvToRgb(hsvOutput), hsvOutput.a);
                 }
                 return input;
             }
