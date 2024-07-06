@@ -13,7 +13,7 @@ public class DashTarget : MonoBehaviour
         Tickled();
     }
     
-    public void Stike()
+    public void Strike()
     {
         Struck();
     }

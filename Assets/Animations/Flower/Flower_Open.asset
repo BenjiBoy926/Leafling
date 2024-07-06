@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frames:
   - _sprite: {fileID: -2142655917, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
-    _duration: 0.2
+    _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: 2009318921, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
-    _duration: 0.2
+    _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: 1091648101, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
-    _duration: 0.2
+    _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: -1150064784, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
-    _duration: 0.2
+    _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: -740675971, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
-    _duration: 0.2
+    _duration: 0.1
     _isTransitionFrame: 0
     _isActionFrame: 0
   - _sprite: {fileID: -490591300, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}

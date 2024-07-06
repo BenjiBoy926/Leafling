@@ -9,14 +9,19 @@ public abstract class StateMachine<TTarget> : MonoBehaviour, IStateMachine where
     public MonoBehaviour Behaviour => this;
 
     [SerializeField]
-    private List<State<TTarget>> _stateList;
     private State<TTarget> _currentState;
+    [SerializeField]
+    private List<State<TTarget>> _stateList;
     private Dictionary<Type, State<TTarget>> _stateIndex;
 
     private void Awake()
     {
         _stateIndex = BuildStateIndex(_stateList);
         DisableAllStates();
+    }
+    private void Start()
+    {
+        SetState(_currentState);
     }
     private static Dictionary<Type, State<TTarget>> BuildStateIndex(List<State<TTarget>> allStates)
     {

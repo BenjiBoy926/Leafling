@@ -100,10 +100,6 @@ public class Leafling : MonoBehaviour
         Animator.ActionFrameEntered -= OnAnimationEnteredActionFrame;
         DashTargeter.TouchedTarget -= OnDashTargetTouched;
     }
-    private void Start()
-    {
-        SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
-    }
     private void OnHorizontalDirectionChanged()
     {
         HorizontalDirectionChanged();

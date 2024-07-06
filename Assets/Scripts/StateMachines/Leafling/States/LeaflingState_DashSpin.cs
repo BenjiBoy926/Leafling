@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeaflingState_DashSpin : LeaflingState
 {
-    private Vector2 EndPosition => _target.Position;
+    private Vector2 EndPosition => _dashTarget.Position;
 
     [SerializeField]
     private SpriteAnimation _animation;
@@ -12,12 +12,12 @@ public class LeaflingState_DashSpin : LeaflingState
     private AnimationCurve _moveToTargetCurve;
     [SerializeField]
     private float _exitHop = 30;
-    private DashTarget _target;
+    private DashTarget _dashTarget;
     private Vector2 _startPosition;
 
-    public void SetTarget(DashTarget target)
+    public void SetDashTarget(DashTarget target)
     {
-        _target = target;
+        _dashTarget = target;
     }
 
     protected override void OnEnable()
@@ -26,6 +26,7 @@ public class LeaflingState_DashSpin : LeaflingState
         Target.SetAnimation(_animation);
         Target.RestoreAbilityToDash();
         _startPosition = Target.GetPosition();
+        _dashTarget.Strike();
     }
     protected override void OnDisable()
     {

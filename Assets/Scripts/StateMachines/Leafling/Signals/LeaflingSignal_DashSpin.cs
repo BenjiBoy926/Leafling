@@ -12,6 +12,6 @@ public class LeaflingSignal_DashSpin : LeaflingSignal<LeaflingState_DashSpin>
     protected override void PrepareNextState(LeaflingState_DashSpin state)
     {
         base.PrepareNextState(state);
-        state.SetTarget(_target);
+        state.SetDashTarget(_target);
     }
 }

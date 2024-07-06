@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039ba5005c8765d43ba195a84c4d5ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentState: {fileID: 2421193029220786657}
   _stateList:
   - {fileID: 8614400396624229089}
   - {fileID: 2145569734762958209}

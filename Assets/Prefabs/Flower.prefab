@@ -171,9 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 3320552149510682049}
-  _idleAnimation: {fileID: 0}
+  _idleAnimation: {fileID: 11400000, guid: a3d4950456f15744296b32db37e99aa3, type: 2}
   _tickleAnimation: {fileID: 0}
-  _strikeAnimation: {fileID: 0}
+  _strikeAnimation: {fileID: 11400000, guid: f93600c9d1753dc44b1df9950f1b7030, type: 2}
 --- !u!1 &3777485916940746661
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 3320552149510682049}
-  _idleAnimation: {fileID: 0}
+  _idleAnimation: {fileID: 11400000, guid: 3e0d4540a8ede4341973ae74731e9304, type: 2}
   _tickleAnimation: {fileID: 0}
-  _strikeAnimation: {fileID: 0}
+  _strikeAnimation: {fileID: 11400000, guid: f93600c9d1753dc44b1df9950f1b7030, type: 2}
 --- !u!1 &7542621392386464516
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b795324f43cca468c974b5df139870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentState: {fileID: 1957025135208319716}
   _stateList:
   - {fileID: 1957025135208319716}
   - {fileID: 6133022404095272048}
@@ -349,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 4973346266715813252}
   _animator: {fileID: 6826462041567688258}
-  _stateMachine: {fileID: 0}
+  _stateMachine: {fileID: 7280904860579185552}
 --- !u!58 &2053302370765750063
 CircleCollider2D:
   m_ObjectHideFlags: 0
