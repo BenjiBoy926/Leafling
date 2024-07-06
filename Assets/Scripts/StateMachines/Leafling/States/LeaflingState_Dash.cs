@@ -29,44 +29,44 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(_animation);
-            Leafling.FaceTowards(_aim.x);
-            LeaflingStateTool_Dash.SetMidairRotation(Leafling, _aim);
-            Leafling.MakeUnableToDash();
+            Target.SetAnimation(_animation);
+            Target.FaceTowards(_aim.x);
+            LeaflingStateTool_Dash.SetMidairRotation(Target, _aim);
+            Target.MakeUnableToDash();
         }
         protected override void OnDisable()
         {
             base.OnDisable();
-            Leafling.ResetSpriteRotation();
+            Target.ResetSpriteRotation();
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(_animation))
+            if (Target.IsAnimating(_animation))
             {
-                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
         protected override void OnDashTargetTouched(DashTarget target)
         {
             base.OnDashTargetTouched(target);
-            Leafling.SendSignal(new LeaflingSignal_DashSpin(target));
+            Target.SendSignal(new LeaflingSignal_DashSpin(target));
         }
 
         protected override void Update()
         {
             base.Update();
             Vector2 velocity = GetDashVelocity();
-            Leafling.SetVelocity(velocity);
+            Target.SetVelocity(velocity);
             CheckForRicochet();
         }
         private Vector2 GetDashVelocity()
         {
-            if (Leafling.IsCurrentFrameActionFrame)
+            if (Target.IsCurrentFrameActionFrame)
             {
                 return _maxSpeed * _aim;
             }
-            return _maxSpeed * _speedCurve.Evaluate(Leafling.ProgressAfterFirstActionFrame) * _aim;
+            return _maxSpeed * _speedCurve.Evaluate(Target.ProgressAfterFirstActionFrame) * _aim;
         }
 
         private void CheckForRicochet()
@@ -82,12 +82,12 @@ namespace Leafling
         }
         private bool CanRicochet()
         {
-            return Leafling.IsTouchingAnything();
+            return Target.IsTouchingAnything();
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {
             normal = Vector2.zero;
-            foreach (Vector2 contactNormal in Leafling.GetContactNormals())
+            foreach (Vector2 contactNormal in Target.GetContactNormals())
             {
                 if (CanRicochetOffOfNormal(contactNormal))
                 {
@@ -106,11 +106,11 @@ namespace Leafling
             Vector2 ricochetDirection = GetRicochetAim(normal);
             if (_dashOnRicochet)
             {
-                Leafling.SendSignal(new LeaflingSignal_DashSquat(ricochetDirection, false));
+                Target.SendSignal(new LeaflingSignal_DashSquat(ricochetDirection, false));
             }
             else
             {
-                Leafling.SendSignal(new LeaflingSignal_DashCancel(ricochetDirection));
+                Target.SendSignal(new LeaflingSignal_DashCancel(ricochetDirection));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)

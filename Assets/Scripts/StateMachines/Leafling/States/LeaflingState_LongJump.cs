@@ -16,38 +16,38 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetHorizontalVelocity(0);
-            Leafling.SetAnimation(_animation);
-            Leafling.SetGravityScale(_gravityScale);
+            Target.SetHorizontalVelocity(0);
+            Target.SetAnimation(_animation);
+            Target.SetGravityScale(_gravityScale);
         }
         protected override void OnDisable()
         {
             base.OnDisable();
-            Leafling.ResetGravityScale();
+            Target.ResetGravityScale();
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsCrouching)
+            if (Target.IsCrouching)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
             }
             else
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
+                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
         }
         protected override void OnAnimationEnteredActionFrame()
         {
             base.OnAnimationEnteredActionFrame();
-            Leafling.SetHorizontalVelocity(TopSpeed * Leafling.FacingDirection);
+            Target.SetHorizontalVelocity(TopSpeed * Target.FacingDirection);
         }
         protected override void Update()
         {
             base.Update();
             if (HasEnteredActionFrame)
             {
-                Leafling.ApplyAirControl(_airControl);
+                Target.ApplyAirControl(_airControl);
             }
         }
     }

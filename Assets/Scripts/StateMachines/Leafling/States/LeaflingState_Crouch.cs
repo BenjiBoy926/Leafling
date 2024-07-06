@@ -6,17 +6,17 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(Leafling.Squat);
+            Target.SetAnimation(Target.Squat);
         }
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_CrouchJump>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_CrouchJump>());
         }
         protected override void OnStoppedCrouching()
         {
             base.OnStoppedCrouching();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
         }
     }
 }

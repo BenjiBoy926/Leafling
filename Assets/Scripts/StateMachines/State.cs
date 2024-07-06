@@ -13,11 +13,15 @@ namespace Leafling
 
         private void Reset()
         {
-            Target = GetComponentInParent<TTarget>();
+            RefreshTarget();
         }
         protected virtual void OnEnable()
         {
             _timeOfStateStart = Time.time;
+        }
+        public void RefreshTarget()
+        {
+            Target = GetComponentInParent<TTarget>();
         }
     }
 }

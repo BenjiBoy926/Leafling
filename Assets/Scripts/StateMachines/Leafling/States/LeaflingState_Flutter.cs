@@ -18,49 +18,49 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(_animation, _animationTransitionScale, Leafling.CurrentFlipX));
+            Target.SetTransition(new(_animation, _animationTransitionScale, Target.CurrentFlipX));
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            if (Leafling.IsAbleToDash)
+            if (Target.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(_animation))
+            if (Target.IsAnimating(_animation))
             {
-                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
+                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
             }
         }
         protected override void OnAnimationEnteredActionFrame()
         {
             base.OnAnimationEnteredActionFrame();
-            Leafling.SetVerticalVelocity(_speed);
+            Target.SetVerticalVelocity(_speed);
         }
 
         protected override void Update()
         {
             base.Update();
             ApplyAirControl();
-            if (Leafling.IsTouching(CardinalDirection.Down))
+            if (Target.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
+                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
-            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
+            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
         }
         private void ApplyAirControl()
         {
-            if (Leafling.IsCurrentFrameActionFrame)
+            if (Target.IsCurrentFrameActionFrame)
             {
-                Leafling.ApplyAirControl(_actionAirControl);
+                Target.ApplyAirControl(_actionAirControl);
             }
             else
             {
-                Leafling.ApplyAirControl(_restingAirControl);
+                Target.ApplyAirControl(_restingAirControl);
             }
         }
     }

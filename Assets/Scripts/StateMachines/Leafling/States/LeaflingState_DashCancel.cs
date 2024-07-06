@@ -18,14 +18,14 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            LeaflingStateTool_Dash.ShowDashPerch(Leafling, _direction);
+            LeaflingStateTool_Dash.ShowDashPerch(Target, _direction);
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            _direction = LeaflingStateTool_Dash.ClampDashAim(Leafling, _direction);
-            Leafling.SetVelocity(_direction.normalized * _speed);
-            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+            _direction = LeaflingStateTool_Dash.ClampDashAim(Target, _direction);
+            Target.SetVelocity(_direction.normalized * _speed);
+            Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
     }
 }

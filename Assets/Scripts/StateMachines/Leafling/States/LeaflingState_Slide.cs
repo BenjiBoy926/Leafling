@@ -16,7 +16,7 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(_animation, _animationTransitionScale, Leafling.CurrentFlipX));
+            Target.SetTransition(new(_animation, _animationTransitionScale, Target.CurrentFlipX));
         }
 
         protected override void OnStartedJumping()
@@ -24,20 +24,20 @@ namespace Leafling
             base.OnStartedJumping();
             if (HasEnteredActionFrame)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_LongJump>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_LongJump>());
             }
         }
         protected override void OnAnimationStarted()
         {
             base.OnAnimationStarted();
-            Leafling.SetHorizontalVelocity(0);
+            Target.SetHorizontalVelocity(0);
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(_animation))
+            if (Target.IsAnimating(_animation))
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
             }
         }
 
@@ -46,13 +46,13 @@ namespace Leafling
             base.Update();
             if (HasEnteredActionFrame)
             {
-                float t = Leafling.ProgressOfFirstActionFrame;
+                float t = Target.ProgressOfFirstActionFrame;
                 float speed = _speedCurve.Evaluate(t) * _maxSpeed;
-                Leafling.SetHorizontalVelocity(speed * Leafling.FacingDirection);
+                Target.SetHorizontalVelocity(speed * Target.FacingDirection);
             }
-            if (!Leafling.IsTouching(CardinalDirection.Down))
+            if (!Target.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
     }

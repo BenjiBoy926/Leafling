@@ -22,32 +22,32 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(_animation);
-            Leafling.FaceTowards(LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection));
+            Target.SetAnimation(_animation);
+            Target.FaceTowards(LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection));
         }
         protected override void Update()
         {
             base.Update();
             float direction = LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection);
             Vector2 velocity = new Vector2(direction, 1).normalized * _speed;
-            Leafling.SetVelocity(velocity);
+            Target.SetVelocity(velocity);
             if (ShouldFinishWallJump())
             {
                 FinishWallJump();
             }
-            if (Leafling.IsTouching(_wallDirection.Opposite))
+            if (Target.IsTouching(_wallDirection.Opposite))
             {
-                Leafling.SendSignal(new LeaflingSignal_WallSlide(_wallDirection.Opposite, 0.5f));
+                Target.SendSignal(new LeaflingSignal_WallSlide(_wallDirection.Opposite, 0.5f));
             }
         }
         private bool ShouldFinishWallJump()
         {
-            return !Leafling.IsTouching(_wallDirection) && (!Leafling.IsJumping || TimeSinceStateStart > _maxDuration);
+            return !Target.IsTouching(_wallDirection) && (!Target.IsJumping || TimeSinceStateStart > _maxDuration);
         }
         private void FinishWallJump()
         {
-            Leafling.SetVerticalVelocity(_exitHopSpeed);
-            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+            Target.SetVerticalVelocity(_exitHopSpeed);
+            Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
     }
 }

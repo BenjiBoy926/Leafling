@@ -22,13 +22,13 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            LeaflingStateTool_Dash.ShowDashPerch(Leafling, _aim);
+            LeaflingStateTool_Dash.ShowDashPerch(Target, _aim);
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            _aim = LeaflingStateTool_Dash.ClampDashAim(Leafling, _aim);
-            Leafling.SendSignal(new LeaflingSignal_Dash(_aim, _dashOnRicochet));
+            _aim = LeaflingStateTool_Dash.ClampDashAim(Target, _aim);
+            Target.SendSignal(new LeaflingSignal_Dash(_aim, _dashOnRicochet));
         }
     }
 }

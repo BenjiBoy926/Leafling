@@ -10,14 +10,14 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(Leafling.Squat, _animationTransitionScale, Leafling.CurrentFlipX));
+            Target.SetTransition(new(Target.Squat, _animationTransitionScale, Target.CurrentFlipX));
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            if (Leafling.IsAnimating(Leafling.Squat))
+            if (Target.IsAnimating(Target.Squat))
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Jump>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_Jump>());
             }
         }
     }

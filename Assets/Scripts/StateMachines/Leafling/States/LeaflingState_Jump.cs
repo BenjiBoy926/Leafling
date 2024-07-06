@@ -20,17 +20,17 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(_animation);
+            Target.SetAnimation(_animation);
         }
 
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(_airControl);
-            Leafling.SetVerticalVelocity(GetJumpSpeed());
+            Target.ApplyAirControl(_airControl);
+            Target.SetVerticalVelocity(GetJumpSpeed());
             if (ShouldTransitionOutOfJump())
             {
-                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
         private bool ShouldTransitionOutOfJump()
@@ -39,11 +39,11 @@ namespace Leafling
         }
         private bool IsAirborn()
         {
-            return !Leafling.IsTouching(CardinalDirection.Down);
+            return !Target.IsTouching(CardinalDirection.Down);
         }
         private bool IsJumpingInputReleased()
         {
-            return !Leafling.IsJumping;
+            return !Target.IsJumping;
         }
         private bool IsJumpingTimeExhausted()
         {

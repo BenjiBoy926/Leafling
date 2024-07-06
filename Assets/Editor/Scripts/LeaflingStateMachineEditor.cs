@@ -47,6 +47,7 @@ namespace Leafling.Editor
             AttachMissingStates();
             AlphabetizeChildTransforms();
             SetStates();
+            RefreshTargets();
             DisableAllStates();
             serializedObject.ApplyModifiedProperties();
         }
@@ -125,6 +126,15 @@ namespace Leafling.Editor
             for (int i = 0; i < states.Length; i++)
             {
                 statesProperty.GetArrayElementAtIndex(i).objectReferenceValue = states[i];
+            }
+        }
+        private void RefreshTargets()
+        {
+            LeaflingState[] states = AllAttachedStateInstances();
+            for (int i = 0; i < states.Length; i++)
+            {
+                states[i].RefreshTarget();
+                EditorUtility.SetDirty(states[i]);
             }
         }
         private void DisableAllStates()

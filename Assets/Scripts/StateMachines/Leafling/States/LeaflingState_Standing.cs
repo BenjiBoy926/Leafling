@@ -21,9 +21,8 @@ namespace Leafling
         private FromToCurve _toRun;
         private FromToCurve _toLeap;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _toRun = new FromToCurve(0, _baseSpeed, _accelerationCurve);
             _toLeap = new FromToCurve(_baseSpeed, MaxSpeed, _accelerationCurve);
         }
@@ -42,22 +41,22 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_JumpSquat>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_JumpSquat>());
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            if (Leafling.IsAbleToDash)
+            if (Target.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnStartedCrouching()
         {
             base.OnStartedCrouching();
-            if (Leafling.HorizontalDirection != 0)
+            if (Target.HorizontalDirection != 0)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_Slide>());
             }
         }
 
@@ -65,59 +64,59 @@ namespace Leafling
         {
             base.Update();
             float speed = CalculateHorizontalSpeed();
-            Leafling.SetHorizontalVelocity(speed);
-            if (!Leafling.IsTouching(CardinalDirection.Down))
+            Target.SetHorizontalVelocity(speed);
+            if (!Target.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
-            if (Leafling.IsCrouching && Leafling.HorizontalDirection == 0)
+            if (Target.IsCrouching && Target.HorizontalDirection == 0)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_Crouch>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_Crouch>());
             }
         }
         private float CalculateHorizontalSpeed()
         {
-            if (Leafling.IsAnimating(_idle))
+            if (Target.IsAnimating(_idle))
             {
                 return 0;
             }
-            if (Leafling.IsCurrentFrameFirstFrame)
+            if (Target.IsCurrentFrameFirstFrame)
             {
-                return Leafling.FacingDirection * _toRun.Evaluate(Leafling.CurrentFrameProgress);
+                return Target.FacingDirection * _toRun.Evaluate(Target.CurrentFrameProgress);
             }
-            if (Leafling.IsTransitioningOnCurrentFrame)
+            if (Target.IsTransitioningOnCurrentFrame)
             {
-                return Leafling.FacingDirection * _toRun.Evaluate(1 - Leafling.CurrentFrameProgress);
+                return Target.FacingDirection * _toRun.Evaluate(1 - Target.CurrentFrameProgress);
             }
-            if (Leafling.IsNextFrameActionFrame)
+            if (Target.IsNextFrameActionFrame)
             {
-                return Leafling.FacingDirection * _toLeap.Evaluate(Leafling.CurrentFrameProgress);
+                return Target.FacingDirection * _toLeap.Evaluate(Target.CurrentFrameProgress);
             }
-            if (Leafling.IsPreviousFrameActionFrame)
+            if (Target.IsPreviousFrameActionFrame)
             {
-                return Leafling.FacingDirection * _toLeap.Evaluate(1 - Leafling.CurrentFrameProgress);
+                return Target.FacingDirection * _toLeap.Evaluate(1 - Target.CurrentFrameProgress);
             }
-            if (Leafling.IsCurrentFrameActionFrame)
+            if (Target.IsCurrentFrameActionFrame)
             {
-                return Leafling.FacingDirection * MaxSpeed;
+                return Target.FacingDirection * MaxSpeed;
             }
-            return Leafling.FacingDirection * _baseSpeed;
+            return Target.FacingDirection * _baseSpeed;
         }
 
         private void TransitionAnimation(float scale)
         {
-            if (Leafling.HorizontalDirection == 0)
+            if (Target.HorizontalDirection == 0)
             {
-                Leafling.SetTransition(new(_idle, scale, Leafling.CurrentFlipX));
+                Target.SetTransition(new(_idle, scale, Target.CurrentFlipX));
             }
             else
             {
-                Leafling.SetTransition(new(_running, scale, FlipXFromHorizontalDirection()));
+                Target.SetTransition(new(_running, scale, FlipXFromHorizontalDirection()));
             }
         }
         private bool FlipXFromHorizontalDirection()
         {
-            return Leafling.DirectionToFlipX(Leafling.HorizontalDirection);
+            return Leafling.DirectionToFlipX(Target.HorizontalDirection);
         }
     }
 }

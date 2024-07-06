@@ -6,11 +6,11 @@ namespace Leafling
     {
         public Type StateType => typeof(TState);
 
-        public void PrepareNextState(LeaflingStateMachine machine)
+        public void PrepareNextState(StateMachine<Leafling> machine)
         {
             PrepareNextState(GetState(machine));
         }
-        protected TState GetState(LeaflingStateMachine machine)
+        protected TState GetState(StateMachine<Leafling> machine)
         {
             return machine.GetState<TState>();
         }

@@ -12,26 +12,26 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(Leafling.Squat);
-            Leafling.RestoreAbilityToDash();
+            Target.SetAnimation(Target.Squat);
+            Target.RestoreAbilityToDash();
         }
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(_jumpSignal);
+            Target.SendSignal(_jumpSignal);
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            if (Leafling.IsAbleToDash)
+            if (Target.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
         }
     }
 }

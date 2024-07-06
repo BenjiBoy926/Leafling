@@ -15,23 +15,23 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetGravityScale(_gravityScale);
-            Leafling.SetVerticalVelocity(0);
+            Target.SetGravityScale(_gravityScale);
+            Target.SetVerticalVelocity(0);
         }
         protected override void OnDisable()
         {
             base.OnDisable();
-            Leafling.ResetGravityScale();
-            Leafling.ResetSpriteRotation();
+            Target.ResetGravityScale();
+            Target.ResetSpriteRotation();
         }
         protected override void Update()
         {
             base.Update();
-            _aim = LeaflingStateTool_Dash.ClampDashAim(Leafling, Leafling.DashAim);
-            LeaflingStateTool_Dash.TransitionDashPerch(Leafling, _animationTransitionScale, _aim);
-            if (!Leafling.IsAimingDash)
+            _aim = LeaflingStateTool_Dash.ClampDashAim(Target, Target.DashAim);
+            LeaflingStateTool_Dash.TransitionDashPerch(Target, _animationTransitionScale, _aim);
+            if (!Target.IsAimingDash)
             {
-                Leafling.SendSignal(new LeaflingSignal_Dash(_aim, true));
+                Target.SendSignal(new LeaflingSignal_Dash(_aim, true));
             }
         }
     }

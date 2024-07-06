@@ -18,33 +18,33 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetTransition(new(_animation, _animationTransitionScale, Leafling.CurrentFlipX));
+            Target.SetTransition(new(_animation, _animationTransitionScale, Target.CurrentFlipX));
         }
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
             if (HasEnteredActionFrame)
             {
-                Leafling.SetVerticalVelocity(_cancelSpeed);
+                Target.SetVerticalVelocity(_cancelSpeed);
             }
-            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+            Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
 
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(_airControl);
+            Target.ApplyAirControl(_airControl);
             if (HasEnteredActionFrame)
             {
-                Leafling.SetVerticalVelocity(-_dropSpeed);
+                Target.SetVerticalVelocity(-_dropSpeed);
             }
             else
             {
-                Leafling.SetVerticalVelocity(0);
+                Target.SetVerticalVelocity(0);
             }
-            if (Leafling.IsTouching(CardinalDirection.Down))
+            if (Target.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_DropJump>()));
+                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_DropJump>()));
             }
         }
     }

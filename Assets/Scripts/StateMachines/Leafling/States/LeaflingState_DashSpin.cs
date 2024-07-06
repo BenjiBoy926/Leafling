@@ -25,27 +25,27 @@ namespace Leafling
         protected override void OnEnable()
         {
             base.OnEnable();
-            Leafling.SetAnimation(_animation);
-            Leafling.RestoreAbilityToDash();
-            _startPosition = Leafling.GetPosition();
+            Target.SetAnimation(_animation);
+            Target.RestoreAbilityToDash();
+            _startPosition = Target.GetPosition();
         }
         protected override void OnDisable()
         {
             base.OnDisable();
-            Leafling.SetVerticalVelocity(_exitHop);
-            Leafling.FaceTowards(-Leafling.FacingDirection);
+            Target.SetVerticalVelocity(_exitHop);
+            Target.FaceTowards(-Target.FacingDirection);
         }
         protected override void Update()
         {
             base.Update();
-            float t = _moveToTargetCurve.Evaluate(Leafling.CurrentAnimationProgress);
+            float t = _moveToTargetCurve.Evaluate(Target.CurrentAnimationProgress);
             Vector2 position = Vector2.Lerp(_startPosition, EndPosition, t);
-            Leafling.SetPosition(position);
+            Target.SetPosition(position);
         }
         protected override void OnAnimationFinished()
         {
             base.OnAnimationFinished();
-            Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
+            Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
         }
     }
 }

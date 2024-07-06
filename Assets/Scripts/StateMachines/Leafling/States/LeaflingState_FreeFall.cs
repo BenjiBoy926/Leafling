@@ -28,12 +28,12 @@ namespace Leafling
             base.OnEnable();
             if (_entry == FreeFallEntry.Backflip)
             {
-                Leafling.SetAnimation(_backflip);
+                Target.SetAnimation(_backflip);
                 TransitionFreeFallAnimation();
             }
             else
             {
-                Leafling.SetAnimation(_fallDown);
+                Target.SetAnimation(_fallDown);
             }
         }
 
@@ -45,46 +45,46 @@ namespace Leafling
         protected override void OnStartedJumping()
         {
             base.OnStartedJumping();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
         }
         protected override void OnStartedAimingDash()
         {
             base.OnStartedAimingDash();
-            if (Leafling.IsAbleToDash)
+            if (Target.IsAbleToDash)
             {
-                Leafling.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
+                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
             }
         }
         protected override void OnStartedCrouching()
         {
             base.OnStartedCrouching();
-            Leafling.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
         }
 
         protected override void Update()
         {
             base.Update();
-            Leafling.ApplyAirControl(_airControl);
-            if (Leafling.IsTouching(CardinalDirection.Down))
+            Target.ApplyAirControl(_airControl);
+            if (Target.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
+                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
             }
-            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Leafling);
+            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
         }
 
         private void TransitionFreeFallAnimation()
         {
-            if (Leafling.HorizontalDirection == 0)
+            if (Target.HorizontalDirection == 0)
             {
-                Leafling.SetTransition(new(_fallDown, 1, Leafling.CurrentFlipX));
+                Target.SetTransition(new(_fallDown, 1, Target.CurrentFlipX));
             }
-            else if (Leafling.HorizontalDirection != Leafling.FacingDirection)
+            else if (Target.HorizontalDirection != Target.FacingDirection)
             {
-                Leafling.SetTransition(new(_fallBack, 1, Leafling.CurrentFlipX));
+                Target.SetTransition(new(_fallBack, 1, Target.CurrentFlipX));
             }
             else
             {
-                Leafling.SetTransition(new(_fallForward, 1, Leafling.CurrentFlipX));
+                Target.SetTransition(new(_fallForward, 1, Target.CurrentFlipX));
             }
         }
     }
