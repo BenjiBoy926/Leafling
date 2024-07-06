@@ -1,20 +1,17 @@
-namespace Leafling
+public class HueMapOperation_SetMultipleValues
 {
-    public class HueMapOperation_SetMultipleValues
+    private HueMapOperation_SetValue[] _operations;
+
+    public HueMapOperation_SetMultipleValues(params HueMapOperation_SetValue[] operations)
     {
-        private HueMapOperation_SetValue[] _operations;
+        _operations = operations;
+    }
 
-        public HueMapOperation_SetMultipleValues(params HueMapOperation_SetValue[] operations)
+    public void Perform(HueMap map)
+    {
+        foreach (var operation in _operations)
         {
-            _operations = operations;
-        }
-
-        public void Perform(HueMap map)
-        {
-            foreach (var operation in _operations)
-            {
-                operation.Perform(map);
-            }
+            operation.Perform(map);
         }
     }
 }

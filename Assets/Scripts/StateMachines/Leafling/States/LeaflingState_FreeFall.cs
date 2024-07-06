@@ -1,91 +1,88 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-namespace Leafling
+public class LeaflingState_FreeFall : LeaflingState
 {
-    public class LeaflingState_FreeFall : LeaflingState
+    [SerializeField]
+    private SpriteAnimation _backflip;
+    [SerializeField]
+    private SpriteAnimation _fallBack;
+    [SerializeField]
+    private SpriteAnimation _fallDown;
+    [SerializeField]
+    private SpriteAnimation _fallForward;
+    [SerializeField]
+    private DirectionalAirControl _airControl;
+    [SerializeField, ReadOnly]
+    private FreeFallEntry _entry;
+
+    public void SetEntry(FreeFallEntry entry)
     {
-        [SerializeField]
-        private SpriteAnimation _backflip;
-        [SerializeField]
-        private SpriteAnimation _fallBack;
-        [SerializeField]
-        private SpriteAnimation _fallDown;
-        [SerializeField]
-        private SpriteAnimation _fallForward;
-        [SerializeField]
-        private DirectionalAirControl _airControl;
-        [SerializeField, ReadOnly]
-        private FreeFallEntry _entry;
+        _entry = entry;
+    }
 
-        public void SetEntry(FreeFallEntry entry)
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (_entry == FreeFallEntry.Backflip)
         {
-            _entry = entry;
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            if (_entry == FreeFallEntry.Backflip)
-            {
-                Target.SetAnimation(_backflip);
-                TransitionFreeFallAnimation();
-            }
-            else
-            {
-                Target.SetAnimation(_fallDown);
-            }
-        }
-
-        protected override void OnHorizontalDirectionChanged()
-        {
-            base.OnHorizontalDirectionChanged();
+            Target.SetAnimation(_backflip);
             TransitionFreeFallAnimation();
         }
-        protected override void OnStartedJumping()
+        else
         {
-            base.OnStartedJumping();
-            Target.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
+            Target.SetAnimation(_fallDown);
         }
-        protected override void OnStartedAimingDash()
-        {
-            base.OnStartedAimingDash();
-            if (Target.IsAbleToDash)
-            {
-                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
-            }
-        }
-        protected override void OnStartedCrouching()
-        {
-            base.OnStartedCrouching();
-            Target.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
-        }
+    }
 
-        protected override void Update()
+    protected override void OnHorizontalDirectionChanged()
+    {
+        base.OnHorizontalDirectionChanged();
+        TransitionFreeFallAnimation();
+    }
+    protected override void OnStartedJumping()
+    {
+        base.OnStartedJumping();
+        Target.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
+    }
+    protected override void OnStartedAimingDash()
+    {
+        base.OnStartedAimingDash();
+        if (Target.IsAbleToDash)
         {
-            base.Update();
-            Target.ApplyAirControl(_airControl);
-            if (Target.IsTouching(CardinalDirection.Down))
-            {
-                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
-            }
-            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
+            Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
         }
+    }
+    protected override void OnStartedCrouching()
+    {
+        base.OnStartedCrouching();
+        Target.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
+    }
 
-        private void TransitionFreeFallAnimation()
+    protected override void Update()
+    {
+        base.Update();
+        Target.ApplyAirControl(_airControl);
+        if (Target.IsTouching(CardinalDirection.Down))
         {
-            if (Target.HorizontalDirection == 0)
-            {
-                Target.SetTransition(new(_fallDown, 1, Target.CurrentFlipX));
-            }
-            else if (Target.HorizontalDirection != Target.FacingDirection)
-            {
-                Target.SetTransition(new(_fallBack, 1, Target.CurrentFlipX));
-            }
-            else
-            {
-                Target.SetTransition(new(_fallForward, 1, Target.CurrentFlipX));
-            }
+            Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
+        }
+        LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
+    }
+
+    private void TransitionFreeFallAnimation()
+    {
+        if (Target.HorizontalDirection == 0)
+        {
+            Target.SetTransition(new(_fallDown, 1, Target.CurrentFlipX));
+        }
+        else if (Target.HorizontalDirection != Target.FacingDirection)
+        {
+            Target.SetTransition(new(_fallBack, 1, Target.CurrentFlipX));
+        }
+        else
+        {
+            Target.SetTransition(new(_fallForward, 1, Target.CurrentFlipX));
         }
     }
 }

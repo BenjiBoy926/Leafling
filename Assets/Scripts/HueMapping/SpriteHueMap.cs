@@ -2,99 +2,96 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Leafling
+public class SpriteHueMap : MonoBehaviour
 {
-    public class SpriteHueMap : MonoBehaviour
+    [SerializeField]
+    private SpriteRenderer _renderer;
+    [SerializeField]
+    private HueMap _map;
+
+    private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
+    private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
+    private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
+    private MaterialPropertyBlock _propertyBlock;
+
+    private void OnValidate()
     {
-        [SerializeField]
-        private SpriteRenderer _renderer;
-        [SerializeField]
-        private HueMap _map;
+        RefreshShader();
+    }
+    private void Reset()
+    {
+        _renderer = GetComponent<SpriteRenderer>();
+    }
+    private void Awake()
+    {
+        RefreshShader();
+    }
 
-        private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
-        private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
-        private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
-        private MaterialPropertyBlock _propertyBlock;
+    public Color GetValue(int i)
+    {
+        return _map.GetValue(i);
+    }
+    public void SetValues(HueMapOperation_SetMultipleValues operation)
+    {
+        operation.Perform(_map);
+        RefreshShader();
+    }
 
-        private void OnValidate()
+    [Button]
+    private void RefreshShader()
+    {
+        if (_map.Count == 0)
         {
-            RefreshShader();
+            return;
         }
-        private void Reset()
+        if (Application.isPlaying)
         {
-            _renderer = GetComponent<SpriteRenderer>();
+            LazyLoadPropertyBlock();
+            _renderer.GetPropertyBlock(_propertyBlock);
         }
-        private void Awake()
+        SetMapSize();
+        SetMapKeys();
+        SetMapValues();
+        if (Application.isPlaying)
         {
-            RefreshShader();
+            _renderer.SetPropertyBlock(_propertyBlock);
         }
-
-        public Color GetValue(int i)
+    }
+    private void LazyLoadPropertyBlock()
+    {
+        if (_propertyBlock == null)
         {
-            return _map.GetValue(i);
+            _propertyBlock = new();
         }
-        public void SetValues(HueMapOperation_SetMultipleValues operation)
+    }
+    private void SetMapSize()
+    {
+        if (Application.isPlaying)
         {
-            operation.Perform(_map);
-            RefreshShader();
+            _propertyBlock.SetInt(_mapSizeID, _map.Count);
         }
-
-        [Button]
-        private void RefreshShader()
+        else
         {
-            if (_map.Count == 0)
-            {
-                return;
-            }
-            if (Application.isPlaying)
-            {
-                LazyLoadPropertyBlock();
-                _renderer.GetPropertyBlock(_propertyBlock);
-            }
-            SetMapSize();
-            SetMapKeys();
-            SetMapValues();
-            if (Application.isPlaying)
-            {
-                _renderer.SetPropertyBlock(_propertyBlock);
-            }
+            _renderer.sharedMaterial.SetInt(_mapSizeID, _map.Count);
         }
-        private void LazyLoadPropertyBlock()
+    }
+    private void SetMapKeys()
+    {
+        SetVectorArray(_mapKeysID, _map.Keys);
+    }
+    private void SetMapValues()
+    {
+        SetVectorArray(_mapValuesID, _map.Values);
+    }
+    private void SetVectorArray(int id, List<Vector4> array)
+    {
+        if (Application.isPlaying)
         {
-            if (_propertyBlock == null)
-            {
-                _propertyBlock = new();
-            }
+            _propertyBlock.SetVectorArray(id, array);
         }
-        private void SetMapSize()
+        else
         {
-            if (Application.isPlaying)
-            {
-                _propertyBlock.SetInt(_mapSizeID, _map.Count);
-            }
-            else
-            {
-                _renderer.sharedMaterial.SetInt(_mapSizeID, _map.Count);
-            }
-        }
-        private void SetMapKeys()
-        {
-            SetVectorArray(_mapKeysID, _map.Keys);
-        }
-        private void SetMapValues()
-        {
-            SetVectorArray(_mapValuesID, _map.Values);
-        }
-        private void SetVectorArray(int id, List<Vector4> array)
-        {
-            if (Application.isPlaying)
-            {
-                _propertyBlock.SetVectorArray(id, array);
-            }
-            else
-            {
-                _renderer.sharedMaterial.SetVectorArray(id, array);
-            }
+            _renderer.sharedMaterial.SetVectorArray(id, array);
         }
     }
 }

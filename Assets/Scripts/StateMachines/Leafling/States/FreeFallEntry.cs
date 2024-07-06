@@ -1,7 +1,4 @@
-namespace Leafling
+public enum FreeFallEntry
 {
-    public enum FreeFallEntry
-    {
-        Backflip, Normal
-    }
+    Backflip, Normal
 }

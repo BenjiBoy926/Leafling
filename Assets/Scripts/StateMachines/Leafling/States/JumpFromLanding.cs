@@ -1,7 +1,4 @@
-namespace Leafling
+public enum JumpFromLanding
 {
-    public enum JumpFromLanding
-    {
-        Normal, CrouchJump
-    }
+    Normal, CrouchJump
 }

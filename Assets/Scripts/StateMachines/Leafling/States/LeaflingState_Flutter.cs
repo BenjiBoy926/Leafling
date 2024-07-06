@@ -1,67 +1,64 @@
 using UnityEngine;
 
-namespace Leafling
+public class LeaflingState_Flutter : LeaflingState
 {
-    public class LeaflingState_Flutter : LeaflingState
+    [SerializeField]
+    private SpriteAnimation _animation;
+    [SerializeField]
+    private float _animationTransitionScale = 0.5f;
+    [SerializeField]
+    private float _speed = 5;
+    [SerializeField]
+    private DirectionalAirControl _restingAirControl;
+    [SerializeField]
+    private DirectionalAirControl _actionAirControl;
+
+    protected override void OnEnable()
     {
-        [SerializeField]
-        private SpriteAnimation _animation;
-        [SerializeField]
-        private float _animationTransitionScale = 0.5f;
-        [SerializeField]
-        private float _speed = 5;
-        [SerializeField]
-        private DirectionalAirControl _restingAirControl;
-        [SerializeField]
-        private DirectionalAirControl _actionAirControl;
+        base.OnEnable();
+        Target.SetTransition(new(_animation, _animationTransitionScale, Target.CurrentFlipX));
+    }
+    protected override void OnStartedAimingDash()
+    {
+        base.OnStartedAimingDash();
+        if (Target.IsAbleToDash)
+        {
+            Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
+        }
+    }
+    protected override void OnAnimationFinished()
+    {
+        base.OnAnimationFinished();
+        if (Target.IsAnimating(_animation))
+        {
+            Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
+        }
+    }
+    protected override void OnAnimationEnteredActionFrame()
+    {
+        base.OnAnimationEnteredActionFrame();
+        Target.SetVerticalVelocity(_speed);
+    }
 
-        protected override void OnEnable()
+    protected override void Update()
+    {
+        base.Update();
+        ApplyAirControl();
+        if (Target.IsTouching(CardinalDirection.Down))
         {
-            base.OnEnable();
-            Target.SetTransition(new(_animation, _animationTransitionScale, Target.CurrentFlipX));
+            Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
         }
-        protected override void OnStartedAimingDash()
+        LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
+    }
+    private void ApplyAirControl()
+    {
+        if (Target.IsCurrentFrameActionFrame)
         {
-            base.OnStartedAimingDash();
-            if (Target.IsAbleToDash)
-            {
-                Target.SendSignal(new LeaflingSignal<LeaflingState_DashAim>());
-            }
+            Target.ApplyAirControl(_actionAirControl);
         }
-        protected override void OnAnimationFinished()
+        else
         {
-            base.OnAnimationFinished();
-            if (Target.IsAnimating(_animation))
-            {
-                Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
-            }
-        }
-        protected override void OnAnimationEnteredActionFrame()
-        {
-            base.OnAnimationEnteredActionFrame();
-            Target.SetVerticalVelocity(_speed);
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-            ApplyAirControl();
-            if (Target.IsTouching(CardinalDirection.Down))
-            {
-                Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
-            }
-            LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
-        }
-        private void ApplyAirControl()
-        {
-            if (Target.IsCurrentFrameActionFrame)
-            {
-                Target.ApplyAirControl(_actionAirControl);
-            }
-            else
-            {
-                Target.ApplyAirControl(_restingAirControl);
-            }
+            Target.ApplyAirControl(_restingAirControl);
         }
     }
 }
