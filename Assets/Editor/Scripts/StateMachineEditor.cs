@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace Leafling.Editor
 {
-    [CustomEditor(typeof(LeaflingStateMachine))]
-    public class LeaflingStateMachineEditor : UnityEditor.Editor
+    [CustomEditor(typeof(StateMachine<>), true)]
+    public class StateMachineEditor : UnityEditor.Editor
     {
-        private Type BaseStateType => typeof(LeaflingState);
+        private Type BaseStateType => _target.BaseStateType;
 
         private LeaflingStateMachine _target;
 

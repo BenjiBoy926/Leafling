@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Leafling
 {
-    public class StateMachine<TTarget> : MonoBehaviour where TTarget : MonoBehaviour
+    public abstract class StateMachine<TTarget> : MonoBehaviour where TTarget : MonoBehaviour
     {
         public const string StateListPropertyPath = nameof(_stateList);
+        public abstract Type BaseStateType { get; }
 
         [SerializeField]
         private List<State<TTarget>> _stateList;
