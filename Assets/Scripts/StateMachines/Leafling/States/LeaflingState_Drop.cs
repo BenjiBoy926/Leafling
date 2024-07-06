@@ -27,6 +27,11 @@ public class LeaflingState_Drop : LeaflingState
         }
         Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        Target.SendSignal(new LeaflingSignal_DashSpin(target));
+    }
 
     protected override void Update()
     {

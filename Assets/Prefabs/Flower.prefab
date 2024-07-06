@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 3320552149510682049}
   _idleAnimation: {fileID: 11400000, guid: a3d4950456f15744296b32db37e99aa3, type: 2}
-  _tickleAnimation: {fileID: 0}
+  _tickleAnimation: {fileID: 11400000, guid: b7d3135f5c22a164a83965aa9c14ced5, type: 2}
   _strikeAnimation: {fileID: 11400000, guid: f93600c9d1753dc44b1df9950f1b7030, type: 2}
 --- !u!1 &3777485916940746661
 GameObject:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 3320552149510682049}
   _idleAnimation: {fileID: 11400000, guid: 3e0d4540a8ede4341973ae74731e9304, type: 2}
-  _tickleAnimation: {fileID: 0}
+  _tickleAnimation: {fileID: 11400000, guid: 1e7ab15a7df3d7f46a57a90a6371a7e5, type: 2}
   _strikeAnimation: {fileID: 11400000, guid: f93600c9d1753dc44b1df9950f1b7030, type: 2}
 --- !u!1 &7542621392386464516
 GameObject:

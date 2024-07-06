@@ -39,6 +39,11 @@ public class LeaflingState_Flutter : LeaflingState
         base.OnAnimationEnteredActionFrame();
         Target.SetVerticalVelocity(_speed);
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
 
     protected override void Update()
     {

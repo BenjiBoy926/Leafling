@@ -20,6 +20,11 @@ public class LeaflingState_Jump : LeaflingState
         base.OnEnable();
         Target.SetAnimation(_animation);
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
 
     protected override void Update()
     {

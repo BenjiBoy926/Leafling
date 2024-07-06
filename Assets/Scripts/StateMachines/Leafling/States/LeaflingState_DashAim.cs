@@ -22,6 +22,11 @@ public class LeaflingState_DashAim : LeaflingState
         Target.ResetGravityScale();
         Target.ResetSpriteRotation();
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
     protected override void Update()
     {
         base.Update();

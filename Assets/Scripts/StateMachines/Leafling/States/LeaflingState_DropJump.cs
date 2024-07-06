@@ -20,6 +20,11 @@ public class LeaflingState_DropJump : LeaflingState
         base.OnAnimationFinished();
         Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
     protected override void Update()
     {
         base.Update();

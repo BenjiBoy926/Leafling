@@ -58,6 +58,11 @@ public class LeaflingState_FreeFall : LeaflingState
         base.OnStartedCrouching();
         Target.SendSignal(new LeaflingSignal<LeaflingState_Drop>());
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
 
     protected override void Update()
     {

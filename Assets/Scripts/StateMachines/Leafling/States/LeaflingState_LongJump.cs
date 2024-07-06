@@ -40,6 +40,11 @@ public class LeaflingState_LongJump : LeaflingState
         base.OnAnimationEnteredActionFrame();
         Target.SetHorizontalVelocity(TopSpeed * Target.FacingDirection);
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
     protected override void Update()
     {
         base.Update();

@@ -23,6 +23,11 @@ public class LeaflingState_WallJump : LeaflingState
         Target.SetAnimation(_animation);
         Target.FaceTowards(LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection));
     }
+    protected override void OnDashTargetTouched(DashTarget target)
+    {
+        base.OnDashTargetTouched(target);
+        target.Tickle();
+    }
     protected override void Update()
     {
         base.Update();

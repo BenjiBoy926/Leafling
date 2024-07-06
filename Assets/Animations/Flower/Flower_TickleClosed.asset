@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
+  m_Name: Flower_TickleClosed
+  m_EditorClassIdentifier: 
+  _frames:
+  - _sprite: {fileID: -2142655917, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.1
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2009318921, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.1
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 1091648101, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.1
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2009318921, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.1
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: -2142655917, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.05
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2009318921, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.05
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 1091648101, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.05
+    _isTransitionFrame: 0
+    _isActionFrame: 0
+  - _sprite: {fileID: 2009318921, guid: 58bb27f2aa19c5d4e9430053279c4c3d, type: 3}
+    _duration: 0.05
+    _isTransitionFrame: 0
+    _isActionFrame: 0
