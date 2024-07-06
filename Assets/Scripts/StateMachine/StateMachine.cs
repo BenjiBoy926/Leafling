@@ -1,30 +1,27 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Leafling
 {
-    public class LeaflingStateMachine : MonoBehaviour
+    public class StateMachine<TTarget> : MonoBehaviour where TTarget : MonoBehaviour
     {
         public const string StateListPropertyPath = nameof(_stateList);
 
         [SerializeField]
-        private Leafling _leafling;
-        [SerializeField]
-        private List<LeaflingState> _stateList;
-        private LeaflingState _currentState;
-        private Dictionary<Type, LeaflingState> _stateIndex;
+        private List<State<TTarget>> _stateList;
+        private State<TTarget> _currentState;
+        private Dictionary<Type, State<TTarget>> _stateIndex;
 
         private void Awake()
         {
             _stateIndex = BuildStateIndex(_stateList);
             DisableAllStates();
         }
-        private static Dictionary<Type, LeaflingState> BuildStateIndex(List<LeaflingState> allStates)
+        private static Dictionary<Type, State<TTarget>> BuildStateIndex(List<State<TTarget>> allStates)
         {
-            Dictionary<Type, LeaflingState> result = new();
-            foreach (LeaflingState state in allStates)
+            Dictionary<Type, State<TTarget>> result = new();
+            foreach (State<TTarget> state in allStates)
             {
                 result[state.GetType()] = state;
             }
@@ -38,7 +35,7 @@ namespace Leafling
             }
         }
 
-        public void SendSignal(ILeaflingSignal signal)
+        public void SendSignal(ISignal<TTarget> signal)
         {
             signal.PrepareNextState(this);
             SetState(signal.StateType);
@@ -47,7 +44,7 @@ namespace Leafling
         {
             SetState(GetState(stateType));
         }
-        private void SetState(LeaflingState state)
+        private void SetState(State<TTarget> state)
         {
             if (_currentState != null)
             {
@@ -60,11 +57,11 @@ namespace Leafling
             }
         }
 
-        public TState GetState<TState>() where TState : LeaflingState
+        public TState GetState<TState>() where TState : State<TTarget>
         {
             return GetState(typeof(TState)) as TState;
         }
-        private LeaflingState GetState(Type stateType)
+        private State<TTarget> GetState(Type stateType)
         {
             return _stateIndex[stateType];
         }
