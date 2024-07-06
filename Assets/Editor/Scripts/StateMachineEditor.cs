@@ -12,11 +12,11 @@ namespace Leafling.Editor
     {
         private Type BaseStateType => _target.BaseStateType;
 
-        private LeaflingStateMachine _target;
+        private IStateMachine _target;
 
         private void OnEnable()
         {
-            _target = (LeaflingStateMachine)target;
+            _target = target as IStateMachine;
         }
         public override void OnInspectorGUI()
         {
@@ -64,26 +64,26 @@ namespace Leafling.Editor
         }
         private void DestroyAllStates()
         {
-            LeaflingState[] states = AllAttachedStateInstances();
+            IState[] states = AllAttachedStateInstances();
             for (int i = 0; i < states.Length; i++)
             {
                 DestroyState(states[i]);
             }
         }
-        private void DestroyState(LeaflingState state)
+        private void DestroyState(IState state)
         {
             if (StateHasOtherComponents(state))
             {
-                DestroyImmediate(state);
+                DestroyImmediate(state.Behaviour);
             }
             else
             {
-                DestroyImmediate(state.gameObject);
+                DestroyImmediate(state.Behaviour.gameObject);
             }
         }
-        private bool StateHasOtherComponents(LeaflingState state)
+        private bool StateHasOtherComponents(IState state)
         {
-            return state.GetComponents<Component>().Length > 2;
+            return state.Behaviour.GetComponents<Component>().Length > 2;
         }
         private void AttachMissingStates()
         {
@@ -120,56 +120,56 @@ namespace Leafling.Editor
         }
         private void SetStates()
         {
-            LeaflingState[] states = AllAttachedStateInstances();
-            SerializedProperty statesProperty = serializedObject.FindProperty(LeaflingStateMachine.StateListPropertyPath);
+            IState[] states = AllAttachedStateInstances();
+            SerializedProperty statesProperty = serializedObject.FindProperty(_target.StateListPropertyPath);
             statesProperty.arraySize = states.Length;
             for (int i = 0; i < states.Length; i++)
             {
-                statesProperty.GetArrayElementAtIndex(i).objectReferenceValue = states[i];
+                statesProperty.GetArrayElementAtIndex(i).objectReferenceValue = states[i].Behaviour;
             }
         }
         private void RefreshTargets()
         {
-            LeaflingState[] states = AllAttachedStateInstances();
+            IState[] states = AllAttachedStateInstances();
             for (int i = 0; i < states.Length; i++)
             {
                 states[i].RefreshTarget();
-                EditorUtility.SetDirty(states[i]);
+                EditorUtility.SetDirty(states[i].Behaviour);
             }
         }
         private void DisableAllStates()
         {
-            LeaflingState[] states = AllAttachedStateInstances();
+            IState[] states = AllAttachedStateInstances();
             for (int i = 0; i < states.Length; i++)
             {
-                states[i].enabled = false;
+                states[i].Behaviour.enabled = false;
             }
         }
 
-        private LeaflingState[] AllAttachedStateInstances()
+        private IState[] AllAttachedStateInstances()
         {
-            return _target.GetComponentsInChildren<LeaflingState>();
+            return _target.Behaviour.GetComponentsInChildren<IState>();
         }
         private bool IsState(Type type)
         {
             return type != BaseStateType && BaseStateType.IsAssignableFrom(type);
         }
-        private Type StateType(LeaflingState state)
+        private Type StateType(IState state)
         {
             return state.GetType();
         }
         private GameObject CreateStateContainer(Type stateType)
         {
             GameObject container = new GameObject(stateType.Name);
-            container.transform.parent = _target.transform;
+            container.transform.parent = _target.Behaviour.transform;
             return container;
         }
         private Transform[] GetChildren()
         {
-            Transform[] children = new Transform[_target.transform.childCount];
+            Transform[] children = new Transform[_target.Behaviour.transform.childCount];
             for (int i = 0; i < children.Length; i++)
             {
-                children[i] = _target.transform.GetChild(i);
+                children[i] = _target.Behaviour.transform.GetChild(i);
             }
             return children;
         }

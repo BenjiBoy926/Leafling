@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StateMachine<TTarget> : MonoBehaviour where TTarget : MonoBehaviour
+public abstract class StateMachine<TTarget> : MonoBehaviour, IStateMachine where TTarget : MonoBehaviour
 {
-    public const string StateListPropertyPath = nameof(_stateList);
+    public string StateListPropertyPath => nameof(_stateList);
     public abstract Type BaseStateType { get; }
+    public MonoBehaviour Behaviour => this;
 
     [SerializeField]
     private List<State<TTarget>> _stateList;

@@ -126,6 +126,151 @@ MonoBehaviour:
       <Value>k__BackingField: {r: 1, g: 0.6341775, b: 0, a: 1}
     - <Key>k__BackingField: {r: 0, g: 1, b: 0.5, a: 1}
       <Value>k__BackingField: {r: 1, g: 1, b: 0, a: 1}
+--- !u!1 &2010275497051928403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3053387483825737299}
+  - component: {fileID: 1957025135208319716}
+  m_Layer: 0
+  m_Name: FlowerState_IsClosed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3053387483825737299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010275497051928403}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.782392, y: -9.379776, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8428950070358168365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1957025135208319716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010275497051928403}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e713d6ffca3a92439ddd53a1959e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Target>k__BackingField: {fileID: 3320552149510682049}
+  _idleAnimation: {fileID: 0}
+  _tickleAnimation: {fileID: 0}
+  _strikeAnimation: {fileID: 0}
+--- !u!1 &3777485916940746661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3549596159443796800}
+  - component: {fileID: 6133022404095272048}
+  m_Layer: 0
+  m_Name: FlowerState_IsOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3549596159443796800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777485916940746661}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.782392, y: -9.379776, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8428950070358168365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6133022404095272048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777485916940746661}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a2ca5761aede54dbc1a9e3d844d1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Target>k__BackingField: {fileID: 3320552149510682049}
+  _idleAnimation: {fileID: 0}
+  _tickleAnimation: {fileID: 0}
+  _strikeAnimation: {fileID: 0}
+--- !u!1 &7542621392386464516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8428950070358168365}
+  - component: {fileID: 7280904860579185552}
+  m_Layer: 0
+  m_Name: States
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8428950070358168365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542621392386464516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3053387483825737299}
+  - {fileID: 3549596159443796800}
+  m_Father: {fileID: 2537727122966733524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7280904860579185552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542621392386464516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b795324f43cca468c974b5df139870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateList:
+  - {fileID: 1957025135208319716}
+  - {fileID: 6133022404095272048}
 --- !u!1 &9031972233382953237
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +282,7 @@ GameObject:
   - component: {fileID: 2537727122966733524}
   - component: {fileID: 6826462041567688258}
   - component: {fileID: 4973346266715813252}
+  - component: {fileID: 3320552149510682049}
   - component: {fileID: 2053302370765750063}
   m_Layer: 0
   m_Name: Flower
@@ -159,6 +305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3071714381595545703}
+  - {fileID: 8428950070358168365}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6826462041567688258
@@ -188,6 +335,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c24fe61a0ada24a85a9b51ffa4bed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3320552149510682049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031972233382953237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855fbf0ebcbf59b4bb7d160251ec49b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 4973346266715813252}
+  _animator: {fileID: 6826462041567688258}
+  _stateMachine: {fileID: 0}
 --- !u!58 &2053302370765750063
 CircleCollider2D:
   m_ObjectHideFlags: 0
