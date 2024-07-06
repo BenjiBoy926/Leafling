@@ -43,7 +43,7 @@ public class LeaflingState_LongJump : LeaflingState
     protected override void OnDashTargetTouched(DashTarget target)
     {
         base.OnDashTargetTouched(target);
-        target.Tickle();
+        target.Tickle(Target.DashTargeter);
     }
     protected override void Update()
     {

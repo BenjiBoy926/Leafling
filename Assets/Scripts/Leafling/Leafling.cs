@@ -50,7 +50,7 @@ public class Leafling : MonoBehaviour
     [field: SerializeField]
     private LeaflingSprite Sprite { get; set; }
     [field: SerializeField]
-    private DashTargeter DashTargeter { get; set; }
+    public DashTargeter DashTargeter { get; private set; }
 
     [field: Space]
     [field: SerializeField]

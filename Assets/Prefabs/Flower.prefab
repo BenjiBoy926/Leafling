@@ -351,6 +351,7 @@ MonoBehaviour:
   _target: {fileID: 4973346266715813252}
   _animator: {fileID: 6826462041567688258}
   _stateMachine: {fileID: 7280904860579185552}
+  _pushSpeed: 20
 --- !u!58 &2053302370765750063
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class LeaflingState_DashSpin : LeaflingState
         Target.SetAnimation(_animation);
         Target.RestoreAbilityToDash();
         _startPosition = Target.GetPosition();
-        _dashTarget.Strike();
+        _dashTarget.Strike(Target.DashTargeter);
     }
     protected override void OnDisable()
     {

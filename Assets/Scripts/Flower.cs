@@ -13,6 +13,8 @@ public class Flower : MonoBehaviour
     private SpriteAnimator _animator;
     [SerializeField]
     private FlowerStateMachine _stateMachine;
+    [SerializeField]
+    private float _pushSpeed = 10;
 
     private void OnEnable()
     {
@@ -27,11 +29,15 @@ public class Flower : MonoBehaviour
         _animator.FinishedAnimation -= OnAnimationFinished;
     }
 
-    private void OnTickled()
+    private void OnTickled(DashTargeter targeter)
     {
+        if (targeter.TryGetComponent(out Leafling leafling))
+        {
+            PushLeaflingAway(leafling);
+        }
         Tickled();
     }
-    private void OnStruck()
+    private void OnStruck(DashTargeter targeter)
     {
         Struck();
     }
@@ -47,5 +53,14 @@ public class Flower : MonoBehaviour
     public void SendSignal(ISignal<Flower> signal)
     {
         _stateMachine.SendSignal(signal);
+    }
+
+    private void PushLeaflingAway(Leafling leafling)
+    {
+        Vector2 position = transform.position;
+        Vector2 pushDirection = leafling.GetPosition() - position;
+        pushDirection.y = 0;
+        pushDirection = pushDirection.normalized;
+        leafling.SetVelocity(pushDirection * _pushSpeed);
     }
 }
