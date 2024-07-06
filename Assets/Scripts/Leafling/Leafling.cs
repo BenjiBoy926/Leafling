@@ -19,7 +19,7 @@ namespace Leafling
         public event Action AnimationStarted = delegate { };
         public event Action AnimationFinished = delegate { };
         public event Action AnimationEnteredActionFrame = delegate { };
-        public event DashTargeter.TargetStrikeHandler DashTargetStruck = delegate { };
+        public event DashTargeter.TargetStrikeHandler DashTargetTouched = delegate { };
 
         public int HorizontalDirection => Inputs.HorizontalDirection;
         public bool IsJumping => Inputs.IsJumping;
@@ -73,7 +73,6 @@ namespace Leafling
         {
             _defaultGravityScale = PhysicsBody.gravityScale;
             _defaultSpriteRotation = Animator.transform.localRotation;
-            SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
         }
         private void OnEnable()
         {
@@ -87,7 +86,7 @@ namespace Leafling
             Animator.StartedAnimation += OnAnimationStarted;
             Animator.FinishedAnimation += OnAnimationFinished;
             Animator.ActionFrameEntered += OnAnimationEnteredActionFrame;
-            DashTargeter.StruckTarget += OnStruckDashTarget;
+            DashTargeter.TouchedTarget += OnDashTargetTouched;
         }
         private void OnDisable()
         {
@@ -101,7 +100,11 @@ namespace Leafling
             Animator.StartedAnimation -= OnAnimationStarted;
             Animator.FinishedAnimation -= OnAnimationFinished;
             Animator.ActionFrameEntered -= OnAnimationEnteredActionFrame;
-            DashTargeter.StruckTarget -= OnStruckDashTarget;
+            DashTargeter.TouchedTarget -= OnDashTargetTouched;
+        }
+        private void Start()
+        {
+            SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
         }
         private void OnHorizontalDirectionChanged()
         {
@@ -143,9 +146,9 @@ namespace Leafling
         {
             AnimationEnteredActionFrame();
         }
-        private void OnStruckDashTarget(DashTarget target)
+        private void OnDashTargetTouched(DashTarget target)
         {
-            DashTargetStruck(target);
+            DashTargetTouched(target);
         }
 
         public void SendSignal(ILeaflingSignal signal)

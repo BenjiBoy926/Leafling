@@ -47,9 +47,9 @@ namespace Leafling
                 Leafling.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
             }
         }
-        protected override void OnDashTargetStruck(DashTarget target)
+        protected override void OnDashTargetTouched(DashTarget target)
         {
-            base.OnDashTargetStruck(target);
+            base.OnDashTargetTouched(target);
             Leafling.SendSignal(new LeaflingSignal_DashSpin(target));
         }
 

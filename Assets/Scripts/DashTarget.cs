@@ -7,5 +7,14 @@ namespace Leafling
     public class DashTarget : MonoBehaviour
     {
         public Vector2 Position => transform.position;
+
+        public void Tickle()
+        {
+
+        }
+        public void Hit()
+        {
+
+        }
     }
 }

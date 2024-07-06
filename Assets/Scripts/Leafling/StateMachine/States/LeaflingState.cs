@@ -46,7 +46,7 @@ namespace Leafling
             Leafling.AnimationStarted += OnAnimationStarted;
             Leafling.AnimationFinished += OnAnimationFinished;
             Leafling.AnimationEnteredActionFrame += OnAnimationEnteredActionFrame;
-            Leafling.DashTargetStruck += OnDashTargetStruck;
+            Leafling.DashTargetTouched += OnDashTargetTouched;
         }
         protected virtual void OnDisable()
         {
@@ -60,7 +60,7 @@ namespace Leafling
             Leafling.AnimationStarted -= OnAnimationStarted;
             Leafling.AnimationFinished -= OnAnimationFinished;
             Leafling.AnimationEnteredActionFrame -= OnAnimationEnteredActionFrame;
-            Leafling.DashTargetStruck -= OnDashTargetStruck;
+            Leafling.DashTargetTouched -= OnDashTargetTouched;
         }
         protected virtual void Update()
         {
@@ -107,7 +107,7 @@ namespace Leafling
         {
             _hasEnteredActionFrame = true;
         }
-        protected virtual void OnDashTargetStruck(DashTarget target)
+        protected virtual void OnDashTargetTouched(DashTarget target)
         {
 
         }
