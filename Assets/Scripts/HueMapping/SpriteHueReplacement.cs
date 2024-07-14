@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class SpriteHueReplacement : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer _renderer;
+    private Renderer _renderer;
     [SerializeField, FormerlySerializedAs("_map")]
     private HueReplacement _replacements;
 
@@ -21,7 +21,7 @@ public class SpriteHueReplacement : MonoBehaviour
     }
     private void Reset()
     {
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponent<Renderer>();
     }
     private void Awake()
     {
