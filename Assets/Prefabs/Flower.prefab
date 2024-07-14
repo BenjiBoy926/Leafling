@@ -115,13 +115,13 @@ MonoBehaviour:
   _map:
     _keyValuePairs:
     - <Key>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
-      <Value>k__BackingField: {r: 0.8301887, g: 0.38689923, b: 0.7333356, a: 1}
+      <Value>k__BackingField: {r: 0.8396226, g: 0.5259523, b: 0.77180207, a: 1}
     - <Key>k__BackingField: {r: 1, g: 0.5, b: 0, a: 1}
       <Value>k__BackingField: {r: 0.8584906, g: 0.5701673, b: 0.79470223, a: 1}
     - <Key>k__BackingField: {r: 1, g: 1, b: 0, a: 1}
       <Value>k__BackingField: {r: 0.8679245, g: 0.6910644, b: 0.8296845, a: 1}
     - <Key>k__BackingField: {r: 0.5, g: 1, b: 0, a: 1}
-      <Value>k__BackingField: {r: 0.2426486, g: 0.9056604, b: 0.2426486, a: 1}
+      <Value>k__BackingField: {r: 0.45098042, g: 0.7490196, b: 0.45098042, a: 1}
     - <Key>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
       <Value>k__BackingField: {r: 1, g: 0.6341775, b: 0, a: 1}
     - <Key>k__BackingField: {r: 0, g: 1, b: 0.5, a: 1}
