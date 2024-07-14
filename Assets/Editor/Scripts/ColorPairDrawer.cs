@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Leafling.Editor
 {
-    [CustomPropertyDrawer(typeof(ColorPair))]
+    [CustomPropertyDrawer(typeof(HueReplacementItem))]
     public class ColorPairDrawer : PropertyDrawer
     {
         private const float KeyLabelWidth = 30;
@@ -13,8 +13,8 @@ namespace Leafling.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             float colorWidth = (position.width - ValueLabelWidth - KeyLabelWidth - Space) / 2;
-            SerializedProperty key = property.FindPropertyRelative(ColorPair.KeyBackingFieldName);
-            SerializedProperty value = property.FindPropertyRelative(ColorPair.ValueBackingFieldName);
+            SerializedProperty key = property.FindPropertyRelative(HueReplacementItem.KeyBackingFieldName);
+            SerializedProperty value = property.FindPropertyRelative(HueReplacementItem.ValueBackingFieldName);
 
             position.width = KeyLabelWidth;
             EditorGUI.LabelField(position, key.displayName);

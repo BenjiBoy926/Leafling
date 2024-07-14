@@ -4,14 +4,14 @@ using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class HueMap
+public class HueReplacement
 {
     public int Count => _keyValuePairs.Length;
     public List<Vector4> HsvKeys => _keyValuePairs.Select(HsvKey).ToList();
     public List<Vector4> HsvValues => _keyValuePairs.Select(HsvValue).ToList();
 
     [SerializeField]
-    private ColorPair[] _keyValuePairs;
+    private HueReplacementItem[] _keyValuePairs;
 
     public Color GetValue(int i)
     {
@@ -21,11 +21,11 @@ public class HueMap
     {
         _keyValuePairs[i].Value = value;
     }
-    private Vector4 HsvKey(ColorPair pair)
+    private Vector4 HsvKey(HueReplacementItem pair)
     {
         return pair.HsvKey;
     }
-    private Vector4 HsvValue(ColorPair pair)
+    private Vector4 HsvValue(HueReplacementItem pair)
     {
         return pair.HsvValue;
     }

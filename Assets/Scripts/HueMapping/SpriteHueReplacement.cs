@@ -1,13 +1,14 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class SpriteHueMap : MonoBehaviour
+public class SpriteHueReplacement : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer _renderer;
-    [SerializeField]
-    private HueMap _map;
+    [SerializeField, FormerlySerializedAs("_map")]
+    private HueReplacement _replacements;
 
     private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
     private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
@@ -29,18 +30,18 @@ public class SpriteHueMap : MonoBehaviour
 
     public Color GetValue(int i)
     {
-        return _map.GetValue(i);
+        return _replacements.GetValue(i);
     }
     public void SetValues(HueMapOperation_SetMultipleValues operation)
     {
-        operation.Perform(_map);
+        operation.Perform(_replacements);
         RefreshShader();
     }
 
     [Button]
     private void RefreshShader()
     {
-        if (_map.Count == 0)
+        if (_replacements.Count == 0)
         {
             return;
         }
@@ -68,20 +69,20 @@ public class SpriteHueMap : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            _propertyBlock.SetInt(_mapSizeID, _map.Count);
+            _propertyBlock.SetInt(_mapSizeID, _replacements.Count);
         }
         else
         {
-            _renderer.sharedMaterial.SetInt(_mapSizeID, _map.Count);
+            _renderer.sharedMaterial.SetInt(_mapSizeID, _replacements.Count);
         }
     }
     private void SetMapKeys()
     {
-        SetVectorArray(_mapKeysID, _map.HsvKeys);
+        SetVectorArray(_mapKeysID, _replacements.HsvKeys);
     }
     private void SetMapValues()
     {
-        SetVectorArray(_mapValuesID, _map.HsvValues);
+        SetVectorArray(_mapValuesID, _replacements.HsvValues);
     }
     private void SetVectorArray(int id, List<Vector4> array)
     {

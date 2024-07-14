@@ -4,7 +4,7 @@ using UnityEngine;
 public class LeaflingSprite : MonoBehaviour
 {
     [SerializeField]
-    private SpriteHueMap _map;
+    private SpriteHueReplacement _map;
     [SerializeField]
     private int _leftArmColorIndex = 1;
     [SerializeField]
@@ -15,7 +15,7 @@ public class LeaflingSprite : MonoBehaviour
 
     private void Reset()
     {
-        _map = GetComponent<SpriteHueMap>();
+        _map = GetComponent<SpriteHueReplacement>();
     }
     private void Awake()
     {

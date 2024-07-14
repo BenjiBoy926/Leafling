@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class ColorPair
+public class HueReplacementItem
 {
     private const string BackingFieldFormat = "<{0}>k__BackingField";
     public static string KeyBackingFieldName => string.Format(BackingFieldFormat, nameof(Key));

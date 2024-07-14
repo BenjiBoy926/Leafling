@@ -1,4 +1,4 @@
-Shader "Sprite with Hue Map"
+Shader "Sprite with Hue Replacement"
 {
     Properties
     {

@@ -7,7 +7,7 @@ public class HueMapOperation_SetMultipleValues
         _operations = operations;
     }
 
-    public void Perform(HueMap map)
+    public void Perform(HueReplacement map)
     {
         foreach (var operation in _operations)
         {

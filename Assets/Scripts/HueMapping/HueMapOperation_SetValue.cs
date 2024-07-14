@@ -11,7 +11,7 @@ public class HueMapOperation_SetValue
         _value = value;
     }
 
-    public void Perform(HueMap map)
+    public void Perform(HueReplacement map)
     {
         map.SetValue(_index, _value);
     }
