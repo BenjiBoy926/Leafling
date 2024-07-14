@@ -223,7 +223,20 @@ Shader "Sprite with Hue Map"
             }
             fixed ColorDistance(fixed3 hsvA, fixed3 hsvB)
             {
-                return abs(hsvA.x - hsvB.x);
+                // Codey: if we compare the distance between hue = 0 and hue = 0.99,
+                // we should get a distance of 0.01, not 0.99.
+                // To do this we take the min of (0.99 - 0) and (1 - 0.99)
+
+                fixed minHue = min(hsvA.x, hsvB.x);
+                fixed maxHue = max(hsvA.x, hsvB.x);
+
+                fixed lower = minHue;
+                fixed middle = maxHue;
+                fixed upper = minHue + 1;
+                
+                fixed diff1 = middle - lower;
+                fixed diff2 = upper - middle;
+                return min(diff1, diff2);
             }
             fixed4 ClosestColor(fixed3 hsvColor) 
             {
