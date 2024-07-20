@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class HueMapOperation_SetValue
+public class HueReplacementOperation_SetValue
 {
     private int _index;
     private Color _value;
 
-    public HueMapOperation_SetValue(int index, Color value)
+    public HueReplacementOperation_SetValue(int index, Color value)
     {
         _index = index;
         _value = value;

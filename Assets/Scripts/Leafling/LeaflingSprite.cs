@@ -10,8 +10,8 @@ public class LeaflingSprite : MonoBehaviour
     [SerializeField]
     private int _rightArmColorIndex = 2;
 
-    private HueMapOperation_SetMultipleValues _setDesaturatedColors;
-    private HueMapOperation_SetMultipleValues _setDefaultColors;
+    private HueReplacementOperation_SetMultipleValues _setDesaturatedColors;
+    private HueReplacementOperation_SetMultipleValues _setDefaultColors;
 
     private void Reset()
     {
@@ -22,11 +22,11 @@ public class LeaflingSprite : MonoBehaviour
         Color leftArmDefaultColor = _map.GetValue(_leftArmColorIndex);
         Color rightArmDefaultColor = _map.GetValue(_rightArmColorIndex);
         _setDesaturatedColors = new(
-            new HueMapOperation_SetValue(_leftArmColorIndex, DesaturateColor(leftArmDefaultColor)),
-            new HueMapOperation_SetValue(_rightArmColorIndex, DesaturateColor(rightArmDefaultColor)));
+            new HueReplacementOperation_SetValue(_leftArmColorIndex, DesaturateColor(leftArmDefaultColor)),
+            new HueReplacementOperation_SetValue(_rightArmColorIndex, DesaturateColor(rightArmDefaultColor)));
         _setDefaultColors = new(
-            new HueMapOperation_SetValue(_leftArmColorIndex, leftArmDefaultColor),
-            new HueMapOperation_SetValue(_rightArmColorIndex, rightArmDefaultColor));
+            new HueReplacementOperation_SetValue(_leftArmColorIndex, leftArmDefaultColor),
+            new HueReplacementOperation_SetValue(_rightArmColorIndex, rightArmDefaultColor));
     }
 
     public void DesaturateArmColor()

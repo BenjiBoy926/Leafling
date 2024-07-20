@@ -32,7 +32,7 @@ public class SpriteHueReplacement : MonoBehaviour
     {
         return _replacements.GetValue(i);
     }
-    public void SetValues(HueMapOperation_SetMultipleValues operation)
+    public void SetValues(HueReplacementOperation_SetMultipleValues operation)
     {
         operation.Perform(_replacements);
         RefreshShader();
