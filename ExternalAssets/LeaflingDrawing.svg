@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3716264"
-     inkscape:cx="4801.8655"
-     inkscape:cy="5883.597"
+     inkscape:zoom="8.4089456"
+     inkscape:cx="5383.612"
+     inkscape:cy="6482.4417"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -429,7 +429,7 @@
        x="1322.9166"
        y="1455.2087"
        width="105.83333"
-       height="264.58331"
+       height="291.04166"
        id="page379"
        margin="0"
        bleed="0"
@@ -3650,7 +3650,7 @@
        width="26.458361"
        height="26.458265"
        x="1322.9166"
-       y="1693.3337" />
+       y="1719.7921" />
     <path
        style="opacity:0.99;fill:#ff0000;fill-opacity:0.999161;stroke-width:0.264583"
        d="m 1375.8332,1481.667 c 0,-9.8917 -13.2291,-13.2292 -13.2291,-13.2292 0,0 13.2291,-1.9878 13.2291,-13.2291 h -26.4583 v 26.4583 z"
@@ -3783,5 +3783,25 @@
        d="m 1428.75,1680.1046 c -3.7747,3.3227 -6.4778,10.3057 0,13.2291"
        id="path378"
        sodipodi:nodetypes="cc" />
+    <path
+       style="opacity:0.99;fill:#ff0000;fill-opacity:0.999161;stroke-width:0.264583"
+       d="m 1336.1458,1719.7921 c 0.063,-7.7403 -4.7882,-13.2922 -13.2291,-13.2292 v 13.2291 z"
+       id="path551"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="opacity:0.99;fill:#ff0000;fill-opacity:0.999161;stroke-width:0.264583"
+       d="m 1349.375,1706.5628 c 7.7403,0.063 13.2922,-4.7882 13.2292,-13.2291 h -13.2291 z"
+       id="path552"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="opacity:0.99;fill:#ff0000;fill-opacity:0.999161;stroke-width:0.264583"
+       d="m 1389.0626,1693.3336 c -0.063,7.7403 4.7882,13.2922 13.2291,13.2292 v -13.2291 z"
+       id="path553"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="opacity:0.99;fill:#ff0000;fill-opacity:0.999161;stroke-width:0.264583"
+       d="m 1428.7501,1706.5629 c -7.7403,-0.063 -13.2922,4.7882 -13.2292,13.2291 h 13.2291 z"
+       id="path554"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>
