@@ -733,7 +733,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
-  _animationTransitionScale: 0.1
 --- !u!1 &3203590377629203612
 GameObject:
   m_ObjectHideFlags: 0
