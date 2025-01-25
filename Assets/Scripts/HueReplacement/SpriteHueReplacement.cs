@@ -12,7 +12,8 @@ public class SpriteHueReplacement : MonoBehaviour
         {
             if (_materialInstance == null)
             {
-                _materialInstance = _renderer.material;
+                _materialInstance = Instantiate(_renderer.sharedMaterial);
+                _renderer.material = _materialInstance;
             }
             return _materialInstance;
         }
