@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[ExecuteAlways]
 public class SpriteHueReplacement : MonoBehaviour
 {
+    private Material MaterialInstance
+    {
+        get
+        {
+            if (_materialInstance == null)
+            {
+                _materialInstance = _renderer.material;
+            }
+            return _materialInstance;
+        }
+    }
+    private MaterialPropertyBlock PropertyBlock => _propertyBlock ??= new MaterialPropertyBlock();
+
     [SerializeField]
     private Renderer _renderer;
     [SerializeField, FormerlySerializedAs("_map")]
@@ -13,19 +27,19 @@ public class SpriteHueReplacement : MonoBehaviour
     private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
     private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
     private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
+    private Material _materialInstance;
     private MaterialPropertyBlock _propertyBlock;
 
-    private void OnValidate()
-    {
-        RefreshShader();
-    }
-    private void Reset()
-    {
-        _renderer = GetComponent<Renderer>();
-    }
     private void Awake()
     {
         RefreshShader();
+    }
+    private void OnDestroy()
+    {
+        if (_materialInstance != null)
+        {
+            Destroy(_materialInstance);
+        }
     }
 
     public Color GetValue(int i)
@@ -41,39 +55,31 @@ public class SpriteHueReplacement : MonoBehaviour
     [Button]
     private void RefreshShader()
     {
-        if (_replacements.Count == 0)
+        if (!IsOperable())
         {
             return;
         }
         if (Application.isPlaying)
         {
-            LazyLoadPropertyBlock();
-            _renderer.GetPropertyBlock(_propertyBlock);
+            _renderer.GetPropertyBlock(PropertyBlock);
         }
         SetMapSize();
         SetMapKeys();
         SetMapValues();
         if (Application.isPlaying)
         {
-            _renderer.SetPropertyBlock(_propertyBlock);
-        }
-    }
-    private void LazyLoadPropertyBlock()
-    {
-        if (_propertyBlock == null)
-        {
-            _propertyBlock = new();
+            _renderer.SetPropertyBlock(PropertyBlock);
         }
     }
     private void SetMapSize()
     {
         if (Application.isPlaying)
         {
-            _propertyBlock.SetInt(_mapSizeID, _replacements.Count);
+            PropertyBlock.SetInt(_mapSizeID, _replacements.Count);
         }
         else
         {
-            _renderer.sharedMaterial.SetInt(_mapSizeID, _replacements.Count);
+            MaterialInstance.SetInt(_mapSizeID, _replacements.Count);
         }
     }
     private void SetMapKeys()
@@ -88,11 +94,24 @@ public class SpriteHueReplacement : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            _propertyBlock.SetVectorArray(id, array);
+            PropertyBlock.SetVectorArray(id, array);
         }
         else
         {
-            _renderer.sharedMaterial.SetVectorArray(id, array);
+            MaterialInstance.SetVectorArray(id, array);
         }
+    }
+
+    private void OnValidate()
+    {
+        RefreshShader();
+    }
+    private void Reset()
+    {
+        _renderer = GetComponent<Renderer>();
+    }
+    private bool IsOperable()
+    {
+        return _renderer != null && _renderer.sharedMaterial != null && _replacements != null && _replacements.Count > 0;
     }
 }
