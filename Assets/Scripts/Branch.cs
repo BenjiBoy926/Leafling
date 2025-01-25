@@ -20,13 +20,15 @@ public class Branch : MonoBehaviour
         {
             return;
         }
+        Sprite sprite = _renderer.sprite;
+        Vector4 worldUnitBorder = sprite.border / sprite.pixelsPerUnit;
         Vector2 size = _collider.size;
         size.x = _renderer.size.x * (_colliderWidth / _spriteWidth);
         _collider.size = size;
     }
     private bool IsOperable()
     {
-        return _renderer != null && _collider != null;
+        return _renderer != null && _renderer.sprite != null && _collider != null;
     }
     private void Reset()
     {

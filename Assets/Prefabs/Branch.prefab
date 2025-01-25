@@ -149,7 +149,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.4}
+  m_Size: {x: 1.2, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &6681526122832511291
 MonoBehaviour:
@@ -166,4 +166,4 @@ MonoBehaviour:
   _renderer: {fileID: 6760010587215316800}
   _collider: {fileID: 7897122017545759356}
   _spriteWidth: 2
-  _colliderWidth: 1.5
+  _colliderWidth: 1.2
