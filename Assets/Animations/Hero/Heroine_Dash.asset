@@ -14,30 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frames:
   - _sprite: {fileID: 419560189, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.25
+    _duration: 0.5
     _isTransitionFrame: 0
     _isActionFrame: 1
-  - _sprite: {fileID: 1998268332, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.2
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 1775768059, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 1675979236, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -596430093, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: 1307469175, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
-  - _sprite: {fileID: -2132503721, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
-    _duration: 0.2
-    _isTransitionFrame: 0
-    _isActionFrame: 0
