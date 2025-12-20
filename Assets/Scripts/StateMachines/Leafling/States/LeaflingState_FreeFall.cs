@@ -27,12 +27,8 @@ public class LeaflingState_FreeFall : LeaflingState
         if (_entry == FreeFallEntry.Backflip)
         {
             Target.SetAnimation(_backflip);
-            TransitionFreeFallAnimation();
         }
-        else
-        {
-            Target.SetAnimation(_fallDown);
-        }
+        TransitionFreeFallAnimation();
     }
 
     protected override void OnHorizontalDirectionChanged()
