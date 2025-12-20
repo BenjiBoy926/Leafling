@@ -1,25 +1,9 @@
-using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[ExecuteAlways]
 public class SpriteHueReplacement : MonoBehaviour
 {
-    private Material MaterialInstance
-    {
-        get
-        {
-            if (_materialInstance == null)
-            {
-                _materialInstance = Instantiate(_renderer.sharedMaterial);
-                _renderer.material = _materialInstance;
-            }
-            return _materialInstance;
-        }
-    }
-    private MaterialPropertyBlock PropertyBlock => _propertyBlock ??= new MaterialPropertyBlock();
-
     [SerializeField]
     private Renderer _renderer;
     [SerializeField, FormerlySerializedAs("_map")]
@@ -29,17 +13,23 @@ public class SpriteHueReplacement : MonoBehaviour
     private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
     private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
     private Material _materialInstance;
-    private MaterialPropertyBlock _propertyBlock;
 
     private void Awake()
     {
+        _materialInstance = _renderer.material;
         RefreshShader();
     }
     private void OnDestroy()
     {
-        if (_materialInstance != null)
+        if (_materialInstance == null) return;
+
+        if (Application.isPlaying)
         {
             Destroy(_materialInstance);
+        }
+        else
+        {
+            DestroyImmediate(_materialInstance);
         }
     }
 
@@ -53,35 +43,19 @@ public class SpriteHueReplacement : MonoBehaviour
         RefreshShader();
     }
 
-    [Button]
     private void RefreshShader()
     {
         if (!IsOperable())
         {
             return;
         }
-        if (Application.isPlaying)
-        {
-            _renderer.GetPropertyBlock(PropertyBlock);
-        }
         SetMapSize();
         SetMapKeys();
         SetMapValues();
-        if (Application.isPlaying)
-        {
-            _renderer.SetPropertyBlock(PropertyBlock);
-        }
     }
     private void SetMapSize()
     {
-        if (Application.isPlaying)
-        {
-            PropertyBlock.SetInt(_mapSizeID, _replacements.Count);
-        }
-        else
-        {
-            MaterialInstance.SetInt(_mapSizeID, _replacements.Count);
-        }
+        _materialInstance.SetInt(_mapSizeID, _replacements.Count);
     }
     private void SetMapKeys()
     {
@@ -93,20 +67,9 @@ public class SpriteHueReplacement : MonoBehaviour
     }
     private void SetVectorArray(int id, List<Vector4> array)
     {
-        if (Application.isPlaying)
-        {
-            PropertyBlock.SetVectorArray(id, array);
-        }
-        else
-        {
-            MaterialInstance.SetVectorArray(id, array);
-        }
+        _materialInstance.SetVectorArray(id, array);
     }
 
-    private void OnValidate()
-    {
-        RefreshShader();
-    }
     private void Reset()
     {
         _renderer = GetComponent<Renderer>();

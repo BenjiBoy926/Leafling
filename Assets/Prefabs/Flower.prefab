@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 875304338733122360}
-  _map:
+  _replacements:
     _keyValuePairs:
     - <Key>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
       <Value>k__BackingField: {r: 0.8396226, g: 0.5259523, b: 0.77180207, a: 1}
