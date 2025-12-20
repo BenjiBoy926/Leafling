@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using NaughtyAttributes;
 
+[ExecuteAlways]
 public class SpriteHueReplacement : MonoBehaviour
 {
     [SerializeField]
@@ -12,25 +14,20 @@ public class SpriteHueReplacement : MonoBehaviour
     private readonly int _mapSizeID = Shader.PropertyToID("_MapSize");
     private readonly int _mapKeysID = Shader.PropertyToID("_MapKeys");
     private readonly int _mapValuesID = Shader.PropertyToID("_MapValues");
+    private Material _materialAsset;
     private Material _materialInstance;
 
     private void Awake()
     {
-        _materialInstance = _renderer.material;
         RefreshShader();
     }
     private void OnDestroy()
     {
-        if (_materialInstance == null) return;
-
-        if (Application.isPlaying)
+        if (_materialInstance)
         {
-            Destroy(_materialInstance);
+            DestroyMaterialInstance();
         }
-        else
-        {
-            DestroyImmediate(_materialInstance);
-        }
+        _renderer.sharedMaterial = _materialAsset;
     }
 
     public Color GetValue(int i)
@@ -43,12 +40,17 @@ public class SpriteHueReplacement : MonoBehaviour
         RefreshShader();
     }
 
+    [Button]
     private void RefreshShader()
     {
-        if (!IsOperable())
+        if (!IsOperable()) return;
+
+        if (!_materialInstance)
         {
-            return;
+            CreateMaterialInstance();
         }
+        if (!_materialInstance) return;
+
         SetMapSize();
         SetMapKeys();
         SetMapValues();
@@ -70,12 +72,36 @@ public class SpriteHueReplacement : MonoBehaviour
         _materialInstance.SetVectorArray(id, array);
     }
 
+    private void CreateMaterialInstance()
+    {
+        if (!_renderer.sharedMaterial) return;
+
+        _materialAsset = _renderer.sharedMaterial;
+        _materialInstance = Instantiate(_materialAsset);
+        _renderer.sharedMaterial = _materialInstance;
+    }
+    private void DestroyMaterialInstance()
+    {
+        if (Application.isPlaying)
+        {
+            Destroy(_materialInstance);
+        }
+        else
+        {
+            DestroyImmediate(_materialInstance);
+        }
+    }
+
+    private void OnValidate()
+    {
+        RefreshShader();
+    }
     private void Reset()
     {
         _renderer = GetComponent<Renderer>();
     }
     private bool IsOperable()
     {
-        return _renderer != null && _renderer.sharedMaterial != null && _replacements != null && _replacements.Count > 0;
+        return _renderer != null && _replacements != null && _replacements.Count > 0;
     }
 }
