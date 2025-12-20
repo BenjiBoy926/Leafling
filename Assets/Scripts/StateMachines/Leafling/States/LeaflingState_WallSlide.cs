@@ -3,8 +3,6 @@ using UnityEngine;
 public class LeaflingState_WallSlide : LeaflingState
 {
     [SerializeField]
-    private float _animationTransitionScale = 0.25f;
-    [SerializeField]
     private float _gravityScale = 0.1f;
     [SerializeField]
     private float _releaseGracePeriod = 0.3f;
@@ -19,8 +17,9 @@ public class LeaflingState_WallSlide : LeaflingState
     protected override void OnEnable()
     {
         base.OnEnable();
-        bool flip = LeaflingStateTool_WallJump.WallDirectionToFlipX(_wallDirection);
-        Target.SetTransition(new(Target.WallPerch, _animationTransitionScale, flip));
+        int direction = LeaflingStateTool_WallJump.WallDirectionToFacingDirection(_wallDirection);
+        Target.FaceTowards(direction);
+        Target.SetAnimation(Target.WallPerch);
         Target.SetGravityScale(_gravityScale);
         Target.SetVerticalVelocity(0);
     }

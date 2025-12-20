@@ -16,10 +16,6 @@ public class LeaflingStateTool_WallJump
     {
         return leafling.IsTouching(direction) && leafling.HorizontalDirection == direction.X;
     }
-    public static bool WallDirectionToFlipX(CardinalDirection wallDirection)
-    {
-        return Leafling.DirectionToFlipX(WallDirectionToFacingDirection(wallDirection));
-    }
     public static int WallDirectionToFacingDirection(CardinalDirection direction)
     {
         return -direction.X;
