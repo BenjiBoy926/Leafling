@@ -823,7 +823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
-  _animationTransitionScale: 0.5
   _gravityScale: 0.25
   _releaseGracePeriod: 0.1
 --- !u!1 &3700162624775708444
@@ -1142,7 +1141,7 @@ GameObject:
   - component: {fileID: 7793637193319451036}
   - component: {fileID: 2710924508442473500}
   m_Layer: 0
-  m_Name: LeaflingState_LongJump
+  m_Name: LeaflingState_SlideKick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1176,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
-  _animation: {fileID: 11400000, guid: 04d1a2019a3419d4d940f68ddd609d0e, type: 2}
+  _animation: {fileID: 11400000, guid: f78e34312ce5b194ea37642e8ba2b8e2, type: 2}
   _gravityScale: 0.25
   _airControl: {fileID: 11400000, guid: 65bea7688f741d042a84dff2e929e052, type: 2}
 --- !u!1 &7879352367548083249

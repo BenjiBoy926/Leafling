@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeaflingState_LongJump : LeaflingState
+public class LeaflingState_SlideKick : LeaflingState
 {
     private float TopSpeed => _airControl.ForwardTopSpeed;
 

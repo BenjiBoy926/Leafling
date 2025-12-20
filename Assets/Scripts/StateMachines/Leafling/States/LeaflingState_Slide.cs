@@ -22,7 +22,7 @@ public class LeaflingState_Slide : LeaflingState
         base.OnStartedJumping();
         if (HasEnteredActionFrame)
         {
-            Target.SendSignal(new LeaflingSignal<LeaflingState_LongJump>());
+            Target.SendSignal(new LeaflingSignal<LeaflingState_SlideKick>());
         }
     }
     protected override void OnAnimationStarted()
