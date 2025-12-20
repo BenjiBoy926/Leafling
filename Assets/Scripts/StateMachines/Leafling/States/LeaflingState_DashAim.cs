@@ -7,7 +7,7 @@ public class LeaflingState_DashAim : LeaflingState
     private float _gravityScale = 0.1f;
     [SerializeField]
     private float _animationTransitionScale = 0.25f;
-    [SerializeField, ReadOnly]
+    [ShowNonSerializedField]
     private Vector2 _aim;
 
     protected override void OnEnable()
