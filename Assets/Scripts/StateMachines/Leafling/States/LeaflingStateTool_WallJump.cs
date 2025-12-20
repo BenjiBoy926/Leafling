@@ -9,7 +9,7 @@ public class LeaflingStateTool_WallJump
     {
         if (ShouldSlideOnWallInDirection(leafling, wallDirection))
         {
-            leafling.SendSignal(new LeaflingSignal_WallSlide(wallDirection, 0));
+            leafling.SendSignal(new LeaflingSignal_WallSlide(wallDirection));
         }
     }
     private static bool ShouldSlideOnWallInDirection(Leafling leafling, CardinalDirection direction)

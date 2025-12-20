@@ -38,10 +38,6 @@ public class LeaflingState_WallJump : LeaflingState
         {
             FinishWallJump();
         }
-        if (Target.IsTouching(_wallDirection.Opposite))
-        {
-            Target.SendSignal(new LeaflingSignal_WallSlide(_wallDirection.Opposite, 0.5f));
-        }
     }
     private bool ShouldFinishWallJump()
     {

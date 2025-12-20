@@ -2,22 +2,15 @@ using UnityEngine;
 
 public class LeaflingState_WallSlide : LeaflingState
 {
-    private bool ShouldForceSlide => TimeSinceStateStart < _forceSlideWindow;
-
     [SerializeField]
     private float _animationTransitionScale = 0.25f;
     [SerializeField]
     private float _gravityScale = 0.1f;
     private CardinalDirection _wallDirection;
-    private float _forceSlideWindow;
 
     public void SetWallDirection(CardinalDirection wallDirection)
     {
         _wallDirection = wallDirection;
-    }
-    public void SetForceSlideWindow(float forceSlideWindow)
-    {
-        _forceSlideWindow = forceSlideWindow;
     }
 
     protected override void OnEnable()
@@ -58,6 +51,6 @@ public class LeaflingState_WallSlide : LeaflingState
     }
     private bool ShouldDisengage()
     {
-        return Target.IsCrouching || (!ShouldForceSlide && Target.HorizontalDirection != _wallDirection.X);
+        return Target.HorizontalDirection != _wallDirection.X;
     }
 }
