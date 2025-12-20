@@ -825,6 +825,7 @@ MonoBehaviour:
   <Target>k__BackingField: {fileID: 7646446932064873026}
   _animationTransitionScale: 0.5
   _gravityScale: 0.25
+  _releaseGracePeriod: 0.1
 --- !u!1 &3700162624775708444
 GameObject:
   m_ObjectHideFlags: 0
