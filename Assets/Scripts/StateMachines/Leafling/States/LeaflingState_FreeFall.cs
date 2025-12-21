@@ -64,7 +64,7 @@ public class LeaflingState_FreeFall : LeaflingState
     {
         base.Update();
         Target.ApplyAirControl(_airControl);
-        if (Target.IsTouching(CardinalDirection.Down))
+        if (Target.IsTouching(CardinalDirection.Down) && Target.VerticalVelocity <= 0)
         {
             Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
         }

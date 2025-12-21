@@ -1,9 +1,7 @@
 using Core;
-using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Leafling : MonoBehaviour
 {
@@ -36,6 +34,7 @@ public class Leafling : MonoBehaviour
     public bool IsNextFrameActionFrame => Animator.IsNextFrameActionFrame;
     public bool IsPreviousFrameActionFrame => Animator.IsPreviousFrameActionFrame;
     public bool IsCurrentFrameActionFrame => Animator.IsCurrentFrameActionFrame;
+    public float VerticalVelocity => PhysicsBody.velocity.y;
 
     [field: SerializeField]
     private LeaflingStateMachine StateMachine { get; set; }
