@@ -20,7 +20,7 @@ public class LeaflingState_Slide : LeaflingState
     protected override void OnStartedJumping()
     {
         base.OnStartedJumping();
-        if (HasEnteredActionFrame)
+        if (Target.IsCurrentFrameActionFrame)
         {
             Target.SendSignal(new LeaflingSignal<LeaflingState_SlideKick>());
         }
@@ -42,7 +42,7 @@ public class LeaflingState_Slide : LeaflingState
     protected override void Update()
     {
         base.Update();
-        if (HasEnteredActionFrame)
+        if (Target.IsCurrentFrameActionFrame)
         {
             float t = Target.ProgressOfFirstActionFrame;
             float speed = _speedCurve.Evaluate(t) * _maxSpeed;

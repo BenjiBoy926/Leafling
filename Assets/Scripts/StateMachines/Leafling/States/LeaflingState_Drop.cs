@@ -21,7 +21,7 @@ public class LeaflingState_Drop : LeaflingState
     protected override void OnStartedJumping()
     {
         base.OnStartedJumping();
-        if (HasEnteredActionFrame)
+        if (Target.IsCurrentFrameActionFrame)
         {
             Target.SetVerticalVelocity(_cancelSpeed);
         }
@@ -37,7 +37,7 @@ public class LeaflingState_Drop : LeaflingState
     {
         base.Update();
         Target.ApplyAirControl(_airControl);
-        if (HasEnteredActionFrame)
+        if (Target.IsCurrentFrameActionFrame)
         {
             Target.SetVerticalVelocity(-_dropSpeed);
         }

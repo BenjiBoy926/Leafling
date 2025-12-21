@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class LeaflingState : State<Leafling>
 {
-    protected bool HasEnteredActionFrame { get; private set;}
-
     protected override void OnEnable()
     {
         base.OnEnable();
-        HasEnteredActionFrame = false;
         Target.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
         Target.StartedJumping += OnStartedJumping;
         Target.StoppedJumping += OnStoppedJumping;
@@ -80,7 +77,7 @@ public class LeaflingState : State<Leafling>
     }
     protected virtual void OnAnimationEnteredActionFrame()
     {
-        HasEnteredActionFrame = true;
+
     }
     protected virtual void OnDashTargetTouched(DashTarget target)
     {

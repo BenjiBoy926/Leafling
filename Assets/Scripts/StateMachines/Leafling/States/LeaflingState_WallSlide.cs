@@ -41,6 +41,11 @@ public class LeaflingState_WallSlide : LeaflingState
         base.OnStartedJumping();
         Target.SendSignal(new LeaflingSignal_WallJump(_wallDirection));
     }
+    protected override void OnStoppedAimingDash()
+    {
+        base.OnStoppedAimingDash();
+
+    }
 
     protected override void Update()
     {
