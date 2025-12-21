@@ -29,7 +29,11 @@ public class LeaflingState_Flutter : LeaflingState
     protected override void OnAnimationFinished()
     {
         base.OnAnimationFinished();
-        if (Target.IsAnimating(_animation))
+        if (Target.IsJumping)
+        {
+            Target.SetAnimation(_animation);
+        }
+        else if (Target.IsAnimating(_animation))
         {
             Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
         }
@@ -49,11 +53,6 @@ public class LeaflingState_Flutter : LeaflingState
     {
         base.Update();
         ApplyAirControl();
-        if (Target.IsTouching(CardinalDirection.Down))
-        {
-            Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
-        }
-        LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
     }
     private void ApplyAirControl()
     {

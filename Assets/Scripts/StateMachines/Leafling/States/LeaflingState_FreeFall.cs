@@ -36,11 +36,6 @@ public class LeaflingState_FreeFall : LeaflingState
         base.OnHorizontalDirectionChanged();
         TransitionFreeFallAnimation();
     }
-    protected override void OnStartedJumping()
-    {
-        base.OnStartedJumping();
-        Target.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
-    }
     protected override void OnStartedAimingDash()
     {
         base.OnStartedAimingDash();
@@ -69,6 +64,10 @@ public class LeaflingState_FreeFall : LeaflingState
             Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
         }
         LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
+        if (Target.IsJumping)
+        {
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Flutter>());
+        }
     }
 
     private void TransitionFreeFallAnimation()
