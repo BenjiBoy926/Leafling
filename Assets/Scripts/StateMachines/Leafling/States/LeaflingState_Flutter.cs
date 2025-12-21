@@ -33,7 +33,7 @@ public class LeaflingState_Flutter : LeaflingState
         {
             Target.SetAnimation(_animation);
         }
-        else if (Target.IsAnimating(_animation))
+        else
         {
             Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Normal));
         }

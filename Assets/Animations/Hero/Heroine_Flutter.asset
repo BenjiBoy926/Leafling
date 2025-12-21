@@ -15,7 +15,7 @@ MonoBehaviour:
   _frames:
   - _sprite: {fileID: -2133862385, guid: 30c287c4e1155664d8528f3a427d2b4c, type: 3}
     _duration: 0.1
-    _isTransitionFrame: 0
+    _isTransitionFrame: 1
     _isActionFrame: 0
   - _sprite: {fileID: -720479770, guid: 30c287c4e1155664d8528f3a427d2b4c, type: 3}
     _duration: 0.2
