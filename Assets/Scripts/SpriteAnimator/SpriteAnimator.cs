@@ -118,6 +118,12 @@ public class SpriteAnimator : MonoBehaviour
     private void AdvanceOneFrame()
     {
         bool isLastFrame = _currentAnimation.IsLastFrame(_currentFrameIndex);
+        if (isLastFrame && !_currentAnimation.Loop)
+        {
+            FinishedAnimation();
+            return;
+        }
+
         _currentFrameIndex++;
         _isFirstFrame = false;
         UpdateSpriteBody();

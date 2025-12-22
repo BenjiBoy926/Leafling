@@ -6,6 +6,7 @@ public class SpriteAnimation : ScriptableObject
 {
     public const string FramesRelativePath = nameof(_frames);
 
+    public bool Loop => _loop;
     public int FrameCount => _frames.Length;
     public float Duration => TimeBefore(FrameCount - 1) + _frames[^1].Duration;
     public float TimeAfterFirstActionFrame => TimeAfter(IndexOfFirstActionFrame);
@@ -14,6 +15,8 @@ public class SpriteAnimation : ScriptableObject
     public float DurationOfFirstActionFrame => _frames[IndexOfFirstActionFrame].Duration;
     public int IndexOfFirstActionFrame => Array.FindIndex(_frames, IsActionFrame);
 
+    [SerializeField]
+    private bool _loop;
     [SerializeField]
     private SpriteAnimationFrame[] _frames;
 

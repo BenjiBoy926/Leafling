@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
   m_Name: Heroine_Jump
   m_EditorClassIdentifier: 
+  _loop: 1
   _frames:
   - _sprite: {fileID: 1941089592, guid: 0f58777f54a2c6b4fb6efe6c7d0dbb84, type: 3}
     _duration: 1

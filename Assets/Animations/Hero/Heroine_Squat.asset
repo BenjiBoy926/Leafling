@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
   m_Name: Heroine_Squat
   m_EditorClassIdentifier: 
+  _loop: 1
   _frames:
   - _sprite: {fileID: 787815596, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.15
