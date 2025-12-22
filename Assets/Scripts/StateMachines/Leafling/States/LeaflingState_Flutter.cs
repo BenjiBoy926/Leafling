@@ -53,6 +53,7 @@ public class LeaflingState_Flutter : LeaflingState
     {
         base.Update();
         ApplyAirControl();
+        LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
     }
     private void ApplyAirControl()
     {
