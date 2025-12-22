@@ -203,6 +203,24 @@ public class Leafling : MonoBehaviour
     {
         return Contacts.GetContactNormals();
     }
+    public PlatformEffector2D GetCurrentPlatform()
+    {
+        Contact contact = Contacts.GetContact(CardinalDirection.Down);
+        bool contactSamePlatform = ContactSamePlatform(contact.Min, contact.Max, out PlatformEffector2D platform);
+        return contactSamePlatform ? platform : null;
+    }
+
+    private bool ContactSamePlatform(RaycastHit2D min, RaycastHit2D max, out PlatformEffector2D platform)
+    {
+        bool minHitPlatform = TryGetPlatform(min, out platform);
+        bool maxHitPlatform = TryGetPlatform(max, out PlatformEffector2D otherPlatform);
+        return minHitPlatform && maxHitPlatform && platform == otherPlatform;
+    }
+    private bool TryGetPlatform(RaycastHit2D hit, out PlatformEffector2D platform)
+    {
+        platform = null;
+        return hit.collider && hit.collider.TryGetComponent(out platform);
+    }
 
     public void SetTransition(SpriteAnimationTransition transition)
     {
