@@ -17,7 +17,7 @@ public class CardinalContacts : MonoBehaviour
     private float _raycastLength = 0.01f;
     [SerializeField]
     private float _raycastSideMargin = 0.01f;
-    private Dictionary<CardinalDirection, Contact> _contacts = new()
+    private readonly Dictionary<CardinalDirection, Contact> _contacts = new()
     {
         [CardinalDirection.Up] = new Contact(),
         [CardinalDirection.Down] = new Contact(),
@@ -45,6 +45,10 @@ public class CardinalContacts : MonoBehaviour
         }
         return false;
     }
+    public Contact GetContact(CardinalDirection direction)
+    {
+        return _contacts[direction];
+    }
     public IEnumerable<Vector2> GetContactNormals()
     {
         for (int i = 0; i < CardinalDirection.Count; i++)
@@ -70,12 +74,13 @@ public class CardinalContacts : MonoBehaviour
     }
     private Contact BuildContact(CardinalDirection direction)
     {
-        bool min = Physics2D.Raycast(GetMinOrigin(direction), direction.FloatVector, _raycastLength);
-        bool max = Physics2D.Raycast(GetMaxOrigin(direction), direction.FloatVector, _raycastLength);
+        RaycastHit2D min = Physics2D.Raycast(GetMinOrigin(direction), direction.FloatVector, _raycastLength);
+        RaycastHit2D max = Physics2D.Raycast(GetMaxOrigin(direction), direction.FloatVector, _raycastLength);
         return new Contact
         {
-            IsTouching = min || max,
-            Normal = direction.Vector * -1
+            Normal = direction.Vector * -1,
+            Min = min,
+            Max = max
         };
     }
 
