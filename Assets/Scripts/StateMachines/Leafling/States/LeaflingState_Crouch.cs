@@ -2,10 +2,19 @@ using UnityEngine;
 
 public class LeaflingState_Crouch : LeaflingState
 {
+    [SerializeField]
+    private float _doubleTapInterval = 0.3f;
+    private float _timeOfPreviousCrouchStart;
+
     protected override void OnEnable()
     {
+        _timeOfPreviousCrouchStart = TimeOfStateStart;
         base.OnEnable();
         Target.SetAnimation(Target.Squat);
+        if (DoubleCrouchDetected() && Target.GetCurrentPlatform())
+        {
+            Target.SendSignal(new LeaflingSignal<LeaflingState_DropThrough>());
+        }
     }
     protected override void OnStartedJumping()
     {
@@ -24,5 +33,10 @@ public class LeaflingState_Crouch : LeaflingState
     {
         base.OnStoppedCrouching();
         Target.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
+    }
+
+    private bool DoubleCrouchDetected()
+    {
+        return !Mathf.Approximately(TimeOfStateStart, 0) && TimeOfStateStart - _timeOfPreviousCrouchStart <= _doubleTapInterval;
     }
 }

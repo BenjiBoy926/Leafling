@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class State<TTarget> : MonoBehaviour, IState where TTarget : MonoBehaviour
 {
@@ -7,6 +6,7 @@ public class State<TTarget> : MonoBehaviour, IState where TTarget : MonoBehaviou
     [field: SerializeField]
     protected TTarget Target { get; private set; }
     protected float TimeSinceStateStart => Time.time - _timeOfStateStart;
+    protected float TimeOfStateStart => _timeOfStateStart;
 
     private float _timeOfStateStart;
 
