@@ -39,7 +39,7 @@ public class SpriteAnimation : ScriptableObject
     private float TimeInRange(int start, int end)
     {
         float total = 0;
-        for (int i = start + 1; i < end; i++)
+        for (int i = start; i < end; i++)
         {
             total += _frames[i].Duration;
         }

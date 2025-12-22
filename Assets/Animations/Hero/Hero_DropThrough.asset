@@ -15,17 +15,17 @@ MonoBehaviour:
   _frames:
   - _sprite: {fileID: -1043172386, guid: 69f34478275a99b4fae2a47e738919fd, type: 3}
     _duration: 0.1
-    _isTransitionFrame: 0
-    _isActionFrame: 0
+    _isTransitionFrame: 1
+    _isActionFrame: 1
   - _sprite: {fileID: 2037588395, guid: 69f34478275a99b4fae2a47e738919fd, type: 3}
     _duration: 0.1
-    _isTransitionFrame: 0
+    _isTransitionFrame: 1
     _isActionFrame: 0
   - _sprite: {fileID: 1852757646, guid: 69f34478275a99b4fae2a47e738919fd, type: 3}
     _duration: 0.1
-    _isTransitionFrame: 0
+    _isTransitionFrame: 1
     _isActionFrame: 0
   - _sprite: {fileID: 793018524, guid: 69f34478275a99b4fae2a47e738919fd, type: 3}
     _duration: 0.1
-    _isTransitionFrame: 0
+    _isTransitionFrame: 1
     _isActionFrame: 0

@@ -39,7 +39,7 @@ public class Leafling : MonoBehaviour
     [field: SerializeField]
     private LeaflingStateMachine StateMachine { get; set; }
     [field: SerializeField]
-    private Rigidbody2D PhysicsBody { get; set; }
+    public Rigidbody2D PhysicsBody { get; private set; }
     [field: SerializeField]
     private SpriteAnimator Animator { get; set; }
     [field: SerializeField]
