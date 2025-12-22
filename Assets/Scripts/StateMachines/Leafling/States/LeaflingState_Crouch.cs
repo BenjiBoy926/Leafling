@@ -13,7 +13,7 @@ public class LeaflingState_Crouch : LeaflingState
         PlatformEffector2D platform = Target.GetCurrentPlatform();
         if (platform)
         {
-            Debug.Log("Pass through the platform!");
+            Target.SendSignal(new LeaflingSignal<LeaflingState_DropThrough>());
         }
         else
         {

@@ -209,6 +209,14 @@ public class Leafling : MonoBehaviour
         bool contactSamePlatform = ContactSamePlatform(contact.Min, contact.Max, out PlatformEffector2D platform);
         return contactSamePlatform ? platform : null;
     }
+    public void IgnoreCollision(Collider2D collider)
+    {
+        Physics2D.IgnoreCollision(Contacts.Collider, collider);
+    }
+    public void RestoreCollision(Collider2D collider)
+    {
+        Physics2D.IgnoreCollision(Contacts.Collider, collider, false);
+    }
 
     private bool ContactSamePlatform(RaycastHit2D min, RaycastHit2D max, out PlatformEffector2D platform)
     {

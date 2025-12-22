@@ -10,6 +10,7 @@ public class CardinalContacts : MonoBehaviour
     private float RaycastVerticalMargin => _raycastLength * 0.1f;
     private Vector2 ColliderCenter => _collider.bounds.center;
     private Vector2 ColliderExtents => _collider.bounds.extents;
+    public Collider2D Collider => _collider;
 
     [SerializeField]
     private Collider2D _collider;
