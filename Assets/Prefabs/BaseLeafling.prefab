@@ -1397,6 +1397,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 6615154740352775051}
+  _downContactMask:
+    serializedVersion: 2
+    m_Bits: 65
+  _leftRightUpContactMask:
+    serializedVersion: 2
+    m_Bits: 1
   _raycastLength: 0.5
   _raycastSideMargin: 0.01
 --- !u!114 &7827341310666358948

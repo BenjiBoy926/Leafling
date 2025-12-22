@@ -15,6 +15,10 @@ public class CardinalContacts : MonoBehaviour
     [SerializeField]
     private Collider2D _collider;
     [SerializeField]
+    private LayerMask _downContactMask;
+    [SerializeField]
+    private LayerMask _leftRightUpContactMask;
+    [SerializeField]
     private float _raycastLength = 0.01f;
     [SerializeField]
     private float _raycastSideMargin = 0.01f;
@@ -75,8 +79,9 @@ public class CardinalContacts : MonoBehaviour
     }
     private Contact BuildContact(CardinalDirection direction)
     {
-        RaycastHit2D min = Physics2D.Raycast(GetMinOrigin(direction), direction.FloatVector, _raycastLength);
-        RaycastHit2D max = Physics2D.Raycast(GetMaxOrigin(direction), direction.FloatVector, _raycastLength);
+        LayerMask mask = direction == CardinalDirection.Down ? _downContactMask : _leftRightUpContactMask;
+        RaycastHit2D min = Physics2D.Raycast(GetMinOrigin(direction), direction.FloatVector, _raycastLength, mask);
+        RaycastHit2D max = Physics2D.Raycast(GetMaxOrigin(direction), direction.FloatVector, _raycastLength, mask);
         return new Contact
         {
             Normal = direction.Vector * -1,
