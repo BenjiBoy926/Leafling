@@ -12,8 +12,6 @@ public class LeaflingState_FreeFall : LeaflingState
     [SerializeField]
     private SpriteAnimation _fallForward;
     [SerializeField]
-    private float _backflipBurst = 10;
-    [SerializeField]
     private DirectionalAirControl _backflipAirControl;
     [SerializeField]
     private DirectionalAirControl _airControl;
@@ -31,7 +29,6 @@ public class LeaflingState_FreeFall : LeaflingState
         if (_entry == FreeFallEntry.Backflip)
         {
             Target.SetAnimation(_backflip);
-            Target.PhysicsBody.AddForce(Vector2.up * _backflipBurst, ForceMode2D.Impulse);
         }
         TransitionFreeFallAnimation();
     }

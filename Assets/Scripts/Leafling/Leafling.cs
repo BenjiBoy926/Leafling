@@ -169,6 +169,10 @@ public class Leafling : MonoBehaviour
     {
         PhysicsBody.velocity = velocity;
     }
+    public void AddForce(Vector2 force, ForceMode2D mode)
+    {
+        PhysicsBody.AddForce(force, mode);
+    }
 
     public void ApplyAirControl(DirectionalAirControl control)
     {
