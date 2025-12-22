@@ -493,6 +493,7 @@ MonoBehaviour:
   _fallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _fallDown: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
   _fallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
+  _backflipBurst: 5
   _backflipAirControl: {fileID: 11400000, guid: f2aff4c65e6ad3145a28c133ca5b889c, type: 2}
   _airControl: {fileID: 11400000, guid: cb378fab90da7e04fb85c066e9e00cae, type: 2}
   _entry: 0
