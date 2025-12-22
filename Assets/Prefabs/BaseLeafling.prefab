@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
-  _animation: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
+  _animation: {fileID: 11400000, guid: 5c1f67c4d1e3273448391e9f528c7965, type: 2}
 --- !u!1 &4060073737904618157
 GameObject:
   m_ObjectHideFlags: 0
