@@ -12,6 +12,8 @@ public class LeaflingState_FreeFall : LeaflingState
     [SerializeField]
     private SpriteAnimation _fallForward;
     [SerializeField]
+    private DirectionalAirControl _backflipAirControl;
+    [SerializeField]
     private DirectionalAirControl _airControl;
     [SerializeField, ReadOnly]
     private FreeFallEntry _entry;
@@ -63,7 +65,14 @@ public class LeaflingState_FreeFall : LeaflingState
     protected override void Update()
     {
         base.Update();
-        Target.ApplyAirControl(_airControl);
+        if (Target.IsAnimating(_backflip))
+        {
+            Target.ApplyAirControl(_backflipAirControl);
+        }
+        else
+        {
+            Target.ApplyAirControl(_airControl);
+        }
         if (Target.IsTouching(CardinalDirection.Down) && Target.VerticalVelocity <= 0)
         {
             Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
