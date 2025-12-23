@@ -31,11 +31,14 @@ public class LeaflingState_Dash : LeaflingState
         Target.FaceTowards(_aim.x);
         LeaflingStateTool_Dash.SetMidairRotation(Target, _aim);
         Target.MakeUnableToDash();
+        Target.TakeControlOfReticle();
+        Target.ShowAim(_aim);
     }
     protected override void OnDisable()
     {
         base.OnDisable();
         Target.ResetSpriteRotation();
+        Target.ReleaseControlOfReticle();
     }
     protected override void OnAnimationFinished()
     {

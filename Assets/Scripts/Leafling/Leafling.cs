@@ -235,6 +235,14 @@ public class Leafling : MonoBehaviour
         Physics2D.IgnoreCollision(Contacts.Collider, collider, false);
     }
 
+    public void TakeControlOfReticle()
+    {
+        _isControllingReticle = false;
+    }
+    public void ReleaseControlOfReticle()
+    {
+        _isControllingReticle = true;
+    }
     public void ShowAim(Vector2 aim)
     {
         DashReticle.ShowAim(aim);

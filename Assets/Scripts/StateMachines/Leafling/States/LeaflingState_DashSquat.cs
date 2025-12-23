@@ -21,6 +21,13 @@ public class LeaflingState_DashSquat : LeaflingState
     {
         base.OnEnable();
         LeaflingStateTool_Dash.ShowDashPerch(Target, _aim);
+        Target.TakeControlOfReticle();
+        Target.ShowAim(_aim);
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        Target.ReleaseControlOfReticle();
     }
     protected override void OnAnimationFinished()
     {
