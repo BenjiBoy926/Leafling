@@ -68,6 +68,7 @@ public class Leafling : MonoBehaviour
     private float _defaultGravityScale;
     private Quaternion _defaultSpriteRotation;
     private Vector2 _clampedDashAim;
+    private bool _isControllingReticle = true;
 
     private void Awake()
     {
@@ -105,6 +106,10 @@ public class Leafling : MonoBehaviour
     private void FixedUpdate()
     {
         _clampedDashAim = LeaflingStateTool_Dash.ClampDashAim(this, Inputs.DashAim);
+        if (_isControllingReticle)
+        {
+            ShowAim(_clampedDashAim);
+        }
     }
 
     private void OnHorizontalDirectionChanged()
