@@ -50,6 +50,8 @@ public class Leafling : MonoBehaviour
     private LeaflingSprite Sprite { get; set; }
     [field: SerializeField]
     public DashTargeter DashTargeter { get; private set; }
+    [field: SerializeField]
+    private DashReticle DashReticle { get; set; }
 
     [field: Space]
     [field: SerializeField]
@@ -220,6 +222,11 @@ public class Leafling : MonoBehaviour
     public void RestoreCollision(Collider2D collider)
     {
         Physics2D.IgnoreCollision(Contacts.Collider, collider, false);
+    }
+
+    public void ShowAim(Vector2 aim)
+    {
+        DashReticle.ShowAim(aim);
     }
 
     private bool ContactSamePlatform(RaycastHit2D min, RaycastHit2D max, out PlatformEffector2D platform)
