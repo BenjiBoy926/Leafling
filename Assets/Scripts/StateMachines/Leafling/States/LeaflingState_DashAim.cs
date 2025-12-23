@@ -7,8 +7,6 @@ public class LeaflingState_DashAim : LeaflingState
     private float _gravityScale = 0.1f;
     [SerializeField]
     private float _animationTransitionScale = 0.25f;
-    [ShowNonSerializedField]
-    private Vector2 _aim;
 
     protected override void OnEnable()
     {
@@ -30,11 +28,10 @@ public class LeaflingState_DashAim : LeaflingState
     protected override void Update()
     {
         base.Update();
-        _aim = LeaflingStateTool_Dash.ClampDashAim(Target, Target.DashAim);
-        LeaflingStateTool_Dash.TransitionDashPerch(Target, _animationTransitionScale, _aim);
+        LeaflingStateTool_Dash.TransitionDashPerch(Target, _animationTransitionScale, Target.DashAim);
         if (!Target.IsAimingDash)
         {
-            Target.SendSignal(new LeaflingSignal_Dash(_aim, true));
+            Target.SendSignal(new LeaflingSignal_Dash(Target.DashAim, true));
         }
     }
 }

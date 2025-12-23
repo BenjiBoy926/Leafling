@@ -20,7 +20,7 @@ public class Leafling : MonoBehaviour
     public int HorizontalDirection => Inputs.HorizontalDirection;
     public bool IsJumping => Inputs.IsJumping;
     public bool IsAimingDash => Inputs.IsAimingDash;
-    public Vector2 DashAim => Inputs.DashAim;
+    public Vector2 DashAim => _clampedDashAim;
     public bool IsCrouching => Inputs.IsCrouching;
 
     public int FacingDirection => FlipXToDirection(Animator.FlipX);
@@ -67,6 +67,7 @@ public class Leafling : MonoBehaviour
 
     private float _defaultGravityScale;
     private Quaternion _defaultSpriteRotation;
+    private Vector2 _clampedDashAim;
 
     private void Awake()
     {
@@ -101,6 +102,11 @@ public class Leafling : MonoBehaviour
         Animator.ActionFrameEntered -= OnAnimationEnteredActionFrame;
         DashTargeter.TouchedTarget -= OnDashTargetTouched;
     }
+    private void FixedUpdate()
+    {
+        _clampedDashAim = LeaflingStateTool_Dash.ClampDashAim(this, Inputs.DashAim);
+    }
+
     private void OnHorizontalDirectionChanged()
     {
         HorizontalDirectionChanged();
