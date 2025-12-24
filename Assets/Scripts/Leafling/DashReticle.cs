@@ -9,7 +9,7 @@ public class DashReticle : MonoBehaviour
 
     public void ShowAim(Vector2 aim)
     {
-        _targetAngle = -Mathf.Atan2(aim.x, aim.y) * Mathf.Rad2Deg;
+        _targetAngle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
     }
 
     private void Update()
