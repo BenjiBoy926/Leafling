@@ -3,7 +3,7 @@
 public class DashReticle : MonoBehaviour
 {
     [SerializeField]
-    private float _radiansPerSecond = 2 * Mathf.PI;
+    private float _lerpStrength = 20;
     private float _currentAngle = 0;
     private float _targetAngle;
 
@@ -14,7 +14,7 @@ public class DashReticle : MonoBehaviour
 
     private void Update()
     {
-        _currentAngle = Mathf.Lerp(_currentAngle, _targetAngle, _radiansPerSecond * Time.deltaTime);
+        _currentAngle = Mathf.LerpAngle(_currentAngle, _targetAngle, _lerpStrength * Time.deltaTime);
         Vector3 eulers = new(0, 0, _currentAngle);
         transform.localEulerAngles = eulers;
     }
