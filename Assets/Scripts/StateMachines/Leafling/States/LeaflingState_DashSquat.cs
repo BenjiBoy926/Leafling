@@ -23,6 +23,7 @@ public class LeaflingState_DashSquat : LeaflingState
         LeaflingStateTool_Dash.ShowDashPerch(Target, _aim);
         Target.TakeControlOfReticle();
         Target.ShowAim(_aim);
+        Target.SetVelocity(Vector2.zero);
     }
     protected override void OnDisable()
     {
