@@ -247,6 +247,14 @@ public class Leafling : MonoBehaviour
     {
         DashReticle.ShowAim(aim);
     }
+    public void SetDashReticleHighlight()
+    {
+        DashReticle.SetHighlight();
+    }
+    public void ClearDashReticleHighlight()
+    {
+        DashReticle.ClearHighlight();
+    }
 
     private bool ContactSamePlatform(RaycastHit2D min, RaycastHit2D max, out PlatformEffector2D platform)
     {

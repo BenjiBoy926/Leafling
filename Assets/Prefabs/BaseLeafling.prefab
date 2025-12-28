@@ -1155,6 +1155,8 @@ MonoBehaviour:
       <Value>k__BackingField: {r: 0.3019608, g: 0.21176472, b: 0.121568635, a: 1}
     - <Key>k__BackingField: {r: 1, g: 1, b: 0, a: 1}
       <Value>k__BackingField: {r: 0.3019608, g: 0.21176471, b: 0.12156863, a: 1}
+    - <Key>k__BackingField: {r: 0.5, g: 1, b: 0, a: 1}
+      <Value>k__BackingField: {r: 0.528, g: 1, b: 0, a: 1}
 --- !u!1 &6322949650866538016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,6 +1297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9548e9c82b3b1b429f5c86d1a688715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 98444704682581653}
+  _scaleTransform: {fileID: 1414547708595693868}
+  _defaultColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+  _highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  _defaultScale: 1
+  _highlightScale: 1.2
+  _highlightTransitionDuration: 0.35
   _lerpStrength: 20
 --- !u!1 &7879352367548083249
 GameObject:

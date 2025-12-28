@@ -13,12 +13,14 @@ public class LeaflingState_DashAim : LeaflingState
         base.OnEnable();
         Target.SetGravityScale(_gravityScale);
         Target.SetVerticalVelocity(0);
+        Target.SetDashReticleHighlight();
     }
     protected override void OnDisable()
     {
         base.OnDisable();
         Target.ResetGravityScale();
         Target.ResetSpriteRotation();
+        Target.ClearDashReticleHighlight();
     }
     protected override void OnDashTargetTouched(DashTarget target)
     {
