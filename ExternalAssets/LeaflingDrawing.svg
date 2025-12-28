@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.2603498"
-     inkscape:cx="1683.589"
-     inkscape:cy="10818.901"
+     inkscape:zoom="0.56508745"
+     inkscape:cx="20.350832"
+     inkscape:cy="4831.9955"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -2238,11 +2238,11 @@
        id="path200" />
     <path
        style="fill:#00ffff;stroke:#000000;stroke-width:0.79375"
-       d="m 94.228662,1261.913 c -4.567621,-26.5627 -28.457892,-31.3002 -35.754351,-31.4873 -7.296456,-0.1871 9.374851,40.6547 21.909791,43.274 12.534939,2.6192 13.84456,-11.7867 13.84456,-11.7867 z"
+       d="m 94.228662,1247.9092 c -4.567621,-26.5627 -28.457892,-31.3002 -35.754351,-31.4873 -7.296456,-0.1871 9.374851,40.6547 21.909791,43.274 12.534939,2.6192 13.84456,-11.7867 13.84456,-11.7867 z"
        id="path153"
        sodipodi:nodetypes="cssc" />
     <ellipse
-       cy="1270.1837"
+       cy="1256.1799"
        cx="99.03878"
        id="ellipse153"
        style="display:inline;opacity:0.99;fill:#ff8000;fill-opacity:0.999161;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -2250,11 +2250,11 @@
        ry="8.9769201" />
     <path
        style="fill:#0000ff;stroke:#000000;stroke-width:0.79375"
-       d="m 35.482823,1246.1756 v 26.7537 c 0,0 31.056718,14.78 33.301782,6.7352 2.245063,-8.0449 -25.444057,-8.6061 -33.301782,-33.4889 z"
+       d="m 35.482823,1232.1718 v 26.7537 c 0,0 31.056718,14.78 33.301782,6.7352 2.245063,-8.0449 -25.444057,-8.6061 -33.301782,-33.4889 z"
        id="path154" />
     <path
        style="fill:#ff0000;stroke:#000000;stroke-width:0.79375"
-       d="m 92.544864,1276.2969 c -3.050076,5.8791 -41.856957,8.8214 -50.284679,-32.9442 74.122275,2.8168 51.977067,29.6821 50.284679,32.9442 z"
+       d="m 92.544864,1262.2931 c -3.050076,5.8791 -41.856957,8.8214 -50.284679,-32.9442 74.122275,2.8168 51.977067,29.6821 50.284679,32.9442 z"
        id="path155"
        sodipodi:nodetypes="scs" />
     <ellipse
