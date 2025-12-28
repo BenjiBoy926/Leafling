@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
-  _speed: 35
+  _speed: 40
   _airControl: {fileID: 11400000, guid: cb44110906ab8044b8845e4ac54c2f2a, type: 2}
 --- !u!1 &8344223311618030353
 GameObject:
