@@ -40,6 +40,7 @@ public class LeaflingState_Dash : LeaflingState
         base.OnDisable();
         Target.ResetSpriteRotation();
         Target.ReleaseControlOfReticle();
+        Target.ClearDashReticleHighlight();
     }
     protected override void OnAnimationFinished()
     {
