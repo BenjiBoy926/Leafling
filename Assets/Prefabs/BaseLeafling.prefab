@@ -1302,8 +1302,10 @@ MonoBehaviour:
   _defaultColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
   _highlightColor: {r: 0, g: 1, b: 0, a: 1}
   _defaultScale: 1
-  _highlightScale: 1.2
-  _highlightTransitionDuration: 0.35
+  _highlightScale: 1.5
+  _highlightTransitionDuration: 0.2
+  _highlightEase: 28
+  _defaultEase: 9
   _lerpStrength: 20
 --- !u!1 &7879352367548083249
 GameObject:
