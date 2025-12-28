@@ -10,6 +10,12 @@ public class DashReticle : MonoBehaviour
         public float Scale;
         public Ease Ease;
 
+        public void Set(SpriteRenderer renderer, Transform scaleTransform)
+        {
+            renderer.color = Color;
+            scaleTransform.localScale = Scale * Vector3.one;
+        }
+
         public void Perform(SpriteRenderer renderer, Transform scaleTransform, float duration)
         {
             renderer.DOKill();
@@ -53,7 +59,13 @@ public class DashReticle : MonoBehaviour
 
     public void Flash()
     {
+        _highlightTransition.Set(_spriteRenderer, _scaleTransform);
         _flashTransition.Perform(_spriteRenderer, _scaleTransform, _transitionDuration);
+    }
+
+    private void OnEnable()
+    {
+        _defaultTransition.Set(_spriteRenderer, _scaleTransform);
     }
 
     private void Update()

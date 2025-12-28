@@ -1310,7 +1310,7 @@ MonoBehaviour:
     Ease: 28
   _flashTransition:
     Color: {r: 0, g: 1, b: 0, a: 0}
-    Scale: 3
+    Scale: 5
     Ease: 6
   _lerpStrength: 20
 --- !u!1 &7879352367548083249
