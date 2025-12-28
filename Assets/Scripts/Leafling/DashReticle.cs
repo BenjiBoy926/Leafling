@@ -3,24 +3,32 @@ using DG.Tweening;
 
 public class DashReticle : MonoBehaviour
 {
+    [System.Serializable]
+    private struct Transition
+    {
+        public Color Color;
+        public float Scale;
+        public Ease Ease;
+
+        public void Perform(SpriteRenderer renderer, Transform scaleTransform, float duration)
+        {
+            renderer.DOKill();
+            scaleTransform.DOKill();
+            renderer.DOColor(Color, duration);
+            scaleTransform.DOScale(Scale, duration).SetEase(Ease);
+        }
+    }
+
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
     [SerializeField]
     private Transform _scaleTransform;
     [SerializeField]
-    private Color _defaultColor;
-    [SerializeField]
-    private Color _highlightColor;
-    [SerializeField]
-    private float _defaultScale = 1;
-    [SerializeField]
-    private float _highlightScale = 1.2f;
-    [SerializeField]
     private float _highlightTransitionDuration = 0.35f;
     [SerializeField]
-    private Ease _highlightEase = Ease.OutBack;
+    private Transition _defaultTransition;
     [SerializeField]
-    private Ease _defaultEase = Ease.OutCubic;
+    private Transition _highlightTransition;
     [SerializeField]
     private float _lerpStrength = 20;
     private float _currentAngle = 0;
@@ -33,18 +41,12 @@ public class DashReticle : MonoBehaviour
 
     public void SetHighlight()
     {
-        _scaleTransform.DOKill();
-        _spriteRenderer.DOKill();
-        _scaleTransform.DOScale(_highlightScale, _highlightTransitionDuration).SetEase(_highlightEase);
-        _spriteRenderer.DOColor(_highlightColor, _highlightTransitionDuration);
+        _highlightTransition.Perform(_spriteRenderer, _scaleTransform, _highlightTransitionDuration);
     }
 
     public void ClearHighlight()
     {
-        _scaleTransform.DOKill();
-        _spriteRenderer.DOKill();
-        _scaleTransform.DOScale(_defaultScale, _highlightTransitionDuration).SetEase(_defaultEase);
-        _spriteRenderer.DOColor(_defaultColor, _highlightTransitionDuration);
+        _defaultTransition.Perform(_spriteRenderer, _scaleTransform, _highlightTransitionDuration);
     }
 
     private void Update()
