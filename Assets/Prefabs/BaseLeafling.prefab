@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 98444704682581653}
   _scaleTransform: {fileID: 1414547708595693868}
-  _highlightTransitionDuration: 0.2
+  _transitionDuration: 0.35
   _defaultTransition:
     Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
     Scale: 1
@@ -1308,6 +1308,10 @@ MonoBehaviour:
     Color: {r: 0, g: 1, b: 0, a: 1}
     Scale: 1.5
     Ease: 28
+  _flashTransition:
+    Color: {r: 0, g: 1, b: 0, a: 0}
+    Scale: 3
+    Ease: 6
   _lerpStrength: 20
 --- !u!1 &7879352367548083249
 GameObject:

@@ -24,11 +24,13 @@ public class DashReticle : MonoBehaviour
     [SerializeField]
     private Transform _scaleTransform;
     [SerializeField]
-    private float _highlightTransitionDuration = 0.35f;
+    private float _transitionDuration = 0.35f;
     [SerializeField]
     private Transition _defaultTransition;
     [SerializeField]
     private Transition _highlightTransition;
+    [SerializeField]
+    private Transition _flashTransition;
     [SerializeField]
     private float _lerpStrength = 20;
     private float _currentAngle = 0;
@@ -41,12 +43,17 @@ public class DashReticle : MonoBehaviour
 
     public void SetHighlight()
     {
-        _highlightTransition.Perform(_spriteRenderer, _scaleTransform, _highlightTransitionDuration);
+        _highlightTransition.Perform(_spriteRenderer, _scaleTransform, _transitionDuration);
     }
 
     public void ClearHighlight()
     {
-        _defaultTransition.Perform(_spriteRenderer, _scaleTransform, _highlightTransitionDuration);
+        _defaultTransition.Perform(_spriteRenderer, _scaleTransform, _transitionDuration);
+    }
+
+    public void Flash()
+    {
+        _flashTransition.Perform(_spriteRenderer, _scaleTransform, _transitionDuration);
     }
 
     private void Update()

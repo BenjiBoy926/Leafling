@@ -33,6 +33,7 @@ public class LeaflingState_Dash : LeaflingState
         Target.MakeUnableToDash();
         Target.TakeControlOfReticle();
         Target.ShowAim(_aim);
+        Target.FlashDashReticle();
     }
     protected override void OnDisable()
     {
