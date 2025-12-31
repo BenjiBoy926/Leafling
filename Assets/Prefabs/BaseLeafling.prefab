@@ -418,8 +418,8 @@ MonoBehaviour:
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _running: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   _animationTransitionScale: 0.5
-  _baseSpeed: 5
-  _leapAdditionalSpeed: 15
+  _baseSpeed: 12
+  _leapAdditionalSpeed: 10
   _accelerationCurve:
     serializedVersion: 2
     m_Curve:
