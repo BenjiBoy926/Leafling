@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct AirControl
+public struct PhysicsControl
 {
     private const float StationaryTolerance = 1f;
 

@@ -7,7 +7,7 @@ public class LeaflingState_Standing : LeaflingState
     [SerializeField] 
     private SpriteAnimation _running;
     [SerializeField]
-    private AirControl _control;
+    private PhysicsControl _control;
 
     protected override void OnEnable()
     {
@@ -40,7 +40,7 @@ public class LeaflingState_Standing : LeaflingState
     protected override void Update()
     {
         base.Update();
-        Target.ApplyAirControl(_control);
+        Target.ApplyPhysicsControl(_control);
         if (!Target.IsTouching(CardinalDirection.Down))
         {
             Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));

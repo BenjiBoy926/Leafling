@@ -10,7 +10,7 @@ public class LeaflingState_CrouchJump : LeaflingState
     [SerializeField]
     private AnimationCurve _speedCurve;
     [SerializeField]
-    private DirectionalAirControl _airControl;
+    private DirectionalPhysicsControl _airControl;
 
     protected override void OnEnable()
     {
@@ -30,7 +30,7 @@ public class LeaflingState_CrouchJump : LeaflingState
     protected override void Update()
     {
         base.Update();
-        Target.ApplyAirControl(_airControl);
+        Target.ApplyPhysicsControl(_airControl);
 
         float verticalVelocity = _speedCurve.Evaluate(Target.CurrentAnimationProgress) * _maxSpeed;
         Target.SetVerticalVelocity(verticalVelocity);

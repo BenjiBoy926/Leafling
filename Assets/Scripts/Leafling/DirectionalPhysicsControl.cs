@@ -1,14 +1,14 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = nameof(Leafling) + "/" + nameof(DirectionalAirControl))]
-public class DirectionalAirControl : ScriptableObject
+[CreateAssetMenu(menuName = nameof(Leafling) + "/" + nameof(DirectionalPhysicsControl))]
+public class DirectionalPhysicsControl : ScriptableObject
 {
     public float ForwardTopSpeed => _forwards.TopSpeed;
 
     [SerializeField]
-    private AirControl _forwards;
+    private PhysicsControl _forwards;
     [SerializeField]
-    private AirControl _backwards;
+    private PhysicsControl _backwards;
 
     public void ApplyTo(Rigidbody2D body, int applyDirection, int facingDirection)
     {

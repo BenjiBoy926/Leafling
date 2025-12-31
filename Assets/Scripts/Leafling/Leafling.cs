@@ -188,11 +188,11 @@ public class Leafling : MonoBehaviour
         PhysicsBody.AddForce(force, mode);
     }
 
-    public void ApplyAirControl(AirControl control)
+    public void ApplyPhysicsControl(PhysicsControl control)
     {
         control.ApplyTo(PhysicsBody, HorizontalDirection);
     }
-    public void ApplyAirControl(DirectionalAirControl control)
+    public void ApplyPhysicsControl(DirectionalPhysicsControl control)
     {
         control.ApplyTo(PhysicsBody, HorizontalDirection, FacingDirection);
     }

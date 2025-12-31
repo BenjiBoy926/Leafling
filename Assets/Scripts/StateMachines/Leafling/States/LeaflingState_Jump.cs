@@ -13,7 +13,7 @@ public class LeaflingState_Jump : LeaflingState
     [SerializeField]
     private AnimationCurve _speedCurve;
     [SerializeField]
-    private DirectionalAirControl _airControl;
+    private DirectionalPhysicsControl _airControl;
 
     protected override void OnEnable()
     {
@@ -29,7 +29,7 @@ public class LeaflingState_Jump : LeaflingState
     protected override void Update()
     {
         base.Update();
-        Target.ApplyAirControl(_airControl);
+        Target.ApplyPhysicsControl(_airControl);
         Target.SetVerticalVelocity(GetJumpSpeed());
         if (ShouldTransitionOutOfJump())
         {

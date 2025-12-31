@@ -9,9 +9,9 @@ public class LeaflingState_Flutter : LeaflingState
     [SerializeField]
     private float _speed = 5;
     [SerializeField]
-    private DirectionalAirControl _restingAirControl;
+    private DirectionalPhysicsControl _restingAirControl;
     [SerializeField]
-    private DirectionalAirControl _actionAirControl;
+    private DirectionalPhysicsControl _actionAirControl;
 
     protected override void OnEnable()
     {
@@ -59,11 +59,11 @@ public class LeaflingState_Flutter : LeaflingState
     {
         if (Target.IsCurrentFrameActionFrame)
         {
-            Target.ApplyAirControl(_actionAirControl);
+            Target.ApplyPhysicsControl(_actionAirControl);
         }
         else
         {
-            Target.ApplyAirControl(_restingAirControl);
+            Target.ApplyPhysicsControl(_restingAirControl);
         }
     }
 }

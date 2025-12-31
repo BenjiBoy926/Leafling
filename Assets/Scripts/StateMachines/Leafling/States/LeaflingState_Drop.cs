@@ -11,7 +11,7 @@ public class LeaflingState_Drop : LeaflingState
     [SerializeField]
     private float _cancelSpeed = 10;
     [SerializeField]
-    private DirectionalAirControl _airControl;
+    private DirectionalPhysicsControl _airControl;
 
     protected override void OnEnable()
     {
@@ -36,7 +36,7 @@ public class LeaflingState_Drop : LeaflingState
     protected override void Update()
     {
         base.Update();
-        Target.ApplyAirControl(_airControl);
+        Target.ApplyPhysicsControl(_airControl);
         if (Target.IsCurrentFrameActionFrame)
         {
             Target.SetVerticalVelocity(-_dropSpeed);
