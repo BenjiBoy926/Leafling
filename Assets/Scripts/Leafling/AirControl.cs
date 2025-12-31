@@ -16,18 +16,35 @@ public struct AirControl
 
     internal void ApplyTo(Rigidbody2D body, int applyDirection)
     {
-        if (WillPushExceedTopSpeed(body, applyDirection))
+        if (applyDirection != 0)
+        {
+            PushTowardsTopSpeed(body, applyDirection);
+        }
+        else
+        {
+            PushTowardsResting(body);
+        }
+    }
+
+    private void PushTowardsTopSpeed(Rigidbody2D body, int direction)
+    {
+        if (WillPushExceedTopSpeed(body, direction))
         {
             return;
         }
-        int forceDirection = GetForceDirection(body, applyDirection);
-        Vector2 force = _acceleration * forceDirection * Vector2.right;
-        body.AddForce(force);
-        if (applyDirection != 0)
-        {
-            ClampVelocity(body);
-        }
+        AddForce(body, direction);
     }
+    private void PushTowardsResting(Rigidbody2D body)
+    {
+        AddForce(body, GetRestingForceDirection(body));
+    }
+
+    private void AddForce(Rigidbody2D body, int direction)
+    {
+        Vector2 force = _acceleration * direction * Vector2.right;
+        body.AddForce(force);
+    }
+
     // Codey: it is fine to enter this air control at a higher velocity than the 
     // top speed and let linear drag push the body back in range of the top speed
     private bool WillPushExceedTopSpeed(Rigidbody2D body, int applyDirection)
@@ -39,9 +56,10 @@ public struct AirControl
         bool exceedsPositiveVelocity = horizontalVelocity >= _topSpeed;
         return (applyDirection < 0 && exceedsNegativeVelocity) || (applyDirection > 0 && exceedsPositiveVelocity);
     }
-    private int GetForceDirection(Rigidbody2D body, int applyDirection)
+    private bool IsNearStationary(Rigidbody2D body)
     {
-        return applyDirection == 0 ? GetRestingForceDirection(body) : applyDirection;
+        float velocity = body.GetVelocity(Dimension.X);
+        return Mathf.Abs(velocity) < StationaryTolerance;
     }
     private int GetRestingForceDirection(Rigidbody2D body)
     {
