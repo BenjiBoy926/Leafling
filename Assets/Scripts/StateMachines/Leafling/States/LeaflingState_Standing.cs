@@ -61,6 +61,7 @@ public class LeaflingState_Standing : LeaflingState
         if (Target.HorizontalDirection != 0)
         {
             SetAnimation(_running);
+            Target.FaceTowards(Target.HorizontalDirection);
         }
     }
 
