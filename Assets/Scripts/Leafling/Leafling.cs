@@ -18,6 +18,7 @@ public class Leafling : MonoBehaviour
     public event DashTargeter.TargetStrikeHandler DashTargetTouched = delegate { };
 
     public int HorizontalDirection => Inputs.HorizontalDirection;
+    public float HorizontalVelocity => PhysicsBody.velocity.x;
     public bool IsJumping => Inputs.IsJumping;
     public bool IsAimingDash => Inputs.IsAimingDash;
     public Vector2 DashAim => _clampedDashAim;
@@ -187,6 +188,10 @@ public class Leafling : MonoBehaviour
         PhysicsBody.AddForce(force, mode);
     }
 
+    public void ApplyAirControl(AirControl control)
+    {
+        control.ApplyTo(PhysicsBody, HorizontalDirection);
+    }
     public void ApplyAirControl(DirectionalAirControl control)
     {
         control.ApplyTo(PhysicsBody, HorizontalDirection, FacingDirection);
