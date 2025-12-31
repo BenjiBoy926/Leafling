@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public struct AirControl
 {
-    private const float StationaryTolerance = 0.001f;
+    private const float StationaryTolerance = 1f;
 
     public float TopSpeed => _topSpeed;
 
@@ -36,7 +36,14 @@ public struct AirControl
     }
     private void PushTowardsResting(Rigidbody2D body)
     {
-        AddForce(body, GetRestingForceDirection(body));
+        if (!IsNearStationary(body))
+        {
+            AddForce(body, GetRestingForceDirection(body));
+        }
+        else if (!IsStationary(body))
+        {
+            body.SetVelocity(0, Dimension.X);
+        }
     }
 
     private void AddForce(Rigidbody2D body, int direction)
@@ -61,6 +68,11 @@ public struct AirControl
         float velocity = body.GetVelocity(Dimension.X);
         return Mathf.Abs(velocity) < StationaryTolerance;
     }
+    private bool IsStationary(Rigidbody2D body)
+    {
+        float velocity = body.GetVelocity(Dimension.X);
+        return Mathf.Approximately(velocity, 0);
+    }
     private int GetRestingForceDirection(Rigidbody2D body)
     {
         float xVelocity = body.GetVelocity(Dimension.X);
@@ -73,11 +85,5 @@ public struct AirControl
             return 1;
         }
         return 0;
-    }
-    private void ClampVelocity(Rigidbody2D body)
-    {
-        float velocity = body.GetVelocity(Dimension.X);
-        velocity = Mathf.Clamp(velocity, -_topSpeed, _topSpeed);
-        body.SetVelocity(velocity, Dimension.X);
     }
 }
