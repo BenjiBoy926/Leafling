@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = nameof(Leafling) + "/" + nameof(DirectionalAirControl))]
