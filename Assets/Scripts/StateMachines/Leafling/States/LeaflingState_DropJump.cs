@@ -1,18 +1,20 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LeaflingState_DropJump : LeaflingState
 {
     [SerializeField]
     private SpriteAnimation _animation;
+    [SerializeField, FormerlySerializedAs("_speed")]
+    private float _maxSpeed;
     [SerializeField]
-    private float _speed = 30;
+    private AnimationCurve _speedCurve;
     [SerializeField]
     private DirectionalAirControl _airControl;
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        Target.SetVerticalVelocity(_speed);
         Target.SetAnimation(_animation);
     }
     protected override void OnAnimationFinished()
@@ -29,5 +31,8 @@ public class LeaflingState_DropJump : LeaflingState
     {
         base.Update();
         Target.ApplyAirControl(_airControl);
+
+        float verticalVelocity = _speedCurve.Evaluate(Target.CurrentAnimationProgress) * _maxSpeed;
+        Target.SetVerticalVelocity(verticalVelocity);
     }
 }
