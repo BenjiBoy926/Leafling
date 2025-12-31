@@ -63,7 +63,7 @@ public struct PhysicsControl
         bool exceedsPositiveVelocity = horizontalVelocity >= _topSpeed;
         return (applyDirection < 0 && exceedsNegativeVelocity) || (applyDirection > 0 && exceedsPositiveVelocity);
     }
-    private bool IsNearStationary(Rigidbody2D body)
+    public static bool IsNearStationary(Rigidbody2D body)
     {
         float velocity = body.GetVelocity(Dimension.X);
         return Mathf.Abs(velocity) < StationaryTolerance;

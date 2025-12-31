@@ -41,6 +41,7 @@ public class LeaflingState_Standing : LeaflingState
     {
         base.Update();
         Target.ApplyPhysicsControl(_control);
+        UpdateAnimation();
         if (!Target.IsTouching(CardinalDirection.Down))
         {
             Target.SendSignal(new LeaflingSignal_FreeFall(FreeFallEntry.Backflip));
@@ -48,6 +49,26 @@ public class LeaflingState_Standing : LeaflingState
         if (Target.IsCrouching && Target.HorizontalDirection == 0)
         {
             Target.SendSignal(new LeaflingSignal<LeaflingState_Crouch>());
+        }
+    }
+
+    private void UpdateAnimation()
+    {
+        if (Target.HorizontalDirection == 0 && PhysicsControl.IsNearStationary(Target.PhysicsBody))
+        {
+            SetAnimation(_idle);
+        }
+        if (Target.HorizontalDirection != 0)
+        {
+            SetAnimation(_running);
+        }
+    }
+
+    private void SetAnimation(SpriteAnimation animation)
+    {
+        if (!Target.IsAnimating(animation))
+        {
+            Target.SetAnimation(animation);
         }
     }
 }
