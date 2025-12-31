@@ -234,6 +234,13 @@ public class Leafling : MonoBehaviour
     {
         Physics2D.IgnoreCollision(Contacts.Collider, collider, false);
     }
+    public void SetColliderY(float y)
+    {
+        Collider2D collider = Contacts.Collider;
+        Vector2 offset = collider.offset;
+        offset.y = y;
+        collider.offset = offset;
+    }
 
     public void TakeControlOfReticle()
     {
