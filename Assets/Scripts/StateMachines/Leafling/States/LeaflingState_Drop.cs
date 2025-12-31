@@ -30,7 +30,10 @@ public class LeaflingState_Drop : LeaflingState
     protected override void OnDashTargetTouched(DashTarget target)
     {
         base.OnDashTargetTouched(target);
-        Target.SendSignal(new LeaflingSignal_DashSpin(target));
+        if (Target.IsCurrentFrameActionFrame)
+        {
+            Target.SendSignal(new LeaflingSignal_DashSpin(target));
+        }
     }
 
     protected override void Update()
