@@ -615,7 +615,7 @@ MonoBehaviour:
   <Target>k__BackingField: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: e17713187f2505c448dafe4fbfb6dfc0, type: 2}
   _speed: 30
-  _exitHopSpeed: 20
+  _exitHopSpeed: 30
   _maxDuration: 0.5
 --- !u!1 &2908908446715005133
 GameObject:
