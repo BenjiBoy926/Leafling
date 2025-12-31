@@ -1547,7 +1547,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 7646446932064873026}
   _animation: {fileID: 11400000, guid: 1ef8a7f20c7343e48a75311d61325296, type: 2}
-  _speed: 40
+  _maxSpeed: 25
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.7889438
+      outSlope: -2.7889438
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06666666
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _airControl: {fileID: 11400000, guid: cb44110906ab8044b8845e4ac54c2f2a, type: 2}
 --- !u!1 &8344223311618030353
 GameObject:
