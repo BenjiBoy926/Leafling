@@ -313,6 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5685054135906551177}
   - component: {fileID: 6615154740352775051}
+  - component: {fileID: 8790408820503784231}
   m_Layer: 0
   m_Name: EnvironmentCollision
   m_TagString: Untagged
@@ -370,6 +371,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -1}
   m_Size: {x: 1, y: 3}
   m_Direction: 0
+--- !u!114 &8790408820503784231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634857613549958746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a67e1a796d8404192a612365889f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 6615154740352775051}
+  _downContactMask:
+    serializedVersion: 2
+    m_Bits: 65
+  _leftRightUpContactMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _raycastLength: 0.5
+  _raycastSideMargin: 0.01
 --- !u!1 &1754435278770579492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1098,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
+  m_Sprite: {fileID: -1470405663, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1370,7 +1392,6 @@ GameObject:
   - component: {fileID: 8025318423783035417}
   - component: {fileID: 3488960483544655785}
   - component: {fileID: 7646446932064873026}
-  - component: {fileID: 1035319642480623658}
   - component: {fileID: 7827341310666358948}
   - component: {fileID: 127495546493651369}
   m_Layer: 0
@@ -1441,7 +1462,7 @@ MonoBehaviour:
   <StateMachine>k__BackingField: {fileID: 2119858550765673999}
   <PhysicsBody>k__BackingField: {fileID: 3488960483544655785}
   <Animator>k__BackingField: {fileID: 8908563907554770964}
-  <Contacts>k__BackingField: {fileID: 1035319642480623658}
+  <Contacts>k__BackingField: {fileID: 8790408820503784231}
   <Inputs>k__BackingField: {fileID: 7827341310666358948}
   <Sprite>k__BackingField: {fileID: 2711572145439259236}
   <DashTargeter>k__BackingField: {fileID: 127495546493651369}
@@ -1451,27 +1472,6 @@ MonoBehaviour:
   <WallPerch>k__BackingField: {fileID: 11400000, guid: c017b4aa571df6c47b534ea1f0c6f5d5, type: 2}
   <CeilingPerch>k__BackingField: {fileID: 11400000, guid: d9863774b03732345a00d4b102ee7a5d, type: 2}
   <IsAbleToDash>k__BackingField: 1
---- !u!114 &1035319642480623658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7925818720938264243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a67e1a796d8404192a612365889f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 6615154740352775051}
-  _downContactMask:
-    serializedVersion: 2
-    m_Bits: 65
-  _leftRightUpContactMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _raycastLength: 0.5
-  _raycastSideMargin: 0.01
 --- !u!114 &7827341310666358948
 MonoBehaviour:
   m_ObjectHideFlags: 0
