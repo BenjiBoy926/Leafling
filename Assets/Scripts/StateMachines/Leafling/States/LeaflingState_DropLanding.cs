@@ -1,12 +1,5 @@
-public class LeaflingState_Landing : LeaflingState
+public class LeaflingState_DropLanding : LeaflingState
 {
-    private ILeaflingSignal _jumpSignal;
-
-    public void SetJumpSignal(ILeaflingSignal jumpSignal)
-    {
-        _jumpSignal = jumpSignal;
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -16,7 +9,7 @@ public class LeaflingState_Landing : LeaflingState
     protected override void OnStartedJumping()
     {
         base.OnStartedJumping();
-        Target.SendSignal(_jumpSignal);
+        Target.SendSignal(new LeaflingSignal<LeaflingState_DropJump>());
     }
     protected override void OnStartedAimingDash()
     {

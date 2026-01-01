@@ -50,7 +50,7 @@ public class LeaflingState_Drop : LeaflingState
         }
         if (Target.IsTouching(CardinalDirection.Down))
         {
-            Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_DropJump>()));
+            Target.SendSignal(new LeaflingSignal<LeaflingState_DropLanding>());
         }
     }
 }
