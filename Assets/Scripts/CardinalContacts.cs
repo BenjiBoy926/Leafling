@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class CardinalContacts : MonoBehaviour
 {
-    private Vector2 RaycastMargin => new(_raycastSideMargin, RaycastVerticalMargin);
-    private float RaycastVerticalMargin => _raycastLength * 0.1f;
+    private Vector2 RaycastMargin => new(_raycastSideMargin, _raycastSideMargin);
     private Vector2 ColliderCenter => _collider.bounds.center;
     private Vector2 ColliderExtents => _collider.bounds.extents;
     public Collider2D Collider => _collider;

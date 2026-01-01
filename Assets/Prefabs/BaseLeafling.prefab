@@ -390,8 +390,8 @@ MonoBehaviour:
   _leftRightUpContactMask:
     serializedVersion: 2
     m_Bits: 1
-  _raycastLength: 0.5
-  _raycastSideMargin: 0.01
+  _raycastLength: 0.6
+  _raycastSideMargin: 0.2
 --- !u!1 &1754435278770579492
 GameObject:
   m_ObjectHideFlags: 0
