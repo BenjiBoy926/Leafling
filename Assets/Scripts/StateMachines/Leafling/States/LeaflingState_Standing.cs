@@ -13,6 +13,7 @@ public class LeaflingState_Standing : LeaflingState
     {
         base.OnEnable();
         Target.SetAnimation(_idle);
+        Target.RestoreAbilityToDash();
     }
 
     protected override void OnStartedJumping()

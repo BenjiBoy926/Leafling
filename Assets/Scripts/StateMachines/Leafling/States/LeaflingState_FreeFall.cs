@@ -75,7 +75,7 @@ public class LeaflingState_FreeFall : LeaflingState
         }
         if (Target.IsTouching(CardinalDirection.Down) && Target.VerticalVelocity <= 0)
         {
-            Target.SendSignal(new LeaflingSignal_Landing(new LeaflingSignal<LeaflingState_Jump>()));
+            Target.SendSignal(new LeaflingSignal<LeaflingState_Standing>());
         }
         LeaflingStateTool_WallJump.CheckTransitionToWallSlide(Target);
     }

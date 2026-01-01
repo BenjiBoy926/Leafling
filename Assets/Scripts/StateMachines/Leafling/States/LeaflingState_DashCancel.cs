@@ -10,7 +10,7 @@ public class LeaflingState_DashCancel : LeaflingState
 
     public void SetDirection(Vector2 direction)
     {
-        _direction = direction; 
+        _direction = direction;
     }
 
     protected override void OnEnable()
