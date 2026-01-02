@@ -45,11 +45,11 @@ public abstract class StateMachine<TTarget> : MonoBehaviour, IStateMachine where
         signal.PrepareNextState(this);
         SetState(signal.StateType);
     }
-    private void SetState(Type stateType)
+    public void SetState(Type stateType)
     {
         SetState(GetState(stateType));
     }
-    private void SetState(State<TTarget> state)
+    public void SetState(State<TTarget> state)
     {
         if (_currentState != null)
         {

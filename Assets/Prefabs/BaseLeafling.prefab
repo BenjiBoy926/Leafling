@@ -48,6 +48,7 @@ Transform:
   - {fileID: 5071297802924343167}
   - {fileID: 7793637193319451036}
   - {fileID: 8138334066556045060}
+  - {fileID: 4120018999123038927}
   - {fileID: 6595390503964025438}
   - {fileID: 3972468158465572712}
   m_Father: {fileID: 8025318423783035417}
@@ -84,6 +85,7 @@ MonoBehaviour:
   - {fileID: 520272116869402619}
   - {fileID: 2710924508442473500}
   - {fileID: 3210350459603984518}
+  - {fileID: 8782256586070035280}
   - {fileID: 857588076504636574}
   - {fileID: 8957526323002560844}
 --- !u!1 &128155152190763199
@@ -1644,6 +1646,55 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _exitHop: 30
+--- !u!1 &8389187553254865746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4120018999123038927}
+  - component: {fileID: 8782256586070035280}
+  m_Layer: 0
+  m_Name: LeaflingState_TargetStrike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4120018999123038927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8389187553254865746}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6424225556183839443}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8782256586070035280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8389187553254865746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770b4379b88d97d4b9f7d66de9a5e53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Target>k__BackingField: {fileID: 7646446932064873026}
+  _duration: 0.2
+  _magnitude: 0.2
+  _shakeCount: 3
+  _target: {fileID: 0}
 --- !u!1 &9056884645925037894
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class LeaflingState_Dash : LeaflingState
     protected override void OnDashTargetTouched(DashTarget target)
     {
         base.OnDashTargetTouched(target);
-        Target.SendSignal(new LeaflingSignal_DashSpin(target));
+        LeaflingState_TargetStrike.Enter(Target, target);
     }
 
     protected override void Update()

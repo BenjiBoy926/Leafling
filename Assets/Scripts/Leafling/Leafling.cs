@@ -149,6 +149,14 @@ public class Leafling : MonoBehaviour
     {
         StateMachine.SendSignal(signal);
     }
+    public TState GetState<TState>() where TState : LeaflingState
+    {
+        return StateMachine.GetState<TState>();
+    }
+    public void SetState<TState>(TState state) where TState : LeaflingState
+    {
+        StateMachine.SetState(state);
+    }
 
     public void SetPosition(Vector2 position)
     {
