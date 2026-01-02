@@ -40,10 +40,9 @@ public abstract class StateMachine<TTarget> : MonoBehaviour, IStateMachine where
         }
     }
 
-    public void SendSignal(ISignal<TTarget> signal)
+    public void SetState<TState>() where TState : State<TTarget>
     {
-        signal.PrepareNextState(this);
-        SetState(signal.StateType);
+        SetState(typeof(TState));
     }
     public void SetState(Type stateType)
     {

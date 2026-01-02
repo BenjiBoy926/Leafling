@@ -50,9 +50,9 @@ public class Flower : MonoBehaviour
     {
         _animator.SetAnimation(animation);
     }
-    public void SendSignal(ISignal<Flower> signal)
+    public void SetState<TState>() where TState : FlowerState
     {
-        _stateMachine.SendSignal(signal);
+        _stateMachine.SetState<TState>();
     }
 
     private void PushLeaflingAway(Leafling leafling)
