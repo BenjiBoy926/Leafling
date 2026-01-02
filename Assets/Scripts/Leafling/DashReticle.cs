@@ -18,8 +18,8 @@ public class DashReticle : MonoBehaviour
 
         public void Perform(SpriteRenderer renderer, Transform scaleTransform, float duration)
         {
-            renderer.DOKill();
-            scaleTransform.DOKill();
+            renderer.DOComplete();
+            scaleTransform.DOComplete();
             renderer.DOColor(Color, duration);
             scaleTransform.DOScale(Scale, duration).SetEase(Ease);
         }

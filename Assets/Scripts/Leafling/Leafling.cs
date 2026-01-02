@@ -37,34 +37,21 @@ public class Leafling : MonoBehaviour
     public bool IsCurrentFrameActionFrame => Animator.IsCurrentFrameActionFrame;
     public float VerticalVelocity => PhysicsBody.velocity.y;
 
-    [field: SerializeField]
-    private LeaflingStateMachine StateMachine { get; set; }
-    [field: SerializeField]
-    public Rigidbody2D PhysicsBody { get; private set; }
-    [field: SerializeField]
-    private SpriteAnimator Animator { get; set; }
-    [field: SerializeField]
-    private CardinalContacts Contacts { get; set; }
-    [field: SerializeField]
-    private LeaflingInputs Inputs { get; set; }
-    [field: SerializeField]
-    private LeaflingSprite Sprite { get; set; }
-    [field: SerializeField]
-    public DashTargeter DashTargeter { get; private set; }
-    [field: SerializeField]
-    private DashReticle DashReticle { get; set; }
+    [field: SerializeField] private LeaflingStateMachine StateMachine { get; set; }
+    [field: SerializeField] public Rigidbody2D PhysicsBody { get; private set; }
+    [field: SerializeField] public SpriteAnimator Animator { get; private set; }
+    [field: SerializeField] private CardinalContacts Contacts { get; set; }
+    [field: SerializeField] private LeaflingInputs Inputs { get; set; }
+    [field: SerializeField] private LeaflingSprite Sprite { get; set; }
+    [field: SerializeField] public DashTargeter DashTargeter { get; private set; }
+    [field: SerializeField] private DashReticle DashReticle { get; set; }
 
     [field: Space]
-    [field: SerializeField]
-    public SpriteAnimation Squat { get; private set; }
-    [field: SerializeField]
-    public SpriteAnimation MidairDashAim { get; private set; }
-    [field: SerializeField]
-    public SpriteAnimation WallPerch { get; private set; }
-    [field: SerializeField]
-    public SpriteAnimation CeilingPerch { get; private set; }
-    [field: SerializeField]
-    public bool IsAbleToDash { get; private set; } = true;
+    [field: SerializeField] public SpriteAnimation Squat { get; private set; }
+    [field: SerializeField] public SpriteAnimation MidairDashAim { get; private set; }
+    [field: SerializeField] public SpriteAnimation WallPerch { get; private set; }
+    [field: SerializeField] public SpriteAnimation CeilingPerch { get; private set; }
+    [field: SerializeField] public bool IsAbleToDash { get; private set; } = true;
 
     private float _defaultGravityScale;
     private Quaternion _defaultSpriteRotation;
