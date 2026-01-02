@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AirControl_CrouchJump
   m_EditorClassIdentifier: 
   _forwards:
-    _acceleration: 40
+    _acceleration: 30
     _topSpeed: 15
   _backwards:
-    _acceleration: 40
+    _acceleration: 30
     _topSpeed: 20
