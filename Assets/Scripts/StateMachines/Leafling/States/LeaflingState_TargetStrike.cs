@@ -45,25 +45,19 @@ public class LeaflingState_TargetStrike : LeaflingState
     {
         float singleOffsetDuration = _duration / 2 / _shakeCount;
         WaitForSeconds singleOffsetWait = new(singleOffsetDuration);
-        Vector3 position;
         for (int i = 0; i < _shakeCount; i++)
         {
             float damp = (_shakeCount - i) / (float)_shakeCount;
             float xPosition = _magnitude * damp;
-            position = transform.localPosition;
-            position.x = xPosition;
-            transform.localPosition = position;
+
+            transform.SetLocalX(xPosition);
             yield return singleOffsetWait;
 
-            position.x = -xPosition;
-            transform.localPosition = position;
+            transform.SetLocalX(-xPosition);
             yield return singleOffsetWait;
         }
 
-        position = transform.localPosition;
-        position.x = 0;
-        transform.localPosition = position;
-
+        transform.SetLocalX(0);
         Target.SendSignal(new LeaflingSignal_DashSpin(_target));
     }
 }
