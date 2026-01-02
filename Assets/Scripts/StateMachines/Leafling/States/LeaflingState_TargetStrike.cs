@@ -33,6 +33,7 @@ public class LeaflingState_TargetStrike : LeaflingState
     {
         base.OnDisable();
         StopAllCoroutines();
+        Target.ResetSpriteRotation();
     }
 
     protected override void Update()

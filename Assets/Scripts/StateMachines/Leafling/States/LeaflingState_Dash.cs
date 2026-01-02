@@ -14,6 +14,8 @@ public class LeaflingState_Dash : LeaflingState
     private Vector2 _aim;
     [SerializeField, ReadOnly]
     private bool _dashOnRicochet;
+    [SerializeField, ReadOnly]
+    private DashTarget _struckTarget;
 
     public void SetAim(Vector2 aim)
     {
@@ -27,6 +29,7 @@ public class LeaflingState_Dash : LeaflingState
     protected override void OnEnable()
     {
         base.OnEnable();
+        _struckTarget = null;
         Target.SetAnimation(_animation);
         Target.FaceTowards(_aim.x);
         LeaflingStateTool_Dash.SetMidairRotation(Target, _aim);
@@ -40,7 +43,10 @@ public class LeaflingState_Dash : LeaflingState
     protected override void OnDisable()
     {
         base.OnDisable();
-        Target.ResetSpriteRotation();
+        if (!_struckTarget)
+        {
+            Target.ResetSpriteRotation();
+        }
         Target.ReleaseControlOfReticle();
         Target.ClearDashReticleHighlight();
     }
@@ -55,6 +61,7 @@ public class LeaflingState_Dash : LeaflingState
     protected override void OnDashTargetTouched(DashTarget target)
     {
         base.OnDashTargetTouched(target);
+        _struckTarget = target;
         LeaflingState_TargetStrike.Enter(Target, target);
     }
 
