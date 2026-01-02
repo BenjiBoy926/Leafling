@@ -30,7 +30,9 @@ public class LeaflingState_Dash : LeaflingState
         Target.SetAnimation(_animation);
         Target.FaceTowards(_aim.x);
         LeaflingStateTool_Dash.SetMidairRotation(Target, _aim);
+        
         Target.MakeUnableToDash();
+
         Target.TakeControlOfReticle();
         Target.ShowAim(_aim);
         Target.FlashDashReticle();

@@ -35,6 +35,12 @@ public class LeaflingState_TargetStrike : LeaflingState
         StopAllCoroutines();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        Target.SetVelocity(Vector2.zero);
+    }
+
     private IEnumerator Shake(Transform transform)
     {
         float singleOffsetDuration = _duration / 2 / _shakeCount;
